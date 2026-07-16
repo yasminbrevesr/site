@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../media/8f704806dbed.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../media/08949f728dc5.woff2) format('woff2');
+}
+
+:root {
+  --black: #0a0a0c;
+  --white: #f4f2ee;
+  --grey: #9d9d9d;
+  --grey-dim: #5f5f5f;
+  --amber: #e2a144;
+  --green: #5cb97f;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-soft: rgba(255, 255, 255, 0.07);
+  --band: rgba(244, 242, 238, 0.035);
+  --band-soft: rgba(244, 242, 238, 0.02);
+  --mono: 'Plex Mono', Consolas, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+
+::selection { background: rgba(226, 161, 68, 0.28); color: var(--white); }
