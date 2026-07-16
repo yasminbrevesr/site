@@ -23,7 +23,10 @@
     </div>
     <span class="brand-tag">Jurídico</span>
   </a>
-  <a class="back-home" href="../">← Site principal</a>
+  <nav class="area-switch" aria-label="Áreas da BREVES">
+    <a href="../">BREVES</a>
+    <a class="active" href="./" aria-current="page">Jurídico</a>
+  </nav>
   <span class="header-note">Tecnologia sob medida para escritórios de advocacia</span>
   <a class="btn btn-amber header-cta" href="#diagnostico"><span class="cta-full">Mapear meu escritório</span><span class="cta-short">Diagnóstico</span> <span class="arr">→</span></a>
 </header>
@@ -91,15 +94,16 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow">O que entregamos</div>
-        <h2>Quatro frentes, um escritório no controle.</h2>
+        <h2>Quatro frentes para transformar a operação por inteiro.</h2>
+        <p class="sec-intro">Escolha uma categoria para entender como cada frente resolve um ponto específico da rotina.</p>
       </div>
 
       <div class="reveal">
         <div class="tabs" role="tablist" aria-label="Frentes da BREVES Jurídico">
-          <button type="button" id="tab-calculos" class="tab active" role="tab" aria-selected="true" aria-controls="panel-calculos" tabindex="0" data-tab="calculos">Cálculos Jurídicos</button>
-          <button type="button" id="tab-consultas" class="tab" role="tab" aria-selected="false" aria-controls="panel-consultas" tabindex="-1" data-tab="consultas">Consultas Legais</button>
-          <button type="button" id="tab-ia" class="tab" role="tab" aria-selected="false" aria-controls="panel-ia" tabindex="-1" data-tab="ia">Inteligência Artificial</button>
-          <button type="button" id="tab-gestao" class="tab" role="tab" aria-selected="false" aria-controls="panel-gestao" tabindex="-1" data-tab="gestao">Gestão e Marketing</button>
+          <button type="button" id="tab-calculos" class="tab active" role="tab" aria-label="Cálculos Jurídicos" aria-selected="true" aria-controls="panel-calculos" tabindex="0" data-tab="calculos"><span>01</span><b>Cálculos Jurídicos</b><small>Precisão e memória</small></button>
+          <button type="button" id="tab-consultas" class="tab" role="tab" aria-label="Consultas Legais" aria-selected="false" aria-controls="panel-consultas" tabindex="-1" data-tab="consultas"><span>02</span><b>Consultas Legais</b><small>Pesquisa fundamentada</small></button>
+          <button type="button" id="tab-ia" class="tab" role="tab" aria-label="Inteligência Artificial" aria-selected="false" aria-controls="panel-ia" tabindex="-1" data-tab="ia"><span>03</span><b>Inteligência Artificial</b><small>Assistência com revisão</small></button>
+          <button type="button" id="tab-gestao" class="tab" role="tab" aria-label="Gestão e Marketing" aria-selected="false" aria-controls="panel-gestao" tabindex="-1" data-tab="gestao"><span>04</span><b>Gestão e Marketing</b><small>Operação e crescimento</small></button>
         </div>
 
         <div id="panel-calculos" class="tpanel active" role="tabpanel" aria-labelledby="tab-calculos" data-panel="calculos">

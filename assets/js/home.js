@@ -2,6 +2,31 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isMobile = window.matchMedia('(max-width: 860px)').matches;
 
+  /* ---------- navegação responsiva ---------- */
+  var siteHeader = document.querySelector('header.site');
+  var navToggle = document.querySelector('.nav-toggle');
+  if (siteHeader && navToggle) {
+    function closeMenu() {
+      siteHeader.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Abrir menu');
+    }
+    navToggle.addEventListener('click', function () {
+      var open = siteHeader.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    });
+    siteHeader.querySelectorAll('nav a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && siteHeader.classList.contains('nav-open')) {
+        closeMenu();
+        navToggle.focus();
+      }
+    });
+  }
+
   /* ---------- scroll reveal (IO + manual fallback) ---------- */
   var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   function pending() { return els.filter(function (el) { return !el.classList.contains('in'); }); }
@@ -55,13 +80,18 @@
   /* ---------- header state + scrollspy + hint ---------- */
   var header = document.querySelector('header.site');
   var hint = document.querySelector('.scroll-hint');
+  var pageProgress = document.querySelector('[data-page-progress]');
   var spyLinks = Array.prototype.slice.call(document.querySelectorAll('nav a[data-spy]'));
   var spySections = spyLinks.map(function (a) { return document.getElementById(a.getAttribute('data-spy')); });
 
   function onScroll() {
     var y = window.scrollY || document.documentElement.scrollTop;
-    header.classList.toggle('scrolled', y > 40);
+    if (header) header.classList.toggle('scrolled', y > 40);
     if (hint) hint.classList.toggle('gone', y > 80);
+    if (pageProgress) {
+      var maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+      pageProgress.style.width = Math.min(100, Math.max(0, (y / maxScroll) * 100)) + '%';
+    }
 
     var current = 0;
     for (var i = 0; i < spySections.length; i++) {
@@ -81,21 +111,36 @@
   var lid = document.getElementById('lid3d');
   var shade = document.getElementById('screen-shade');
   var heroEl = document.querySelector('.hero');
-  var lidCur = -82, lidTgt = -82;
+  var stage3El = document.querySelector('.stage3');
+  var screenCards = Array.prototype.slice.call(document.querySelectorAll('.screen .kpi'));
+  var lidCur = -48, lidTgt = -48;
 
   function lidCalc() {
     var total = Math.max(heroEl.offsetHeight - window.innerHeight, 1);
     var y = window.scrollY || document.documentElement.scrollTop;
     var p = Math.min(1, Math.max(0, y / total));
-    var t = Math.min(1, p / 0.85);            // abre nos primeiros 85% do pin
+    var t = Math.min(1, p / 0.82);            // abre nos primeiros 82% do pin
     var e = 1 - Math.pow(1 - t, 2);           // desacelera perto do fim
-    lidTgt = -82 + e * 78;                    // fechado (-82°) → aberto (-4°)
+    lidTgt = -48 + e * 44;                    // visível (-48°) → aberto (-4°)
+
+    if (stage3El) {
+      stage3El.style.setProperty('--device-y', (18 - e * 18).toFixed(1) + 'px');
+      stage3El.style.setProperty('--device-scale', (.95 + e * .05).toFixed(3));
+      stage3El.style.setProperty('--device-rotate', (-1.2 + e * 1.2).toFixed(2) + 'deg');
+      stage3El.style.setProperty('--badge-opacity', (.5 + e * .5).toFixed(2));
+      stage3El.style.setProperty('--badge-y', (6 - e * 6).toFixed(1) + 'px');
+      stage3El.style.setProperty('--orbit-scale', (.9 + e * .1).toFixed(3));
+    }
+    if (screenCards.length) {
+      var activeCard = Math.min(screenCards.length - 1, Math.floor(p * screenCards.length));
+      screenCards.forEach(function (card, index) { card.classList.toggle('screen-active', index === activeCard); });
+    }
   }
 
   var floorGlow = document.getElementById('floor-glow');
   function lidApply(a) {
     lid.style.transform = 'rotateX(' + a.toFixed(2) + 'deg)';
-    var dark = Math.min(1, Math.max(0, (-28 - a) / 34));
+    var dark = Math.min(.58, Math.max(0, (-18 - a) / 80));
     if (shade) shade.style.opacity = dark.toFixed(2);
     if (floorGlow) floorGlow.style.opacity = ((1 - dark) * 0.9).toFixed(2);
   }

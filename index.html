@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -8,21 +8,25 @@
 <link rel="icon" type="image/png" href="assets/media/70ebc13bb993.png">
 <link rel="stylesheet" href="assets/css/shared.css">
 <link rel="stylesheet" href="assets/css/home.css">
+<link rel="stylesheet" href="assets/css/home-innovation.css">
 </head>
 <body>
+
+<div class="page-progress" aria-hidden="true"><i data-page-progress></i></div>
 
 <header class="site">
   <a class="brand" href="#inicio" aria-label="BREVES — início">
     <img src="assets/media/70ebc13bb993.png" alt="BREVES">
     <span class="brand-name">BREVES</span>
   </a>
-  <nav aria-label="Navegação principal">
+  <nav id="main-nav" aria-label="Navegação principal">
     <a href="#inicio" class="active" data-spy="inicio">Início</a>
     <a href="#solucoes" data-spy="solucoes">Soluções</a>
-    <a href="#segmentos" data-spy="segmentos">Jurídico</a>
+    <a class="product-tab" href="juridico/">Jurídico <span>↗</span></a>
     <a href="#projetos" data-spy="projetos">Projetos</a>
     <a href="#contato" data-spy="contato">Contato</a>
   </nav>
+  <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav"><i></i></button>
   <a class="btn btn-amber header-cta" href="#contato">Falar com especialista <span class="arr">→</span></a>
 </header>
 
@@ -32,49 +36,61 @@
     <div class="hero-pin">
     <div class="wrap">
       <div class="hero-copy reveal in">
+        <div class="hero-eyebrow"><i></i> Estratégia · Design · Engenharia</div>
         <h1>Tecnologia que <em>organiza, conecta</em> e acelera negócios.</h1>
         <p class="lead">Sites, automação e inteligência artificial para o seu negócio crescer com eficiência — com especialização profunda no setor jurídico.</p>
         <div class="cta-row">
           <a class="btn btn-amber" href="#contato">Fale com um especialista <span class="arr">→</span></a>
           <a class="link-u" href="#solucoes">Conheça nossas soluções</a>
         </div>
+        <a class="legal-entry" href="juridico/">
+          <span>VERTICAL ESPECIALIZADA</span>
+          <b>Conheça a BREVES Jurídico</b>
+          <i>↗</i>
+        </a>
       </div>
 
-      <div class="stage3 reveal in" aria-label="Painel BREVES em um notebook">
+      <div class="stage3 reveal in" role="img" aria-label="Computador BREVES demonstrando uma operação conectada">
+        <div class="stage-orbit" aria-hidden="true"></div>
         <div class="laptop3d">
           <div class="lid3d" id="lid3d">
             <div class="lid-in">
               <div class="screen">
                 <div class="shade" id="screen-shade" aria-hidden="true"></div>
                 <div class="ui-top">
-                  <div class="ui-title">BREVES <span>· Painel</span></div>
+                  <div class="ui-title">BREVES OS <span>· Demonstração</span></div>
                   <div class="ui-dots"><i></i><i></i><i></i></div>
                 </div>
                 <div class="ui-body">
+                  <div class="screen-status"><span><i></i> OPERAÇÃO CONECTADA</span><b>Visão geral</b></div>
                   <div class="kpis">
-                    <div class="kpi primary"><small>ATENDIMENTOS</small><b>1.842</b><div class="delta"><span>↑ 12%</span><em>vs. mês anterior</em></div></div>
-                    <div class="kpi hot"><small>PROCESSOS ATIVOS</small><b>63</b></div>
-                    <div class="kpi"><small>AUTOMAÇÕES</small><b>27</b></div>
+                    <div class="kpi primary"><small>FLUXO PRINCIPAL</small><b>Centralizado</b><div class="delta"><span>● ATIVO</span><em>sistemas sincronizados</em></div></div>
+                    <div class="kpi hot"><small>ENTRADAS</small><b>Organizadas</b></div>
+                    <div class="kpi"><small>AUTOMAÇÕES</small><b>Em execução</b></div>
                   </div>
                   <div class="chart">
-                    <small>DESEMPENHO MENSAL</small>
+                    <small>ATIVIDADE DA OPERAÇÃO</small>
                     <div class="bars">
-                      <i style="height:38%"></i><i style="height:56%"></i><i style="height:44%"></i>
-                      <i style="height:70%"></i><i style="height:52%"></i><i class="on" style="height:92%"></i>
-                      <i style="height:64%"></i>
+                      <i class="h38"></i><i class="h56"></i><i class="h44"></i>
+                      <i class="h70"></i><i class="h52"></i><i class="on h92"></i>
+                      <i class="h64"></i>
                     </div>
                   </div>
                   <div class="ui-foot">
-                    <div class="chip">Integração CRM</div>
-                    <div class="chip">API financeira</div>
+                    <div class="chip">CRM integrado</div>
+                    <div class="chip">Dados sincronizados</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="deck3d"></div>
+          <div class="deck3d"><div class="keyboard-grid"></div><div class="trackpad"></div></div>
+          <div class="base-lip"></div>
           <div class="floor-glow" id="floor-glow" aria-hidden="true"></div>
         </div>
+        <div class="device-badge badge-a" aria-hidden="true"><i>✓</i><span><small>INTEGRAÇÃO</small><b>Sistemas conectados</b></span></div>
+        <div class="device-badge badge-b" aria-hidden="true"><span><small>AUTOMAÇÃO</small><b>Fluxo em execução</b></span><i>→</i></div>
+        <div class="stage-caption" aria-hidden="true"><span>01</span><b>Role para abrir</b></div>
       </div>
     </div>
     <div class="scroll-hint" aria-hidden="true">Role</div>
@@ -187,7 +203,7 @@
             <a class="link-u" href="#contato">Falar com a equipe</a>
           </div>
         </div>
-        <div class="jflow" aria-label="Fluxo automatizado do contencioso">
+        <div class="jflow" role="img" aria-label="Fluxo automatizado do contencioso">
           <div class="jf">
             <small>09:14 · DIÁRIO OFICIAL</small>
             <b><i></i>Intimação capturada</b>
@@ -374,7 +390,7 @@
           <div class="eyebrow">Contato</div>
           <h2>Vamos conversar sobre o seu projeto.</h2>
         </div>
-        <p class="body">A BREVES nasceu de uma convicção simples: <strong style="color:var(--white);font-weight:500">tecnologia boa é a que se molda ao negócio</strong> — não o contrário. Conte o que você precisa e respondemos em até um dia útil, sem compromisso.</p>
+        <p class="body">A BREVES nasceu de uma convicção simples: <strong class="contact-em">tecnologia boa é a que se molda ao negócio</strong> — não o contrário. Conte o que você precisa e respondemos em até um dia útil, sem compromisso.</p>
         <ul class="trust-list">
           <li>Você fala direto com quem constrói</li>
           <li>Todo projeto nasce com indicadores definidos</li>
@@ -436,7 +452,7 @@
           <li><a href="#inicio">Início</a></li>
           <li><a href="#solucoes">Soluções</a></li>
           <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#segmentos">BREVES Jurídico</a></li>
+          <li><a href="juridico/">BREVES Jurídico</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </div>
