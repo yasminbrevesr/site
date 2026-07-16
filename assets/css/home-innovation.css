@@ -333,7 +333,7 @@ header.site nav a.product-tab:hover span { transform: translate(2px, -2px); }
 
 .floor-glow {
   bottom: -22px;
-  width: 145%;
+  width: 124%;
   background: radial-gradient(52% 100% at 50% 0%, rgba(226, 161, 68, .28), rgba(244, 242, 238, .05) 42%, transparent 72%);
   filter: blur(5px);
 }
@@ -376,6 +376,11 @@ header.site nav a.product-tab:hover span { transform: translate(2px, -2px); }
 }
 .stage-caption span { color: var(--amber); }
 .stage-caption b { font-weight: 500; }
+
+@media (max-width: 1180px) {
+  header.site nav { gap: 18px; margin-right: 22px; }
+  header.site .header-cta { padding-left: 17px; padding-right: 17px; }
+}
 
 @media (max-width: 1120px) {
   .hero .wrap { grid-template-columns: minmax(0, 48fr) minmax(0, 52fr); gap: 26px; }
