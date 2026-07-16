@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="../assets/css/shared.css">
 <link rel="stylesheet" href="../assets/css/juridico.css">
 <link rel="stylesheet" href="../assets/css/legal-editorial.css">
+<link rel="stylesheet" href="../assets/css/legal-effects.css">
 </head>
 <body>
+
+<div class="page-progress" aria-hidden="true"><i data-page-progress></i></div>
 
 <header>
   <a class="brand" href="../" aria-label="Voltar ao site da BREVES">
@@ -22,26 +25,66 @@
   </a>
   <a class="back-home" href="../">← Site principal</a>
   <span class="header-note">Tecnologia sob medida para escritórios de advocacia</span>
-  <a class="btn btn-amber header-cta" href="#agendar"><span class="cta-full">Agendar demonstração</span><span class="cta-short">Agendar</span> <span class="arr">→</span></a>
+  <a class="btn btn-amber header-cta" href="#diagnostico"><span class="cta-full">Mapear meu escritório</span><span class="cta-short">Diagnóstico</span> <span class="arr">→</span></a>
 </header>
 
 <main>
 
-  <section class="hero">
-    <div class="eyebrow reveal in">Breves · Jurídico</div>
-    <h1 class="reveal in">Cada prazo, cada processo, cada cliente — <em>sob controle</em>.</h1>
-    <p class="lead reveal in">Tecnologia desenhada em torno do seu escritório: da captura da intimação ao protocolo, o fluxo inteiro sem conferência manual.</p>
-    <div class="cta-row reveal in">
-      <a class="btn btn-amber" href="#agendar">Agendar demonstração <span class="arr">→</span></a>
-      <a class="link-u" href="#agendar">Falar no WhatsApp</a>
+  <section class="hero" data-hero>
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <div class="hero-copy">
+      <div class="eyebrow hero-kicker">Breves · Tecnologia para o Jurídico</div>
+      <h1>Seu escritório não precisa crescer no <em>improviso</em>.</h1>
+      <p class="lead">Organizamos prazos, processos, equipe e relacionamento com clientes em uma operação clara — desenhada para a rotina real do seu escritório.</p>
+      <div class="cta-row">
+        <a class="btn btn-amber btn-shine" href="#diagnostico">Mapear minha operação <span class="arr">→</span></a>
+        <a class="link-u" href="#frentes">Ver como funciona</a>
+      </div>
+      <ul class="hero-trust">
+        <li>Implantação por etapas</li>
+        <li>Solução sob medida</li>
+        <li>Suporte direto</li>
+      </ul>
     </div>
 
-    <div class="legal-proof reveal in" aria-label="Como a BREVES conduz cada projeto">
-      <article><small>01 · ENTENDER</small><h2>Diagnóstico da operação</h2><p>Mapeamos rotinas, riscos, sistemas e prioridades com a equipe.</p></article>
-      <article><small>02 · DESENHAR</small><h2>Plano de implantação</h2><p>Definimos entregas por etapa, responsáveis e critérios de homologação.</p></article>
-      <article><small>03 · ACOMPANHAR</small><h2>Suporte direto</h2><p>Implantação assistida e contato com quem conhece o projeto.</p></article>
+    <div class="hero-stage" data-hero-stage role="img" aria-label="Exemplo de fluxo operacional organizado">
+      <div class="stage-topline"><span>Fluxo operacional</span><b><i></i> Organizado</b></div>
+      <div class="operation-card" data-tilt-card>
+        <div class="border-trail" aria-hidden="true"></div>
+        <div class="operation-head">
+          <div><small>PROCESSO</small><strong>0008421-18.2026.8.26</strong></div>
+          <span>Cível</span>
+        </div>
+        <div class="operation-events" aria-live="off">
+          <div class="operation-event is-active">
+            <span class="event-icon">01</span>
+            <p><small>PUBLICAÇÃO</small><strong>Intimação identificada</strong><span>Captura centralizada no fluxo</span></p>
+            <b>Concluído</b>
+          </div>
+          <div class="operation-event">
+            <span class="event-icon">02</span>
+            <p><small>PRAZO</small><strong>Data calculada e revisada</strong><span>Critério definido pelo escritório</span></p>
+            <b>Revisado</b>
+          </div>
+          <div class="operation-event">
+            <span class="event-icon">03</span>
+            <p><small>EQUIPE</small><strong>Responsável e tarefa definidos</strong><span>Acompanhamento sem mensagens soltas</span></p>
+            <b>Em curso</b>
+          </div>
+        </div>
+        <div class="operation-footer"><span>Próxima etapa</span><strong>Preparar minuta <i>→</i></strong></div>
+      </div>
+      <div class="stage-float stage-float-a"><small>VISIBILIDADE</small><strong>Fluxo de ponta a ponta</strong></div>
+      <div class="stage-float stage-float-b"><span>✓</span><div><small>ROTINA</small><strong>Sem informação dispersa</strong></div></div>
     </div>
-    <div class="scroll-hint" aria-hidden="true">Role</div>
+
+    <div class="legal-proof" data-focus-group role="group" aria-label="Como a BREVES conduz cada projeto">
+      <article tabindex="0"><small>01 · ENTENDER</small><h2>Diagnóstico da operação</h2><p>Mapeamos rotinas, riscos, sistemas e prioridades com a equipe.</p><span aria-hidden="true">↗</span></article>
+      <article tabindex="0"><small>02 · DESENHAR</small><h2>Plano de implantação</h2><p>Definimos entregas por etapa, responsáveis e critérios de homologação.</p><span aria-hidden="true">↗</span></article>
+      <article tabindex="0"><small>03 · ACOMPANHAR</small><h2>Suporte direto</h2><p>Implantação assistida e contato com quem conhece o projeto.</p><span aria-hidden="true">↗</span></article>
+    </div>
+    <a class="scroll-hint" href="#frentes" aria-label="Continuar para as frentes de atuação"><span></span> Explore</a>
   </section>
 
   <section class="fronts" id="frentes">
@@ -53,10 +96,10 @@
 
       <div class="reveal">
         <div class="tabs" role="tablist" aria-label="Frentes da BREVES Jurídico">
-          <button id="tab-calculos" class="tab active" role="tab" aria-selected="true" aria-controls="panel-calculos" tabindex="0" data-tab="calculos">Cálculos Jurídicos</button>
-          <button id="tab-consultas" class="tab" role="tab" aria-selected="false" aria-controls="panel-consultas" tabindex="-1" data-tab="consultas">Consultas Legais</button>
-          <button id="tab-ia" class="tab" role="tab" aria-selected="false" aria-controls="panel-ia" tabindex="-1" data-tab="ia">Inteligência Artificial</button>
-          <button id="tab-gestao" class="tab" role="tab" aria-selected="false" aria-controls="panel-gestao" tabindex="-1" data-tab="gestao">Gestão e Marketing</button>
+          <button type="button" id="tab-calculos" class="tab active" role="tab" aria-selected="true" aria-controls="panel-calculos" tabindex="0" data-tab="calculos">Cálculos Jurídicos</button>
+          <button type="button" id="tab-consultas" class="tab" role="tab" aria-selected="false" aria-controls="panel-consultas" tabindex="-1" data-tab="consultas">Consultas Legais</button>
+          <button type="button" id="tab-ia" class="tab" role="tab" aria-selected="false" aria-controls="panel-ia" tabindex="-1" data-tab="ia">Inteligência Artificial</button>
+          <button type="button" id="tab-gestao" class="tab" role="tab" aria-selected="false" aria-controls="panel-gestao" tabindex="-1" data-tab="gestao">Gestão e Marketing</button>
         </div>
 
         <div id="panel-calculos" class="tpanel active" role="tabpanel" aria-labelledby="tab-calculos" data-panel="calculos">
@@ -69,9 +112,9 @@
               <li>Trabalhista, cível e revisional</li>
               <li>Relatório pronto para protocolar</li>
             </ul>
-            <a class="btn btn-amber" href="#agendar">Agendar demonstração <span class="arr">→</span></a>
+            <a class="btn btn-amber" href="#diagnostico">Quero avaliar esta frente <span class="arr">→</span></a>
           </div>
-          <div class="tvisual" aria-hidden="true">
+          <div class="tvisual" data-spotlight aria-hidden="true">
             <small>MEMÓRIA DE CÁLCULO</small>
             <div class="tv-row">Principal <b>R$ 48.230,10</b></div>
             <div class="tv-row">Correção (IPCA-E) <b>+ R$ 6.412,88</b></div>
@@ -90,9 +133,9 @@
               <li>Resumos e pareceres estruturados</li>
               <li>Fundamentação organizada por tese</li>
             </ul>
-            <a class="btn btn-amber" href="#agendar">Agendar demonstração <span class="arr">→</span></a>
+            <a class="btn btn-amber" href="#diagnostico">Quero avaliar esta frente <span class="arr">→</span></a>
           </div>
-          <div class="tvisual" aria-hidden="true">
+          <div class="tvisual" data-spotlight aria-hidden="true">
             <small>PESQUISA</small>
             <div class="tv-row">"responsabilidade civil · dano moral" <b>buscar</b></div>
             <div class="tv-row hot">STJ · REsp 1.234.567 <b>tese favorável</b></div>
@@ -111,9 +154,9 @@
               <li>Resumo de processos e documentos extensos</li>
               <li>Treinada no contexto do seu escritório</li>
             </ul>
-            <a class="btn btn-amber" href="#agendar">Agendar demonstração <span class="arr">→</span></a>
+            <a class="btn btn-amber" href="#diagnostico">Quero avaliar esta frente <span class="arr">→</span></a>
           </div>
-          <div class="tvisual chatv" aria-hidden="true">
+          <div class="tvisual chatv" data-spotlight aria-hidden="true">
             <div class="bub user">
               <small>VOCÊ · 14:32</small>
               Preciso de uma minuta de contestação — cobrança indevida, consumidor.
@@ -139,9 +182,9 @@
               <li>CRM do primeiro contato à conclusão do caso</li>
               <li>Site e marketing de autoridade para o escritório</li>
             </ul>
-            <a class="btn btn-amber" href="#agendar">Agendar demonstração <span class="arr">→</span></a>
+            <a class="btn btn-amber" href="#diagnostico">Quero avaliar esta frente <span class="arr">→</span></a>
           </div>
-          <div class="tvisual" aria-hidden="true">
+          <div class="tvisual" data-spotlight aria-hidden="true">
             <small>PAINEL DO ESCRITÓRIO</small>
             <div class="tkpis">
               <div class="tkpi"><b>8</b><span>Prazos da semana</span></div>
@@ -167,7 +210,7 @@
         </div>
       </div>
 
-      <div class="diagnostic-card reveal" data-diagnostic>
+      <div class="diagnostic-card reveal" data-diagnostic data-spotlight>
         <div class="diagnostic-progress" aria-hidden="true"><i data-diagnostic-progress></i></div>
 
         <fieldset class="diagnostic-question" data-question="prazos">
@@ -268,7 +311,7 @@
           <p class="calc-note">* Estimativa ilustrativa: consideramos 22 dias úteis/mês e que a automação recupera cerca de 70% do tempo gasto em tarefas repetitivas — conferência de publicações, cálculo de prazos, distribuição de tarefas e lançamentos.</p>
         </div>
 
-        <div class="calc-result reveal" aria-live="polite">
+        <div class="calc-result reveal" data-spotlight aria-live="polite">
           <small>Potencial recuperável por mês</small>
           <div class="big" id="r-valor">R$ 23.100</div>
           <div class="per">em horas de trabalho devolvidas ao escritório*</div>
@@ -288,13 +331,13 @@
         <div class="eyebrow">Como trabalhamos</div>
         <h2>Compromissos que orientam cada implantação.</h2>
       </div>
-      <div class="quote-grid">
-        <article class="quote reveal">
+      <div class="quote-grid" data-focus-group>
+        <article class="quote reveal" tabindex="0">
           <div class="mark">01 · CONTINUIDADE</div>
           <p>A implantação acontece por etapas, sem paralisar a rotina do escritório.</p>
           <footer><b>Operação preservada</b><span>Homologação conjunta antes de cada virada</span></footer>
         </article>
-        <article class="quote reveal">
+        <article class="quote reveal" tabindex="0">
           <div class="mark">02 · PROXIMIDADE</div>
           <p>O escritório fala diretamente com quem entende e constrói a solução.</p>
           <footer><b>Suporte responsável</b><span>Contexto técnico e jurídico no mesmo atendimento</span></footer>
@@ -341,10 +384,10 @@
   </section>
 
   <section class="cta-final" id="agendar">
-    <div class="proofline reveal"><b>DIAGNÓSTICO</b> &nbsp;·&nbsp; IMPLANTAÇÃO ASSISTIDA &nbsp;·&nbsp; <b>SUPORTE DIRETO</b></div>
-    <h2 class="reveal">Pronto para tirar o escritório do <em>modo manual</em>?</h2>
-    <p class="reveal">Preencha e receba o contato da nossa equipe para uma demonstração guiada de 30 minutos, sem compromisso.</p>
-    <form class="reveal" data-contact-form novalidate>
+    <div class="proofline reveal"><b>CONVERSA INICIAL</b> &nbsp;·&nbsp; SEM COMPROMISSO &nbsp;·&nbsp; <b>PLANO DE PRIORIDADES</b></div>
+    <h2 class="reveal">Vamos encontrar onde o seu escritório perde tempo — e <em>corrigir por etapas</em>.</h2>
+    <p class="reveal">Conte brevemente sobre a operação. Nossa equipe entra em contato para entender o cenário e indicar um ponto de partida realista.</p>
+    <form class="reveal" data-contact-form data-spotlight novalidate>
       <div class="field">
         <label for="f-nome">Seu nome</label>
         <input required minlength="2" maxlength="120" id="f-nome" type="text" name="nome" placeholder="Como podemos te chamar?" autocomplete="name">
@@ -370,14 +413,14 @@
       </div>
       <input type="hidden" name="origem" value="juridico">
       <input type="hidden" name="mensagem" id="f-msg">
-      <button class="btn btn-amber" type="submit">Agendar demonstração <span class="arr">→</span></button>
+      <button class="btn btn-amber" type="submit">Quero meu diagnóstico <span class="arr">→</span></button>
       <span class="form-ok" data-form-feedback role="status" aria-live="polite"></span>
     </form>
   </section>
 
 </main>
 
-<a class="wa-float" href="#agendar" aria-label="Falar no WhatsApp" title="Falar no WhatsApp">
+<a class="wa-float" href="#agendar" aria-label="Solicitar diagnóstico" title="Solicitar diagnóstico">
   <svg viewBox="0 0 24 24" fill="none" stroke="#e2a144" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><path d="M9 9.8c.3 1.6 1.6 3 3.2 3.4l1.4-.9 1.6 1"/></svg>
 </a>
 
