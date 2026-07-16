@@ -170,6 +170,64 @@
     </div>
   </section>
 
+  <section class="diagnostic" id="diagnostico" aria-labelledby="diagnostic-title">
+    <div class="wrap diagnostic-grid">
+      <div class="diagnostic-intro reveal">
+        <span class="diagnostic-kicker">Diagnóstico operacional · 2 minutos</span>
+        <h2 id="diagnostic-title">Onde a rotina do seu escritório ainda depende de esforço manual?</h2>
+        <p>Responda quatro perguntas objetivas. Ao final, indicamos o ponto de partida mais adequado para organizar a operação — sem compromisso e sem fórmula pronta.</p>
+        <div class="diagnostic-seal" aria-hidden="true">
+          <span>BREVES</span>
+          <small>Análise inicial</small>
+        </div>
+      </div>
+
+      <div class="diagnostic-card reveal" data-diagnostic>
+        <div class="diagnostic-progress" aria-hidden="true"><i data-diagnostic-progress></i></div>
+
+        <fieldset class="diagnostic-question" data-question="prazos">
+          <legend><small>01</small> Publicações e prazos ainda exigem conferência manual?</legend>
+          <div class="diagnostic-options">
+            <button type="button" data-value="1" aria-pressed="false">Sim</button>
+            <button type="button" data-value="0" aria-pressed="false">Não</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="diagnostic-question" data-question="tarefas">
+          <legend><small>02</small> Tarefas são distribuídas por mensagens ou planilhas?</legend>
+          <div class="diagnostic-options">
+            <button type="button" data-value="1" aria-pressed="false">Sim</button>
+            <button type="button" data-value="0" aria-pressed="false">Não</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="diagnostic-question" data-question="gestao">
+          <legend><small>03</small> Os sócios dependem da equipe para saber o andamento da operação?</legend>
+          <div class="diagnostic-options">
+            <button type="button" data-value="1" aria-pressed="false">Sim</button>
+            <button type="button" data-value="0" aria-pressed="false">Não</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="diagnostic-question" data-question="dados">
+          <legend><small>04</small> A mesma informação é digitada em mais de um sistema?</legend>
+          <div class="diagnostic-options">
+            <button type="button" data-value="1" aria-pressed="false">Sim</button>
+            <button type="button" data-value="0" aria-pressed="false">Não</button>
+          </div>
+        </fieldset>
+
+        <div class="diagnostic-result" data-diagnostic-result role="status" aria-live="polite">
+          <small>Resultado preliminar</small>
+          <strong>Responda às quatro perguntas para receber a análise.</strong>
+          <p>Seu resultado aparecerá aqui.</p>
+        </div>
+
+        <button class="btn diagnostic-cta" type="button" data-diagnostic-cta disabled>Solicitar diagnóstico do escritório <span class="arr">→</span></button>
+      </div>
+    </div>
+  </section>
+
   <section class="compare">
     <div class="wrap">
       <div class="compare-col reveal">
@@ -326,6 +384,7 @@
         <input type="hidden" name="canal" value="whatsapp">
       </div>
       <input type="hidden" name="origem" value="juridico">
+      <input type="hidden" name="mensagem" id="f-msg">
       <button class="btn btn-amber" type="submit">Agendar demonstração <span class="arr">→</span></button>
       <span class="form-ok" data-form-feedback role="status" aria-live="polite"></span>
     </form>

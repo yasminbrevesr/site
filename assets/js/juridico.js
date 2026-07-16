@@ -79,6 +79,71 @@
   });
   if (tabBtns.length) activateTab(tabBtns[0], false);
 
+  /* ---------- diagnóstico operacional ---------- */
+  var diagnostic = document.querySelector('[data-diagnostic]');
+  if (diagnostic) {
+    var questions = Array.prototype.slice.call(diagnostic.querySelectorAll('[data-question]'));
+    var result = diagnostic.querySelector('[data-diagnostic-result]');
+    var progress = diagnostic.querySelector('[data-diagnostic-progress]');
+    var diagnosticCta = diagnostic.querySelector('[data-diagnostic-cta]');
+    var answers = {};
+
+    function updateDiagnostic() {
+      var answered = Object.keys(answers).length;
+      var score = Object.keys(answers).reduce(function (total, key) { return total + answers[key]; }, 0);
+      progress.style.width = ((answered / questions.length) * 100) + '%';
+
+      if (answered < questions.length) {
+        result.querySelector('strong').textContent = 'Faltam ' + (questions.length - answered) + ' resposta(s) para concluir.';
+        result.querySelector('p').textContent = 'A análise é atualizada conforme você responde.';
+        diagnosticCta.disabled = true;
+        return;
+      }
+
+      var title;
+      var description;
+      if (score >= 3) {
+        title = 'Sua operação tem alto potencial de ganho com automação.';
+        description = 'O melhor ponto de partida é mapear prazos, distribuição de tarefas e integrações para reduzir retrabalho e dependência de conferência.';
+      } else if (score >= 1) {
+        title = 'Seu escritório está em uma boa fase para consolidar processos.';
+        description = 'Há oportunidades pontuais de integração e visibilidade que podem ser priorizadas sem interromper a rotina da equipe.';
+      } else {
+        title = 'Sua operação já demonstra boa maturidade de processos.';
+        description = 'O diagnóstico pode identificar ganhos mais específicos em inteligência gerencial, experiência do cliente e escala.';
+      }
+      result.querySelector('strong').textContent = title;
+      result.querySelector('p').textContent = description;
+      diagnosticCta.disabled = false;
+      diagnosticCta.dataset.score = score;
+    }
+
+    questions.forEach(function (question) {
+      question.querySelectorAll('button[data-value]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          question.querySelectorAll('button[data-value]').forEach(function (item) {
+            item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
+          });
+          answers[question.getAttribute('data-question')] = Number(button.getAttribute('data-value'));
+          updateDiagnostic();
+        });
+      });
+    });
+
+    diagnosticCta.addEventListener('click', function () {
+      var message = document.getElementById('f-msg');
+      var form = document.querySelector('[data-contact-form]');
+      if (message) message.value = 'Quero receber um diagnóstico do escritório. Resultado preliminar: ' + diagnosticCta.dataset.score + ' de 4 pontos de atenção operacional.';
+      if (form) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.setTimeout(function () {
+          var firstField = form.querySelector('input:not([type="hidden"])');
+          if (firstField) firstField.focus({ preventScroll: true });
+        }, 650);
+      }
+    });
+  }
+
   /* ---------- calculadora ---------- */
   var cEquipe = document.getElementById('c-equipe');
   var cHoras = document.getElementById('c-horas');
