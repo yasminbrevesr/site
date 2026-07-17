@@ -318,4 +318,59 @@
 
   updateScrollState();
   window.addEventListener('load', updateScrollState);
+  /* Random Letter Swap — interação isolada do botão de envio. */
+  var randomLetterButton = document.querySelector('[data-random-letter-button]');
+  if (randomLetterButton) {
+    var randomLetterLabel = randomLetterButton.querySelector('[data-random-letter-label]');
+    var originalLabel = randomLetterLabel.getAttribute('data-random-letter-label') || '';
+    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var swapTimers = [];
+    var swapRunning = false;
+
+    function clearSwapTimers() {
+      swapTimers.forEach(function (timer) { window.clearTimeout(timer); });
+      swapTimers = [];
+    }
+
+    function buildSwapLetters() {
+      randomLetterLabel.textContent = '';
+      Array.prototype.forEach.call(originalLabel, function (character) {
+        var letter = document.createElement('span');
+        letter.className = character === ' ' ? 'swap-char swap-space' : 'swap-char';
+        letter.textContent = character === ' ' ? '\u00a0' : character;
+        letter.setAttribute('data-original-letter', character);
+        randomLetterLabel.appendChild(letter);
+      });
+    }
+
+    function randomCharacter() {
+      return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+
+    function runLetterSwap() {
+      if (reducedMotion || swapRunning) return;
+      swapRunning = true;
+      clearSwapTimers();
+      var letters = randomLetterLabel.querySelectorAll('.swap-char:not(.swap-space)');
+
+      letters.forEach(function (letter, index) {
+        var original = letter.getAttribute('data-original-letter');
+        var start = index * 18;
+        [0, 32, 64, 96].forEach(function (offset) {
+          swapTimers.push(window.setTimeout(function () {
+            letter.textContent = randomCharacter();
+          }, start + offset));
+        });
+        swapTimers.push(window.setTimeout(function () {
+          letter.textContent = original;
+          if (index === letters.length - 1) swapRunning = false;
+        }, start + 142));
+      });
+    }
+
+    buildSwapLetters();
+    randomLetterButton.addEventListener('pointerenter', runLetterSwap);
+    randomLetterButton.addEventListener('focus', runLetterSwap);
+  }
+
 })();
