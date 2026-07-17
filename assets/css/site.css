@@ -1671,6 +1671,203 @@ img { display: block; max-width: 100%; }
 }
 .contact-form-heading { border-color: rgba(17,23,20,.17); }
 
+/* Frentes de atuação: plano conectado e provas visuais vivas */
+.practice-shell {
+  --active-step: 0;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-color: rgba(17,23,20,.18);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at calc(12.5% + var(--active-step) * 25%) 0%,rgba(216,154,80,.12),transparent 24%),
+    var(--ink);
+  box-shadow: 0 28px 70px rgba(17,23,20,.13);
+  transition: background-position .6s ease, box-shadow .5s ease;
+}
+.practice-shell::before {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,rgba(239,182,111,.48),transparent);
+  opacity: .55;
+}
+.practice-tabs {
+  position: relative;
+  isolation: isolate;
+  background: rgba(255,255,255,.012);
+}
+.practice-tabs::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(242,239,231,.045);
+}
+.practice-tabs::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  bottom: -1px;
+  left: calc((100% / 4) * var(--active-step));
+  width: calc(100% / 4);
+  height: 2px;
+  background: linear-gradient(90deg,transparent 8%,var(--amber-bright) 50%,transparent 92%);
+  box-shadow: 0 0 16px rgba(239,182,111,.32);
+  transition: left .55s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+.practice-tab {
+  min-height: 108px;
+  transition: background-color .35s ease,color .35s ease,transform .35s cubic-bezier(.22,1,.36,1);
+}
+.practice-tab::after { display: none; }
+.practice-tab span {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  padding: 0;
+  border: 1px solid rgba(242,239,231,.11);
+  border-radius: 50%;
+  transition: color .3s ease,border-color .3s ease,background-color .3s ease,box-shadow .3s ease;
+}
+.practice-tab b { transition: color .3s ease,transform .35s ease; }
+.practice-tab small { transition: color .3s ease,letter-spacing .35s ease; }
+.practice-tab:hover { background: rgba(242,239,231,.035); transform: translateY(-2px); }
+.practice-tab:hover b { transform: translateX(2px); }
+.practice-tab:hover small { color: rgba(242,239,231,.52); letter-spacing: .105em; }
+.practice-tab.active { background: linear-gradient(180deg,rgba(216,154,80,.095),rgba(216,154,80,.025)); }
+.practice-tab.active span {
+  border-color: rgba(239,182,111,.5);
+  background: rgba(216,154,80,.1);
+  color: var(--amber-bright);
+  box-shadow: 0 0 0 4px rgba(216,154,80,.04),0 0 18px rgba(216,154,80,.12);
+}
+
+.practice-panel {
+  min-height: 480px;
+  grid-template-columns: .9fr 1.1fr;
+  opacity: 1;
+}
+.practice-panel.active { animation: practice-panel-in .62s cubic-bezier(.22,1,.36,1) both; }
+.practice-panel.active .panel-copy > * { animation: practice-copy-in .56s cubic-bezier(.22,1,.36,1) both; }
+.practice-panel.active .panel-copy > *:nth-child(2) { animation-delay: .05s; }
+.practice-panel.active .panel-copy > *:nth-child(3) { animation-delay: .1s; }
+.practice-panel.active .panel-copy > *:nth-child(4) { animation-delay: .15s; }
+.panel-copy { padding: 48px; }
+.panel-copy li { transition: color .3s ease,background-color .3s ease,padding-left .3s ease; }
+.panel-copy li:hover { padding-left: 23px; background: rgba(242,239,231,.025); color: var(--paper); }
+.panel-copy li::before { transition: transform .3s ease,box-shadow .3s ease; }
+.panel-copy li:hover::before { transform: scale(1.35); box-shadow: 0 0 0 4px rgba(216,154,80,.08); }
+
+.panel-visual {
+  margin: 38px;
+  border-color: rgba(242,239,231,.16);
+  background: linear-gradient(145deg,#18201c,#111713);
+  box-shadow: 0 24px 64px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.025);
+  transform: translateZ(0);
+  transition: transform .5s cubic-bezier(.22,1,.36,1),border-color .4s ease,box-shadow .5s ease;
+}
+.practice-panel.active .panel-visual { animation: practice-visual-in .72s .08s cubic-bezier(.22,1,.36,1) both; }
+.panel-visual:hover {
+  border-color: rgba(239,182,111,.3);
+  box-shadow: 0 30px 72px rgba(0,0,0,.28),0 0 28px rgba(216,154,80,.055),inset 0 1px 0 rgba(255,255,255,.035);
+  transform: translateY(-3px);
+}
+.panel-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(105deg,transparent 35%,rgba(239,182,111,.045) 50%,transparent 65%);
+  transform: translateX(-120%);
+  animation: practice-scan 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Frente 01 — fluxo processual */
+.flow-row { transition: border-color .4s ease,background-color .4s ease,transform .35s ease,opacity .35s ease; }
+.flow-row:hover { border-color: rgba(242,239,231,.26); background: rgba(242,239,231,.035); transform: translateX(3px); }
+.flow-row.active { transform: translateX(4px); box-shadow: 0 9px 24px rgba(0,0,0,.12); }
+.flow-row.active::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 16%;
+  width: 2px;
+  height: 68%;
+  border-radius: 2px;
+  background: var(--amber-bright);
+  box-shadow: 0 0 12px rgba(239,182,111,.34);
+}
+
+/* Frente 02 — memória técnica */
+.practice-panel.active .document-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg,transparent,rgba(239,182,111,.45),transparent);
+  transform-origin: left;
+  animation: practice-document-review 3.8s ease-in-out infinite;
+}
+.document-line:nth-of-type(2)::after { animation-delay: -.8s !important; }
+.document-line:nth-of-type(3)::after { animation-delay: -1.6s !important; }
+.document-data { transition: background-color .3s ease,padding-inline .3s ease; }
+.document-data:hover { padding-inline: 8px; background: rgba(242,239,231,.025); }
+
+/* Frente 03 — visão do escritório */
+.map-path span {
+  box-shadow: 0 0 0 0 rgba(216,154,80,.22);
+  animation: practice-map-node 4s ease-in-out infinite;
+}
+.map-path span:nth-child(2) { animation-delay: -1s; }
+.map-path span:nth-child(3) { animation-delay: -2s; }
+.map-path span:nth-child(4) { animation-delay: -3s; }
+.map-path::before {
+  background-size: 200% 100%;
+  animation: practice-map-flow 6s linear infinite;
+}
+
+/* Frente 04 — inteligência assistida */
+.intelligence-core { animation: practice-intelligence-breathe 5s ease-in-out infinite; }
+.intel-node { transition: border-color .3s ease,color .3s ease,background-color .3s ease; animation: practice-intel-float 5s ease-in-out infinite; }
+.intel-node.node-2 { animation-delay: -1.65s; }
+.intel-node.node-3 { animation-delay: -3.3s; }
+.intel-node:hover { border-color: rgba(239,182,111,.42); background: rgba(216,154,80,.08); color: var(--paper); }
+
+@keyframes practice-panel-in { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+@keyframes practice-copy-in { from { opacity: 0; transform: translateY(11px); } to { opacity: 1; transform: none; } }
+@keyframes practice-visual-in { from { opacity: 0; transform: translateX(15px) scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes practice-scan { 0%,62%,100% { transform: translateX(-120%); } 82% { transform: translateX(120%); } }
+@keyframes practice-document-review { 0%,100% { opacity: 0; transform: scaleX(.08); } 45%,65% { opacity: .7; transform: scaleX(1); } }
+@keyframes practice-map-node { 0%,100% { box-shadow: 0 0 0 0 rgba(216,154,80,.2); } 50% { box-shadow: 0 0 0 7px rgba(216,154,80,0); } }
+@keyframes practice-map-flow { to { background-position: -200% 0; } }
+@keyframes practice-intelligence-breathe { 0%,100% { box-shadow: 0 0 0 12px rgba(216,154,80,.035); } 50% { box-shadow: 0 0 0 18px rgba(216,154,80,.06),0 0 30px rgba(216,154,80,.08); } }
+@keyframes practice-intel-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+@media (max-width: 900px) {
+  .practice-tabs::after { display: none; }
+  .practice-tab { min-height: 98px; }
+  .practice-panel { min-height: auto; grid-template-columns: 1fr; }
+  .panel-copy { padding: 40px; }
+  .panel-visual { min-height: 380px; margin: 30px; }
+}
+@media (max-width: 620px) {
+  .practice-shell { border-radius: 12px; }
+  .practice-tab { min-height: 94px; padding: 15px 11px; }
+  .practice-tab span { width: 23px; height: 23px; }
+  .panel-copy { padding: 32px 22px; }
+  .panel-visual { min-height: 350px; margin: 18px 12px 24px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
