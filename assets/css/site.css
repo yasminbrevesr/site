@@ -1381,6 +1381,134 @@ img { display: block; max-width: 100%; }
   .commitment-capability, .commitment-capability:nth-child(n) { min-height: 78px; }
 }
 
+/* Ecossistema vivo: movimento, hierarquia e resposta conectada */
+.commitment-core {
+  isolation: isolate;
+  animation: ecosystem-breathe 6s cubic-bezier(.45,0,.55,1) infinite;
+  transition: transform .5s cubic-bezier(.22,1,.36,1), border-color .4s ease, box-shadow .5s ease;
+}
+.commitment-core::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  display: block;
+  inset: -12px;
+  border: 1px solid rgba(216,154,80,.16);
+  border-radius: 27px;
+  background: radial-gradient(circle,rgba(216,154,80,.09),transparent 67%);
+  opacity: .72;
+  animation: ecosystem-halo 6s cubic-bezier(.45,0,.55,1) infinite;
+  pointer-events: none;
+}
+.commitment-core::after {
+  content: "";
+  position: absolute;
+  display: block;
+  right: 10px;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--amber-bright);
+  box-shadow: 0 0 0 4px rgba(239,182,111,.08),0 0 12px rgba(239,182,111,.38);
+  animation: ecosystem-status 3.2s ease-in-out infinite;
+}
+.commitment-core img { transition: filter .45s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+.commitment-links path {
+  stroke-dasharray: 2 9;
+  stroke-dashoffset: 0;
+  animation: ecosystem-data-line 18s linear infinite;
+  transition: stroke .32s ease, stroke-width .32s ease, filter .32s ease, opacity .32s ease;
+}
+.commitment-links circle {
+  opacity: .42;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ecosystem-packet 4.8s ease-in-out infinite;
+}
+.commitment-links circle:nth-of-type(2n) { animation-delay: -1.6s; }
+.commitment-links circle:nth-of-type(3n) { animation-delay: -3.2s; }
+.commitment-capability {
+  isolation: isolate;
+  overflow: visible;
+  transition: transform .4s cubic-bezier(.22,1,.36,1), border-color .35s ease, background-color .35s ease, box-shadow .4s ease;
+}
+.commitment-capability small { transition: color .3s ease, letter-spacing .35s ease; }
+.commitment-capability strong { transition: color .3s ease, font-weight .3s ease, letter-spacing .35s ease; }
+.commitment-capability p { transition: color .3s ease; }
+.commitment-capabilities.is-left .commitment-capability::after,
+.commitment-capabilities.is-right .commitment-capability::before {
+  background: linear-gradient(90deg,rgba(143,91,39,.09),rgba(216,154,80,.58),rgba(143,91,39,.09));
+  background-size: 220% 100%;
+  animation: ecosystem-connector 5.5s linear infinite;
+  transition: opacity .32s ease, filter .32s ease;
+}
+.commitment-capabilities.is-left .commitment-capability:nth-child(2)::after,
+.commitment-capabilities.is-right .commitment-capability:nth-child(2)::before { animation-delay: -1.8s; }
+.commitment-capabilities.is-left .commitment-capability:nth-child(3)::after,
+.commitment-capabilities.is-right .commitment-capability:nth-child(3)::before { animation-delay: -3.6s; }
+
+/* Módulos estratégicos */
+.commitment-capabilities.is-left .commitment-capability:nth-child(1),
+.commitment-capabilities.is-left .commitment-capability:nth-child(2),
+.commitment-capabilities.is-right .commitment-capability:nth-child(2) {
+  border-color: rgba(143,91,39,.2);
+  background: rgba(251,250,246,.84);
+  box-shadow: inset 0 0 0 1px rgba(216,154,80,.025);
+}
+.commitment-capabilities.is-left .commitment-capability:nth-child(1) strong,
+.commitment-capabilities.is-left .commitment-capability:nth-child(2) strong,
+.commitment-capabilities.is-right .commitment-capability:nth-child(2) strong { font-weight: 610; }
+.commitment-capabilities.is-left .commitment-capability:nth-child(1) small,
+.commitment-capabilities.is-left .commitment-capability:nth-child(2) small,
+.commitment-capabilities.is-right .commitment-capability:nth-child(2) small { color: #7e4b1d; }
+
+.commitment-capability:hover {
+  z-index: 3;
+  border-color: rgba(143,91,39,.42);
+  background: var(--paper-bright);
+  box-shadow: 0 15px 34px rgba(17,23,20,.08),inset 0 1px 0 rgba(255,255,255,.8);
+  transform: translateY(-4px);
+}
+.commitment-capability:hover small { color: var(--amber-dark); letter-spacing: .145em; }
+.commitment-capability:hover strong { color: #0b100d; font-weight: 630; letter-spacing: -.005em; }
+.commitment-capability:hover p { color: #3f4943; }
+.commitment-map:has(.commitment-capability:hover) .commitment-core {
+  border-color: rgba(239,182,111,.58);
+  box-shadow: 0 21px 48px rgba(17,23,20,.17),0 0 32px rgba(216,154,80,.15),inset 0 1px 0 rgba(255,255,255,.07);
+  transform: scale(1.025);
+  animation-play-state: paused;
+}
+.commitment-map:has(.commitment-capability:hover) .commitment-core img { filter: brightness(1.06) saturate(1.06); transform: scale(1.018); }
+.commitment-map:has(.is-left .commitment-capability:nth-child(1):hover) .commitment-links path:nth-of-type(1),
+.commitment-map:has(.is-left .commitment-capability:nth-child(2):hover) .commitment-links path:nth-of-type(2),
+.commitment-map:has(.is-left .commitment-capability:nth-child(3):hover) .commitment-links path:nth-of-type(3),
+.commitment-map:has(.is-right .commitment-capability:nth-child(1):hover) .commitment-links path:nth-of-type(4),
+.commitment-map:has(.is-right .commitment-capability:nth-child(2):hover) .commitment-links path:nth-of-type(5),
+.commitment-map:has(.is-right .commitment-capability:nth-child(3):hover) .commitment-links path:nth-of-type(6) {
+  stroke: var(--amber);
+  stroke-width: 2;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgba(216,154,80,.38));
+}
+@keyframes ecosystem-breathe {
+  0%,100% { box-shadow: 0 18px 42px rgba(17,23,20,.15),0 0 0 rgba(216,154,80,0),inset 0 1px 0 rgba(255,255,255,.055); }
+  50% { box-shadow: 0 20px 46px rgba(17,23,20,.16),0 0 25px rgba(216,154,80,.11),inset 0 1px 0 rgba(255,255,255,.07); }
+}
+@keyframes ecosystem-halo { 0%,100% { opacity: .52; transform: scale(.985); } 50% { opacity: .9; transform: scale(1.025); } }
+@keyframes ecosystem-status { 0%,100% { opacity: .52; transform: scale(.86); } 50% { opacity: 1; transform: scale(1.12); } }
+@keyframes ecosystem-data-line { to { stroke-dashoffset: -110; } }
+@keyframes ecosystem-packet { 0%,100% { opacity: .22; transform: scale(.72); } 48%,58% { opacity: .9; transform: scale(1.25); } }
+@keyframes ecosystem-connector { to { background-position: -220% 0; } }
+
+@media (max-width: 900px) {
+  .commitment-core::before { inset: -9px; }
+}
+@media (hover: none) {
+  .commitment-capability:hover { transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
