@@ -8,7 +8,7 @@
 <meta name="description" content="A BREVES organiza processos, prazos, dados e relacionamento com clientes por meio de tecnologia jurídica desenhada para a rotina de cada escritório.">
 <link rel="icon" type="image/png" href="assets/media/70ebc13bb993.png">
 <link rel="stylesheet" href="assets/css/shared.css">
-<link rel="stylesheet" href="assets/css/site.css?v=20260717a">
+<link rel="stylesheet" href="assets/css/site.css?v=20260717b">
 </head>
 <body>
 
@@ -204,39 +204,61 @@
     </div>
   </section>
 
-  <section class="diagnostic" id="diagnostico" aria-labelledby="diagnostic-title">
-    <div class="section-frame diagnostic-grid">
-      <div class="diagnostic-intro reveal">
-        <div class="section-label light"><span>04</span>Diagnóstico inicial</div>
-        <h2 id="diagnostic-title">Onde a rotina ainda depende de <em>esforço manual?</em></h2>
-        <p>Quatro perguntas objetivas para indicar o ponto de partida mais coerente para o escritório.</p>
-        <div class="diagnostic-meta"><span>4 perguntas</span><span>Resultado imediato</span><span>Sem compromisso</span></div>
-      </div>
-
-      <div class="diagnostic-card reveal" data-diagnostic>
-        <div class="diagnostic-progress" aria-hidden="true"><i data-diagnostic-progress></i></div>
-        <fieldset class="diagnostic-question" data-question="prazos">
-          <legend><small>01</small> Publicações e prazos ainda exigem conferência manual?</legend>
-          <div class="diagnostic-options"><button type="button" data-value="1" aria-pressed="false">Sim</button><button type="button" data-value="0" aria-pressed="false">Não</button></div>
-        </fieldset>
-        <fieldset class="diagnostic-question" data-question="tarefas">
-          <legend><small>02</small> Tarefas são distribuídas por mensagens ou planilhas?</legend>
-          <div class="diagnostic-options"><button type="button" data-value="1" aria-pressed="false">Sim</button><button type="button" data-value="0" aria-pressed="false">Não</button></div>
-        </fieldset>
-        <fieldset class="diagnostic-question" data-question="visao">
-          <legend><small>03</small> A gestão depende da equipe para saber o andamento da operação?</legend>
-          <div class="diagnostic-options"><button type="button" data-value="1" aria-pressed="false">Sim</button><button type="button" data-value="0" aria-pressed="false">Não</button></div>
-        </fieldset>
-        <fieldset class="diagnostic-question" data-question="dados">
-          <legend><small>04</small> A mesma informação é digitada em mais de um sistema?</legend>
-          <div class="diagnostic-options"><button type="button" data-value="1" aria-pressed="false">Sim</button><button type="button" data-value="0" aria-pressed="false">Não</button></div>
-        </fieldset>
-        <div class="diagnostic-result" data-diagnostic-result role="status" aria-live="polite">
-          <small>RESULTADO PRELIMINAR</small>
-          <strong>Responda às quatro perguntas.</strong>
-          <p>A análise é atualizada conforme você responde.</p>
+  <section class="calculator" id="diagnostico" aria-labelledby="calculator-title">
+    <div class="section-frame">
+      <header class="calculator-head reveal">
+        <div>
+          <div class="section-label light"><span>04</span>Calculadora de eficiência</div>
+          <h2 id="calculator-title">Calcule o que a rotina manual <em>consome do seu escritório.</em></h2>
         </div>
-        <button class="button diagnostic-cta" type="button" data-diagnostic-cta disabled>Levar resultado para uma conversa <span aria-hidden="true">→</span></button>
+        <p>Ajuste o cenário da sua operação e veja, em tempo real, quantas horas podem voltar para atividades estratégicas.</p>
+      </header>
+
+      <div class="calculator-shell reveal" data-calculator>
+        <div class="calculator-progress" aria-label="Progresso de personalização">
+          <i data-calculator-progress></i>
+          <span data-calculator-progress-label>Ajuste os 3 parâmetros</span>
+        </div>
+
+        <div class="calculator-controls">
+          <article class="calculator-control" data-calculator-control="equipe">
+            <div class="calculator-control-head">
+              <label for="calc-equipe">Pessoas na equipe <small>(advogados e administrativo)</small></label>
+              <output id="calc-equipe-output" for="calc-equipe">5 pessoas</output>
+            </div>
+            <input id="calc-equipe" type="range" min="1" max="30" step="1" value="5" aria-describedby="calc-equipe-output">
+          </article>
+
+          <article class="calculator-control" data-calculator-control="horas">
+            <div class="calculator-control-head">
+              <label for="calc-horas">Horas por dia em tarefas manuais <small>por pessoa</small></label>
+              <output id="calc-horas-output" for="calc-horas">2,0 h/dia</output>
+            </div>
+            <input id="calc-horas" type="range" min="0.5" max="4" step="0.5" value="2" aria-describedby="calc-horas-output">
+          </article>
+
+          <article class="calculator-control" data-calculator-control="valor">
+            <div class="calculator-control-head">
+              <label for="calc-valor">Valor médio da hora de trabalho</label>
+              <output id="calc-valor-output" for="calc-valor">R$ 150</output>
+            </div>
+            <input id="calc-valor" type="range" min="50" max="500" step="10" value="150" aria-describedby="calc-valor-output">
+          </article>
+
+          <p class="calculator-note">* Estimativa ilustrativa baseada em 22 dias úteis por mês e recuperação potencial de 70% do tempo dedicado a tarefas repetitivas.</p>
+        </div>
+
+        <aside class="calculator-result" data-calculator-result aria-live="polite">
+          <svg class="calculator-result-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V9m6 9V5m6 13v-7m4 7H2"/></svg>
+          <small>Potencial recuperável por mês</small>
+          <strong id="calculator-value">R$ 23.100</strong>
+          <p>em valor de horas devolvidas ao escritório*</p>
+          <div class="calculator-metrics">
+            <span><b id="calculator-manual-hours">220 h</b>gastas no manual</span>
+            <span><b id="calculator-recovered-hours">154 h</b>recuperáveis</span>
+          </div>
+          <button class="button calculator-cta" type="button" data-calculator-cta>Quero recuperar essas horas <span aria-hidden="true">→</span></button>
+        </aside>
       </div>
     </div>
   </section>
@@ -352,6 +374,6 @@
 <a class="floating-contact" href="#contato"><span>Iniciar conversa</span><b aria-hidden="true">↗</b></a>
 
 <script type="module" src="assets/js/contact-form.js"></script>
-<script defer src="assets/js/site.js?v=20260716"></script>
+<script defer src="assets/js/site.js?v=20260717b"></script>
 </body>
 </html>
