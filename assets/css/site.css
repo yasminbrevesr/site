@@ -1868,6 +1868,132 @@ img { display: block; max-width: 100%; }
   .panel-visual { min-height: 350px; margin: 18px 12px 24px; }
 }
 
+/* Frentes v2: navegação conectada + workspace */
+@media (min-width: 901px) {
+  .practice-shell {
+    display: grid;
+    grid-template-columns: 272px minmax(0,1fr);
+    background: radial-gradient(circle at 72% 42%,rgba(216,154,80,.055),transparent 34%),var(--ink);
+  }
+  .practice-tabs {
+    min-height: 548px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4,1fr);
+    align-content: stretch;
+    padding: 58px 0 14px;
+    border-right: 1px solid var(--line-light);
+    border-bottom: 0;
+    background: rgba(255,255,255,.012);
+  }
+  .practice-tabs::before {
+    content: "PLANO ÚNICO · 04 FRENTES";
+    position: absolute;
+    z-index: 2;
+    top: 23px;
+    left: 24px;
+    width: auto;
+    height: auto;
+    background: none;
+    color: rgba(242,239,231,.31);
+    font: 7px/1 var(--mono);
+    letter-spacing: .14em;
+  }
+  .practice-tabs::after {
+    top: 75px;
+    bottom: 32px;
+    left: 35px;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(transparent,rgba(216,154,80,.34) 12%,rgba(216,154,80,.34) 88%,transparent);
+    box-shadow: none;
+    transition: none;
+  }
+  .practice-tab {
+    min-height: 0;
+    grid-template-columns: 42px 1fr;
+    padding: 18px 22px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(242,239,231,.075);
+  }
+  .practice-tab:last-child { border-bottom: 0; }
+  .practice-tab::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    left: 31px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border: 1px solid rgba(242,239,231,.2);
+    border-radius: 50%;
+    background: var(--ink);
+    transform: translateY(-50%);
+    transition: border-color .3s ease,background-color .3s ease,box-shadow .3s ease,transform .3s ease;
+  }
+  .practice-tab::after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: -1px;
+    top: 22%;
+    bottom: 22%;
+    width: 2px;
+    height: auto;
+    background: var(--amber-bright);
+    opacity: 0;
+    transform: scaleY(.35);
+    transition: opacity .3s ease,transform .4s cubic-bezier(.22,1,.36,1);
+  }
+  .practice-tab span {
+    width: auto;
+    height: auto;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    justify-self: end;
+    padding-right: 3px;
+  }
+  .practice-tab:hover { transform: translateX(3px); }
+  .practice-tab.active::before {
+    border-color: var(--amber-bright);
+    background: var(--amber);
+    box-shadow: 0 0 0 5px rgba(216,154,80,.08),0 0 18px rgba(239,182,111,.22);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .practice-tab.active::after { opacity: 1; transform: scaleY(1); }
+  .practice-tab.active span { border: 0; background: transparent; box-shadow: none; }
+  .practice-panels { min-width: 0; }
+  .practice-panel { min-height: 548px; grid-template-columns: minmax(290px,.86fr) minmax(360px,1.14fr); }
+  .panel-copy { padding: 38px; }
+  .panel-copy h3 { font-size: clamp(29px,2.45vw,38px); }
+  .panel-copy p { margin-top: 18px; font-size: 13px; }
+  .panel-copy ul { margin-top: 22px; }
+  .panel-visual { min-width: 0; margin: 28px; }
+}
+@media (max-width: 1080px) and (min-width: 901px) {
+  .practice-shell { grid-template-columns: 238px minmax(0,1fr); }
+  .practice-tab { padding-inline: 18px; }
+  .practice-panel { grid-template-columns: minmax(250px,.8fr) minmax(330px,1.2fr); }
+  .panel-copy { padding: 32px; }
+  .panel-visual { margin: 24px 20px; }
+}
+@media (max-width: 900px) {
+  .practice-shell { display: block; }
+  .practice-tabs {
+    min-height: 0;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+    padding: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .practice-tabs::before,.practice-tabs::after { display: none; }
+  .practice-tab { border-right: 1px solid var(--line-light); border-bottom: 1px solid var(--line-light); }
+  .practice-tab:nth-child(2n) { border-right: 0; }
+  .practice-tab:nth-child(n+3) { border-bottom: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
