@@ -1509,6 +1509,84 @@ img { display: block; max-width: 100%; }
   .commitment-capability:hover { transform: none; }
 }
 
+/* Continuidade: Ecossistema, integrações e dúvidas */
+.commitments { padding: 90px 0 42px; }
+.commitments::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 0;
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(transparent,rgba(143,91,39,.42));
+  pointer-events: none;
+}
+.commitments .section-head.compact { margin-bottom: 34px; }
+.commitments .commitment-map { min-height: 370px; }
+
+.integration-section {
+  padding: 0;
+  border: 0;
+  background: linear-gradient(to bottom,var(--paper) 0 50%,var(--paper-bright) 50% 100%);
+}
+.integration-section::before {
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg,transparent 4%,rgba(17,23,20,.12) 18%,rgba(143,91,39,.22) 50%,rgba(17,23,20,.12) 82%,transparent 96%);
+}
+.integration-section .integration-flow {
+  min-height: 90px;
+  grid-template-columns: 190px minmax(0,1fr);
+  gap: 30px;
+  margin: 0;
+  padding: 14px 0;
+  border: 0;
+  border-block: 1px solid rgba(17,23,20,.12);
+  border-radius: 0;
+  background: rgba(251,250,246,.78);
+  box-shadow: 0 14px 34px rgba(17,23,20,.035);
+  backdrop-filter: blur(10px);
+}
+.integration-flow-copy { padding-left: 18px; }
+.integration-flow-copy p { max-width: 180px; margin-top: 7px; line-height: 1.45; }
+.integration-marquee { padding: 8px 0; }
+.integration-track { animation-duration: 46s; }
+.integration-group { gap: 14px; padding-right: 14px; }
+.integration-item {
+  height: 40px;
+  gap: 9px;
+  padding: 0 14px;
+  border-color: rgba(17,23,20,.1);
+  background: rgba(242,239,231,.45);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+}
+.integration-item::before { left: -10px; }
+.integration-item svg { width: 15px; height: 15px; }
+.integration-item:hover { transform: translateY(-2px) scale(1.01); }
+
+.faq { padding: 88px 0 108px; }
+
+@media (max-width: 900px) {
+  .commitments { padding: 78px 0 36px; }
+  .commitments .commitment-map { min-height: auto; }
+  .integration-section .integration-flow { grid-template-columns: 1fr; gap: 12px; padding: 17px 0; }
+  .integration-flow-copy { padding: 0 20px; }
+  .integration-flow-copy p { max-width: 520px; }
+  .faq { padding: 78px 0 94px; }
+}
+@media (max-width: 620px) {
+  .commitments { padding: 72px 0 30px; }
+  .commitments::after { height: 22px; }
+  .commitments .section-head.compact { margin-bottom: 32px; }
+  .integration-section { padding: 0; }
+  .integration-section .integration-flow { padding: 15px 0; }
+  .integration-marquee { padding-block: 5px; }
+  .integration-group { gap: 10px; padding-right: 10px; }
+  .integration-item { height: 39px; padding-inline: 11px; }
+  .faq { padding: 70px 0 84px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
