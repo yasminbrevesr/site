@@ -8,7 +8,7 @@
 <meta name="description" content="A BREVES organiza processos, prazos, dados e relacionamento com clientes por meio de tecnologia jurídica desenhada para a rotina de cada escritório.">
 <link rel="icon" type="image/png" href="assets/media/70ebc13bb993.png">
 <link rel="stylesheet" href="assets/css/shared.css">
-<link rel="stylesheet" href="assets/css/site.css?v=20260717c">
+<link rel="stylesheet" href="assets/css/site.css?v=20260717d">
 </head>
 <body>
 
@@ -305,55 +305,76 @@
     </div>
   </section>
 
-  <section class="contact" id="contato">
-    <div class="section-frame contact-grid">
-      <div class="contact-copy reveal">
+  <section class="contact" id="contato" aria-labelledby="contact-title">
+    <div class="section-frame">
+      <div class="contact-stage reveal">
         <div class="section-label light"><span>07</span>Próximo passo</div>
-        <h2>Uma conversa para encontrar o <em>ponto certo de partida.</em></h2>
-        <p>Conte brevemente como o escritório opera hoje. Retornaremos para entender o cenário antes de sugerir qualquer solução.</p>
-        <ul><li>Conversa inicial sem compromisso</li><li>Leitura objetiva do cenário</li><li>Prioridades possíveis, sem fórmula pronta</li></ul>
+        <div class="contact-statement">
+          <h2 id="contact-title">O próximo avanço do seu escritório começa com <em>uma boa conversa.</em></h2>
+          <div class="contact-emblem" aria-hidden="true">
+            <span class="contact-emblem-orbit"></span>
+            <svg viewBox="0 0 160 160">
+              <circle cx="80" cy="80" r="57"/>
+              <circle cx="80" cy="80" r="29"/>
+              <path d="M80 8v144M8 80h144M29 29l102 102M131 29L29 131"/>
+              <path class="contact-emblem-star" d="M80 42l8.8 29.2L118 80l-29.2 8.8L80 118l-8.8-29.2L42 80l29.2-8.8z"/>
+            </svg>
+            <b>07</b>
+          </div>
+        </div>
+        <p>Conte onde a operação ainda exige esforço demais. A primeira conversa serve para entender o cenário — antes de sugerir qualquer caminho.</p>
+        <div class="contact-stage-meta"><span>Escuta objetiva</span><span>Sem fórmula pronta</span><span>Sem compromisso</span></div>
       </div>
 
-      <form class="contact-form reveal" data-contact-form novalidate>
-        <div class="field-row">
-          <div class="field">
-            <label for="f-nome">Seu nome</label>
-            <input required minlength="2" maxlength="120" id="f-nome" type="text" name="nome" placeholder="Como podemos chamar você?" autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="f-escritorio">Escritório</label>
-            <input maxlength="160" id="f-escritorio" type="text" name="escritorio" placeholder="Nome do escritório" autocomplete="organization">
-          </div>
+      <div class="contact-panel reveal">
+        <div class="contact-panel-copy">
+          <span>Vamos começar?</span>
+          <h3>Uma conversa direta, com quem entende tecnologia e a rotina jurídica.</h3>
+          <p>Preencha os dados ao lado. Retornaremos para compreender prioridades, contexto e o ponto de partida mais coerente.</p>
+          <div class="contact-signal" aria-hidden="true"><i></i><span>Canal aberto</span></div>
         </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="f-tamanho">Tamanho da equipe</label>
-            <select id="f-tamanho" name="tamanho">
-              <option value="">Selecione</option><option>Só eu</option><option>2 a 5 pessoas</option><option>6 a 15 pessoas</option><option>Mais de 15 pessoas</option>
-            </select>
-          </div>
-          <div class="field">
-            <div class="field-head">
-              <label for="f-contato">Contato</label>
-              <div class="channel-toggle" role="group" aria-label="Canal de contato preferido">
-                <button type="button" aria-pressed="true" data-channel="email">E-mail</button>
-                <button type="button" aria-pressed="false" data-channel="whatsapp">WhatsApp</button>
-              </div>
+
+        <form class="contact-form" data-contact-form novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-nome">Seu nome</label>
+              <input required minlength="2" maxlength="120" id="f-nome" type="text" name="nome" placeholder="Como podemos chamar você?" autocomplete="name">
             </div>
-            <input required maxlength="254" id="f-contato" type="email" name="contato" placeholder="seu@email.com" autocomplete="email">
-            <input type="hidden" name="canal" id="f-canal" value="email">
+            <div class="field">
+              <label for="f-escritorio">Escritório</label>
+              <input maxlength="160" id="f-escritorio" type="text" name="escritorio" placeholder="Nome do escritório" autocomplete="organization">
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label for="f-msg">Sobre a operação</label>
-          <textarea maxlength="3000" id="f-msg" name="mensagem" placeholder="Onde está o principal gargalo hoje?"></textarea>
-        </div>
-        <input type="hidden" name="origem" value="site-principal-juridico">
-        <div class="form-action">
-          <button class="button button-primary" type="submit">Enviar mensagem <span aria-hidden="true">→</span></button>
-          <span class="form-ok" data-form-feedback role="status" aria-live="polite"></span>
-        </div>
-      </form>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-tamanho">Tamanho da equipe</label>
+              <select id="f-tamanho" name="tamanho">
+                <option value="">Selecione</option><option>Só eu</option><option>2 a 5 pessoas</option><option>6 a 15 pessoas</option><option>Mais de 15 pessoas</option>
+              </select>
+            </div>
+            <div class="field">
+              <div class="field-head">
+                <label for="f-contato">Contato</label>
+                <div class="channel-toggle" role="group" aria-label="Canal de contato preferido">
+                  <button type="button" aria-pressed="true" data-channel="email">E-mail</button>
+                  <button type="button" aria-pressed="false" data-channel="whatsapp">WhatsApp</button>
+                </div>
+              </div>
+              <input required maxlength="254" id="f-contato" type="email" name="contato" placeholder="seu@email.com" autocomplete="email">
+              <input type="hidden" name="canal" id="f-canal" value="email">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Sobre a operação</label>
+            <textarea maxlength="3000" id="f-msg" name="mensagem" placeholder="Onde está o principal gargalo hoje?"></textarea>
+          </div>
+          <input type="hidden" name="origem" value="site-principal-juridico">
+          <div class="form-action">
+            <button class="button button-primary" type="submit">Enviar mensagem <span aria-hidden="true">→</span></button>
+            <span class="form-ok" data-form-feedback role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 </main>
