@@ -875,14 +875,38 @@ img { display: block; max-width: 100%; }
 .contact .form-ok[data-state="error"] { color: #87372f; }
 
 @media (min-width: 901px) {
-  .contact .section-frame { width: var(--frame); }
+  .contact .section-frame {
+    width: var(--frame);
+    display: grid;
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    gap: clamp(54px, 6vw, 86px);
+    align-items: start;
+  }
+  .contact h2 {
+    max-width: 500px;
+    font-size: clamp(52px, 5.1vw, 70px);
+    line-height: .95;
+  }
+  .contact-intro { padding-top: 8px; }
+  .contact-intro-foot { grid-template-columns: 1fr; gap: 25px; max-width: 490px; }
+  .contact-assurances { grid-template-columns: 1fr; gap: 13px; }
+  .contact .contact-form { margin-top: 0; }
+  .contact-field-name, .contact-field-office, .contact-field-team, .contact-field-channel { grid-column: span 6; margin: 0 0 18px !important; }
+  .contact-field-message { grid-column: 1 / 13; margin: 2px 0 0 !important; }
+  .contact-form-action { grid-column: 1 / 13; min-height: 0; margin: 20px 0 0 !important; justify-content: flex-end; }
 }
 @media (max-width: 1080px) {
-  .contact-intro-foot { grid-template-columns: 1fr; gap: 24px; }
   .contact .contact-form { padding: 28px; }
   .contact-field-name, .contact-field-office, .contact-field-team, .contact-field-channel { grid-column: span 6; margin: 0 0 18px !important; }
-  .contact-field-message { grid-column: 1 / 9; margin: 2px 0 0 !important; }
-  .contact-form-action { grid-column: 9 / 13; margin: 2px 0 0 !important; }
+  .contact-field-message { grid-column: 1 / 13; margin: 2px 0 0 !important; }
+  .contact-form-action { grid-column: 1 / 13; min-height: 0; margin: 20px 0 0 !important; justify-content: flex-end; }
+}
+@media (max-width: 900px) {
+  .contact .section-frame { display: block; }
+  .contact h2 { max-width: 760px; font-size: clamp(52px, 8.5vw, 72px); }
+  .contact-intro-foot { max-width: none; grid-template-columns: 1fr; gap: 24px; }
+  .contact-assurances { grid-template-columns: repeat(3, 1fr); }
+  .contact .contact-form { margin-top: 44px; }
 }
 @media (max-width: 700px) {
   .contact { padding: 78px 0 72px; }
