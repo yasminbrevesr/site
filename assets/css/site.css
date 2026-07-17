@@ -1643,6 +1643,34 @@ img { display: block; max-width: 100%; }
   .commitments .section-head.compact { margin-bottom: 30px; }
 }
 
+/* Contato: composição minimalista sobre âmbar */
+.contact {
+  background: var(--amber);
+  color: var(--paper-bright);
+}
+.contact::before {
+  display: block;
+  background:
+    radial-gradient(circle at 88% 8%,rgba(251,250,246,.14),transparent 27%),
+    linear-gradient(125deg,var(--amber-bright),var(--amber) 58%,#ca873f);
+}
+.contact .section-label.light { color: rgba(251,250,246,.72); }
+.contact .section-label.light::before { border-color: rgba(251,250,246,.48); }
+.contact .section-label.light span { color: var(--paper-bright); }
+.contact h2,
+.contact h2 > span,
+.contact h2 em { color: var(--paper-bright); }
+.contact h2 em::after { color: var(--amber-dark); }
+.contact h2 em::before { background: linear-gradient(90deg,var(--paper-bright),var(--amber-dark)); }
+.contact-intro-foot > p { color: rgba(251,250,246,.72); }
+.contact-assurances li { border-color: rgba(251,250,246,.3); color: rgba(251,250,246,.68); }
+.contact-assurances li::before { background: var(--paper-bright); }
+.contact .contact-form {
+  border-color: rgba(251,250,246,.42);
+  background: linear-gradient(90deg,rgba(251,250,246,.075),rgba(251,250,246,.025));
+}
+.contact-form-heading { border-color: rgba(17,23,20,.17); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
