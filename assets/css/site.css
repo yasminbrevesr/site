@@ -1587,6 +1587,20 @@ img { display: block; max-width: 100%; }
   .faq { padding: 70px 0 84px; }
 }
 
+/* União direta entre ecossistema, integrações e dúvidas */
+.commitments { padding-bottom: 0; }
+.commitments::after { display: none; }
+.integration-section .integration-flow { border-top: 0; }
+.faq { padding-top: 48px; }
+@media (max-width: 900px) {
+  .commitments { padding-bottom: 0; }
+  .faq { padding-top: 48px; }
+}
+@media (max-width: 620px) {
+  .commitments { padding-bottom: 0; }
+  .faq { padding-top: 42px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
