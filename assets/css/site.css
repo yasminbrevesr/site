@@ -1346,6 +1346,26 @@ img { display: block; max-width: 100%; }
   .contact .field { padding: 13px 0; }
 }
 
+/* Fluxograma: assinatura de marca e respiro */
+.commitment-map { min-height: 390px; grid-template-columns: minmax(0,1fr) 176px minmax(0,1fr); gap: 62px; padding: 38px 34px; }
+.commitment-core { width: 164px; height: 96px; padding: 22px 24px; border-radius: 12px; border-color: rgba(143,91,39,.22); background: var(--ink); box-shadow: 0 18px 42px rgba(17,23,20,.13); }
+.commitment-core img { width: 112px; height: auto; max-height: 54px; object-fit: contain; }
+.commitment-core span { display: none; }
+.commitment-capabilities { gap: 18px; }
+.commitment-capability, .commitment-capability:nth-child(n) { min-height: 72px; display: flex; flex-direction: column; justify-content: center; padding: 14px 20px; }
+.commitment-capabilities.is-left .commitment-capability::after,
+.commitment-capabilities.is-right .commitment-capability::before { width: 63px; }
+.commitment-capability p { margin-top: 5px; line-height: 1.45; }
+@media (max-width: 900px) {
+  .commitment-map { gap: 34px; padding: 36px 24px; }
+  .commitment-core { width: 164px; height: 96px; }
+  .commitment-capabilities { gap: 14px; }
+}
+@media (max-width: 620px) {
+  .commitment-map { gap: 28px; }
+  .commitment-capabilities { gap: 12px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
