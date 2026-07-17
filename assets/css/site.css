@@ -1601,6 +1601,48 @@ img { display: block; max-width: 100%; }
   .faq { padding-top: 42px; }
 }
 
+/* Ritmo vertical global: compacto, consistente e respirado */
+.principle { padding: 92px 0 86px; }
+.practice { padding: 92px 0 96px; }
+.method { padding: 94px 0; }
+.calculator { min-height: auto; padding: 94px 0 82px; }
+.commitments { padding: 82px 0 28px; }
+.commitments::after { display: none; }
+.integration-section {
+  padding: 16px 0;
+  background: linear-gradient(to bottom,var(--paper) 0 50%,var(--paper-bright) 50% 100%);
+}
+.integration-section .integration-flow {
+  border-top: 1px solid rgba(17,23,20,.12);
+  border-bottom: 1px solid rgba(17,23,20,.12);
+}
+.faq { padding: 44px 0 88px; }
+.contact { padding: 78px 0 72px; }
+.site-footer { padding-top: 54px; }
+.section-head { margin-bottom: 56px; }
+.commitments .section-head.compact { margin-bottom: 34px; }
+
+@media (max-width: 900px) {
+  .principle, .practice, .method { padding: 78px 0; }
+  .calculator { padding: 82px 0 72px; }
+  .commitments { padding: 74px 0 26px; }
+  .integration-section { padding: 14px 0; }
+  .faq { padding: 42px 0 78px; }
+  .contact { padding: 72px 0 68px; }
+  .section-head { margin-bottom: 48px; }
+}
+@media (max-width: 620px) {
+  .principle, .practice, .method { padding: 66px 0; }
+  .calculator { padding: 72px 0 64px; }
+  .commitments { padding: 66px 0 22px; }
+  .integration-section { padding: 12px 0; }
+  .faq { padding: 36px 0 68px; }
+  .contact { padding: 66px 0 62px; }
+  .site-footer { padding-top: 46px; }
+  .section-head { margin-bottom: 40px; }
+  .commitments .section-head.compact { margin-bottom: 30px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
