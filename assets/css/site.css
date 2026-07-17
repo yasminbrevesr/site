@@ -579,23 +579,25 @@ img { display: block; max-width: 100%; }
 .calculator h2 { max-width: 900px; margin-top: 32px; font-size: clamp(42px, 4.6vw, 68px); font-weight: 340; line-height: 1.01; letter-spacing: -.052em; }
 .calculator h2 em { color: var(--amber-bright); }
 .calculator-head > p { grid-column: 2; color: rgba(242,239,231,.58); font-size: 14px; line-height: 1.75; }
-.integration-section { position: relative; overflow: hidden; padding: 48px 0 52px; border-top: 1px solid rgba(242,239,231,.08); border-bottom: 1px solid rgba(242,239,231,.12); background: var(--ink-soft); color: var(--paper); }
+.integration-section { position: relative; z-index: 2; overflow: hidden; padding: 24px 0; background: linear-gradient(to bottom, var(--paper) 0 50%, var(--paper-bright) 50% 100%); color: var(--ink); }
+.integration-section::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line-dark); pointer-events: none; }
+.integration-section .section-frame { position: relative; }
 .integration-section .integration-flow { margin-top: 0; }
-.integration-section::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 72% 50%, rgba(216,154,80,.055), transparent 34%); }
-.integration-flow { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 34px; align-items: center; margin-top: 42px; padding-block: 18px; border-block: 1px solid var(--line-light); }
-.integration-flow-copy small { color: var(--amber-bright); font: 7px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
-.integration-flow-copy p { max-width: 210px; margin-top: 8px; color: rgba(242,239,231,.46); font-size: 11px; line-height: 1.55; }
-.integration-marquee { position: relative; min-width: 0; overflow: hidden; padding: 7px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.integration-marquee::before { content: ""; position: absolute; z-index: 0; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, rgba(216,154,80,.18), transparent); }
+.integration-flow { display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: 34px; align-items: center; min-height: 88px; padding: 14px 18px; border: 1px solid rgba(17,23,20,.12); border-radius: 10px; background: rgba(251,250,246,.9); box-shadow: 0 18px 50px rgba(17,23,20,.055), inset 0 1px 0 rgba(255,255,255,.85); backdrop-filter: blur(10px); }
+.integration-flow-copy { padding-left: 4px; }
+.integration-flow-copy small { color: var(--amber-dark); font: 7px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.integration-flow-copy p { max-width: 195px; margin-top: 8px; color: var(--ink-muted); font-size: 10px; line-height: 1.5; }
+.integration-marquee { position: relative; min-width: 0; overflow: hidden; padding: 7px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.integration-marquee::before { content: ""; position: absolute; z-index: 0; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, rgba(143,91,39,.13), transparent); }
 .integration-track { position: relative; z-index: 1; width: max-content; display: flex; animation: integration-scroll 38s linear infinite; will-change: transform; }
-.integration-group { display: flex; align-items: center; gap: 12px; padding-right: 12px; }
-.integration-item { position: relative; min-width: max-content; height: 48px; display: inline-flex; align-items: center; gap: 10px; padding: 0 15px; border: 1px solid rgba(242,239,231,.12); border-radius: 8px; background: rgba(242,239,231,.035); color: rgba(242,239,231,.56); box-shadow: inset 0 1px 0 rgba(255,255,255,.025); font-size: 10px; transition: transform .3s ease, color .3s ease, border-color .3s ease, background-color .3s ease, box-shadow .3s ease; }
-.integration-item::before { content: ""; position: absolute; left: -9px; top: 50%; width: 6px; height: 6px; border: 1px solid rgba(216,154,80,.35); border-radius: 50%; background: var(--ink); transform: translateY(-50%); }
-.integration-item svg { width: 17px; height: 17px; flex: 0 0 auto; fill: currentColor; }
-.integration-brandmark { min-width: 30px; height: 19px; display: grid; place-items: center; font: 700 6px/1 var(--sans); letter-spacing: -.03em; }
+.integration-group { display: flex; align-items: center; gap: 10px; padding-right: 10px; }
+.integration-item { position: relative; min-width: max-content; height: 42px; display: inline-flex; align-items: center; gap: 9px; padding: 0 13px; border: 1px solid rgba(17,23,20,.11); border-radius: 7px; background: rgba(242,239,231,.58); color: rgba(17,23,20,.63); box-shadow: inset 0 1px 0 rgba(255,255,255,.7); font-size: 9px; transition: transform .3s ease, color .3s ease, border-color .3s ease, background-color .3s ease, box-shadow .3s ease; }
+.integration-item::before { content: ""; position: absolute; left: -8px; top: 50%; width: 5px; height: 5px; border: 1px solid rgba(143,91,39,.34); border-radius: 50%; background: var(--paper-bright); transform: translateY(-50%); }
+.integration-item svg { width: 16px; height: 16px; flex: 0 0 auto; fill: currentColor; }
+.integration-brandmark { min-width: 30px; height: 18px; display: grid; place-items: center; font: 700 6px/1 var(--sans); letter-spacing: -.03em; }
 .advbox-mark { padding: 0 3px; border: 1px solid currentColor; border-radius: 4px; }
 .integration-marquee:hover .integration-track { animation-play-state: paused; }
-.integration-item:hover { z-index: 2; border-color: rgba(239,182,111,.48); background: rgba(216,154,80,.09); color: var(--paper); box-shadow: 0 10px 28px rgba(0,0,0,.16), 0 0 20px rgba(216,154,80,.06); transform: translateY(-2px); }
+.integration-item:hover { z-index: 2; border-color: rgba(143,91,39,.34); background: var(--paper-bright); color: var(--ink); box-shadow: 0 9px 24px rgba(17,23,20,.09); transform: translateY(-2px); }
 @keyframes integration-scroll { to { transform: translateX(-50%); } }
 
 .calculator-shell { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, .9fr); margin-top: 54px; border: 1px solid var(--line-light); border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); box-shadow: 0 34px 90px rgba(0,0,0,.22); backdrop-filter: blur(8px); }
