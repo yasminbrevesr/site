@@ -650,6 +650,11 @@ img { display: block; max-width: 100%; }
   color: var(--paper-bright);
   transition: transform .7s cubic-bezier(.22,1,.36,1), text-shadow .7s ease;
 }
+.contact h2 > span:nth-child(3) {
+  font-size: .62em;
+  white-space: nowrap;
+  letter-spacing: -.055em;
+}
 .contact h2 em {
   position: relative;
   display: inline-block;
