@@ -2382,6 +2382,133 @@ img { display: block; max-width: 100%; }
   .contact .form-ok { order: 0; }
 }
 
+/* Teste Contato V3 — âmbar integrado */
+.contact {
+  padding: 82px 0 76px;
+  background: var(--amber);
+  color: var(--paper-bright);
+}
+.contact::before {
+  display: block;
+  background:
+    radial-gradient(circle at 88% 8%,rgba(251,250,246,.14),transparent 27%),
+    linear-gradient(125deg,var(--amber-bright),var(--amber) 58%,#ca873f);
+}
+.contact .section-frame {
+  display: grid;
+  grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr);
+  gap: clamp(38px,4vw,52px);
+  align-items: start;
+}
+.contact-intro { position: sticky; top: 110px; }
+.contact h2 {
+  max-width: 100%;
+  margin-top: 32px;
+  color: var(--paper-bright);
+  font-size: clamp(45px,4vw,55px);
+  line-height: 1;
+}
+.contact h2 > span { color: var(--paper-bright); }
+.contact h2 em { color: var(--paper-bright); }
+.contact h2 em::after { display: block; color: var(--amber-dark); }
+.contact h2 em::before {
+  right: 0;
+  width: auto;
+  height: 2px;
+  background: linear-gradient(90deg,var(--paper-bright),var(--amber-dark));
+  opacity: .72;
+}
+.contact-intro-foot { margin-top: 27px; }
+.contact-intro-foot > p { color: rgba(17,23,20,.66); }
+.contact-assurances {
+  grid-template-columns: 1fr;
+  gap: 11px;
+  margin-top: 24px;
+  border: 0;
+}
+.contact-assurances li {
+  padding: 10px 0 0;
+  border-top: 1px solid rgba(17,23,20,.22);
+  border-bottom: 0;
+  color: rgba(17,23,20,.55);
+}
+.contact-assurances li::before { top: -3px; left: 0; background: var(--paper-bright); transform: none; }
+
+.contact .contact-form {
+  grid-template-columns: repeat(12,minmax(0,1fr));
+  gap: 0 18px;
+  margin: 0;
+  padding: 28px;
+  border: 0;
+  border-top: 1px solid rgba(251,250,246,.42);
+  border-bottom: 1px solid rgba(17,23,20,.18);
+  border-radius: 0;
+  background: linear-gradient(90deg,rgba(251,250,246,.11),rgba(251,250,246,.035) 72%,transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+.contact-form-heading {
+  grid-column: 1 / 13;
+  margin: 0 0 25px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid rgba(17,23,20,.16);
+}
+.contact-form-heading strong { font-size: 20px; }
+.contact .field { margin: 0 !important; padding: 0; border: 0; }
+.contact-field-name,.contact-field-office,.contact-field-team,.contact-field-channel {
+  grid-column: span 6;
+  margin-bottom: 17px !important;
+}
+.contact-field-message { grid-column: 1 / 13 !important; margin: 1px 0 0 !important; }
+.contact .field input,
+.contact .field select,
+.contact .field textarea {
+  border: 1px solid rgba(17,23,20,.15);
+  border-radius: 9px;
+  background-color: rgba(251,250,246,.21);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+}
+.contact .field input,.contact .field select { height: 54px; }
+.contact .field textarea { min-height: 86px; }
+.contact .field input:hover,.contact .field select:hover,.contact .field textarea:hover {
+  border-color: rgba(17,23,20,.28);
+  background-color: rgba(251,250,246,.28);
+}
+.contact .field input:focus,.contact .field select:focus,.contact .field textarea:focus {
+  border-color: rgba(251,250,246,.86);
+  background-color: rgba(251,250,246,.36);
+  box-shadow: 0 0 0 3px rgba(251,250,246,.12);
+}
+.contact-form-action {
+  grid-column: 1 / 13;
+  justify-content: flex-end;
+  margin: 19px 0 0 !important;
+  padding: 0;
+  border: 0;
+}
+.contact .contact-form-action .button-primary {
+  min-width: 244px;
+  min-height: 56px;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(17,23,20,.17);
+}
+.contact .contact-form-action .button-primary::after { display: block; }
+.contact .button-arrow {
+  border: 1px solid rgba(251,250,246,.12);
+  border-radius: 8px;
+  background: rgba(251,250,246,.055);
+}
+@media (max-width: 900px) {
+  .contact .section-frame { grid-template-columns: 1fr; gap: 44px; }
+  .contact-intro { position: static; }
+  .contact-assurances { grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 620px) {
+  .contact .contact-form { grid-template-columns: 1fr; padding: 22px 17px; }
+  .contact-form-heading,.contact-field-name,.contact-field-office,.contact-field-team,.contact-field-channel,.contact-field-message,.contact-form-action { grid-column: 1 !important; }
+  .contact-assurances { grid-template-columns: 1fr; }
+  .contact .contact-form-action .button-primary { width: 100%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
