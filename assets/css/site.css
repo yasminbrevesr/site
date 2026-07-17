@@ -2439,6 +2439,89 @@ img { display: block; max-width: 100%; }
   .contact .contact-form-action .button-primary { width: 100%; }
 }
 
+
+/* Isolamento do snapshot 1adc415 contra regras de contato posteriores */
+#contato.contact-commit-1adc > .section-frame {
+  width: min(calc(100% - 80px), 1320px);
+  display: block;
+  max-width: 1320px;
+}
+#contato.contact-commit-1adc .contact-intro {
+  position: relative;
+  top: auto;
+  max-width: none;
+}
+#contato.contact-commit-1adc h2 {
+  max-width: 1160px;
+  font-family: var(--sans);
+  color: var(--paper-bright);
+}
+#contato.contact-commit-1adc h2 > span {
+  width: fit-content;
+  color: var(--paper-bright);
+  white-space: normal;
+  transform: translateX(0) !important;
+  text-shadow: none !important;
+}
+#contato.contact-commit-1adc h2 em {
+  position: relative;
+  display: inline-block;
+  font-family: var(--serif);
+  color: var(--paper-bright);
+}
+#contato.contact-commit-1adc h2 em::after {
+  display: block;
+}
+#contato.contact-commit-1adc .contact-intro:hover h2 > span { transform: translateX(.018em) !important; }
+#contato.contact-commit-1adc .contact-intro:hover h2 > span:nth-child(2) { transform: translateX(.035em) !important; }
+#contato.contact-commit-1adc .contact-intro:hover h2 > span:nth-child(3) { transform: translateX(.052em) !important; }
+#contato.contact-commit-1adc .contact-intro-foot {
+  display: grid;
+  max-width: none;
+  grid-template-columns: minmax(0,520px) minmax(460px,1fr);
+}
+#contato.contact-commit-1adc .contact-assurances {
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  margin-top: 0;
+  border-top: 0;
+}
+#contato.contact-commit-1adc .contact-assurances li {
+  padding: 11px 0 0;
+  border-top: 1px solid rgba(17,23,20,.22);
+  border-bottom: 0;
+}
+#contato.contact-commit-1adc .contact-form {
+  width: 100%;
+  max-width: none;
+}
+#contato.contact-commit-1adc .contact-field-name,
+#contato.contact-commit-1adc .contact-field-office,
+#contato.contact-commit-1adc .contact-field-team,
+#contato.contact-commit-1adc .contact-field-channel { grid-column: span 3 !important; }
+#contato.contact-commit-1adc .contact-field-message { grid-column: 1 / 9 !important; }
+#contato.contact-commit-1adc .contact-form-action { grid-column: 9 / 13 !important; }
+@media (max-width:1080px) {
+  #contato.contact-commit-1adc .contact-intro-foot { grid-template-columns:1fr; }
+  #contato.contact-commit-1adc .contact-field-name,
+  #contato.contact-commit-1adc .contact-field-office,
+  #contato.contact-commit-1adc .contact-field-team,
+  #contato.contact-commit-1adc .contact-field-channel { grid-column:span 6 !important; }
+  #contato.contact-commit-1adc .contact-field-message { grid-column:1 / 8 !important; }
+  #contato.contact-commit-1adc .contact-form-action { grid-column:8 / 13 !important; }
+}
+@media (max-width:700px) {
+  #contato.contact-commit-1adc > .section-frame { width:var(--frame); }
+  #contato.contact-commit-1adc .contact-intro-foot { grid-template-columns:1fr; }
+  #contato.contact-commit-1adc .contact-assurances { grid-template-columns:1fr; }
+  #contato.contact-commit-1adc .contact-field-name,
+  #contato.contact-commit-1adc .contact-field-office,
+  #contato.contact-commit-1adc .contact-field-team,
+  #contato.contact-commit-1adc .contact-field-channel,
+  #contato.contact-commit-1adc .contact-field-message,
+  #contato.contact-commit-1adc .contact-form-action { grid-column:1 !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
