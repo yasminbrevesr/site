@@ -1366,6 +1366,21 @@ img { display: block; max-width: 100%; }
   .commitment-capabilities { gap: 12px; }
 }
 
+/* Fluxograma: alinhamento editorial e logo vetorial */
+.commitment-capabilities.is-left,
+.commitment-capabilities.is-right { text-align: center; }
+.commitment-capability, .commitment-capability:nth-child(n) { align-items: center; text-align: center; }
+.commitment-capability small, .commitment-capability strong, .commitment-capability p { width: 100%; text-align: center; }
+.commitment-core { width: 126px; height: 126px; padding: 17px; border-radius: 20px; border-color: rgba(216,154,80,.34); background: linear-gradient(145deg,#1a211d,#0d1210); box-shadow: 0 18px 42px rgba(17,23,20,.15), inset 0 1px 0 rgba(255,255,255,.055); }
+.commitment-core img { width: 92px; height: 96px; max-height: none; object-fit: contain; }
+.footer-bottom { align-items: center; gap: 24px; flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .commitment-core { width: 126px; height: 126px; }
+}
+@media (max-width: 620px) {
+  .commitment-capability, .commitment-capability:nth-child(n) { min-height: 78px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
