@@ -174,63 +174,101 @@
     methodSteps.forEach(function (step) { methodObserver.observe(step); });
   }
 
-  /* Diagnóstico operacional. */
-  var diagnostic = document.querySelector('[data-diagnostic]');
-  if (diagnostic) {
-    var questions = Array.prototype.slice.call(diagnostic.querySelectorAll('[data-question]'));
-    var result = diagnostic.querySelector('[data-diagnostic-result]');
-    var diagnosticProgress = diagnostic.querySelector('[data-diagnostic-progress]');
-    var diagnosticCta = diagnostic.querySelector('[data-diagnostic-cta]');
-    var answers = {};
+  /* Calculadora de eficiência operacional. */
+  var calculator = document.querySelector('[data-calculator]');
+  if (calculator) {
+    var teamInput = document.getElementById('calc-equipe');
+    var hoursInput = document.getElementById('calc-horas');
+    var hourlyInput = document.getElementById('calc-valor');
+    var teamOutput = document.getElementById('calc-equipe-output');
+    var hoursOutput = document.getElementById('calc-horas-output');
+    var hourlyOutput = document.getElementById('calc-valor-output');
+    var valueOutput = document.getElementById('calculator-value');
+    var manualHoursOutput = document.getElementById('calculator-manual-hours');
+    var recoveredHoursOutput = document.getElementById('calculator-recovered-hours');
+    var calculatorResult = calculator.querySelector('[data-calculator-result]');
+    var calculatorProgress = calculator.querySelector('[data-calculator-progress]');
+    var progressLabel = calculator.querySelector('[data-calculator-progress-label]');
+    var calculatorCta = calculator.querySelector('[data-calculator-cta]');
+    var inputs = [teamInput, hoursInput, hourlyInput];
+    var touched = {};
+    var displayedValue = 23100;
+    var animationFrame;
 
-    function updateDiagnostic() {
-      var keys = Object.keys(answers);
-      var answered = keys.length;
-      var score = keys.reduce(function (total, key) { return total + answers[key]; }, 0);
-      diagnosticProgress.style.width = ((answered / questions.length) * 100) + '%';
-
-      if (answered < questions.length) {
-        var remaining = questions.length - answered;
-        result.querySelector('strong').textContent = remaining === 1 ? 'Falta 1 resposta.' : 'Faltam ' + remaining + ' respostas.';
-        result.querySelector('p').textContent = 'A análise é atualizada conforme você responde.';
-        diagnosticCta.disabled = true;
-        return;
-      }
-
-      var title;
-      var description;
-      if (score >= 3) {
-        title = 'Há alto potencial para organizar e automatizar a operação.';
-        description = 'O ponto de partida recomendado é mapear prazos, responsabilidades e integrações.';
-      } else if (score >= 1) {
-        title = 'A operação tem oportunidades pontuais de consolidação.';
-        description = 'Uma leitura dos fluxos ajuda a priorizar ganhos sem interromper a rotina.';
-      } else {
-        title = 'A operação já demonstra boa maturidade de processos.';
-        description = 'O diagnóstico pode concentrar-se em inteligência gerencial e evolução da experiência.';
-      }
-      result.querySelector('strong').textContent = title;
-      result.querySelector('p').textContent = description;
-      diagnosticCta.disabled = false;
-      diagnosticCta.dataset.score = String(score);
+    function currency(value) {
+      return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(value);
     }
 
-    questions.forEach(function (question) {
-      question.querySelectorAll('button[data-value]').forEach(function (button) {
-        button.addEventListener('click', function () {
-          question.querySelectorAll('button[data-value]').forEach(function (item) {
-            item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
-          });
-          answers[question.getAttribute('data-question')] = Number(button.getAttribute('data-value'));
-          updateDiagnostic();
-        });
+    function updateRangeTrack(input) {
+      var progress = ((Number(input.value) - Number(input.min)) / (Number(input.max) - Number(input.min))) * 100;
+      input.style.setProperty('--range-progress', progress + '%');
+    }
+
+    function animateValue(nextValue) {
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      var startValue = displayedValue;
+      var startTime;
+
+      function frame(time) {
+        if (!startTime) startTime = time;
+        var progress = Math.min((time - startTime) / 460, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        displayedValue = Math.round(startValue + ((nextValue - startValue) * eased));
+        valueOutput.textContent = currency(displayedValue);
+        if (progress < 1) animationFrame = window.requestAnimationFrame(frame);
+      }
+
+      if (reducedMotion) {
+        displayedValue = nextValue;
+        valueOutput.textContent = currency(nextValue);
+      } else {
+        animationFrame = window.requestAnimationFrame(frame);
+      }
+      calculatorResult.classList.remove('is-updating');
+      void calculatorResult.offsetWidth;
+      calculatorResult.classList.add('is-updating');
+      window.setTimeout(function () { calculatorResult.classList.remove('is-updating'); }, 520);
+    }
+
+    function updateCalculator(animate) {
+      var team = Number(teamInput.value);
+      var dailyHours = Number(hoursInput.value);
+      var hourlyRate = Number(hourlyInput.value);
+      var manualHours = team * dailyHours * 22;
+      var recoveredHours = manualHours * .7;
+      var recoverableValue = Math.round(recoveredHours * hourlyRate);
+
+      teamOutput.textContent = team + (team === 1 ? ' pessoa' : ' pessoas');
+      hoursOutput.textContent = dailyHours.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' h/dia';
+      hourlyOutput.textContent = currency(hourlyRate);
+      manualHoursOutput.textContent = Math.round(manualHours).toLocaleString('pt-BR') + ' h';
+      recoveredHoursOutput.textContent = Math.round(recoveredHours).toLocaleString('pt-BR') + ' h';
+      inputs.forEach(updateRangeTrack);
+
+      if (animate) animateValue(recoverableValue);
+      else {
+        displayedValue = recoverableValue;
+        valueOutput.textContent = currency(recoverableValue);
+      }
+    }
+
+    inputs.forEach(function (input) {
+      input.addEventListener('input', function () {
+        touched[input.id] = true;
+        var adjusted = Object.keys(touched).length;
+        calculatorProgress.style.width = ((adjusted / inputs.length) * 100) + '%';
+        progressLabel.textContent = adjusted === inputs.length ? 'Cenário personalizado' : adjusted + ' de ' + inputs.length + ' ajustados';
+        updateCalculator(true);
       });
     });
 
-    diagnosticCta.addEventListener('click', function () {
+    calculatorCta.addEventListener('click', function () {
       var message = document.getElementById('f-msg');
       var form = document.querySelector('[data-contact-form]');
-      if (message) message.value = 'Quero conversar sobre o diagnóstico inicial. Resultado: ' + diagnosticCta.dataset.score + ' de 4 pontos de atenção operacional.';
+      if (message) {
+        message.value = 'Quero entender como recuperar cerca de ' + recoveredHoursOutput.textContent + ' por mês. Cenário estimado pela calculadora: ' + valueOutput.textContent + ' em horas de trabalho.';
+        message.dispatchEvent(new Event('input', { bubbles: true }));
+      }
       if (form) {
         form.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
         window.setTimeout(function () {
@@ -239,6 +277,8 @@
         }, reducedMotion ? 0 : 650);
       }
     });
+
+    updateCalculator(false);
   }
 
   /* Alternância do canal, mantendo um único campo e payload para o Supabase. */
