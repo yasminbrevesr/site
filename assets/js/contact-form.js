@@ -1,5 +1,5 @@
 const SUPABASE_URL = 'https://mubkdnwzscnirfqnhcpu.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11Ymtkbnd6c2NuaXJmcW5oY3B1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwNTUxNjcsImV4cCI6MjA5OTYzMTE2N30.RFYRPTfJguHe9WwusCgjtVy6xnC49RIgszMgdxffb40';
+const SUPABASE_ANON_KEY = 'sb_publishable_tBvoqhNTb_Aw-HSLoKblsA_LD2M3Qye';
 const ENDPOINT = `${SUPABASE_URL}/rest/v1/contatos`;
 
 function optional(value) {
@@ -35,7 +35,6 @@ async function submitContact(payload) {
     method: 'POST',
     headers: {
       apikey: SUPABASE_ANON_KEY,
-      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
       'Content-Type': 'application/json',
       Prefer: 'return=minimal',
     },
