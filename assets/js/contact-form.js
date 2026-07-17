@@ -1,6 +1,6 @@
 const SUPABASE_URL = 'https://mubkdnwzscnirfqnhcpu.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_tBvoqhNTb_Aw-HSLoKblsA_LD2M3Qye';
-const ENDPOINT = `${SUPABASE_URL}/rest/v1/contatos`;
+const ENDPOINT = `${SUPABASE_URL}/rest/v1/contatos_site`;
 
 function optional(value) {
   const normalized = String(value || '').trim();
