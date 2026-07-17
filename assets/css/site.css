@@ -2522,6 +2522,117 @@ img { display: block; max-width: 100%; }
   #contato.contact-commit-1adc .contact-form-action { grid-column:1 !important; }
 }
 
+
+/* Refinamento final do contato: título central e campos premium */
+#contato.contact-commit-1adc h2 {
+  margin-inline: auto;
+  max-width: 1080px;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: clamp(62px,7.2vw,108px);
+  font-weight: 400;
+  line-height: .88;
+  letter-spacing: -.045em;
+}
+#contato.contact-commit-1adc h2 > span {
+  margin-inline: auto;
+  color: transparent;
+  background: linear-gradient(105deg,
+    var(--paper-bright) 0%,
+    var(--paper-bright) 35%,
+    #8f5728 48%,
+    #f8dfbd 56%,
+    var(--paper-bright) 68%,
+    var(--paper-bright) 100%);
+  background-size: 260% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 0 rgba(108,61,23,0));
+  transition:
+    background-position 1.05s cubic-bezier(.22,1,.36,1),
+    transform .7s cubic-bezier(.22,1,.36,1),
+    filter .7s ease;
+}
+#contato.contact-commit-1adc h2 em {
+  color: inherit;
+  font-family: inherit;
+  font-style: italic;
+}
+#contato.contact-commit-1adc h2 em::before,
+#contato.contact-commit-1adc h2 em::after { display: none; }
+#contato.contact-commit-1adc .contact-intro:hover h2 > span {
+  color: transparent;
+  background-position: 0 0;
+  filter: drop-shadow(0 10px 22px rgba(108,61,23,.14));
+  transform: translateY(-2px) !important;
+}
+#contato.contact-commit-1adc .contact-intro:hover h2 > span:nth-child(2) {
+  transform: translateY(-2px) !important;
+  transition-delay: .045s;
+}
+#contato.contact-commit-1adc .contact-intro:hover h2 > span:nth-child(3) {
+  transform: translateY(-2px) !important;
+  transition-delay: .09s;
+}
+#contato.contact-commit-1adc .contact-form {
+  gap: 0 20px;
+  border-color: rgba(255,255,255,.46);
+  background: linear-gradient(135deg,rgba(255,255,255,.23),rgba(255,255,255,.11));
+  box-shadow: 0 24px 60px rgba(92,49,16,.11),inset 0 1px 0 rgba(255,255,255,.38);
+}
+#contato.contact-commit-1adc .field input,
+#contato.contact-commit-1adc .field select,
+#contato.contact-commit-1adc .field textarea {
+  border: 1px solid rgba(17,23,20,.18);
+  border-radius: 10px;
+  background: rgba(255,255,255,.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.24);
+  font-family: var(--sans);
+}
+#contato.contact-commit-1adc .field input,
+#contato.contact-commit-1adc .field select {
+  height: 54px;
+  padding-inline: 15px;
+}
+#contato.contact-commit-1adc .field textarea {
+  min-height: 90px;
+  padding: 15px;
+}
+#contato.contact-commit-1adc .field input:hover,
+#contato.contact-commit-1adc .field select:hover,
+#contato.contact-commit-1adc .field textarea:hover {
+  border-color: rgba(17,23,20,.34);
+  background: rgba(255,255,255,.29);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35),0 8px 20px rgba(104,59,22,.05);
+}
+#contato.contact-commit-1adc .field input:focus,
+#contato.contact-commit-1adc .field select:focus,
+#contato.contact-commit-1adc .field textarea:focus {
+  border-color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.38);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.15),0 14px 30px rgba(104,59,22,.09);
+  transform: translateY(-1px);
+}
+#contato.contact-commit-1adc .channel-toggle button {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 5px 8px;
+}
+#contato.contact-commit-1adc .channel-toggle button[aria-pressed="true"] {
+  border-color: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.3);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+}
+@media (max-width:700px) {
+  #contato.contact-commit-1adc h2 {
+    font-size: clamp(43px,12.6vw,58px);
+    line-height: .94;
+    text-align: left;
+  }
+  #contato.contact-commit-1adc h2 > span { margin-inline: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
