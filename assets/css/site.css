@@ -371,9 +371,39 @@ img { display: block; max-width: 100%; }
   transform: translateZ(28px);
 }
 .orbit-core::before { content: ''; position: absolute; inset: 8px; border: 1px dashed rgba(242,239,231,.11); border-radius: 50%; animation: orbit-three 35s linear infinite reverse; }
-.orbit-core img { width: 56px; height: 60px; object-fit: contain; opacity: .93; }
+.orbit-core img {
+  width: 64px;
+  height: 68px;
+  object-fit: contain;
+  opacity: 1;
+  image-rendering: auto;
+  filter: drop-shadow(0 2px 7px rgba(239,182,111,.16));
+  transform: translateZ(1px);
+  backface-visibility: hidden;
+}
 .orbit-core small { margin-top: 10px; color: rgba(242,239,231,.48); font: 6px/1 var(--mono); letter-spacing: .2em; }
 .core-index { position: absolute; top: 29px; color: var(--amber-bright); font: 7px/1 var(--mono); letter-spacing: .12em; }
+
+.orbit-signature {
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(242,239,231,.28);
+  font: 6px/1 var(--mono);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  transform: translateX(-50%) translateZ(12px);
+  transition: color .45s ease, letter-spacing .45s ease;
+}
+.orbit-signature::before,
+.orbit-signature::after { content: ""; width: 18px; height: 1px; background: rgba(239,182,111,.25); transition: width .45s ease, background-color .45s ease; }
+.legal-orbit:hover .orbit-signature { color: rgba(242,239,231,.52); letter-spacing: .25em; }
+.legal-orbit:hover .orbit-signature::before,
+.legal-orbit:hover .orbit-signature::after { width: 26px; background: rgba(239,182,111,.48); }
 
 .orbit-note {
   position: absolute;
@@ -1050,7 +1080,9 @@ img { display: block; max-width: 100%; }
   .hero-assurances li { font-size: 7px; }
   .hero-assurances li + li::before { margin-right: 16px; }
   .legal-orbit { width: 280px; height: 280px; margin-top: 32px; }
-  .orbit-core img { width: 45px; height: 49px; }
+  .orbit-core img { width: 51px; height: 55px; }
+  .orbit-signature { bottom: -7px; gap: 7px; font-size: 5px; letter-spacing: .16em; }
+  .orbit-signature::before, .orbit-signature::after { width: 10px; }
   .note-a { left: -5px; top: 32%; }.note-b { right: -8px; bottom: 18%; }
   .orbit-note { padding: 7px 8px; font-size: 6px; }
   .scroll-cue { display: none; }
