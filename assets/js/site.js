@@ -120,6 +120,9 @@
 
   function activateTab(tab, focus) {
     var target = tab.getAttribute('data-tab');
+    var activeIndex = tabs.indexOf(tab);
+    var shell = tab.closest('.practice-shell');
+    if (shell) shell.style.setProperty('--active-step', activeIndex);
     tabs.forEach(function (item) {
       var active = item === tab;
       item.classList.toggle('active', active);
@@ -128,8 +131,13 @@
     });
     panels.forEach(function (panel) {
       var active = panel.getAttribute('data-panel') === target;
-      panel.classList.toggle('active', active);
       panel.hidden = !active;
+      panel.classList.toggle('active', active);
+      if (active && !reducedMotion) {
+        panel.style.animation = 'none';
+        void panel.offsetWidth;
+        panel.style.animation = '';
+      }
     });
     if (focus) tab.focus();
   }
