@@ -381,4 +381,90 @@
     randomLetterButton.addEventListener('focus', runLetterSwap);
   }
 
+  /* Atraso progressivo (~100ms) entre irmãos que entram em cascata. */
+  reveals.forEach(function (element) {
+    if (element.classList.contains('in')) return;
+    var parent = element.parentNode;
+    if (!parent) return;
+    var siblings = Array.prototype.filter.call(parent.children, function (child) {
+      return child.classList && child.classList.contains('reveal');
+    });
+    var index = siblings.indexOf(element);
+    if (siblings.length > 1 && index > 0) {
+      element.style.setProperty('--reveal-delay', (Math.min(index, 5) * 0.1).toFixed(1) + 's');
+    }
+  });
+
+  /* Entrada editorial: títulos revelados linha por linha. */
+  var editorials = Array.prototype.slice.call(document.querySelectorAll('[data-editorial]'));
+  if (editorials.length) {
+    editorials.forEach(function (heading) {
+      var lines = heading.innerHTML.split(/<br\s*\/?>/i);
+      heading.innerHTML = lines.map(function (line) {
+        return '<span class="ed-line"><span class="ed-inner">' + line + '</span></span>';
+      }).join('');
+    });
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      editorials.forEach(function (heading) { heading.classList.add('in'); });
+    } else {
+      var editorialObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
+      editorials.forEach(function (heading) { editorialObserver.observe(heading); });
+    }
+  }
+
+  /* Narrativa central: fluxo jurídico em quatro estágios no núcleo do hero. */
+  var orbitStage = document.querySelector('[data-orbit-stage]');
+  var orbitIndex = document.querySelector('[data-orbit-index]');
+  var orbitSteps = Array.prototype.slice.call(document.querySelectorAll('.orbit-steps i'));
+  if (orbitStage && orbitSteps.length === 4 && !reducedMotion) {
+    var stages = ['Publicação recebida', 'Prazo identificado', 'Tarefa distribuída', 'Cliente atualizado'];
+    var stageIndex = 0;
+
+    function renderStage() {
+      orbitStage.textContent = stages[stageIndex];
+      orbitStage.classList.remove('is-swapping');
+      void orbitStage.offsetWidth;
+      orbitStage.classList.add('is-swapping');
+      if (orbitIndex) orbitIndex.textContent = '0' + (stageIndex + 1) + ' · 04';
+      orbitSteps.forEach(function (dot, i) {
+        dot.classList.toggle('on', i === stageIndex);
+        dot.classList.toggle('done', i < stageIndex);
+      });
+    }
+
+    window.setInterval(function () {
+      if (document.hidden) return;
+      stageIndex = (stageIndex + 1) % stages.length;
+      renderStage();
+    }, 3400);
+  }
+
+  /* Atração magnética muito sutil dos botões pelo cursor. */
+  if (finePointer && !reducedMotion) {
+    var magnetic = Array.prototype.slice.call(document.querySelectorAll('[data-magnetic]'));
+    magnetic.forEach(function (element) {
+      var strength = 0.2;
+      var maxShift = 6;
+      element.addEventListener('pointermove', function (event) {
+        var rect = element.getBoundingClientRect();
+        var moveX = (event.clientX - (rect.left + rect.width / 2)) * strength;
+        var moveY = (event.clientY - (rect.top + rect.height / 2)) * strength;
+        moveX = Math.max(-maxShift, Math.min(maxShift, moveX));
+        moveY = Math.max(-maxShift, Math.min(maxShift, moveY));
+        element.style.setProperty('--mag-x', moveX.toFixed(1) + 'px');
+        element.style.setProperty('--mag-y', moveY.toFixed(1) + 'px');
+      });
+      element.addEventListener('pointerleave', function () {
+        element.style.setProperty('--mag-x', '0px');
+        element.style.setProperty('--mag-y', '0px');
+      });
+    });
+  }
+
 })();
