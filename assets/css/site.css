@@ -2641,3 +2641,103 @@ img { display: block; max-width: 100%; }
   .integration-track { animation: none; transform: none; }
   .integration-marquee { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
 }
+
+/* ===================================================================
+   Sistema de movimento coordenado — âmbar, fundo escuro e estética
+   jurídica. Cada efeito é discreto e degrada para estático sob
+   prefers-reduced-motion (bloco final).
+   =================================================================== */
+
+/* Entrada por scroll: direção alternada + escala, com atraso em cascata. */
+.reveal { transition-delay: var(--reveal-delay, 0s); }
+.reveal[data-reveal="left"] { transform: translate3d(-26px, 0, 0); }
+.reveal[data-reveal="right"] { transform: translate3d(26px, 0, 0); }
+.reveal[data-reveal="scale"] { transform: scale(.965); }
+.reveal[data-reveal="left"].in,
+.reveal[data-reveal="right"].in,
+.reveal[data-reveal="scale"].in { transform: none; }
+
+/* Entrada editorial dos títulos, linha por linha. */
+[data-editorial] .ed-line { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; }
+[data-editorial] .ed-inner { display: block; transform: translateY(112%); transition: transform .85s cubic-bezier(.22,1,.36,1); }
+[data-editorial].in .ed-inner { transform: none; }
+[data-editorial].in .ed-line:nth-child(2) .ed-inner { transition-delay: .1s; }
+[data-editorial].in .ed-line:nth-child(3) .ed-inner { transition-delay: .2s; }
+
+/* Fundo atmosférico: manchas âmbar desfocadas em deriva lenta. */
+.hero-atmosphere { position: absolute; z-index: -2; inset: 0; overflow: hidden; pointer-events: none; }
+.hero-atmosphere i { position: absolute; display: block; border-radius: 50%; filter: blur(72px); will-change: transform; }
+.hero-atmosphere i:nth-child(1) {
+  width: min(48vw, 620px); height: min(48vw, 620px); left: -9vw; top: 6%;
+  background: radial-gradient(circle, rgba(216,154,80,.17), transparent 66%);
+  animation: atmo-drift-a 18s ease-in-out infinite;
+}
+.hero-atmosphere i:nth-child(2) {
+  width: min(40vw, 520px); height: min(40vw, 520px); right: -8vw; top: 34%;
+  background: radial-gradient(circle, rgba(239,182,111,.12), transparent 68%);
+  animation: atmo-drift-b 23s ease-in-out infinite;
+}
+@keyframes atmo-drift-a { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(5%,4%) scale(1.09); } }
+@keyframes atmo-drift-b { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-6%,-3%) scale(1.07); } }
+
+.calculator { position: relative; overflow: hidden; }
+.calculator::before {
+  content: ""; position: absolute; z-index: 0; left: -12vw; top: -12%;
+  width: min(60vw, 720px); height: min(60vw, 720px); border-radius: 50%;
+  background: radial-gradient(circle, rgba(216,154,80,.11), transparent 66%);
+  filter: blur(66px); pointer-events: none;
+  animation: atmo-drift-a 21s ease-in-out infinite;
+}
+.calculator .section-frame { position: relative; z-index: 1; }
+
+/* Elementos flutuando poucos pixels, quase imperceptivelmente. */
+.orbit-note { animation: note-float 7.5s ease-in-out infinite; }
+.note-b { animation-duration: 9s; animation-delay: -2.4s; }
+@keyframes note-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* Narrativa central: quatro estágios do fluxo jurídico no núcleo do hero. */
+.orbit-core { overflow: hidden; }
+.orbit-stage {
+  width: 118px; min-height: 22px; margin-top: 9px;
+  color: rgba(242,239,231,.62); font: 6.5px/1.5 var(--mono); letter-spacing: .16em;
+  text-transform: uppercase; text-align: center;
+}
+.orbit-stage.is-swapping { animation: stage-swap .5s cubic-bezier(.22,1,.36,1); }
+@keyframes stage-swap { 0% { opacity: 0; transform: translateY(5px); } 100% { opacity: 1; transform: none; } }
+.orbit-steps {
+  position: absolute; left: 50%; bottom: 27px;
+  display: flex; gap: 6px; transform: translateX(-50%);
+}
+.orbit-steps i {
+  width: 13px; height: 2px; border-radius: 2px; background: rgba(242,239,231,.18);
+  transition: width .45s cubic-bezier(.22,1,.36,1), background-color .45s ease, box-shadow .45s ease;
+}
+.orbit-steps i.done { background: rgba(239,182,111,.5); }
+.orbit-steps i.on { width: 20px; background: var(--amber-bright); box-shadow: 0 0 10px rgba(239,182,111,.5); }
+
+/* Botões com leve atração magnética pelo cursor (composição via translate). */
+[data-magnetic] {
+  translate: var(--mag-x, 0px) var(--mag-y, 0px);
+  transition: transform .28s ease, background-color .28s ease, color .28s ease,
+    border-color .28s ease, box-shadow .3s ease, translate .2s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Transição de luminosidade entre seções escuras e claras. */
+.principle::before,
+.calculator::after {
+  content: ""; position: absolute; z-index: 1; inset: 0 0 auto; height: 88px;
+  background: linear-gradient(to bottom, rgba(17,23,20,.05), transparent);
+  pointer-events: none;
+}
+.calculator::after { background: linear-gradient(to bottom, rgba(0,0,0,.16), transparent); }
+
+/* Neutralização completa sob movimento reduzido. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition-delay: 0s !important; }
+  .reveal[data-reveal] { transform: none !important; }
+  [data-editorial] .ed-inner { transform: none !important; transition: none !important; }
+  [data-magnetic] { translate: none !important; }
+  .hero-atmosphere, .calculator::before { display: none !important; }
+  .orbit-note, .orbit-stage.is-swapping { animation: none !important; }
+  .orbit-stage { opacity: 1 !important; }
+}
