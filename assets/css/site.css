@@ -2741,3 +2741,6 @@ img { display: block; max-width: 100%; }
   .orbit-note, .orbit-stage.is-swapping { animation: none !important; }
   .orbit-stage { opacity: 1 !important; }
 }
+
+/* Remove a linha divisória entre os cards do ecossistema e a faixa de logos. */
+.commitment-map { border-bottom: 0; }
