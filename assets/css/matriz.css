@@ -490,8 +490,68 @@
   .mz-marquee-row { overflow-x: auto; }
 }
 
+/* Destaque de produtos personalizados (matriz). */
+.mz-products-custom {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+  margin-top: 22px; padding: 30px 34px;
+  border: 1px solid rgba(17,23,20,.14); border-radius: 16px;
+  background: linear-gradient(135deg, var(--ink), #1a221d);
+  color: var(--paper);
+  box-shadow: 0 24px 60px rgba(17,23,20,.12);
+}
+.mz-products-custom-copy { max-width: 560px; }
+.mz-products-custom small { display: block; margin-bottom: 9px; color: var(--amber-bright); font: 7px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+.mz-products-custom strong { display: block; font-size: clamp(20px, 2.2vw, 26px); font-weight: 480; letter-spacing: -.02em; }
+.mz-products-custom p { margin-top: 9px; color: rgba(242,239,231,.62); font-size: 13px; line-height: 1.6; }
+.mz-products-custom .button { flex: 0 0 auto; }
+@media (max-width: 620px) {
+  .mz-products-custom { padding: 24px 22px; }
+  .mz-products-custom .button { width: 100%; }
+}
+
+/* Serviços jurídicos personalizados (exemplos). */
+.svc-highlight {
+  display: grid; gap: 12px;
+  margin-bottom: 34px; padding: 26px 30px;
+  border: 1px solid rgba(216,154,80,.28); border-radius: 14px;
+  background: linear-gradient(135deg, rgba(216,154,80,.09), rgba(216,154,80,.02));
+}
+.svc-highlight b { font-size: clamp(18px, 2vw, 23px); font-weight: 560; letter-spacing: -.02em; color: var(--ink); }
+.svc-highlight b em { color: var(--amber-dark); font-family: var(--serif); font-weight: 400; }
+.svc-highlight p { color: var(--ink-muted); font-size: 14px; line-height: 1.65; }
+.svc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.svc-card {
+  position: relative; display: flex; flex-direction: column;
+  padding: 28px 28px 26px;
+  border: 1px solid var(--line-dark); border-radius: 14px;
+  background: var(--paper-bright);
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22,1,.36,1);
+}
+.svc-card > span { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-bottom: 20px; border: 1px solid var(--line-dark); border-radius: 50%; color: var(--amber-dark); font: 8px/1 var(--mono); }
+.svc-card h3 { font-size: 19px; font-weight: 560; letter-spacing: -.015em; }
+.svc-card p { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
+.svc-card .svc-tag { align-self: flex-start; margin-top: 16px; padding: 5px 11px; border-radius: 999px; background: rgba(216,154,80,.14); color: var(--amber-dark); font: 7px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.svc-card:hover { border-color: rgba(143,91,39,.34); box-shadow: 0 18px 40px rgba(17,23,20,.08); transform: translateY(-4px); }
+@media (max-width: 760px) { .svc-grid { grid-template-columns: 1fr; } }
+
+/* Método em 3 blocos (sem scroll para compreender). */
+.method-3 .method-intro { position: static; }
+.method-tri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
+.method-block {
+  display: flex; flex-direction: column;
+  padding: 30px 28px;
+  border: 1px solid var(--line-dark); border-radius: 14px;
+  background: var(--paper-bright);
+}
+.method-block > span { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-bottom: 22px; border: 1px solid var(--line-dark); border-radius: 50%; color: var(--amber-dark); font: 9px/1 var(--mono); }
+.method-block small { color: var(--amber-dark); font: 8px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.method-block h3 { margin-top: 12px; font-size: 21px; font-weight: 520; letter-spacing: -.02em; }
+.method-block p { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
+@media (max-width: 860px) { .method-tri { grid-template-columns: 1fr; gap: 14px; } }
+
 /* Movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
   .mz-card, .mz-products-list li, .mz-unit { transition: none !important; transform: none !important; }
   .mz-console-live i, .mz-term-cursor { animation: none !important; }
+  .svc-card { transition: none !important; transform: none !important; }
 }
