@@ -9,6 +9,7 @@
 <link rel="icon" type="image/png" href="../assets/media/70ebc13bb993.png">
 <link rel="stylesheet" href="../assets/css/shared.css">
 <link rel="stylesheet" href="../assets/css/site.css?v=motion-system-3">
+<link rel="stylesheet" href="../assets/css/matriz.css?v=matriz-7">
 </head>
 <body>
 
@@ -27,10 +28,10 @@
       <a href="#metodo" data-nav="metodo">Método</a>
       <a href="#diagnostico" data-nav="diagnostico">Diagnóstico</a>
       <a href="#duvidas" data-nav="duvidas">Dúvidas</a>
-      <a href="../" class="nav-external">Matriz <span aria-hidden="true">↗</span></a>
+      <a href="../" class="nav-external">Matriz <span aria-hidden="true">↗︎</span></a>
     </nav>
 
-    <a class="nav-cta" href="#contato" data-magnetic>Iniciar conversa <span aria-hidden="true">↗</span></a>
+    <a class="nav-cta" href="#contato" data-magnetic>Iniciar conversa <span aria-hidden="true">↗︎</span></a>
     <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
       <span></span><span></span>
     </button>
@@ -38,42 +39,63 @@
 </header>
 
 <main id="conteudo">
-  <section class="hero" id="inicio" data-hero>
-    <div class="hero-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <section class="mz-hero" id="inicio" data-hero>
+    <canvas class="mz-ascii" data-ascii aria-hidden="true"></canvas>
+    <div class="mz-hero-stars" aria-hidden="true"></div>
     <div class="hero-atmosphere" aria-hidden="true"><i></i><i></i></div>
-    <div class="hero-copy">
-      <div class="hero-kicker reveal in"><span></span>Tecnologia jurídica sob medida</div>
-      <h1 class="reveal in">Seu escritório operando com a <em>clareza</em> que o Direito exige.</h1>
-      <p class="hero-lead reveal in">Organizamos processos, prazos, dados e relacionamento com clientes em uma operação segura, fluida e preparada para crescer.</p>
-      <div class="hero-actions reveal in">
-        <a class="button button-primary" href="#diagnostico" data-magnetic>Mapear minha operação <span aria-hidden="true">→</span></a>
-        <a class="text-link" href="#atuacao">Conhecer a abordagem <span aria-hidden="true">↓</span></a>
+
+    <span class="mz-corner tl" aria-hidden="true"></span>
+    <span class="mz-corner tr" aria-hidden="true"></span>
+    <span class="mz-corner bl" aria-hidden="true"></span>
+    <span class="mz-corner br" aria-hidden="true"></span>
+    <div class="mz-hud-coords" aria-hidden="true">DIREITO · ESTRATÉGIA · TECNOLOGIA</div>
+
+    <div class="mz-hero-inner">
+      <div class="mz-hero-copy">
+        <div class="mz-rule reveal in" aria-hidden="true"><span></span><b>∞</b><span class="grow"></span></div>
+        <div class="hero-kicker reveal in"><span></span>Tecnologia jurídica sob medida</div>
+        <h1 class="reveal in">Seu escritório operando com a <em>clareza</em> que o Direito exige.</h1>
+        <p class="mz-hero-lead reveal in">Organizamos processos, prazos, dados e relacionamento com clientes em uma operação segura, fluida e preparada para crescer.</p>
+        <div class="mz-hero-actions reveal in">
+          <a class="button button-primary" href="#diagnostico" data-magnetic>Mapear minha operação <span aria-hidden="true">→</span></a>
+          <a class="mz-btn-ghost" href="#atuacao">Conhecer a abordagem</a>
+        </div>
+        <div class="mz-notation reveal in" aria-hidden="true"><b>∞</b><span class="grow"></span><small>BREVES · JURÍDICO</small></div>
       </div>
-      <ul class="hero-assurances reveal in">
-        <li>Implantação por etapas</li>
-        <li>Desenho sob medida</li>
-        <li>Acompanhamento próximo</li>
-      </ul>
+
+      <aside class="mz-console mz-console-legal reveal in" data-flow-console aria-label="Fluxo processual BREVES em tempo real">
+        <div class="mz-console-bar">
+          <div class="mz-console-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="mz-console-title">BREVES · FLUXO PROCESSUAL</span>
+          <span class="mz-console-live"><i></i>LIVE</span>
+        </div>
+        <div class="mz-flow" data-flow>
+          <div class="mz-flow-row"><span class="mz-flow-idx">01</span><div class="mz-flow-txt"><small>Publicação</small><b>Publicação recebida</b></div><i class="mz-flow-dot" aria-hidden="true"></i></div>
+          <div class="mz-flow-row"><span class="mz-flow-idx">02</span><div class="mz-flow-txt"><small>Prazo</small><b>Prazo identificado</b></div><i class="mz-flow-dot" aria-hidden="true"></i></div>
+          <div class="mz-flow-row"><span class="mz-flow-idx">03</span><div class="mz-flow-txt"><small>Equipe</small><b>Tarefa distribuída</b></div><i class="mz-flow-dot" aria-hidden="true"></i></div>
+          <div class="mz-flow-row"><span class="mz-flow-idx">04</span><div class="mz-flow-txt"><small>Cliente</small><b>Cliente atualizado</b></div><i class="mz-flow-dot" aria-hidden="true"></i></div>
+        </div>
+        <div class="mz-flow-bar" aria-hidden="true"><i data-flow-progress></i></div>
+        <div class="mz-console-term">
+          <span class="mz-term-prompt" aria-hidden="true">›</span>
+          <span data-flow-term>recebendo publicação…</span>
+          <span class="mz-term-cursor" aria-hidden="true"></span>
+        </div>
+      </aside>
     </div>
 
-    <div class="legal-orbit reveal in" data-orbit role="img" aria-label="Direito, estratégia e tecnologia organizados em uma única operação">
-      <div class="orbit-halo" aria-hidden="true"></div>
-      <div class="orbit-ring ring-one" aria-hidden="true"><span>ESTRATÉGIA</span></div>
-      <div class="orbit-ring ring-two" aria-hidden="true"><span>DIREITO</span></div>
-      <div class="orbit-ring ring-three" aria-hidden="true"><span>TECNOLOGIA</span></div>
-      <div class="orbit-axis" aria-hidden="true"></div>
-      <div class="orbit-core">
-        <span class="core-index" data-orbit-index>01 · 04</span>
-        <img src="../assets/media/70ebc13bb993.png" alt="">
-        <small class="orbit-stage" data-orbit-stage>Publicação recebida</small>
-        <div class="orbit-steps" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="mz-hud-bottom" aria-hidden="true">
+      <div class="mz-hud-side">
+        <span>Fluxo ativo</span>
+        <div class="mz-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span>v1.0.0</span>
       </div>
-      <span class="orbit-signature" aria-hidden="true">The future will be Breves</span>
-      <div class="orbit-note note-a"><i></i><span>Processos conectados</span></div>
-      <div class="orbit-note note-b"><span>Decisões com contexto</span><b>↗</b></div>
+      <div class="mz-hud-side">
+        <span class="mz-hud-hide">Processando</span>
+        <div class="mz-dots"><i></i><i></i><i></i></div>
+        <span class="mz-hud-hide">Prazo ∞</span>
+      </div>
     </div>
-
-    <a class="scroll-cue" href="#principio" aria-label="Continuar"><span></span>Explore</a>
   </section>
 
   <section class="principle" id="principio">
@@ -442,7 +464,7 @@
 
       <nav class="footer-col" aria-label="Links">
         <h3>Links</h3>
-        <a href="../">BREVES (Matriz) <span aria-hidden="true">↗</span></a>
+        <a href="../">BREVES (Matriz) <span aria-hidden="true">↗︎</span></a>
         <a href="#inicio">Início</a>
         <a href="#metodo">Método</a>
         <a href="#duvidas">Dúvidas</a>
@@ -452,9 +474,9 @@
       <div class="footer-col footer-contact" aria-label="Contato">
         <h3>Contato</h3>
         <ul>
-          <li><span aria-hidden="true">✉</span> contato@breves.com.br</li>
-          <li><span aria-hidden="true">☎</span> (00) 00000-0000</li>
-          <li><span aria-hidden="true">↗</span> <a href="https://www.linkedin.com/company/breves-corp/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> contato@breves.com.br</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg> (00) 00000-0000</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg> <a href="https://www.linkedin.com/company/breves-corp/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         </ul>
         <a class="footer-cta" href="#contato">Iniciar conversa <span aria-hidden="true">→</span></a>
       </div>
@@ -469,6 +491,6 @@
 </footer>
 
 <script type="module" src="../assets/js/contact-form.js?v=20260717b"></script>
-<script defer src="../assets/js/site.js?v=motion-system-5"></script>
+<script defer src="../assets/js/site.js?v=motion-system-6"></script>
 </body>
 </html>

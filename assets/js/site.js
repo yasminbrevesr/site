@@ -636,4 +636,32 @@
     }
   }
 
+  /* Console de fluxo processual do hero jurídico — narrativa em 4 estágios. */
+  var flowConsole = document.querySelector('[data-flow-console]');
+  if (flowConsole) {
+    var flowRows = Array.prototype.slice.call(flowConsole.querySelectorAll('.mz-flow-row'));
+    var flowProgress = flowConsole.querySelector('[data-flow-progress]');
+    var flowTerm = flowConsole.querySelector('[data-flow-term]');
+    var flowTerms = ['publicação capturada', 'prazo calculado e revisado', 'tarefa atribuída ao responsável', 'cliente atualizado'];
+    var flowStep = 0;
+
+    function renderFlow() {
+      flowRows.forEach(function (row, i) {
+        row.classList.toggle('is-done', i < flowStep);
+        row.classList.toggle('is-active', i === flowStep);
+      });
+      if (flowProgress) flowProgress.style.width = (((flowStep + 1) / flowRows.length) * 100).toFixed(1) + '%';
+      if (flowTerm && flowTerms[flowStep]) flowTerm.textContent = flowTerms[flowStep];
+    }
+
+    renderFlow();
+    if (!reducedMotion && flowRows.length) {
+      window.setInterval(function () {
+        if (document.hidden) return;
+        flowStep = (flowStep + 1) % flowRows.length;
+        renderFlow();
+      }, 2600);
+    }
+  }
+
 })();
