@@ -187,6 +187,89 @@
   .mz-unit { padding: 26px 22px; }
 }
 
+/* Contato compacto (2 colunas, título equilibrado) */
+.mz-contact { padding: 70px 0 64px; }
+#contato.mz-contact > .section-frame {
+  width: var(--frame);
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: clamp(40px, 5vw, 78px);
+  align-items: start;
+}
+.mz-contact .contact-intro { position: sticky; top: 104px; max-width: 440px; padding: 0; }
+.mz-contact h2 {
+  max-width: 420px;
+  margin-top: 26px;
+  color: var(--paper-bright);
+  font-family: var(--sans);
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 350;
+  line-height: 1.06;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.mz-contact h2 em { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--paper-bright); }
+.mz-contact .contact-intro > p {
+  max-width: 400px;
+  margin-top: 22px;
+  color: rgba(251,250,246,.8);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.mz-contact .contact-assurances {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(251,250,246,.28);
+}
+.mz-contact .contact-assurances li {
+  position: relative;
+  padding: 0 0 0 14px;
+  border: 0;
+  color: rgba(251,250,246,.72);
+  font: 7px/1.5 var(--mono);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.mz-contact .contact-assurances li::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--paper-bright);
+}
+
+/* Formulário: grid próprio de 2 colunas, vencendo a cascata antiga via id. */
+#contato.mz-contact .contact-form {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px 22px !important;
+  margin: 0 !important;
+}
+#contato.mz-contact .contact-form-heading { grid-column: 1 / -1 !important; margin: 0 0 6px !important; }
+#contato.mz-contact .field { grid-column: span 1 !important; margin: 0 !important; }
+#contato.mz-contact .contact-field-message,
+#contato.mz-contact .contact-form-action { grid-column: 1 / -1 !important; }
+#contato.mz-contact .contact-form-action { justify-content: flex-end; }
+
+@media (max-width: 900px) {
+  #contato.mz-contact > .section-frame { grid-template-columns: 1fr; gap: 42px; }
+  .mz-contact .contact-intro { position: static; max-width: none; }
+  .mz-contact h2 { max-width: 560px; }
+}
+@media (max-width: 560px) {
+  .mz-contact .contact-assurances { grid-template-columns: 1fr; gap: 9px; }
+  #contato.mz-contact .field { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 620px) {
+  .mz-contact { padding: 60px 0 56px; }
+}
+
 /* Movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
   .mz-card, .mz-products-list li, .mz-unit { transition: none !important; transform: none !important; }
