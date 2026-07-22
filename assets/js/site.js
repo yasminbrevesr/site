@@ -467,4 +467,87 @@
     });
   }
 
+  /* Fundo ASCII animado do hero da matriz — canvas próprio, sem dependências. */
+  var asciiCanvas = document.querySelector('[data-ascii]');
+  if (asciiCanvas && !reducedMotion && window.matchMedia('(min-width: 1024px)').matches) {
+    var asciiCtx = asciiCanvas.getContext('2d');
+    var glyphs = '01<>/[]{}=+*·:;#'.split('');
+    var host = asciiCanvas.parentNode;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var cellSize = 16;
+    var cols = 0, rows = 0, grid = [];
+    var asciiRaf = null, startTime = 0, lastDraw = 0;
+
+    function asciiBuild() {
+      var w = host.offsetWidth, h = host.offsetHeight;
+      asciiCanvas.width = Math.round(w * dpr);
+      asciiCanvas.height = Math.round(h * dpr);
+      asciiCanvas.style.width = w + 'px';
+      asciiCanvas.style.height = h + 'px';
+      asciiCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      asciiCtx.font = '11px "Plex Mono", Consolas, monospace';
+      asciiCtx.textBaseline = 'top';
+      cols = Math.ceil(w / cellSize);
+      rows = Math.ceil(h / cellSize);
+      grid = [];
+      for (var y = 0; y < rows; y++) {
+        for (var x = 0; x < cols; x++) {
+          grid.push({
+            px: x * cellSize,
+            py: y * cellSize,
+            d: (x / cols + y / rows) / 2,
+            phase: Math.random() * Math.PI * 2,
+            ch: glyphs[(Math.random() * glyphs.length) | 0]
+          });
+        }
+      }
+    }
+
+    function asciiFrame(now) {
+      asciiRaf = window.requestAnimationFrame(asciiFrame);
+      if (now - lastDraw < 33) return; /* ~30fps */
+      lastDraw = now;
+      if (!startTime) startTime = now;
+      var elapsed = (now - startTime) / 1000;
+      var w = asciiCanvas.width / dpr, h = asciiCanvas.height / dpr;
+      asciiCtx.clearRect(0, 0, w, h);
+      var head = (elapsed * 0.09) % 1;
+      for (var i = 0; i < grid.length; i++) {
+        var c = grid[i];
+        var dd = Math.abs(c.d - head);
+        dd = Math.min(dd, 1 - dd);
+        var bright = Math.max(0, 1 - dd * 7);
+        var base = 0.05 + 0.045 * Math.sin(c.phase + elapsed * 0.7);
+        var alpha = base + bright * 0.55;
+        if (bright > 0.85 && Math.random() < 0.03) c.ch = glyphs[(Math.random() * glyphs.length) | 0];
+        asciiCtx.fillStyle = bright > 0.55
+          ? 'rgba(239,182,111,' + alpha.toFixed(3) + ')'
+          : 'rgba(242,239,231,' + alpha.toFixed(3) + ')';
+        asciiCtx.fillText(c.ch, c.px, c.py);
+      }
+    }
+
+    asciiBuild();
+    asciiRaf = window.requestAnimationFrame(asciiFrame);
+
+    var asciiResize;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(asciiResize);
+      asciiResize = window.setTimeout(function () {
+        window.cancelAnimationFrame(asciiRaf);
+        startTime = 0;
+        asciiBuild();
+        asciiRaf = window.requestAnimationFrame(asciiFrame);
+      }, 200);
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        window.cancelAnimationFrame(asciiRaf);
+      } else {
+        startTime = 0; lastDraw = 0;
+        asciiRaf = window.requestAnimationFrame(asciiFrame);
+      }
+    });
+  }
+
 })();
