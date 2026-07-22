@@ -550,4 +550,90 @@
     });
   }
 
+  /* Console interativo do hero da matriz — abas, gráfico, métricas ao vivo. */
+  var consoleEl = document.querySelector('[data-console]');
+  if (consoleEl) {
+    var views = {
+      operacao: {
+        bars: [.4,.6,.5,.78,.55,.86,.66,.9,.7,.95,.6,.82,.5,.72,.56,.66],
+        metrics: [{ l: 'Uptime', base: 99.9, dec: 1, s: '%', jit: 0.04 }, { l: 'Tarefas', base: 1240, dec: 0, s: '', jit: 6, k: true }, { l: 'Fila', base: 8, dec: 0, s: '', jit: 2 }],
+        term: ['sincronizando prazos…', 'tarefa #128 distribuída', 'operação estável', 'fila processada']
+      },
+      dados: {
+        bars: [.82,.5,.9,.42,.86,.6,.96,.5,.76,.46,.9,.55,.8,.5,.72,.6],
+        metrics: [{ l: 'Ingestão', base: 4700, dec: 1, s: '/s', jit: 180, k: true }, { l: 'Latência', base: 42, dec: 0, s: 'ms', jit: 7 }, { l: 'Erros', base: 0, dec: 0, s: '', jit: 0 }],
+        term: ['ingestão em tempo real…', 'indexando registros', 'latência nominal', '0 erros nas últimas 24h']
+      },
+      automacao: {
+        bars: [.5,.72,.46,.66,.56,.5,.72,.6,.82,.5,.62,.76,.5,.86,.56,.72],
+        metrics: [{ l: 'Fluxos', base: 36, dec: 0, s: '', jit: 1 }, { l: 'Execuções', base: 12400, dec: 1, s: '', jit: 40, k: true }, { l: 'Revisões', base: 3, dec: 0, s: '', jit: 1 }],
+        term: ['fluxo #42 concluído', 'disparando automações', 'revisão humana pendente', 'execução agendada']
+      }
+    };
+    var consoleTabs = Array.prototype.slice.call(consoleEl.querySelectorAll('.mz-tab'));
+    var chart = consoleEl.querySelector('[data-chart]');
+    var metricEls = Array.prototype.slice.call(consoleEl.querySelectorAll('.mz-metric'));
+    var termEl = consoleEl.querySelector('[data-term]');
+    var barCount = 16;
+    var bars = [];
+    for (var bi = 0; bi < barCount; bi++) { var bar = document.createElement('i'); chart.appendChild(bar); bars.push(bar); }
+    var currentView = 'operacao';
+    var termIndex = 0;
+
+    function formatMetric(m, value) {
+      if (m.k && value >= 1000) return (value / 1000).toFixed(1) + 'k' + m.s;
+      return value.toFixed(m.dec) + m.s;
+    }
+
+    function paintBars(jitter) {
+      var v = views[currentView];
+      for (var i = 0; i < bars.length; i++) {
+        var target = v.bars[i];
+        if (jitter) target = Math.max(.12, Math.min(1, target + (Math.random() * 2 - 1) * .1));
+        bars[i].style.height = (target * 100).toFixed(1) + '%';
+      }
+    }
+    function paintMetrics(jitter) {
+      var v = views[currentView];
+      metricEls.forEach(function (el, i) {
+        var m = v.metrics[i];
+        if (!m) return;
+        var value = m.base;
+        if (jitter && m.jit) value = Math.max(0, m.base + (Math.random() * 2 - 1) * m.jit);
+        el.querySelector('[data-ml]').textContent = m.l;
+        el.querySelector('[data-mv]').textContent = formatMetric(m, value);
+      });
+    }
+    function setView(view) {
+      currentView = view;
+      termIndex = 0;
+      consoleTabs.forEach(function (t) {
+        var active = t.getAttribute('data-view') === view;
+        t.classList.toggle('active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      paintBars(false);
+      paintMetrics(false);
+      if (termEl) termEl.textContent = views[view].term[0];
+    }
+    consoleTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () { setView(tab.getAttribute('data-view')); });
+    });
+    setView('operacao');
+
+    if (!reducedMotion) {
+      window.setInterval(function () {
+        if (document.hidden) return;
+        paintBars(true);
+        paintMetrics(true);
+      }, 1500);
+      window.setInterval(function () {
+        if (document.hidden || !termEl) return;
+        var lines = views[currentView].term;
+        termIndex = (termIndex + 1) % lines.length;
+        termEl.textContent = lines[termIndex];
+      }, 2600);
+    }
+  }
+
 })();
