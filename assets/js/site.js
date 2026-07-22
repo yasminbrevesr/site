@@ -664,9 +664,9 @@
     }
   }
 
-  /* Seção de integração da matriz — ícones orbitando o globo (contra-rotação). */
-  var orbitIcons = document.querySelector('[data-orbit-icons]');
-  if (orbitIcons) {
+  /* Seção de integração da matriz — faixas horizontais de ícones percorrendo. */
+  var marqueeIcons = document.querySelector('[data-marquee-icons]');
+  if (marqueeIcons) {
     var brands = [
       { n: 'WhatsApp', p: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-2.55-1.275-4.22-2.274-5.907-5.17-.173-.297-.018-.458.13-.606.446-.442.446-.768.669-1.208.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-1.714-.025-2.491 1.257-2.491 2.72 0 3.582 3.81 7.034 7.983 7.108 2.981 1.287 3.591 1.157 4.241 1.065.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785a9.87 9.87 0 01-5.034-1.378l-4.102 1.075 1.087-3.973a9.86 9.86 0 01-1.834-5.617C2.168 6.442 6.603 2.009 12.055 2.009c5.45 0 9.884 4.436 9.881 9.892-.003 5.45-4.437 9.884-9.886 9.884M20.463 3.488A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654A11.882 11.882 0 0012.05 23.794c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z' },
       { n: 'Slack', p: 'M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z' },
@@ -678,31 +678,21 @@
       { n: 'Google Drive', p: 'M12.01 1.485H8.267l3.774 6.667 3.76 6.574h7.502L15.768 1.485zM7.25 3.214L0 15.868l3.775 6.595 7.238-12.665zM9.509 15.868l-3.781 6.605h14.466L24 15.868z' }
     ];
 
-    function buildOrbitRing(items, ringClass, duration) {
-      var ring = document.createElement('div');
-      ring.className = 'mz-ring ' + ringClass;
-      ring.style.setProperty('--n', items.length);
-      ring.style.setProperty('--dur', duration + 's');
-      items.forEach(function (brand, i) {
-        var slot = document.createElement('span');
-        slot.className = 'mz-ic';
-        slot.style.setProperty('--i', i);
-        var spin = document.createElement('span');
-        spin.className = 'mz-ic-spin';
-        var badge = document.createElement('span');
-        badge.className = 'mz-ic-badge';
-        badge.style.setProperty('--i', i);
-        badge.title = brand.n;
-        badge.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + brand.p + '"/></svg>';
-        spin.appendChild(badge);
-        slot.appendChild(spin);
-        ring.appendChild(slot);
-      });
-      return ring;
+    function badgeHTML(brand) {
+      return '<span class="mz-mq-badge" title="' + brand.n + '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + brand.p + '"/></svg></span>';
+    }
+    function fillRow(row, items) {
+      if (!row) return;
+      var group = items.map(badgeHTML).join('');
+      var track = document.createElement('div');
+      track.className = 'mz-marquee-track';
+      track.innerHTML = group + group; /* duplicado para loop contínuo */
+      row.appendChild(track);
     }
 
-    orbitIcons.appendChild(buildOrbitRing(brands.slice(0, 3), 'mz-ring1', 56));
-    orbitIcons.appendChild(buildOrbitRing(brands.slice(3, 8), 'mz-ring2 mz-ring-rev', 78));
+    var rows = marqueeIcons.querySelectorAll('.mz-marquee-row');
+    fillRow(rows[0], brands);
+    fillRow(rows[1], brands.slice(4).concat(brands.slice(0, 4)));
   }
 
 })();
