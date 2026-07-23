@@ -2,6 +2,18 @@
    Reaproveita os tokens e componentes genéricos; estiliza apenas as
    seções próprias da matriz. */
 
+/* Títulos de seção mais compactos (matriz e jurídico) — menos altura. */
+.section-head h2,
+.method h2,
+.calculator h2,
+.commitments h2,
+.faq h2 {
+  font-size: clamp(26px, 2.9vw, 40px);
+  line-height: 1.12;
+  letter-spacing: -.03em;
+}
+.section-head { margin-bottom: 46px; }
+
 /* Hero — moldura técnica (HUD) com fundo ASCII animado */
 .mz-hero {
   position: relative;
