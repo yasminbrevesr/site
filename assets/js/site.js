@@ -683,10 +683,16 @@
     }
     function fillRow(row, items) {
       if (!row) return;
-      var group = items.map(badgeHTML).join('');
+      /* Repete os ícones para que um "grupo" seja mais largo que a tela;
+         assim a faixa preenche toda a largura e o loop (translateX -50%)
+         fica contínuo, sem sobrar espaço à esquerda. */
+      var repeats = Math.max(4, Math.ceil((window.innerWidth + 400) / (items.length * 72)));
+      var groupItems = [];
+      for (var r = 0; r < repeats; r++) groupItems = groupItems.concat(items);
+      var group = groupItems.map(badgeHTML).join('');
       var track = document.createElement('div');
       track.className = 'mz-marquee-track';
-      track.innerHTML = group + group; /* duplicado para loop contínuo */
+      track.innerHTML = group + group; /* dois grupos idênticos para loop contínuo */
       row.appendChild(track);
     }
 
