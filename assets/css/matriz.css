@@ -438,7 +438,7 @@
 }
 
 /* Seção de integração da matriz — globo + ícones orbitando. */
-.mz-integrations { position: relative; overflow: hidden; padding: 98px 0 46px; background: var(--ink); color: var(--paper); }
+.mz-integrations { position: relative; overflow: hidden; padding: 72px 0 30px; background: var(--ink); color: var(--paper); }
 .mz-integrations::before {
   content: ""; position: absolute; z-index: 0; left: 50%; top: 62%;
   width: min(760px, 96vw); height: min(760px, 96vw);
@@ -448,47 +448,49 @@
 }
 .mz-integrations .section-frame { position: relative; z-index: 2; }
 .mz-integrations .section-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; margin-bottom: 6px; }
-.mz-integrations .section-label { margin-bottom: 20px; }
-.mz-integrations h2 { color: var(--paper); }
+.mz-integrations .section-label { margin-bottom: 16px; }
+.mz-integrations h2 { color: var(--paper); font-size: clamp(28px, 3vw, 40px); }
 .mz-integrations h2 em { color: var(--amber-bright); font-family: var(--serif); font-weight: 400; }
-.mz-integrations .section-head > p { max-width: 480px; margin-top: 16px; padding: 0; border: 0; color: rgba(242,239,231,.6); }
+.mz-integrations .section-head > p { max-width: 440px; margin-top: 14px; padding: 0; border: 0; color: rgba(242,239,231,.55); font-size: 13px; }
 
 .mz-integrations .mz-btn-ghost {
-  margin-top: 30px;
+  margin-top: 26px;
   border-color: rgba(239,182,111,.42);
   color: var(--amber-bright);
 }
 .mz-integrations .mz-btn-ghost:hover { background: var(--amber-bright); color: var(--ink); border-color: var(--amber-bright); }
 
 /* Faixas horizontais de ícones percorrendo (estilo referência). */
-.mz-marquee { position: relative; z-index: 1; display: grid; gap: 22px; margin-top: 46px; }
+.mz-marquee { position: relative; z-index: 1; display: grid; gap: 16px; margin-top: 30px; }
 .mz-marquee-row {
   position: relative; overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-.mz-marquee-track { display: flex; width: max-content; gap: 22px; padding: 6px 0; will-change: transform; animation: mz-marquee-scroll 54s linear infinite; }
+.mz-marquee-track { display: flex; width: max-content; gap: 16px; padding: 5px 0; will-change: transform; animation: mz-marquee-scroll 66s linear infinite; }
 .mz-marquee-row.is-rev .mz-marquee-track { animation-direction: reverse; }
 .mz-marquee-row:hover .mz-marquee-track { animation-play-state: paused; }
 .mz-mq-badge {
   flex: 0 0 auto;
-  width: clamp(62px, 6.8vw, 76px); height: clamp(62px, 6.8vw, 76px);
+  width: clamp(42px, 4.6vw, 52px); height: clamp(42px, 4.6vw, 52px);
   display: grid; place-items: center;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.6);
-  background: radial-gradient(circle at 50% 30%, #ffffff, #ece7dd);
-  box-shadow: 0 14px 30px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.9);
-  color: #1a221d;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+  border: 1px solid rgba(255,255,255,.35);
+  background: radial-gradient(circle at 50% 32%, #efece5, #d8d3c8);
+  box-shadow: 0 6px 16px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.7);
+  color: #2a322c;
+  opacity: .82;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, opacity .3s ease;
 }
-.mz-mq-badge svg { width: 44%; height: 44%; fill: currentColor; }
-.mz-mq-badge:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,.5), 0 0 26px rgba(216,154,80,.35); }
+.mz-mq-badge svg { width: 42%; height: 42%; fill: currentColor; }
+.mz-mq-badge:hover { transform: translateY(-4px); opacity: 1; box-shadow: 0 12px 26px rgba(0,0,0,.4), 0 0 18px rgba(216,154,80,.22); }
 @keyframes mz-marquee-scroll { to { transform: translateX(-50%); } }
 
 @media (max-width: 620px) {
-  .mz-integrations { padding: 72px 0 40px; }
-  .mz-marquee { gap: 16px; margin-top: 36px; }
-  .mz-marquee-track { gap: 16px; }
+  .mz-integrations { padding: 56px 0 26px; }
+  .mz-marquee { gap: 12px; margin-top: 26px; }
+  .mz-marquee-track { gap: 12px; }
+  .mz-mq-badge { width: 44px; height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mz-marquee-track { animation: none !important; }
