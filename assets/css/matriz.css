@@ -640,37 +640,54 @@
 @media (max-width: 860px) { .method-tri { grid-template-columns: 1fr; gap: 14px; } }
 
 /* Galeria com efeito hover-reveal — card em destaque, os demais recuam.
-   Porte estático do componente React HoverRevealCards (app/src/components/ui/cards.tsx). */
-.gallery { padding: 66px 0; }
+   Cards on-brand (sem fotos): ícone + rótulo. Efeito herdado do componente
+   React HoverRevealCards (app/src/components/ui/cards.tsx). */
+.gallery { padding: 76px 0; }
 .gallery-grid {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px;
 }
 .gallery-card {
-  position: relative; display: block; height: 340px; overflow: hidden;
-  border-radius: 20px; background-size: cover; background-position: center;
-  box-shadow: 0 18px 40px rgba(17, 23, 20, .18);
-  transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease, filter .5s ease;
-  text-decoration: none;
+  position: relative; display: flex; flex-direction: column; justify-content: space-between;
+  height: 268px; padding: 26px; overflow: hidden; border-radius: 22px;
+  background: linear-gradient(158deg, #1c2621, #0d1310);
+  border: 1px solid rgba(255,255,255,.06); color: var(--paper);
+  box-shadow: 0 16px 36px rgba(17,23,20,.16);
+  transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease, filter .5s ease, box-shadow .5s ease, border-color .5s ease;
+}
+.gallery-card::before {
+  content: ""; position: absolute; right: -28%; top: -34%; width: 78%; height: 78%; pointer-events: none;
+  background: radial-gradient(circle, rgba(216,154,80,.16), transparent 66%);
 }
 /* ao passar o mouse no grid, todos os cards recuam levemente */
-.gallery-grid:hover .gallery-card { transform: scale(.97); opacity: .6; filter: blur(2px); }
+.gallery-grid:hover .gallery-card { transform: scale(.98); opacity: .5; filter: blur(1.5px); }
 /* o card sob o mouse/foco volta ao destaque (precedência sobre a regra acima) */
 .gallery-card:hover, .gallery-card:focus-visible {
-  transform: scale(1.05) !important; opacity: 1 !important; filter: none !important;
+  transform: translateY(-6px) !important; opacity: 1 !important; filter: none !important;
+  border-color: rgba(239,182,111,.5); box-shadow: 0 22px 48px rgba(17,23,20,.3), 0 0 26px rgba(216,154,80,.15);
 }
-.gallery-card:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--paper, #f3eee3), 0 0 0 4px var(--amber-dark); }
-.gallery-card::before {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(10,14,12,.86), rgba(10,14,12,.4) 45%, transparent);
+.gallery-card:focus-visible { outline: none; }
+.gallery-ic {
+  position: relative; width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center;
+  background: rgba(239,182,111,.10); border: 1px solid rgba(239,182,111,.30); color: var(--amber-bright);
 }
-.gallery-card-body { position: absolute; left: 0; bottom: 0; padding: 22px 22px 24px; color: #fff; }
+.gallery-ic svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.gallery-card-body { position: relative; }
 .gallery-card-body small {
-  display: block; font: 600 10px/1 var(--mono, monospace); letter-spacing: .22em;
-  text-transform: uppercase; opacity: .82;
+  display: block; font: 600 10px/1 var(--mono, monospace); letter-spacing: .2em;
+  text-transform: uppercase; color: var(--amber-bright); opacity: .9;
 }
-.gallery-card-body h3 { margin-top: 7px; font-size: 21px; font-weight: 600; letter-spacing: -.01em; }
+.gallery-card-body h3 { margin-top: 9px; font-size: 20px; font-weight: 560; letter-spacing: -.01em; color: var(--paper); }
 @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-card { height: 260px; } }
+@media (max-width: 560px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-card { height: auto; min-height: 190px; } }
+
+/* Cabeçalhos: rótulo acima do título, alinhados à esquerda (em vez do rótulo
+   órfão na coluna lateral). Rítmo editorial consistente com as demais seções. */
+.mz-products .section-head.compact,
+.gallery .section-head.compact,
+.mz-units .section-head.compact { display: block; }
+.mz-products .section-head.compact .section-label,
+.gallery .section-head.compact .section-label,
+.mz-units .section-head.compact .section-label { margin-bottom: 16px; }
 
 /* Catálogo de projetos — cards claymorphism com acompanhamento de progresso. */
 .proj { padding: 58px 0; background: linear-gradient(180deg, #efe9dd, #f3eee3); }
