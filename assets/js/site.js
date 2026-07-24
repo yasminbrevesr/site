@@ -750,7 +750,7 @@
       projTimer = window.setInterval(function () {
         if (document.hidden) return;
         swapTo(projCurrent + 1);
-      }, 5200);
+      }, 4200);
     }
 
     projTabs.forEach(function (tab, i) {
