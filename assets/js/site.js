@@ -701,4 +701,68 @@
     fillRow(rows[1], brands.slice(4).concat(brands.slice(0, 4)));
   }
 
+  /* Carrossel de projetos (jurídico) — troca ícone + texto ao navegar. */
+  var projCarousel = document.querySelector('[data-proj-carousel]');
+  if (projCarousel) {
+    var projTabs = Array.prototype.slice.call(projCarousel.querySelectorAll('.proj-tab'));
+    var projIconBox = projCarousel.querySelector('[data-proj-icon]');
+    var projTitle = projCarousel.querySelector('[data-proj-title]');
+    var projText = projCarousel.querySelector('[data-proj-text]');
+    var projPct = projCarousel.querySelector('[data-proj-pct]');
+    var projFill = projCarousel.querySelector('[data-proj-fill]');
+    var projPrev = projCarousel.querySelector('[data-proj-prev]');
+    var projNext = projCarousel.querySelector('[data-proj-next]');
+    var projCurrent = -1;
+    var projTimer = null;
+
+    function renderProj(index) {
+      var tab = projTabs[index];
+      if (!tab) return;
+      projTabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      var icon = tab.querySelector('svg');
+      if (projIconBox && icon) projIconBox.innerHTML = icon.outerHTML;
+      projTitle.textContent = tab.getAttribute('data-proj-t') || '';
+      projText.textContent = tab.getAttribute('data-proj-d') || '';
+      var pct = tab.getAttribute('data-proj-p') || '0';
+      projPct.textContent = pct + '%';
+      /* reinicia a barra para reanimar o preenchimento a cada troca */
+      projFill.style.width = '0%';
+      void projFill.offsetWidth;
+      projFill.style.width = pct + '%';
+      projCurrent = index;
+    }
+
+    function swapTo(index) {
+      index = (index + projTabs.length) % projTabs.length;
+      if (index === projCurrent) return;
+      if (reducedMotion) { renderProj(index); return; }
+      projCarousel.classList.add('is-swapping');
+      window.setTimeout(function () {
+        renderProj(index);
+        projCarousel.classList.remove('is-swapping');
+      }, 200);
+    }
+
+    function stopProj() { if (projTimer) { window.clearInterval(projTimer); projTimer = null; } }
+    function startProj() {
+      if (reducedMotion) return;
+      stopProj();
+      projTimer = window.setInterval(function () {
+        if (document.hidden) return;
+        swapTo(projCurrent + 1);
+      }, 5200);
+    }
+
+    projTabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { swapTo(i); startProj(); });
+    });
+    if (projPrev) projPrev.addEventListener('click', function () { swapTo(projCurrent - 1); startProj(); });
+    if (projNext) projNext.addEventListener('click', function () { swapTo(projCurrent + 1); startProj(); });
+    projCarousel.addEventListener('pointerenter', stopProj);
+    projCarousel.addEventListener('pointerleave', startProj);
+
+    renderProj(0);
+    startProj();
+  }
+
 })();
