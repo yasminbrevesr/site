@@ -622,35 +622,40 @@
 .clay-card.in .proj-bar i { width: var(--p, 0%); }
 @media (max-width: 900px) { .proj { padding: 66px 0; } .proj-grid { grid-template-columns: 1fr; gap: 20px; } }
 
-/* Carrossel de projetos — ícone + explicação, passa sozinho */
+/* Carrossel de projetos — cards empilhados, um visível por vez */
 .proj-carousel { max-width: 760px; margin: 0 auto; }
-.proj-stage {
+/* todos os cards ocupam a mesma célula do grid: o container assume a altura
+   do card mais alto e a troca não desloca nada na página. */
+.proj-deck { display: grid; }
+.proj-card {
+  grid-area: 1 / 1;
   display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center;
-  min-height: 172px; padding: 28px 32px; border-radius: 28px; background: #f4efe6;
+  padding: 28px 32px; border-radius: 28px; background: #f4efe6;
   box-shadow:
     13px 13px 26px rgba(120,96,60,.17), -10px -10px 22px rgba(255,255,255,.92),
     inset 2px 2px 6px rgba(255,255,255,.7), inset -3px -3px 9px rgba(120,96,60,.07);
+  opacity: 0; transform: translateY(10px); pointer-events: none;
+  transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
 }
-.proj-stage-icon {
+.proj-card.is-active { opacity: 1; transform: none; pointer-events: auto; }
+.proj-card-icon {
   width: 84px; height: 84px; border-radius: 24px; display: grid; place-items: center;
   background: #f1ebe0; color: var(--amber-dark);
   box-shadow:
     6px 6px 14px rgba(120,96,60,.18), -6px -6px 14px rgba(255,255,255,.92),
     inset 1px 1px 3px rgba(255,255,255,.85), inset -2px -2px 6px rgba(120,96,60,.1);
 }
-.proj-stage-icon svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.proj-stage-body { min-width: 0; }
-.proj-stage-body .proj-status { display: inline-block; margin-bottom: 11px; }
-.proj-stage-body h3 { font-size: 18px; font-weight: 560; letter-spacing: -.015em; color: var(--ink); }
-.proj-stage-body > p { margin-top: 9px; color: var(--ink-muted); font-size: 13px; line-height: 1.6; }
-.proj-stage-body .proj-progress { margin-top: 18px; }
+.proj-card-icon svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.proj-card-body { min-width: 0; }
+.proj-card-body .proj-status { display: inline-block; margin-bottom: 11px; }
+.proj-card-body h3 { font-size: 18px; font-weight: 560; letter-spacing: -.015em; color: var(--ink); }
+.proj-card-body > p { margin-top: 9px; color: var(--ink-muted); font-size: 13px; line-height: 1.6; }
+.proj-card-body .proj-progress { margin-top: 18px; }
+/* a barra reanima o preenchimento quando o card fica ativo */
+.proj-card .proj-bar i { width: 0; }
+.proj-card.is-active .proj-bar i { width: var(--p, 0%); }
 
-/* transição de troca */
-.proj-stage-icon, .proj-stage-body { transition: opacity .32s ease, transform .32s ease; }
-.proj-carousel.is-swapping .proj-stage-icon { opacity: 0; transform: translateY(8px) scale(.95); }
-.proj-carousel.is-swapping .proj-stage-body { opacity: 0; transform: translateX(12px); }
-
-/* indicadores (avança sozinho; servem de referência do slide atual) */
+/* indicadores de navegação */
 .proj-nav { display: flex; align-items: center; justify-content: center; margin-top: 22px; }
 .proj-tabs { display: flex; gap: 12px; }
 .proj-tab {
@@ -666,10 +671,10 @@
   box-shadow: inset 3px 3px 7px rgba(120,96,60,.2), inset -3px -3px 7px rgba(255,255,255,.9);
 }
 @media (max-width: 720px) {
-  .proj-stage { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 18px; padding: 26px 22px; }
-  .proj-stage-icon { width: 76px; height: 76px; border-radius: 22px; }
-  .proj-stage-icon svg { width: 36px; height: 36px; }
-  .proj-stage-body .proj-progress { text-align: left; }
+  .proj-card { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 18px; padding: 26px 22px; }
+  .proj-card-icon { width: 76px; height: 76px; border-radius: 22px; }
+  .proj-card-icon svg { width: 36px; height: 36px; }
+  .proj-card-body .proj-progress { text-align: left; }
 }
 
 /* Movimento reduzido */
@@ -679,5 +684,7 @@
   .svc-card { transition: none !important; transform: none !important; }
   .clay-card { transition: none !important; transform: none !important; }
   .proj-bar i { transition: none !important; }
-  .proj-stage-icon, .proj-stage-body, .proj-arrow, .proj-tab { transition: none !important; transform: none !important; }
+  .proj-card, .proj-tab { transition: none !important; }
+  .proj-card { transform: none !important; }
+  .proj-tab { transform: none !important; }
 }
