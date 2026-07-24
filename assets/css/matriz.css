@@ -617,10 +617,11 @@
   background: var(--paper-bright);
   transition: border-color .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22,1,.36,1);
 }
-.svc-card > span { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-bottom: 20px; border: 1px solid var(--line-dark); border-radius: 50%; color: var(--amber-dark); font: 8px/1 var(--mono); }
+.svc-card > span:first-child { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-bottom: 20px; border: 1px solid var(--line-dark); border-radius: 50%; color: var(--amber-dark); font: 8px/1 var(--mono); }
 .svc-card h3 { font-size: 19px; font-weight: 560; letter-spacing: -.015em; }
 .svc-card p { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
-.svc-card .svc-tag { align-self: flex-start; margin-top: 16px; padding: 5px 11px; border-radius: 999px; background: rgba(216,154,80,.14); color: var(--amber-dark); font: 7px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.svc-card .svc-tag { align-self: flex-start; width: auto; height: auto; display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 6px 12px; border: 0; border-radius: 999px; background: rgba(216,154,80,.14); color: var(--amber-dark); font: 8px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.svc-card .svc-tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--amber-dark); }
 .svc-card:hover { border-color: rgba(143,91,39,.34); box-shadow: 0 18px 40px rgba(17,23,20,.08); transform: translateY(-4px); }
 @media (max-width: 760px) { .svc-grid { grid-template-columns: 1fr; } }
 
@@ -684,10 +685,26 @@
    órfão na coluna lateral). Rítmo editorial consistente com as demais seções. */
 .mz-products .section-head.compact,
 .gallery .section-head.compact,
-.mz-units .section-head.compact { display: block; }
+.mz-units .section-head.compact,
+.practice .section-head,
+.proj .section-head,
+.commitments .section-head.compact { display: block; }
 .mz-products .section-head.compact .section-label,
 .gallery .section-head.compact .section-label,
-.mz-units .section-head.compact .section-label { margin-bottom: 16px; }
+.mz-units .section-head.compact .section-label,
+.practice .section-head .section-label,
+.proj .section-head .section-label,
+.commitments .section-head.compact .section-label { margin-bottom: 16px; }
+/* limita a largura do título nas seções de coluna única (jurídico) */
+.practice .section-head h2,
+.proj .section-head h2 { max-width: 720px; }
+
+/* Título de contato (jurídico): o fundo é âmbar, então o efeito de destaque
+   âmbar original ficava invisível — a palavra-chave "uma boa conversa."
+   sumia e o título parecia cortado em "...começa com". Aqui a palavra-chave
+   passa a usar cor de contraste (tinta escura) e o overlay âmbar é desligado. */
+.contact-commit-1adc h2 em { color: var(--ink); -webkit-text-fill-color: var(--ink); }
+.contact-commit-1adc h2 em::after { display: none; }
 
 /* Catálogo de projetos — cards claymorphism com acompanhamento de progresso. */
 .proj { padding: 58px 0; background: linear-gradient(180deg, #efe9dd, #f3eee3); }
