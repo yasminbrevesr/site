@@ -568,6 +568,39 @@
 .method-block p { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
 @media (max-width: 860px) { .method-tri { grid-template-columns: 1fr; gap: 14px; } }
 
+/* Galeria com efeito hover-reveal — card em destaque, os demais recuam.
+   Porte estático do componente React HoverRevealCards (app/src/components/ui/cards.tsx). */
+.gallery { padding: 66px 0; }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;
+}
+.gallery-card {
+  position: relative; display: block; height: 340px; overflow: hidden;
+  border-radius: 20px; background-size: cover; background-position: center;
+  box-shadow: 0 18px 40px rgba(17, 23, 20, .18);
+  transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease, filter .5s ease;
+  text-decoration: none;
+}
+/* ao passar o mouse no grid, todos os cards recuam levemente */
+.gallery-grid:hover .gallery-card { transform: scale(.97); opacity: .6; filter: blur(2px); }
+/* o card sob o mouse/foco volta ao destaque (precedência sobre a regra acima) */
+.gallery-card:hover, .gallery-card:focus-visible {
+  transform: scale(1.05) !important; opacity: 1 !important; filter: none !important;
+}
+.gallery-card:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--paper, #f3eee3), 0 0 0 4px var(--amber-dark); }
+.gallery-card::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,14,12,.86), rgba(10,14,12,.4) 45%, transparent);
+}
+.gallery-card-body { position: absolute; left: 0; bottom: 0; padding: 22px 22px 24px; color: #fff; }
+.gallery-card-body small {
+  display: block; font: 600 10px/1 var(--mono, monospace); letter-spacing: .22em;
+  text-transform: uppercase; opacity: .82;
+}
+.gallery-card-body h3 { margin-top: 7px; font-size: 21px; font-weight: 600; letter-spacing: -.01em; }
+@media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-card { height: 260px; } }
+
 /* Catálogo de projetos — cards claymorphism com acompanhamento de progresso. */
 .proj { padding: 58px 0; background: linear-gradient(180deg, #efe9dd, #f3eee3); }
 .proj .section-head h2 em { color: var(--amber-dark); }
@@ -687,4 +720,7 @@
   .proj-card, .proj-tab { transition: none !important; }
   .proj-card { transform: none !important; }
   .proj-tab { transform: none !important; }
+  .gallery-card { transition: none !important; }
+  .gallery-grid:hover .gallery-card { transform: none; opacity: 1; filter: none; }
+  .gallery-card:hover, .gallery-card:focus-visible { transform: none !important; }
 }
