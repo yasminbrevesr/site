@@ -627,6 +627,9 @@
 
 /* Método em 3 blocos (sem scroll para compreender). */
 .method-3 .method-intro { position: static; }
+/* Cabeçalho do Método centralizado (jurídico). */
+.method-3 .method-intro-center { text-align: center; max-width: 720px; margin-left: auto; margin-right: auto; }
+.method-3 .method-intro-center .section-label { justify-content: center; }
 .method-tri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
 .method-block {
   display: flex; flex-direction: column;
