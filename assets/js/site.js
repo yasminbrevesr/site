@@ -467,19 +467,26 @@
     });
   }
 
-  /* Fundo ASCII animado do hero da matriz — canvas próprio, sem dependências. */
-  var asciiCanvas = document.querySelector('[data-ascii]');
-  if (asciiCanvas && !reducedMotion && window.matchMedia('(min-width: 1024px)').matches) {
+  /* Fundo ASCII animado — usado no hero da matriz e em toda seção de fundo
+     escuro do jurídico. Cada canvas [data-ascii] roda em sua própria instância,
+     pausando quando sai da tela (economia de CPU com vários canvases). */
+  var asciiCanvases = Array.prototype.slice.call(document.querySelectorAll('[data-ascii]'));
+  if (asciiCanvases.length && !reducedMotion && window.matchMedia('(min-width: 1024px)').matches) {
+    asciiCanvases.forEach(initAscii);
+  }
+
+  function initAscii(asciiCanvas) {
     var asciiCtx = asciiCanvas.getContext('2d');
     var glyphs = '01<>/[]{}=+*·:;#'.split('');
     var host = asciiCanvas.parentNode;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var cellSize = 16;
     var cols = 0, rows = 0, grid = [];
-    var asciiRaf = null, startTime = 0, lastDraw = 0;
+    var asciiRaf = null, startTime = 0, lastDraw = 0, onScreen = true;
 
     function asciiBuild() {
       var w = host.offsetWidth, h = host.offsetHeight;
+      if (!w || !h) return;
       asciiCanvas.width = Math.round(w * dpr);
       asciiCanvas.height = Math.round(h * dpr);
       asciiCanvas.style.width = w + 'px';
@@ -527,27 +534,37 @@
       }
     }
 
+    function asciiStart() {
+      if (asciiRaf || !onScreen || document.hidden) return;
+      startTime = 0; lastDraw = 0;
+      asciiRaf = window.requestAnimationFrame(asciiFrame);
+    }
+    function asciiStop() {
+      if (asciiRaf) { window.cancelAnimationFrame(asciiRaf); asciiRaf = null; }
+    }
+
     asciiBuild();
-    asciiRaf = window.requestAnimationFrame(asciiFrame);
+    asciiStart();
 
     var asciiResize;
     window.addEventListener('resize', function () {
       window.clearTimeout(asciiResize);
       asciiResize = window.setTimeout(function () {
-        window.cancelAnimationFrame(asciiRaf);
-        startTime = 0;
+        asciiStop();
         asciiBuild();
-        asciiRaf = window.requestAnimationFrame(asciiFrame);
+        asciiStart();
       }, 200);
     });
     document.addEventListener('visibilitychange', function () {
-      if (document.hidden) {
-        window.cancelAnimationFrame(asciiRaf);
-      } else {
-        startTime = 0; lastDraw = 0;
-        asciiRaf = window.requestAnimationFrame(asciiFrame);
-      }
+      if (document.hidden) asciiStop(); else asciiStart();
     });
+    /* pausa quando a seção sai da tela */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        onScreen = entries[0].isIntersecting;
+        if (onScreen) asciiStart(); else asciiStop();
+      }, { threshold: 0 }).observe(host);
+    }
   }
 
   /* Console interativo do hero da matriz — abas, gráfico, métricas ao vivo. */

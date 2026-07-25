@@ -27,7 +27,16 @@
   background: radial-gradient(circle at 70% 30%, #121815, var(--ink) 60%);
   color: var(--paper);
 }
-.mz-ascii { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; display: block; opacity: .55; }
+.mz-ascii { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; display: block; opacity: .55; pointer-events: none; }
+
+/* Fundo ASCII replicado nas seções de fundo escuro do jurídico. */
+.hero > .mz-ascii { z-index: -1; opacity: .42; }
+.calculator { position: relative; isolation: isolate; }
+.calculator > .mz-ascii { z-index: 0; opacity: .5; }
+.calculator > .section-frame { position: relative; z-index: 1; }
+.site-footer { position: relative; isolation: isolate; }
+.site-footer > .mz-ascii { z-index: 0; opacity: .3; }
+.site-footer > .section-frame { position: relative; z-index: 1; }
 .mz-hero-stars { position: absolute; inset: 0; z-index: 0; display: none; }
 .mz-hero .hero-atmosphere { z-index: 0; opacity: .8; }
 .mz-hero::before {
@@ -699,8 +708,7 @@
 .proj .section-head .section-label,
 .commitments .section-head.compact .section-label { margin-bottom: 16px; }
 /* limita a largura do título nas seções de coluna única (jurídico) */
-.practice .section-head h2,
-.proj .section-head h2 { max-width: 720px; }
+.practice .section-head h2 { max-width: 900px; }
 
 /* Título de contato (jurídico): o fundo é âmbar, então o efeito de destaque
    âmbar original ficava invisível — a palavra-chave "uma boa conversa."
