@@ -20,6 +20,19 @@ import * as THREE from './vendor/three.module.min.js';
   /* ---------- scroll: progresso, seção ativa, revelação ---------- */
   var progress = 0, targetProgress = 0;
 
+  /* cor/intensidade do orb por capítulo (âmbar quente → tom mais frio no Jurídico) */
+  var sectionStyle = {
+    inicio:     { a: '#e0a865', i: 1.00 },
+    solucoes:   { a: '#efc07a', i: 1.06 },
+    produtos:   { a: '#5cb6a8', i: 1.05 },
+    tecnologia: { a: '#e0a865', i: 1.05 },
+    juridico:   { a: '#8b7fd0', i: 1.00 },
+    contato:    { a: '#efb66f', i: 1.14 }
+  };
+  var accentCur = new THREE.Color('#8b7fd0');
+  var accentTarget = new THREE.Color('#8b7fd0');
+  var intensityCur = 1.0, intensityTarget = 1.0;
+
   function computeProgress() {
     var h = document.documentElement.scrollHeight - window.innerHeight;
     targetProgress = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
@@ -36,6 +49,8 @@ import * as THREE from './vendor/three.module.min.js';
       if (d < bestD) { bestD = d; activeId = s.id; }
     });
     navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + activeId); });
+    var st = sectionStyle[activeId];
+    if (st) { accentTarget.set(st.a); intensityTarget = st.i; }
   }
   window.addEventListener('scroll', function () { computeProgress(); markScrolled(); updateActive(); }, { passive: true });
   computeProgress(); updateActive();
@@ -111,7 +126,7 @@ import * as THREE from './vendor/three.module.min.js';
   var frag = [
     'precision highp float;',
     'varying vec3 vNormal; varying vec3 vPos; varying float vDisp;',
-    'uniform float uTime; uniform vec3 uAmber; uniform vec3 uAmberDeep; uniform vec3 uViolet;',
+    'uniform float uTime; uniform vec3 uAmber; uniform vec3 uAmberDeep; uniform vec3 uAccent; uniform float uIntensity;',
     'void main(){',
     '  vec3 N=normalize(vNormal); vec3 V=vec3(0.0,0.0,1.0);',
     '  float ndv=max(dot(N,V),0.0); float fres=pow(1.0-ndv,2.4);',
@@ -119,9 +134,9 @@ import * as THREE from './vendor/three.module.min.js';
     '  vec3 base=mix(uAmberDeep,uAmber,g);',
     '  vec3 L=normalize(vec3(0.6,0.85,0.7)); float diff=max(dot(N,L),0.0);',
     '  base*=(0.32+0.8*diff);',
-    '  vec3 rim=mix(uAmber,uViolet,0.55)*fres*1.25;',
-    '  vec3 glow=uAmber*abs(vDisp)*0.7;',
-    '  vec3 col=base+rim+glow;',
+    '  vec3 rim=mix(uAmber,uAccent,0.6)*fres*1.3;',
+    '  vec3 glow=mix(uAmber,uAccent,0.3)*abs(vDisp)*0.7;',
+    '  vec3 col=(base+rim+glow)*uIntensity;',
     '  col+=sin(vPos.x*28.0+uTime)*sin(vPos.y*26.0-uTime)*0.012;',
     '  gl_FragColor=vec4(col,1.0);',
     '}'
@@ -158,7 +173,8 @@ import * as THREE from './vendor/three.module.min.js';
   var mat = new THREE.ShaderMaterial({
     uniforms: {
       uTime: { value: 0 }, uScroll: { value: 0 },
-      uAmber: { value: uAmber }, uAmberDeep: { value: uAmberDeep }, uViolet: { value: uViolet }
+      uAmber: { value: uAmber }, uAmberDeep: { value: uAmberDeep },
+      uAccent: { value: accentCur }, uIntensity: { value: intensityCur }
     },
     vertexShader: vert, fragmentShader: frag
   });
@@ -166,7 +182,7 @@ import * as THREE from './vendor/three.module.min.js';
   scene.add(orb);
 
   var haloMat = new THREE.ShaderMaterial({
-    uniforms: { uColor: { value: uAmber } },
+    uniforms: { uColor: { value: uAmber.clone() } },
     vertexShader: haloVert, fragmentShader: haloFrag,
     transparent: true, blending: THREE.AdditiveBlending, side: THREE.BackSide, depthWrite: false
   });
@@ -194,6 +210,10 @@ import * as THREE from './vendor/three.module.min.js';
 
     mat.uniforms.uTime.value = t;
     mat.uniforms.uScroll.value = progress;
+    accentCur.lerp(accentTarget, 0.05);
+    intensityCur += (intensityTarget - intensityCur) * 0.05;
+    mat.uniforms.uIntensity.value = intensityCur;
+    haloMat.uniforms.uColor.value.copy(accentCur);
 
     // rotação: giro leve constante + guiada pelo scroll (com suavização)
     var tgtY = progress * Math.PI * 4.0 + t * 0.05;

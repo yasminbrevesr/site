@@ -79,8 +79,28 @@ html { scroll-behavior: smooth; background: #07090b; }
 .eth-subheadline { margin: 10px 0 0; font-size: clamp(19px, 2.6vw, 34px); font-weight: 400; font-style: italic; font-family: Georgia, "Times New Roman", serif; color: var(--amber); text-shadow: 0 2px 28px rgba(7,9,11,.7); }
 .eth-body { margin: 26px auto 0; max-width: 540px; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.65; color: rgba(244,241,234,.78); text-shadow: 0 2px 22px rgba(7,9,11,.75); }
 .eth-eyebrow { text-shadow: 0 2px 20px rgba(7,9,11,.7); }
+/* Produtos reais aparecendo um a um (seção Produtos) */
+.eth-products { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin: 26px auto 4px; max-width: 640px; }
+.eth-product {
+  padding: 8px 15px; border-radius: 999px;
+  border: 1px solid rgba(239,182,111,.32); background: rgba(239,182,111,.07); color: var(--paper);
+  font: 500 12px/1 "Plus Jakarta Sans", sans-serif;
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease;
+}
+.eth-product:hover { border-color: rgba(239,182,111,.6); background: rgba(239,182,111,.14); }
+.eth-section.in .eth-product { opacity: 1; transform: none; }
+.eth-section.in .eth-product:nth-child(1) { transition-delay: .42s; }
+.eth-section.in .eth-product:nth-child(2) { transition-delay: .52s; }
+.eth-section.in .eth-product:nth-child(3) { transition-delay: .62s; }
+.eth-section.in .eth-product:nth-child(4) { transition-delay: .72s; }
+.eth-section.in .eth-product:nth-child(5) { transition-delay: .82s; }
+.eth-section.in .eth-product:nth-child(6) { transition-delay: .92s; }
+.eth-section.in .eth-product:nth-child(7) { transition-delay: 1.02s; }
+.eth-section.in .eth-product:nth-child(8) { transition-delay: 1.12s; }
+
 .eth-cta {
-  display: inline-flex; align-items: center; gap: 10px; margin-top: 32px;
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 26px;
   padding: 15px 28px; border-radius: 999px; background: var(--amber); color: var(--ink);
   font: 600 14px/1 "Plus Jakarta Sans", sans-serif; text-decoration: none;
   box-shadow: 0 12px 40px rgba(216,154,80,.35); transition: transform .3s ease, box-shadow .3s ease;
@@ -126,6 +146,6 @@ html { scroll-behavior: smooth; background: #07090b; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .eth-eyebrow, .eth-headline, .eth-subheadline, .eth-body, .eth-actions { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .eth-eyebrow, .eth-headline, .eth-subheadline, .eth-body, .eth-actions, .eth-product { opacity: 1 !important; transform: none !important; transition: none !important; }
   .eth-loading span, .eth-scrollcue i { animation: none !important; }
 }
