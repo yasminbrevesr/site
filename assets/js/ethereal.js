@@ -29,13 +29,13 @@ import * as THREE from './vendor/three.module.min.js';
     else root.classList.remove('scrolled');
   }
   function updateActive() {
-    var mid = window.innerHeight / 2, best = 0, bestD = Infinity;
-    sections.forEach(function (s, i) {
+    var mid = window.innerHeight / 2, activeId = '', bestD = Infinity;
+    sections.forEach(function (s) {
       var r = s.getBoundingClientRect();
       var d = Math.abs((r.top + r.bottom) / 2 - mid);
-      if (d < bestD) { bestD = d; best = i; }
+      if (d < bestD) { bestD = d; activeId = s.id; }
     });
-    navLinks.forEach(function (a, i) { a.classList.toggle('active', i === best); });
+    navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + activeId); });
   }
   window.addEventListener('scroll', function () { computeProgress(); markScrolled(); updateActive(); }, { passive: true });
   computeProgress(); updateActive();
