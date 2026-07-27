@@ -398,92 +398,6 @@
   .hero .scroll-cue { left: clamp(32px, 6vw, 84px); }
 }
 
-/* Seção de integração da matriz — globo + ícones orbitando. */
-/* Ecossistema — hub central da BREVES conectado às ferramentas (hub-and-spoke). */
-.eco { position: relative; overflow: hidden; padding: 92px 0; background: var(--ink); color: var(--paper); }
-.eco::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(560px circle at 78% 50%, rgba(216,154,80,.12), transparent 60%);
-}
-.eco-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-
-.eco-copy .section-label { margin-bottom: 18px; }
-.eco-copy h2 { color: var(--paper); font-size: clamp(28px, 3.1vw, 44px); line-height: 1.08; letter-spacing: -.03em; }
-.eco-copy h2 em { color: var(--amber-bright); font-family: var(--serif); font-weight: 400; }
-.eco-copy > p { margin-top: 16px; max-width: 460px; color: rgba(242,239,231,.6); font-size: 14px; line-height: 1.65; }
-
-.eco-points { margin-top: 28px; display: grid; gap: 15px; }
-.eco-points li { display: flex; gap: 14px; align-items: flex-start; }
-.eco-point-ic {
-  flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
-  background: rgba(255,255,255,.05); border: 1px solid rgba(239,182,111,.28); color: var(--amber-bright);
-}
-.eco-point-ic svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.eco-points b { display: block; color: var(--paper); font-size: 14px; font-weight: 560; letter-spacing: -.01em; }
-.eco-points small { display: block; margin-top: 3px; color: rgba(242,239,231,.5); font-size: 12.5px; line-height: 1.5; }
-.eco-cta { margin-top: 32px; }
-
-/* Grade de integrações (bento) — cada ferramenta em seu próprio card. */
-.eco-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-  width: 100%; max-width: 468px; margin: 0 auto;
-}
-.eco-tile {
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-  aspect-ratio: 1; padding: 14px 8px; border-radius: 16px;
-  background: linear-gradient(160deg, rgba(242,239,231,.06), rgba(242,239,231,.02));
-  border: 1px solid rgba(242,239,231,.10);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
-  transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s ease, box-shadow .35s ease, background .35s ease;
-}
-/* Brilho da cor da marca que surge no hover. */
-.eco-tile::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: radial-gradient(circle at 50% 22%, color-mix(in srgb, var(--brand) 26%, transparent), transparent 68%);
-  opacity: 0; transition: opacity .35s ease;
-}
-.eco-tile-ic {
-  position: relative; z-index: 1;
-  width: 40px; height: 40px; display: grid; place-items: center;
-  color: var(--brand);
-  transition: transform .35s cubic-bezier(.22,1,.36,1), filter .35s ease;
-}
-.eco-tile-ic svg { width: 100%; height: 100%; fill: currentColor; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
-.eco-tile-name {
-  position: relative; z-index: 1;
-  color: rgba(242,239,231,.62); font: 9px/1 var(--mono); letter-spacing: .09em; text-transform: uppercase;
-  transition: color .35s ease;
-}
-.eco-tile:hover {
-  transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--brand) 55%, transparent);
-  background: linear-gradient(160deg, rgba(242,239,231,.09), rgba(242,239,231,.03));
-  box-shadow: 0 16px 34px rgba(0,0,0,.42), 0 0 24px color-mix(in srgb, var(--brand) 22%, transparent);
-}
-.eco-tile:hover::before { opacity: 1; }
-.eco-tile:hover .eco-tile-ic { transform: scale(1.12); }
-.eco-tile:hover .eco-tile-name { color: var(--paper); }
-/* Entrada escalonada quando a seção aparece (a classe .in é aplicada via JS). */
-.reveal.eco-grid .eco-tile { opacity: 0; transform: translateY(14px); }
-.reveal.in.eco-grid .eco-tile { opacity: 1; transform: translateY(0); transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1); }
-.reveal.in.eco-grid .eco-tile:nth-child(2) { transition-delay: .05s; }
-.reveal.in.eco-grid .eco-tile:nth-child(3) { transition-delay: .1s; }
-.reveal.in.eco-grid .eco-tile:nth-child(4) { transition-delay: .15s; }
-.reveal.in.eco-grid .eco-tile:nth-child(5) { transition-delay: .2s; }
-.reveal.in.eco-grid .eco-tile:nth-child(6) { transition-delay: .25s; }
-.reveal.in.eco-grid .eco-tile:nth-child(7) { transition-delay: .3s; }
-.reveal.in.eco-grid .eco-tile:nth-child(8) { transition-delay: .35s; }
-
-@media (max-width: 900px) {
-  .eco { padding: 68px 0; }
-  .eco-inner { grid-template-columns: 1fr; gap: 44px; }
-  .eco-grid { max-width: 400px; order: -1; }
-}
-@media (max-width: 460px) {
-  .eco-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-}
-
 .mz-integrations { position: relative; overflow: hidden; padding: 72px 0 30px; background: var(--ink); color: var(--paper); }
 .mz-integrations::before {
   content: ""; position: absolute; z-index: 0; left: 50%; top: 62%;
@@ -541,8 +455,6 @@
 @media (prefers-reduced-motion: reduce) {
   .mz-marquee-track { animation: none !important; }
   .mz-marquee-row { overflow-x: auto; }
-  .eco-tile { transition: none !important; }
-  .reveal.eco-grid .eco-tile { opacity: 1; transform: none; }
 }
 
 /* Destaque de produtos personalizados (matriz). */
