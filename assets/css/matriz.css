@@ -423,44 +423,94 @@
 .eco-points small { display: block; margin-top: 3px; color: rgba(242,239,231,.5); font-size: 12.5px; line-height: 1.5; }
 .eco-cta { margin-top: 32px; }
 
-.eco-hub { position: relative; width: 100%; max-width: 440px; margin: 0 auto; aspect-ratio: 1; }
-.eco-web { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.eco-ring { fill: none; stroke: rgba(242,239,231,.10); stroke-width: .35; }
-.eco-link { stroke: rgba(239,182,111,.32); stroke-width: .5; stroke-dasharray: 1.6 3; animation: eco-flow 3.2s linear infinite; }
+.eco-hub { position: relative; width: 100%; max-width: 468px; margin: 0 auto; aspect-ratio: 1; }
+
+/* Anéis decorativos girando (sentidos opostos) atrás dos nós. */
+.eco-orbit-ring { position: absolute; border-radius: 50%; pointer-events: none; }
+.eco-orbit-ring.one {
+  inset: 6%; border: 1px dashed rgba(239,182,111,.20);
+  animation: eco-spin 64s linear infinite;
+}
+.eco-orbit-ring.two {
+  inset: 20%; border: 1px dashed rgba(242,239,231,.10);
+  animation: eco-spin 44s linear infinite reverse;
+}
+/* Varredura cônica ambiente, presa ao anel externo. */
+.eco-hub::before {
+  content: ""; position: absolute; inset: 6%; border-radius: 50%; pointer-events: none; z-index: 0;
+  background: conic-gradient(from 0deg, transparent 0 72%, rgba(239,182,111,.16) 86%, transparent 100%);
+  -webkit-mask: radial-gradient(circle, transparent 53%, #000 54%);
+          mask: radial-gradient(circle, transparent 53%, #000 54%);
+  animation: eco-spin 18s linear infinite;
+}
+
+.eco-web { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: 1; }
+.eco-ring { fill: none; stroke: rgba(242,239,231,.09); stroke-width: .3; }
+.eco-spokes line { stroke: rgba(242,239,231,.08); stroke-width: .3; }
+.eco-pulses line {
+  stroke: var(--amber-bright); stroke-width: .8; stroke-linecap: round;
+  stroke-dasharray: 3 33;
+  filter: drop-shadow(0 0 1.2px rgba(239,182,111,.9));
+  animation: eco-pulse-run 3.2s linear infinite;
+}
+@keyframes eco-pulse-run { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -36; } }
 
 .eco-core {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;
-  width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center;
-  background: radial-gradient(circle at 50% 34%, #26333d, #10171b);
-  border: 1px solid rgba(239,182,111,.35);
-  box-shadow: 0 0 0 8px rgba(216,154,80,.06), 0 0 44px rgba(216,154,80,.28);
+  width: 98px; height: 98px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 32%, #26333d, #0f161a 78%);
+  border: 1px solid rgba(239,182,111,.4);
+  box-shadow: 0 0 0 8px rgba(216,154,80,.05), inset 0 0 20px rgba(0,0,0,.5), 0 18px 50px rgba(0,0,0,.5), 0 0 52px rgba(216,154,80,.3);
+}
+.eco-core::before {
+  content: ""; position: absolute; inset: 7px; border-radius: 50%;
+  border: 1px dashed rgba(239,182,111,.22); animation: eco-spin 26s linear infinite reverse;
 }
 .eco-core::after {
   content: ""; position: absolute; inset: -8px; border-radius: 50%;
-  border: 1px solid rgba(239,182,111,.4); animation: eco-pulse 3.4s ease-out infinite;
+  border: 1px solid rgba(239,182,111,.4); animation: eco-wave 3.4s ease-out infinite;
 }
-.eco-core img { width: 54px; height: 54px; object-fit: contain; }
+.eco-core-glow { position: absolute; inset: -18px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(216,154,80,.28), transparent 66%);
+  animation: eco-breathe 3.4s ease-in-out infinite; }
+.eco-core img { position: relative; z-index: 1; width: 54px; height: 54px; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(239,182,111,.32)); }
 
 .eco-node {
   position: absolute; transform: translate(-50%, -50%); z-index: 4;
-  width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
-  background: radial-gradient(circle at 50% 32%, #efece5, #d5d0c5);
-  border: 1px solid rgba(255,255,255,.4); box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 30%, #f3f0ea, #d3cec3);
+  border: 1px solid rgba(255,255,255,.5); box-shadow: 0 8px 20px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.7);
   color: #2a322c;
-  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+}
+.eco-node::after {
+  content: attr(data-name); position: absolute; top: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 4px 9px; border-radius: 6px; white-space: nowrap;
+  background: rgba(13,18,16,.92); border: 1px solid rgba(239,182,111,.28);
+  color: var(--paper); font: 8px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s ease; z-index: 6;
 }
 .eco-node svg { width: 46%; height: 46%; fill: currentColor; }
 .eco-node { animation: eco-float 6s ease-in-out infinite; }
-.eco-node:nth-of-type(2) { animation-delay: -.9s; }
-.eco-node:nth-of-type(3) { animation-delay: -1.8s; }
-.eco-node:nth-of-type(4) { animation-delay: -2.7s; }
-.eco-node:nth-of-type(5) { animation-delay: -3.6s; }
-.eco-node:nth-of-type(6) { animation-delay: -4.5s; }
-.eco-node:hover { transform: translate(-50%, -50%) scale(1.14); box-shadow: 0 12px 28px rgba(0,0,0,.45), 0 0 22px rgba(216,154,80,.3); }
+.eco-node:nth-of-type(2) { animation-delay: -.8s; }
+.eco-node:nth-of-type(3) { animation-delay: -1.6s; }
+.eco-node:nth-of-type(4) { animation-delay: -2.4s; }
+.eco-node:nth-of-type(5) { animation-delay: -3.2s; }
+.eco-node:nth-of-type(6) { animation-delay: -4s; }
+.eco-node:nth-of-type(7) { animation-delay: -4.8s; }
+.eco-node:nth-of-type(8) { animation-delay: -5.6s; }
+.eco-node:hover, .eco-node:focus-visible {
+  transform: translate(-50%, -50%) scale(1.16); outline: none;
+  border-color: rgba(239,182,111,.8);
+  box-shadow: 0 12px 30px rgba(0,0,0,.5), 0 0 26px rgba(216,154,80,.4);
+}
+.eco-node:hover::after, .eco-node:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-@keyframes eco-pulse { 0% { transform: scale(1); opacity: .55; } 70% { opacity: 0; } 100% { transform: scale(1.55); opacity: 0; } }
-@keyframes eco-float { 0%, 100% { margin-top: 0; } 50% { margin-top: -7px; } }
-@keyframes eco-flow { to { stroke-dashoffset: -9; } }
+@keyframes eco-spin { to { transform: rotate(360deg); } }
+@keyframes eco-wave { 0% { transform: scale(1); opacity: .5; } 70% { opacity: 0; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes eco-breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes eco-float { 0%, 100% { margin-top: 0; } 50% { margin-top: -6px; } }
 
 @media (max-width: 900px) {
   .eco { padding: 68px 0; }
@@ -525,8 +575,12 @@
 @media (prefers-reduced-motion: reduce) {
   .mz-marquee-track { animation: none !important; }
   .mz-marquee-row { overflow-x: auto; }
-  .eco-node, .eco-core::after, .eco-link { animation: none !important; }
+  .eco-node, .eco-node::after,
+  .eco-orbit-ring, .eco-hub::before,
+  .eco-core::before, .eco-core::after, .eco-core-glow,
+  .eco-pulses line { animation: none !important; }
   .eco-node { transition: none !important; }
+  .eco-pulses line { stroke-dasharray: 0; opacity: .45; }
 }
 
 /* Destaque de produtos personalizados (matriz). */
