@@ -707,8 +707,11 @@
 .practice .section-head .section-label,
 .proj .section-head .section-label,
 .commitments .section-head.compact .section-label { margin-bottom: 16px; }
-/* limita a largura do título nas seções de coluna única (jurídico) */
-.practice .section-head h2 { max-width: 900px; }
+/* Deixa os títulos de seção usarem toda a largura disponível — evita a quebra
+   desnecessária em duas linhas quando cabem em uma só (telas largas). Continuam
+   quebrando naturalmente quando o espaço é realmente estreito. */
+.section-head.compact h2,
+.practice .section-head h2 { max-width: none; }
 
 /* Seção CTA + galeria escalonada (porte estático do bloco React
    cta-section-with-gallery). Copy à esquerda, grade de imagens deslocadas
