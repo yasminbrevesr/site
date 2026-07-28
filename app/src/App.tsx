@@ -1,6 +1,7 @@
 import HoverRevealCardsDemo from './demo'
 import { AboutDemo } from '@/components/blocks/cta-section-with-gallery-demo'
 import DesertDriftDemo from '@/components/ui/desert-drift-demo'
+import { CTADemo } from '@/components/blocks/cta-with-rectangle-demo'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <AboutDemo />
       <HoverRevealCardsDemo />
       <DesertDriftDemo />
+      <CTADemo />
     </main>
   )
 }
