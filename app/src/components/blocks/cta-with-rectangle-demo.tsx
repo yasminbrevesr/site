@@ -4,14 +4,14 @@ export function CTADemo() {
   return (
     <CTASection
       badge={{
-        text: "Get started",
+        text: "Próximo passo",
       }}
-      title="Start building with Launch UI"
-      description="Get started with Launch UI and build your landing page in no time"
+      title="Tecnologia sob medida para crescer com clareza."
+      description="Conte onde a tecnologia ainda trava o seu negócio. A primeira conversa serve para entender o cenário antes de propor qualquer caminho."
       action={{
-        text: "Get Started",
-        href: "/docs",
-        variant: "default",
+        text: "Falar com a BREVES",
+        href: "#contato",
+        variant: "glow",
       }}
     />
   )
