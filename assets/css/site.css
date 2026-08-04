@@ -2927,3 +2927,30 @@ img { display: block; max-width: 100%; }
    diagnóstico. Passa a usar um fundo único, igual ao da seção acima. */
 .integration-section { background: var(--paper-bright); }
 .integration-section::before { display: none; }
+
+/* Marca textual para ferramentas sem logo vetorial disponível — mesmo
+   tratamento já usado pelo ADVBOX. */
+.text-mark { padding: 0 3px; border: 1px solid currentColor; border-radius: 4px; letter-spacing: 0; }
+
+/* Aproxima o bloco de integrações da seção de dúvidas. */
+.faq { padding-bottom: 40px; }
+
+/* Mais destaque para a chamada do ecossistema. */
+.integration-section .integration-flow { grid-template-columns: 250px minmax(0,1fr); }
+.integration-flow-copy small { font-size: 8px; letter-spacing: .16em; }
+.integration-flow-copy p {
+  max-width: 235px;
+  margin-top: 9px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 480;
+  line-height: 1.45;
+}
+
+/* A esteira ganhou sete ferramentas; a duração cresce na mesma
+   proporção para a velocidade de rolagem não mudar. */
+.integration-track { animation-duration: 75s; }
+
+@media (max-width: 900px) {
+  .integration-flow-copy p { max-width: 520px; font-size: 11.5px; }
+}
