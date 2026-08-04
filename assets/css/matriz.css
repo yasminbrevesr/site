@@ -746,3 +746,11 @@
   .gallery-grid:hover .gallery-card { transform: none; opacity: 1; filter: none; }
   .gallery-card:hover, .gallery-card:focus-visible { transform: none !important; }
 }
+
+/* A chamada do hero jurídico agora tem uma frase inteira em destaque na
+   segunda linha. A coluna de texto de 560px a fazia quebrar em duas; o
+   espaço livre ao lado da órbita comporta a largura maior. */
+@media (min-width: 980px) {
+  .hero { grid-template-columns: minmax(320px, 720px) minmax(300px, 400px); }
+  .hero .hero-copy { max-width: 720px; }
+}
