@@ -2793,22 +2793,77 @@ img { display: block; max-width: 100%; }
 }
 
 /* ---------- Contato direto + WhatsApp flutuante ---------- */
+
+/* Seção de contato mais compacta, para o convite abaixo do formulário
+   caber sem alongar demais a página. */
+#contato.contact-commit-1adc { padding: 68px 0 62px; }
+#contato.contact-commit-1adc h2 { margin-top: 26px; font-size: clamp(38px, 5vw, 76px); }
+#contato.contact-commit-1adc .contact-intro-foot { margin-top: 26px; }
+#contato.contact-commit-1adc .contact-form { margin-top: 30px; }
+
+/* Convite direto abaixo do formulário. */
 .contact-direct {
-  grid-column: 1 / -1;
-  margin-top: 4px;
-  color: rgba(17,23,20,.6);
-  font: 11px/1.6 var(--mono);
-  letter-spacing: .05em;
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.contact-direct > span {
+  position: relative;
+  padding-bottom: 14px;
+  color: rgba(17,23,20,.55);
+  font: 10px/1 var(--mono);
+  letter-spacing: .2em;
   text-transform: uppercase;
 }
-.contact-direct a {
-  color: var(--ink);
-  white-space: nowrap;
-  border-bottom: 1px solid rgba(17,23,20,.3);
-  transition: color .25s ease, border-color .25s ease;
+.contact-direct > span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 28px;
+  height: 1px;
+  background: rgba(17,23,20,.28);
+  transform: translateX(-50%);
 }
-.contact-direct a:hover { color: var(--paper-bright); border-color: var(--paper-bright); }
-.contact-direct span { margin: 0 6px; opacity: .45; }
+.contact-direct a {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: .22em;
+  padding-bottom: 8px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  transition: color .3s ease;
+}
+.contact-direct a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .5s cubic-bezier(.22,1,.36,1);
+}
+.contact-direct a:hover, .contact-direct a:focus-visible { color: var(--paper-bright); }
+.contact-direct a:hover::after, .contact-direct a:focus-visible::after { transform: scaleX(1); }
+.contact-direct a i {
+  font-family: var(--sans);
+  font-size: .44em;
+  font-style: normal;
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.contact-direct a:hover i, .contact-direct a:focus-visible i { transform: translateX(7px); }
+.contact-direct a:focus-visible { outline: 2px solid var(--paper-bright); outline-offset: 6px; border-radius: 3px; }
 
 .wa-float {
   position: fixed;
@@ -2834,10 +2889,13 @@ img { display: block; max-width: 100%; }
 @media (max-width: 620px) {
   .wa-float { right: 16px; bottom: 16px; width: 50px; height: 50px; }
   .wa-float svg { width: 26px; height: 26px; }
-  .contact-direct { font-size: 9.5px; letter-spacing: .03em; padding-right: 62px; }
+  .contact-direct { margin-top: 30px; gap: 10px; }
+  .contact-direct > span { font-size: 9px; letter-spacing: .16em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .wa-float { transition: none; }
   .wa-float:hover, .wa-float:focus-visible { transform: none; }
+  .contact-direct a, .contact-direct a::after, .contact-direct a i { transition: none; }
+  .contact-direct a:hover i, .contact-direct a:focus-visible i { transform: none; }
 }
