@@ -2801,6 +2801,28 @@ img { display: block; max-width: 100%; }
 #contato.contact-commit-1adc .contact-intro-foot { margin-top: 26px; }
 #contato.contact-commit-1adc .contact-form { margin-top: 30px; }
 
+/* Rótulos do formulário mais legíveis sobre o painel translúcido. */
+#contato.contact-commit-1adc .field label {
+  margin-bottom: 9px;
+  color: rgba(17,23,20,.82);
+  font-size: 9px;
+  letter-spacing: .13em;
+}
+#contato.contact-commit-1adc .contact-form-heading span { color: rgba(17,23,20,.72); font-size: 9px; }
+#contato.contact-commit-1adc .contact-form-heading small { color: rgba(17,23,20,.62); font-size: 8px; }
+
+/* Respiro entre as linhas do formulário. Abaixo de 1080px cada campo já
+   carrega margin-bottom próprio, então o espaçamento vem de lá. */
+@media (min-width: 1081px) {
+  #contato.contact-commit-1adc .contact-form { gap: 26px 20px; }
+}
+@media (max-width: 1080px) {
+  #contato.contact-commit-1adc .contact-field-name,
+  #contato.contact-commit-1adc .contact-field-office,
+  #contato.contact-commit-1adc .contact-field-team,
+  #contato.contact-commit-1adc .contact-field-channel { margin-bottom: 24px !important; }
+}
+
 /* Convite direto abaixo do formulário. */
 .contact-direct {
   margin-top: 38px;
@@ -2813,7 +2835,7 @@ img { display: block; max-width: 100%; }
 .contact-direct > span {
   position: relative;
   padding-bottom: 14px;
-  color: rgba(17,23,20,.55);
+  color: #fff;
   font: 10px/1 var(--mono);
   letter-spacing: .2em;
   text-transform: uppercase;
@@ -2825,7 +2847,7 @@ img { display: block; max-width: 100%; }
   bottom: 0;
   width: 28px;
   height: 1px;
-  background: rgba(17,23,20,.28);
+  background: rgba(255,255,255,.55);
   transform: translateX(-50%);
 }
 .contact-direct a {
