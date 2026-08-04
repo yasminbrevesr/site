@@ -42,7 +42,13 @@ async function submitContact(payload) {
   });
 
   if (!response.ok) {
-    throw new Error(`Supabase respondeu com HTTP ${response.status}`);
+    /* O corpo do PostgREST traz o motivo real (constraint, RLS, coluna
+       inexistente). Sem ele, todo erro vira o mesmo texto genérico. */
+    const detail = await response.text().catch(() => '');
+    const error = new Error(`Supabase respondeu com HTTP ${response.status}${detail ? ` — ${detail}` : ''}`);
+    error.status = response.status;
+    error.detail = detail;
+    throw error;
   }
 }
 
