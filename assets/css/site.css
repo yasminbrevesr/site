@@ -2921,3 +2921,9 @@ img { display: block; max-width: 100%; }
   .contact-direct a, .contact-direct a::after, .contact-direct a i { transition: none; }
   .contact-direct a:hover i, .contact-direct a:focus-visible i { transform: none; }
 }
+
+/* A seção de integrações dividia o fundo em duas metades de tons
+   diferentes, criando uma faixa visível entre a seção de dúvidas e o
+   diagnóstico. Passa a usar um fundo único, igual ao da seção acima. */
+.integration-section { background: var(--paper-bright); }
+.integration-section::before { display: none; }
