@@ -494,7 +494,6 @@
   background: var(--paper-bright);
   transition: border-color .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22,1,.36,1);
 }
-.svc-card > span:first-child { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-bottom: 20px; border: 1px solid var(--line-dark); border-radius: 50%; color: var(--amber-dark); font: 8px/1 var(--mono); }
 .svc-card h3 { font-size: 19px; font-weight: 560; letter-spacing: -.015em; }
 .svc-card p { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
 .svc-card .svc-tag { align-self: flex-start; width: auto; height: auto; display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 6px 12px; border: 0; border-radius: 999px; background: rgba(216,154,80,.14); color: var(--amber-dark); font: 8px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
