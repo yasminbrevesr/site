@@ -496,8 +496,6 @@
 }
 .svc-card h3 { font-size: 19px; font-weight: 560; letter-spacing: -.015em; }
 .svc-card p { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
-.svc-card .svc-tag { align-self: flex-start; width: auto; height: auto; display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 6px 12px; border: 0; border-radius: 999px; background: rgba(216,154,80,.14); color: var(--amber-dark); font: 8px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
-.svc-card .svc-tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--amber-dark); }
 .svc-card:hover { border-color: rgba(143,91,39,.34); box-shadow: 0 18px 40px rgba(17,23,20,.08); transform: translateY(-4px); }
 @media (max-width: 760px) { .svc-grid { grid-template-columns: 1fr; } }
 
