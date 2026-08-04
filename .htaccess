@@ -1,0 +1,13 @@
+# O deploy por Git copia o repositório inteiro para a raiz do site, mas nem
+# tudo o que está versionado faz parte das páginas publicadas. As regras
+# abaixo escondem esses arquivos, que continuam no disco para o Git funcionar.
+
+# Experimento em React e documentação — não pertencem ao site.
+RedirectMatch 404 ^/app(/|$)
+RedirectMatch 404 ^/README\.md$
+
+# Metadados do Git, caso o clone os deixe na raiz pública.
+RedirectMatch 404 ^/\.git(/|$)
+
+# Fonte do logo em Illustrator, versionada apenas como arquivo original.
+RedirectMatch 404 \.ai$
