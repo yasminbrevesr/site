@@ -289,31 +289,6 @@
     updateCalculator(false);
   }
 
-  /* Alternância do canal, mantendo um único campo e payload para o Supabase. */
-  var channelButtons = Array.prototype.slice.call(document.querySelectorAll('[data-channel]'));
-  var contactInput = document.getElementById('f-contato');
-  var channelInput = document.getElementById('f-canal');
-  channelButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-      var channel = button.getAttribute('data-channel');
-      channelButtons.forEach(function (item) { item.setAttribute('aria-pressed', item === button ? 'true' : 'false'); });
-      if (!contactInput || !channelInput) return;
-      channelInput.value = channel;
-      contactInput.value = '';
-      if (channel === 'whatsapp') {
-        contactInput.type = 'tel';
-        contactInput.placeholder = '(00) 90000-0000';
-        contactInput.autocomplete = 'tel';
-        contactInput.maxLength = 30;
-      } else {
-        contactInput.type = 'email';
-        contactInput.placeholder = 'seu@email.com';
-        contactInput.autocomplete = 'email';
-        contactInput.maxLength = 254;
-      }
-      contactInput.focus();
-    });
-  });
 
   /* Mantém apenas uma resposta do FAQ aberta por vez. */
   var details = Array.prototype.slice.call(document.querySelectorAll('.faq details'));
