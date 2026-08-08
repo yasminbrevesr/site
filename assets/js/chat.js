@@ -249,20 +249,27 @@
   /* -------------------------------------------------- chamada de atenção */
 
   /* Um botão parado no canto passa despercebido, mas insistir para sempre
-     irrita. A chamada acontece em três toques espaçados e morre de vez no
-     primeiro clique — a marca fica na sessão para não recomeçar quando a
-     pessoa troca de página. */
+     irrita. A chamada acontece em três toques espaçados e some ao primeiro
+     clique. Depois de aparecer uma vez ela descansa por meia hora, para não
+     abordar de novo a cada página — e volta sozinha se a visita se estender,
+     em vez de ficar calada pelo resto da aba. */
   var MARCA = 'bv-chat-visto';
+  var DESCANSO = 30 * 60 * 1000;
   var relogios = [];
   var selo = null;
   var convite = null;
 
   function jaViu() {
-    try { return window.sessionStorage.getItem(MARCA) === '1'; } catch (erro) { return false; }
+    try {
+      var quando = parseInt(window.sessionStorage.getItem(MARCA), 10);
+      return !!quando && (Date.now() - quando) < DESCANSO;
+    } catch (erro) {
+      return false;
+    }
   }
 
   function marcarVisto() {
-    try { window.sessionStorage.setItem(MARCA, '1'); } catch (erro) { /* modo restrito */ }
+    try { window.sessionStorage.setItem(MARCA, String(Date.now())); } catch (erro) { /* modo restrito */ }
   }
 
   function balancar() {
@@ -297,6 +304,10 @@
   }
 
   function chamar() {
+    /* O descanso conta a partir da exibição, não do clique: quem ignorou a
+       chamada também não deve ser abordado outra vez na página seguinte. */
+    marcarVisto();
+
     selo = el('span', 'bv-badge', '1');
     selo.setAttribute('aria-hidden', 'true');
     launcher.appendChild(selo);
