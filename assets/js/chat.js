@@ -9,8 +9,9 @@
   var WHATSAPP = 'https://wa.me/5521984371741';
 
   /* Todo o conteúdo editável vive aqui. Cada pergunta tem o texto do botão
-     (p), a resposta (r), a mensagem que já vai preenchida no WhatsApp (wa) e,
-     quando faz sentido, um link para aprofundar (link). */
+     (p), a resposta (r), a mensagem que o botão do rodapé passa a levar para
+     o WhatsApp depois dela (wa) e, quando faz sentido, um link para
+     aprofundar (link). */
   var CONTEUDO = {
     matriz: {
       saudacao: 'Olá! Aqui dá para tirar as dúvidas mais comuns sobre a BREVES. Sobre o que você quer saber?',
@@ -200,11 +201,20 @@
 
     balao('bv-user', item.p);
 
+    /* Repetir o link do WhatsApp embaixo de cada resposta ficava insistente.
+       Em vez disso, o botão fixo do rodapé passa a carregar a mensagem da
+       última dúvida — o contexto se preserva sem poluir a conversa. */
+    if (item.wa) waRodape.href = link(item.wa);
+
     var digitando = el('div', 'bv-msg bv-bot bv-typing');
     digitando.innerHTML = '<span></span><span></span><span></span>';
     digitando.setAttribute('aria-hidden', 'true');
     log.appendChild(digitando);
     rolar();
+
+    /* A digitação acompanha o tamanho da resposta, como aconteceria com
+       alguém escrevendo do outro lado. */
+    var espera = reducedMotion ? 0 : Math.min(1900, 800 + item.r.length * 3);
 
     window.setTimeout(function () {
       digitando.remove();
@@ -216,21 +226,13 @@
         msg.appendChild(ancora);
       }
 
-      if (item.wa) {
-        var wa = el('a', 'bv-msg-link bv-msg-wa', 'Falar sobre isso no WhatsApp');
-        wa.href = link(item.wa);
-        wa.target = '_blank';
-        wa.rel = 'noopener noreferrer';
-        msg.appendChild(wa);
-      }
-
       if (!restantes.length) {
         balao('bv-bot', 'Por aqui era isso. Se ficou alguma coisa de fora, o caminho mais rápido é o WhatsApp — respondemos por lá mesmo.');
       }
 
       opcoes();
       rolar();
-    }, reducedMotion ? 0 : 480);
+    }, espera);
   }
 
   function iniciar() {
