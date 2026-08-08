@@ -245,9 +245,83 @@
     log.scrollTop = 0;
   }
 
+  /* -------------------------------------------------- chamada de atenção */
+
+  /* Um botão parado no canto passa despercebido, mas insistir para sempre
+     irrita. A chamada acontece em três toques espaçados e morre de vez no
+     primeiro clique — a marca fica na sessão para não recomeçar quando a
+     pessoa troca de página. */
+  var MARCA = 'bv-chat-visto';
+  var relogios = [];
+  var selo = null;
+  var convite = null;
+
+  function jaViu() {
+    try { return window.sessionStorage.getItem(MARCA) === '1'; } catch (erro) { return false; }
+  }
+
+  function marcarVisto() {
+    try { window.sessionStorage.setItem(MARCA, '1'); } catch (erro) { /* modo restrito */ }
+  }
+
+  function balancar() {
+    if (reducedMotion) return;
+    launcher.classList.remove('bv-nudge');
+    /* Sem o reflow a classe reaplicada não reinicia a animação. */
+    void launcher.offsetWidth;
+    launcher.classList.add('bv-nudge');
+  }
+
+  /* Fora do balanço a classe não deve sobrar: enquanto ela está no botão, a
+     animação disputa o transform com o hover. */
+  launcher.addEventListener('animationend', function (evento) {
+    if (evento.animationName === 'bv-wiggle') launcher.classList.remove('bv-nudge');
+  });
+
+  function esconderConvite() {
+    if (!convite) return;
+    var alvo = convite;
+    convite = null;
+    alvo.classList.remove('is-on');
+    window.setTimeout(function () { alvo.remove(); }, reducedMotion ? 0 : 320);
+  }
+
+  function encerrarChamada() {
+    relogios.forEach(window.clearTimeout);
+    relogios = [];
+    launcher.classList.remove('bv-nudge', 'bv-alerta');
+    if (selo) { selo.remove(); selo = null; }
+    esconderConvite();
+    marcarVisto();
+  }
+
+  function chamar() {
+    selo = el('span', 'bv-badge', '1');
+    selo.setAttribute('aria-hidden', 'true');
+    launcher.appendChild(selo);
+    launcher.classList.add('bv-alerta');
+
+    convite = el('button', 'bv-invite', 'Dúvida rápida? Respondo aqui.');
+    convite.type = 'button';
+    convite.addEventListener('click', abrir);
+    document.body.appendChild(convite);
+    void convite.offsetWidth;
+    convite.classList.add('is-on');
+
+    balancar();
+  }
+
+  if (!jaViu()) {
+    relogios.push(window.setTimeout(chamar, 5000));
+    relogios.push(window.setTimeout(esconderConvite, 13000));
+    relogios.push(window.setTimeout(balancar, 24000));
+    relogios.push(window.setTimeout(balancar, 44000));
+  }
+
   /* ----------------------------------------------------------- abrir/fechar */
 
   function abrir() {
+    encerrarChamada();
     aberto = true;
     painel.hidden = false;
     document.body.classList.add('bv-chat-open');
