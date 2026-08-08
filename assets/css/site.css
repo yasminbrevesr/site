@@ -2958,3 +2958,54 @@ img { display: block; max-width: 100%; }
 /* O destaque do hero jurídico virou uma frase, não mais uma palavra
    isolada: precisa poder quebrar em telas estreitas. */
 .hero h1 em { white-space: normal; }
+
+/* Redes sociais do rodapé nas cores oficiais de cada marca. O círculo é
+   preenchido e o glifo fica branco, que é a composição que LinkedIn,
+   Instagram e WhatsApp publicam nos próprios ativos — o contorno neutro
+   anterior não sustentaria as cores com contraste suficiente. */
+.footer-social a.fs-linkedin,
+.footer-social a.fs-instagram,
+.footer-social a.fs-whatsapp {
+  border-color: transparent;
+  color: #fff;
+}
+
+.footer-social a.fs-linkedin { background: #0a66c2; }
+
+/* Aproximação linear do degradê da Instagram, que não tem cor sólida oficial. */
+.footer-social a.fs-instagram {
+  background: linear-gradient(45deg, #feda75, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5);
+}
+
+.footer-social a.fs-whatsapp { background: #25d366; }
+
+/* O glifo do WhatsApp tem o contorno da bolha por dentro e pede alguns
+   pixels a mais para não fechar nas telas comuns. */
+.footer-social a.fs-whatsapp svg { width: 18px; height: 18px; }
+
+.footer-social a.fs-linkedin:hover,
+.footer-social a.fs-instagram:hover,
+.footer-social a.fs-whatsapp:hover,
+.footer-social a.fs-linkedin:focus-visible,
+.footer-social a.fs-instagram:focus-visible,
+.footer-social a.fs-whatsapp:focus-visible {
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(17, 23, 20, .45);
+}
+
+.footer-social a.fs-linkedin:hover, .footer-social a.fs-linkedin:focus-visible { background-color: #1275d4; }
+.footer-social a.fs-whatsapp:hover, .footer-social a.fs-whatsapp:focus-visible { background-color: #2ee878; }
+.footer-social a.fs-instagram:hover, .footer-social a.fs-instagram:focus-visible { filter: brightness(1.12); }
+
+.footer-social a:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-social a.fs-linkedin:hover,
+  .footer-social a.fs-instagram:hover,
+  .footer-social a.fs-whatsapp:hover,
+  .footer-social a.fs-linkedin:focus-visible,
+  .footer-social a.fs-instagram:focus-visible,
+  .footer-social a.fs-whatsapp:focus-visible { transform: none; }
+}
