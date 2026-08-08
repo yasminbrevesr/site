@@ -37,6 +37,93 @@
 .bv-chat-launcher.is-open .bv-icon-chat { display: none; }
 .bv-chat-launcher.is-open .bv-icon-close { display: block; }
 
+/* -------------------------------------------------------- chamada de atenção */
+
+/* Selo de não lido. Fica absoluto para não entrar na grade do botão. */
+.bv-badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  animation: bv-badge-in .4s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+/* Halo que respira enquanto a mensagem não foi vista. */
+.bv-chat-launcher.bv-alerta::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: bv-pulse 2.8s ease-out infinite;
+}
+
+/* O balanço vence a transição de hover enquanto roda, o que é aceitável nos
+   1,4s de cada toque. */
+.bv-chat-launcher.bv-nudge { animation: bv-wiggle 1.4s ease-in-out; }
+
+.bv-invite {
+  position: fixed;
+  z-index: 119;
+  right: 90px;
+  bottom: 30px;
+  max-width: min(232px, calc(100vw - 124px));
+  padding: 11px 15px;
+  border: 1px solid rgba(242, 239, 231, .14);
+  /* O canto reto embaixo à direita aponta para o botão, como um balão de
+     fala saindo dele. */
+  border-radius: 14px 14px 4px 14px;
+  background: var(--ink);
+  color: rgba(242, 239, 231, .9);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 16px 40px rgba(17, 23, 20, .42);
+  opacity: 0;
+  transform: translateX(10px) scale(.96);
+  transform-origin: 100% 100%;
+  transition: opacity .32s ease, transform .32s cubic-bezier(.22, 1, .36, 1);
+}
+
+.bv-invite.is-on { opacity: 1; transform: none; }
+.bv-invite:hover { border-color: rgba(216, 154, 80, .45); color: #fff; }
+.bv-invite:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+@keyframes bv-badge-in {
+  from { opacity: 0; transform: scale(.3); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes bv-pulse {
+  0% { opacity: .5; transform: scale(1); }
+  70% { opacity: 0; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+@keyframes bv-wiggle {
+  0%, 72%, 100% { transform: rotate(0) scale(1); }
+  8% { transform: rotate(-13deg) scale(1.07); }
+  20% { transform: rotate(11deg) scale(1.07); }
+  32% { transform: rotate(-8deg) scale(1.04); }
+  44% { transform: rotate(6deg) scale(1.03); }
+  56% { transform: rotate(-3deg) scale(1.01); }
+}
+
 /* ------------------------------------------------------------------ painel */
 
 .bv-chat {
@@ -285,12 +372,20 @@
     pointer-events: none;
     transform: scale(.85);
   }
+
+  .bv-invite {
+    right: 76px;
+    bottom: 22px;
+    max-width: calc(100vw - 104px);
+    font-size: 12px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bv-chat-launcher,
   .bv-chat,
   .bv-opt,
+  .bv-invite,
   .bv-chat-wa { transition: none; }
 
   .bv-chat-launcher:hover,
@@ -302,4 +397,10 @@
 
   .bv-msg, .bv-options { animation: none; }
   .bv-typing span { animation: none; }
+
+  /* O selo e o convite permanecem — são informação, não movimento. O que
+     sai é só o que se mexe. */
+  .bv-badge { animation: none; }
+  .bv-chat-launcher.bv-alerta::after { animation: none; opacity: 0; }
+  .bv-chat-launcher.bv-nudge { animation: none; }
 }
