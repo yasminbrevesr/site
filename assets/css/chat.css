@@ -2,13 +2,12 @@
    Nenhuma regra daqui alcança o restante do site: para remover o widget,
    apague este arquivo e as duas linhas que o carregam nas páginas. */
 
-/* O botão flutuante do WhatsApp ocupa o canto inferior; o gatilho do chat
-   fica logo acima, na mesma coluna. */
+/* Único botão fixo da página, no canto inferior direito. */
 .bv-chat-launcher {
   position: fixed;
   z-index: 120;
   right: 22px;
-  bottom: 90px;
+  bottom: 22px;
   width: 56px;
   height: 56px;
   display: grid;
@@ -44,12 +43,13 @@
   position: fixed;
   z-index: 121;
   right: 22px;
-  bottom: 160px;
+  bottom: 90px;
   width: 360px;
   max-width: calc(100vw - 44px);
   /* 590px é a altura em que o menu completo cabe sem rolagem; abaixo disso a
-     janela é que é baixa, e aí a lista rola mesmo. */
-  max-height: min(590px, calc(100vh - 200px));
+     janela é que é baixa, e aí a lista rola mesmo. O desconto reserva os 90px
+     até o gatilho mais uma folga no topo. */
+  max-height: min(590px, calc(100vh - 130px));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -168,7 +168,6 @@
   transition: border-color .2s ease, color .2s ease;
 }
 
-.bv-msg-link + .bv-msg-link { margin-left: 16px; }
 .bv-msg-link:hover, .bv-msg-link:focus-visible { border-color: var(--amber-bright); color: #fff; }
 .bv-msg-link:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 
@@ -267,11 +266,11 @@
 /* ----------------------------------------------------------- telas curtas */
 
 @media (max-width: 620px) {
-  .bv-chat-launcher { right: 16px; bottom: 76px; width: 50px; height: 50px; }
+  .bv-chat-launcher { right: 16px; bottom: 16px; width: 50px; height: 50px; }
   .bv-chat-launcher svg { width: 23px; height: 23px; }
 
-  /* No celular o painel vira uma folha inferior e os dois botões flutuantes
-     saem de cena — o fechamento fica pelo X do cabeçalho. */
+  /* No celular o painel vira uma folha inferior e o gatilho sai de cena —
+     o fechamento fica pelo X do cabeçalho. */
   .bv-chat {
     right: 10px;
     left: 10px;
@@ -281,8 +280,7 @@
     max-height: min(80vh, calc(100vh - 90px));
   }
 
-  body.bv-chat-open .bv-chat-launcher,
-  body.bv-chat-open .wa-float {
+  body.bv-chat-open .bv-chat-launcher {
     opacity: 0;
     pointer-events: none;
     transform: scale(.85);
