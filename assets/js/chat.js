@@ -155,15 +155,20 @@
 
   /* --------------------------------------------------------------- mensagens */
 
-  function rolar() {
-    log.scrollTop = log.scrollHeight;
+  /* Rolar até o fim deixaria a lista de sugestões na tela e empurraria a
+     resposta para cima, fora da vista. O ponto certo de parada é o topo da
+     pergunta: a partir dele vêm a resposta e, só depois, as sugestões. */
+  function mostrarTopo(elemento) {
+    var deslocamento = elemento.getBoundingClientRect().top - log.getBoundingClientRect().top;
+    var destino = Math.max(0, log.scrollTop + deslocamento - 12);
+    if (reducedMotion || !log.scrollTo) log.scrollTop = destino;
+    else log.scrollTo({ top: destino, behavior: 'smooth' });
   }
 
   function balao(classe, texto) {
     var msg = el('div', 'bv-msg ' + classe);
     msg.appendChild(el('p', null, texto));
     log.appendChild(msg);
-    rolar();
     return msg;
   }
 
@@ -188,7 +193,6 @@
     bloco.appendChild(escape);
 
     log.appendChild(bloco);
-    rolar();
   }
 
   function responder(item) {
@@ -199,7 +203,7 @@
     var listas = log.querySelectorAll('.bv-options');
     if (listas.length) listas[listas.length - 1].remove();
 
-    balao('bv-user', item.p);
+    var pergunta = balao('bv-user', item.p);
 
     /* Repetir o link do WhatsApp embaixo de cada resposta ficava insistente.
        Em vez disso, o botão fixo do rodapé passa a carregar a mensagem da
@@ -210,7 +214,7 @@
     digitando.innerHTML = '<span></span><span></span><span></span>';
     digitando.setAttribute('aria-hidden', 'true');
     log.appendChild(digitando);
-    rolar();
+    mostrarTopo(pergunta);
 
     /* A digitação acompanha o tamanho da resposta, como aconteceria com
        alguém escrevendo do outro lado. */
@@ -231,7 +235,7 @@
       }
 
       opcoes();
-      rolar();
+      mostrarTopo(pergunta);
     }, espera);
   }
 
@@ -240,9 +244,6 @@
     iniciado = true;
     balao('bv-bot', dados.saudacao);
     opcoes();
-    /* Na abertura o menu inteiro cabe na tela; rolar até o fim esconderia a
-       saudação. A rolagem automática só vale das respostas em diante. */
-    log.scrollTop = 0;
   }
 
   /* -------------------------------------------------- chamada de atenção */
