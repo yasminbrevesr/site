@@ -1214,3 +1214,60 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   #contato.contact-commit-1adc { padding: 88px 0 80px; }
   .calculator { padding: 92px 0 84px; }
 }
+
+/* Hero lead — clean tech */
+.mz-hero-lead {
+  max-width: 720px;
+  margin: 30px auto 0;
+
+  font-family: var(--sans);
+  font-size: clamp(17px, 1.35vw, 20px);
+  font-weight: 430;
+  line-height: 1.65;
+  letter-spacing: -0.012em;
+
+  text-wrap: pretty;
+
+  /* Gradiente clean / tecnológico */
+  background: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #dbe8ff 24%,
+    #9fc4ff 43%,
+    #b5a7ff 61%,
+    #f1c8ff 78%,
+    #ffffff 100%
+  );
+
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  /* brilho muito sutil */
+  filter: drop-shadow(0 0 14px rgba(145, 70, 255, 0.08));
+
+  animation: mzLeadGradient 12s ease-in-out infinite alternate;
+}
+
+@keyframes mzLeadGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .mz-hero-lead {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
