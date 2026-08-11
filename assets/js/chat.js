@@ -87,8 +87,19 @@
     }
   };
 
+  /* O mesmo destino do formulário de contato. A origem reaproveita os
+     valores que a tabela já aceita; o que distingue um lead do chat vai na
+     mensagem, que é texto livre e não tem restrição. */
+  var SUPABASE_URL = 'https://mubkdnwzscnirfqnhcpu.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_tBvoqhNTb_Aw-HSLoKblsA_LD2M3Qye';
+  var ORIGEM = {
+    matriz: 'site-matriz-tecnologia',
+    juridico: 'site-principal-juridico'
+  };
+
   var script = document.querySelector('script[data-breves-chat]');
-  var dados = CONTEUDO[(script && script.getAttribute('data-breves-chat')) || 'matriz'];
+  var pagina = (script && script.getAttribute('data-breves-chat')) || 'matriz';
+  var dados = CONTEUDO[pagina];
   if (!dados) return;
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -239,11 +250,137 @@
     }, espera);
   }
 
+  /* ------------------------------------------------ identificação do lead */
+
+  var CADASTRO = 'bv-chat-lead';
+
+  function jaSeIdentificou() {
+    try { return window.sessionStorage.getItem(CADASTRO) === '1'; } catch (erro) { return false; }
+  }
+
+  function registrar(nome, telefone) {
+    return window.fetch(SUPABASE_URL + '/rest/v1/contatos_site', {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal'
+      },
+      body: JSON.stringify({
+        nome: nome,
+        contato: telefone,
+        canal: 'whatsapp',
+        origem: ORIGEM[pagina] || ORIGEM.matriz,
+        mensagem: 'Contato iniciado pelo chat de dúvidas do site.',
+        user_agent: navigator.userAgent.slice(0, 500),
+        pagina_origem: window.location.href.slice(0, 500)
+      })
+    }).then(function (resposta) {
+      if (!resposta.ok) {
+        return resposta.text().catch(function () { return ''; }).then(function (detalhe) {
+          throw new Error('HTTP ' + resposta.status + (detalhe ? ' — ' + detalhe : ''));
+        });
+      }
+    });
+  }
+
+  function identificacao() {
+    var bloco = el('form', 'bv-lead');
+    bloco.noValidate = true;
+
+    var campoNome = el('label', 'bv-lead-campo');
+    campoNome.appendChild(el('span', null, 'Seu nome'));
+    var nome = document.createElement('input');
+    nome.type = 'text';
+    nome.required = true;
+    nome.maxLength = 120;
+    nome.autocomplete = 'name';
+    nome.placeholder = 'Como podemos chamar você?';
+    campoNome.appendChild(nome);
+
+    var campoTel = el('label', 'bv-lead-campo');
+    campoTel.appendChild(el('span', null, 'WhatsApp'));
+    var tel = document.createElement('input');
+    tel.type = 'tel';
+    tel.required = true;
+    tel.maxLength = 30;
+    tel.autocomplete = 'tel';
+    tel.placeholder = '(00) 90000-0000';
+    campoTel.appendChild(tel);
+
+    var erro = el('p', 'bv-lead-erro');
+    erro.hidden = true;
+
+    var enviar = el('button', 'bv-lead-enviar', 'Começar');
+    enviar.type = 'submit';
+
+    bloco.appendChild(campoNome);
+    bloco.appendChild(campoTel);
+    bloco.appendChild(erro);
+    bloco.appendChild(enviar);
+    log.appendChild(bloco);
+
+    bloco.addEventListener('submit', function (evento) {
+      evento.preventDefault();
+      var n = nome.value.trim();
+      var t = tel.value.trim();
+
+      if (n.length < 2) { falhar('Digite o seu nome para continuar.', nome); return; }
+      /* Só conta os dígitos: o formato varia demais para validar máscara. */
+      if (t.replace(/\D/g, '').length < 10) { falhar('Digite um WhatsApp com DDD.', tel); return; }
+
+      enviar.disabled = true;
+      enviar.textContent = 'Enviando…';
+      erro.hidden = true;
+
+      registrar(n, t).then(function () {
+        marcarIdentificado();
+        bloco.remove();
+        balao('bv-user', n + ' · ' + t);
+        abrirMenu(n);
+      }).catch(function (falha) {
+        /* O cadastro não pode barrar a conversa: se o registro falha, a
+           pessoa segue para as respostas do mesmo jeito. */
+        if (window.console && console.warn) console.warn('Chat: falha ao registrar contato:', falha.message);
+        marcarIdentificado();
+        bloco.remove();
+        balao('bv-user', n + ' · ' + t);
+        abrirMenu(n);
+      });
+    });
+
+    function falhar(texto, campo) {
+      erro.textContent = texto;
+      erro.hidden = false;
+      campo.focus();
+    }
+
+    window.setTimeout(function () { nome.focus(); }, reducedMotion ? 0 : 320);
+  }
+
+  function marcarIdentificado() {
+    try { window.sessionStorage.setItem(CADASTRO, '1'); } catch (erro) { /* modo restrito */ }
+  }
+
+  function abrirMenu(nome) {
+    balao('bv-bot', nome
+      ? 'Obrigado, ' + nome.split(' ')[0] + '! ' + dados.saudacao
+      : dados.saudacao);
+    opcoes();
+  }
+
   function iniciar() {
     if (iniciado) return;
     iniciado = true;
-    balao('bv-bot', dados.saudacao);
-    opcoes();
+
+    if (jaSeIdentificou()) {
+      abrirMenu('');
+      log.scrollTop = 0;
+      return;
+    }
+
+    balao('bv-bot', 'Antes de começar, como podemos falar com você? Assim a gente retoma a conversa se ela cair.');
+    identificacao();
   }
 
   /* -------------------------------------------------- chamada de atenção */
