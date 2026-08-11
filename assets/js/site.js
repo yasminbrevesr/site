@@ -32,6 +32,18 @@
     revealVisible();
   }
 
+  /* A faixa de luz do hero só anima enquanto o hero está na tela. Abaixo
+     dele a animação fica parada e não disputa quadro com a rolagem. */
+  var heroSweep = document.querySelector('.mz-hero');
+  if (heroSweep && heroSweep.querySelector('.mz-sweep') && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) heroSweep.removeAttribute('data-fora');
+        else heroSweep.setAttribute('data-fora', '');
+      });
+    }, { threshold: 0 }).observe(heroSweep);
+  }
+
   /* Navegação responsiva. */
   var body = document.body;
   var header = document.querySelector('[data-header]');
