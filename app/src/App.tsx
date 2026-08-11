@@ -2,12 +2,14 @@ import HoverRevealCardsDemo from './demo'
 import { AboutDemo } from '@/components/blocks/cta-section-with-gallery-demo'
 import DesertDriftDemo from '@/components/ui/desert-drift-demo'
 import { CTADemo } from '@/components/blocks/cta-with-rectangle-demo'
+import BorderBeamPanelDemo from '@/components/ui/border-beam-panel-demo'
 
 function App() {
   return (
     <main className="bg-background text-foreground">
       <AboutDemo />
       <HoverRevealCardsDemo />
+      <BorderBeamPanelDemo />
       <DesertDriftDemo />
       <CTADemo />
     </main>

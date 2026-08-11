@@ -26,8 +26,21 @@ npx shadcn@latest add button card dialog
 ```
 They land in `src/components/ui/`.
 
-## Included component
+## Included components
 - `src/components/ui/cards.tsx` — `HoverRevealCards`, a responsive grid of
   cards with a hover/focus reveal effect (hovered card highlights, others
   de-emphasize). Demo wiring in `src/demo.tsx`, rendered by `src/App.tsx`.
   Card images are Unsplash URLs and can be swapped freely.
+- `src/components/ui/border-beam-panel.tsx` — `BorderBeamPanel` (Motiq, MIT).
+  A panel whose border is a rotating conic gradient carrying one or two
+  comets. The angular *velocity* is sprung, so the beams wind up toward
+  `hoverSpeed` on hover/focus and coast back to `idleSpeed` on leave. The ring
+  is cut with a two-layer CSS alpha mask (`mask-composite: exclude`), and only
+  one custom property changes per frame, so panel content never repaints. It
+  parks itself offscreen or when the tab is hidden, and renders a static lit
+  border under `prefers-reduced-motion`. Demo in
+  `src/components/ui/border-beam-panel-demo.tsx`.
+
+  It ships its own `--motiq-*` tokens in a low `@layer motiq`, so defining
+  `:root { --motiq-accent: … }` in `src/index.css` overrides them without
+  touching the component.
