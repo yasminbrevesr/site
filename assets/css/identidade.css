@@ -1146,3 +1146,71 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   .faq summary i { width: 30px; height: 30px; }
   .faq details p { margin: 0 16px 18px 50px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SEM COSTURA ENTRE AS SEÇÕES
+   As passagens em degradê saem: cada seção volta a ter borda definida, com
+   a cor começando e terminando nela mesma. O respiro vertical extra também
+   volta ao normal, porque ele só existia para a costura caber sem invadir o
+   conteúdo.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+#contato.contact-commit-1adc { padding: 116px 0 104px; }
+.calculator { padding: 120px 0 112px; }
+
+#contato, .calculator {
+  background:
+    radial-gradient(900px 520px at 82% 26%, rgba(103, 56, 255, .42), transparent 60%),
+    radial-gradient(760px 460px at 16% 82%, rgba(247, 37, 199, .24), transparent 58%),
+    radial-gradient(1100px 600px at 50% 50%, rgba(22, 155, 255, .2), transparent 62%),
+    linear-gradient(180deg, var(--marinho-fundo) 0%, #062a5c 30%, var(--azul-fundo) 50%, #062a5c 70%, var(--marinho-fundo) 100%);
+  background-color: var(--marinho-fundo);
+}
+
+/* As seções claras mantêm a lavagem de cor, sem o sangramento nas bordas. */
+.mz-products {
+  background:
+    radial-gradient(900px 520px at 88% 12%, rgba(103, 56, 255, .07), transparent 62%),
+    var(--paper-bright);
+}
+
+.mz-units {
+  background:
+    radial-gradient(900px 520px at 20% 8%, rgba(103, 56, 255, .08), transparent 60%),
+    radial-gradient(760px 460px at 90% 96%, rgba(22, 155, 255, .08), transparent 58%),
+    var(--paper);
+}
+
+.practice {
+  background:
+    radial-gradient(880px 500px at 90% 16%, rgba(103, 56, 255, .06), transparent 62%),
+    var(--paper-bright);
+}
+
+.faq {
+  background:
+    radial-gradient(820px 460px at 6% 24%, rgba(6, 91, 255, .06), transparent 60%),
+    var(--paper);
+}
+
+.cta-gallery {
+  background:
+    radial-gradient(860px 500px at 92% 78%, rgba(247, 37, 199, .06), transparent 60%),
+    var(--paper-bright);
+}
+
+.site-footer { background: var(--paper-bright); }
+
+.mz-hero {
+  background:
+    radial-gradient(760px 460px at 50% 34%, rgba(103, 56, 255, .2), transparent 68%),
+    radial-gradient(560px 520px at 27% 24%, rgba(145, 70, 255, .16), transparent 66%),
+    radial-gradient(520px 480px at 74% 62%, rgba(145, 70, 255, .15), transparent 66%),
+    linear-gradient(180deg, #e6efff 0%, var(--paper-deep) 42%, #f2f6ff 100%);
+  background-color: var(--paper-deep);
+}
+
+@media (max-width: 760px) {
+  #contato.contact-commit-1adc { padding: 88px 0 80px; }
+  .calculator { padding: 92px 0 84px; }
+}
