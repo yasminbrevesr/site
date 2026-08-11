@@ -1328,3 +1328,88 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 /* O margin-top: auto empurra o rodapé do cartão para baixo, mas quando o
    texto é longo os dois encostam. A folga mínima vem do parágrafo. */
 .mz-unit p { margin-bottom: 26px; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   AJUSTES PEDIDOS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Navegação: um só padrão tipográfico para os quatro itens ─────────── */
+
+/* O link do Jurídico só se distinguia pela cor, mas herdava métrica própria.
+   Agora os quatro compartilham família, tamanho, peso e espaçamento; o que
+   muda é apenas a cor e a seta. */
+.site-header nav a,
+.site-header nav a.nav-external {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  line-height: 1;
+  padding: 10px 12px;
+}
+.site-header nav a.nav-external span { font-size: 11px; margin-left: 3px; }
+
+/* ─── Hero: azul-marinho da logo, texto cinza ──────────────────────────── */
+
+.mz-hero {
+  background:
+    radial-gradient(820px 500px at 50% 32%, rgba(103, 56, 255, .3), transparent 66%),
+    radial-gradient(600px 540px at 24% 22%, rgba(145, 70, 255, .22), transparent 64%),
+    radial-gradient(560px 500px at 78% 66%, rgba(247, 37, 199, .16), transparent 64%),
+    linear-gradient(180deg, var(--marinho-fundo) 0%, #041f3a 48%, var(--marinho-fundo) 100%);
+  background-color: var(--marinho-fundo);
+}
+
+/* O cinza de tela, não o branco: destaca sem estourar sobre o marinho, e a
+   letra levemente mais fechada dá a leitura técnica. */
+.mz-hero h1 {
+  color: #ccd7e6;
+  letter-spacing: -.04em;
+}
+.mz-hero-lead { color: rgba(204, 215, 230, .62); }
+.hero-kicker { color: var(--violet-soft); }
+
+.mz-hero .mz-btn-ghost {
+  border: 1px solid rgba(204, 215, 230, .32);
+  background: transparent;
+  color: #ccd7e6;
+  box-shadow: none;
+}
+.mz-hero .mz-btn-ghost:hover {
+  border-color: var(--violet-soft);
+  background: rgba(145, 70, 255, .16);
+  color: #fff;
+}
+
+/* As curvas precisam clarear para aparecer sobre o marinho. */
+.mz-paths path { opacity: .5; }
+.mz-sweep i {
+  background: linear-gradient(108deg,
+    transparent 41%,
+    rgba(22, 155, 255, .16) 45%,
+    rgba(103, 56, 255, .26) 48.5%,
+    rgba(145, 70, 255, .24) 51.5%,
+    rgba(247, 37, 199, .16) 55%,
+    transparent 59%);
+  /* Mais rápido, como pedido: de 9s para 5s por travessia. */
+  animation-duration: 5s;
+}
+
+/* ─── Calculadora do jurídico: gradiente no ambiente ───────────────────── */
+
+.calculator-shell {
+  border-color: rgba(255, 255, 255, .14);
+  background:
+    radial-gradient(680px 400px at 88% 8%, rgba(103, 56, 255, .22), transparent 62%),
+    radial-gradient(520px 340px at 6% 96%, rgba(247, 37, 199, .14), transparent 60%),
+    linear-gradient(142deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02) 58%, rgba(255, 255, 255, .04));
+  box-shadow: 0 34px 90px rgba(1, 12, 30, .4);
+}
+
+.calculator-result {
+  background:
+    radial-gradient(460px 320px at 70% 0%, rgba(145, 70, 255, .26), transparent 64%),
+    linear-gradient(158deg, rgba(103, 56, 255, .16), rgba(2, 24, 44, .3));
+}
+.calculator-result::before { border-color: rgba(145, 70, 255, .26); }
+.calculator-progress i { background: var(--grad-glow); }
