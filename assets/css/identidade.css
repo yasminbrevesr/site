@@ -640,3 +640,138 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   .mz-hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
   .mz-hero-actions > * { width: 100%; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HERO DA MATRIZ — fundo no azul da logo
+   O #02182C é o azul-marinho da marca, e é escuro: o título sai do preto
+   para o branco, porque preto sobre ele fica ilegível. A cor vem de um
+   elemento gráfico em roxo, atrás da chamada.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.mz-hero {
+  background:
+    /* costura de saída: o marinho se desfaz no claro da próxima seção,
+       passando pelo azul, como as demais emendas do site */
+    linear-gradient(to top,
+      rgba(247, 249, 252, 1) 0,
+      rgba(214, 232, 255, .96) 34px,
+      rgba(120, 180, 255, .72) 68px,
+      rgba(29, 111, 216, .38) 100px,
+      rgba(6, 42, 92, 0) 138px),
+    linear-gradient(180deg, #02182c 0%, #041f3a 46%, #02182c 100%);
+  background-color: #02182c;
+}
+
+.mz-hero h1 { color: #fff; }
+.mz-hero-lead { color: rgba(255, 255, 255, .74); }
+.hero-kicker { color: var(--violet-soft); }
+.mz-hero .hero-atmosphere { opacity: .5; }
+
+/* O secundário precisa se ver sobre o marinho. */
+.mz-hero .mz-btn-ghost {
+  border-color: rgba(255, 255, 255, .38);
+  background: transparent;
+  color: #fff;
+  box-shadow: none;
+}
+.mz-hero .mz-btn-ghost:hover {
+  border-color: var(--violet-soft);
+  background: rgba(145, 70, 255, .16);
+  color: #fff;
+}
+
+/* ───────────────────────────────────────────── o elemento gráfico em roxo */
+
+/* Uma aurora de roxos atrás da chamada: três massas difusas e um arco fino
+   que as atravessa. Sem grade, sem HUD — só luz e curva. */
+.mz-aurora {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mz-aurora i {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+}
+
+.mz-aurora .a {
+  left: 50%; top: 34%;
+  width: min(1120px, 96vw); height: min(620px, 62vw);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(103, 56, 255, .55), rgba(103, 56, 255, 0) 72%);
+  filter: blur(58px);
+  animation: aurora-respira 15s ease-in-out infinite;
+}
+
+.mz-aurora .b {
+  left: 27%; top: 24%;
+  width: min(560px, 62vw); height: min(560px, 62vw);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(145, 70, 255, .5), rgba(145, 70, 255, 0) 70%);
+  filter: blur(52px);
+  animation: aurora-deriva-a 19s ease-in-out infinite;
+}
+
+.mz-aurora .c {
+  left: 74%; top: 62%;
+  width: min(520px, 58vw); height: min(520px, 58vw);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(145, 70, 255, .42), rgba(103, 56, 255, 0) 70%);
+  filter: blur(56px);
+  animation: aurora-deriva-b 23s ease-in-out infinite;
+}
+
+/* O arco é um anel recortado por máscara: fica uma linha de luz curva, não
+   um círculo fechado. */
+.mz-aurora .arco {
+  left: 50%; top: 50%;
+  width: min(1180px, 104vw); height: min(1180px, 104vw);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(from 200deg,
+    rgba(145, 70, 255, 0) 0deg,
+    rgba(145, 70, 255, .9) 42deg,
+    rgba(103, 56, 255, .55) 96deg,
+    rgba(103, 56, 255, 0) 150deg,
+    rgba(103, 56, 255, 0) 360deg);
+  padding: 1px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: .85;
+  animation: aurora-gira 46s linear infinite;
+}
+
+@keyframes aurora-respira {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1.09); opacity: .82; }
+}
+@keyframes aurora-deriva-a {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
+  50% { transform: translate(-50%, -50%) translate(44px, 34px); }
+}
+@keyframes aurora-deriva-b {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
+  50% { transform: translate(-50%, -50%) translate(-52px, -30px); }
+}
+@keyframes aurora-gira {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* O conteúdo fica acima da aurora. */
+.mz-hero-inner { position: relative; z-index: 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mz-aurora i { animation: none; }
+}
+
+@media (max-width: 760px) {
+  .mz-aurora .a { width: 130vw; height: 70vw; filter: blur(46px); }
+  .mz-aurora .arco { width: 150vw; height: 150vw; }
+}
