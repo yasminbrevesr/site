@@ -44,3 +44,16 @@ They land in `src/components/ui/`.
   It ships its own `--motiq-*` tokens in a low `@layer motiq`, so defining
   `:root { --motiq-accent: … }` in `src/index.css` overrides them without
   touching the component.
+- `src/components/ui/floating-paths.tsx` — `FloatingPathsBackground`, a
+  wrapper that lays 36 animated SVG curves behind whatever you pass as
+  `children`. `position` (a number) shifts and mirrors the sweep — `-1` and
+  `1` give opposed fields. Colour comes from `currentColor`, so it follows
+  `text-slate-950 dark:text-white`. Uses `motion/react`. Demo in
+  `src/components/ui/floating-paths-demo.tsx`.
+
+  Two notes for anyone porting this component elsewhere. The upstream demo
+  uses `aspect-16/9`, which is Tailwind **v4** syntax; on the 3.4 here the
+  equivalent is `aspect-[16/9]`, and without the change the class emits no
+  rule, the container gets no height and nothing shows. And the transition
+  duration is randomised during render, which is fine in this client-only
+  app but would desync between server and client under SSR.
