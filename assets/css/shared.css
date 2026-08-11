@@ -16,15 +16,15 @@
 
 :root {
   --black: #0a0a0c;
-  --white: #f4f2ee;
-  --grey: #9d9d9d;
-  --grey-dim: #5f5f5f;
-  --amber: #e2a144;
+  --white: #f7f9fc;
+  --grey: #8a99ad;
+  --grey-dim: #55657a;
+  --amber: #7b46ff;
   --green: #5cb97f;
   --line: rgba(255, 255, 255, 0.12);
   --line-soft: rgba(255, 255, 255, 0.07);
-  --band: rgba(244, 242, 238, 0.035);
-  --band-soft: rgba(244, 242, 238, 0.02);
+  --band: rgba(247,249,252, 0.035);
+  --band-soft: rgba(247,249,252, 0.02);
   --mono: 'Plex Mono', Consolas, monospace;
 }
 
@@ -32,4 +32,4 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 
-::selection { background: rgba(226, 161, 68, 0.28); color: var(--white); }
+::selection { background: rgba(123,70,255, 0.28); color: var(--white); }

@@ -1,0 +1,430 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   NOVA IDENTIDADE BREVES
+   A troca de matiz já aconteceu nos tokens acima; este bloco cuida do que
+   depende de contexto — as superfícies que eram escuras e passam a ser
+   claras, os gradientes da marca e o acabamento de cards e botões.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --blue: #065bff;
+  --blue-bright: #169bff;
+  --violet: #6738ff;
+  --violet-soft: #9146ff;
+  --magenta: #f725c7;
+  --magenta-bright: #ff4fd8;
+  --hairline: #d9e2f0;
+  --grad-brand: linear-gradient(100deg, #065bff, #6738ff 52%, #f725c7);
+  --grad-glow: linear-gradient(100deg, #169bff, #9146ff 52%, #ff4fd8);
+  --sombra-card: 0 1px 2px rgba(2, 24, 44, .04), 0 8px 24px rgba(2, 24, 44, .05);
+  --sombra-alta: 0 2px 6px rgba(2, 24, 44, .06), 0 18px 44px rgba(2, 24, 44, .09);
+}
+
+/* O site inteiro passa a nascer claro. */
+html, body { background: var(--paper-bright); color: var(--ink); }
+
+/* Texto em gradiente — a assinatura da marca, usada só nos destaques. */
+h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ───────────────────────────────────────────────────────────────── header */
+
+.nav-shell {
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, .78);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: 0 10px 34px rgba(2, 24, 44, .07);
+}
+
+.site-header.scrolled .nav-shell {
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 12px 38px rgba(2, 24, 44, .1);
+}
+
+.brand img { width: auto; height: 30px; }
+.brand b { color: var(--ink); }
+.brand small { color: var(--blue); }
+
+.site-header nav a { color: var(--ink-muted); }
+.site-header nav a:hover, .site-header nav a.active { color: var(--ink); }
+.site-header nav a::after { background: var(--grad-brand); }
+.nav-external { color: var(--violet) !important; }
+
+/* O CTA do topo é o botão mais forte da página: gradiente cheio. */
+.nav-cta {
+  border: 0;
+  background: var(--grad-brand);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(103, 56, 255, .28);
+}
+.nav-cta:hover { background: var(--grad-glow); box-shadow: 0 10px 26px rgba(103, 56, 255, .36); }
+.nav-cta span { color: rgba(255, 255, 255, .9); }
+.nav-toggle span { background: var(--ink); }
+
+/* ─────────────────────────────────────────────────────────────────── heros */
+
+/* O fundo escuro dá lugar a branco com uma aurora suave nas cores da marca,
+   que é o que o mockup usa como atmosfera. */
+.hero, .mz-hero {
+  background:
+    radial-gradient(1100px 620px at 78% 22%, rgba(103, 56, 255, .13), transparent 62%),
+    radial-gradient(900px 520px at 96% 46%, rgba(247, 37, 199, .1), transparent 60%),
+    radial-gradient(760px 460px at 12% 4%, rgba(6, 91, 255, .09), transparent 64%),
+    var(--paper-bright);
+  color: var(--ink);
+}
+
+.hero::before, .mz-hero::before {
+  background-image: radial-gradient(rgba(2, 24, 44, .13) .6px, transparent .6px);
+  opacity: .5;
+}
+.hero::after, .mz-hero::after { opacity: .5; }
+
+.hero h1, .mz-hero h1, .hero-lead, .mz-hero-lead { color: var(--ink); }
+.hero-lead, .mz-hero-lead { color: var(--ink-muted); }
+.hero-kicker { color: var(--violet); }
+.hero-kicker span { background: var(--grad-brand); }
+.hero-assurances li { border-color: var(--hairline); color: var(--ink-muted); }
+.mz-ascii { opacity: .3; }
+.mz-hero-stars { opacity: .35; }
+.mz-corner { border-color: rgba(2, 24, 44, .18); }
+.mz-hud-coords, .mz-hud-bottom, .mz-notation, .mz-rule { color: var(--ink-muted); }
+.mz-hud-bottom i, .mz-rule span, .mz-notation span { background: var(--hairline); }
+.mz-notation b, .mz-rule b { color: var(--violet); }
+.scroll-cue { color: var(--ink-muted); }
+.scroll-cue span { background: var(--hairline); }
+
+/* O console do hero é o único bloco escuro dessa área — vira um cartão
+   azul-marinho, que dá o contraste que o mockup tira da onda colorida. */
+.mz-console {
+  border: 1px solid rgba(2, 24, 44, .1);
+  background: linear-gradient(160deg, #041e37, var(--ink));
+  box-shadow: var(--sombra-alta);
+}
+
+/* ─────────────────────────────────────────────────── seções que clareiam */
+
+.mz-units, .mz-integrations {
+  background: var(--paper);
+  color: var(--ink);
+}
+.mz-units h2, .mz-integrations h2 { color: var(--ink); }
+.mz-units .section-head > p,
+.mz-integrations .section-head > p { border-color: var(--hairline); color: var(--ink-muted); }
+.mz-units-grid > * { border-color: var(--hairline); background: var(--paper-bright); color: var(--ink); }
+.integration-section { background: var(--paper-bright); }
+
+/* ─────────────────────────────────────────────────────────── botões e CTAs */
+
+.button-primary {
+  border: 0;
+  background: var(--grad-brand);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(103, 56, 255, .26);
+}
+.button-primary:hover { background: var(--grad-glow); box-shadow: 0 12px 30px rgba(103, 56, 255, .34); }
+.button-primary .button-arrow, .button-primary span { color: #fff; }
+
+/* O secundário fica limpo: fundo branco, contorno fino, sem peso. */
+.mz-btn-ghost, .button-dark {
+  border: 1px solid var(--hairline);
+  background: var(--paper-bright);
+  color: var(--ink);
+  box-shadow: var(--sombra-card);
+}
+.mz-btn-ghost:hover, .button-dark:hover {
+  border-color: rgba(103, 56, 255, .45);
+  background: var(--paper-bright);
+  color: var(--violet);
+}
+
+.text-link { color: var(--violet); }
+
+/* ──────────────────────────────────────────────────────── cards e blocos */
+
+.svc-card, .mz-card, .mz-products-list li, .faq details, .practice-shell,
+.mz-products-custom, .integration-flow-copy {
+  border-color: var(--hairline);
+  background: var(--paper-bright);
+  box-shadow: var(--sombra-card);
+}
+
+.svc-card:hover, .mz-card:hover, .mz-products-list li:hover {
+  border-color: rgba(103, 56, 255, .32);
+  box-shadow: var(--sombra-alta);
+}
+
+/* Fio colorido no topo do card, que é o detalhe do mockup. */
+.svc-card, .mz-products-list li { position: relative; overflow: hidden; }
+.svc-card::before, .mz-products-list li::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0; right: 0; top: 0;
+  height: 2px;
+  background: var(--grad-brand);
+  opacity: 0;
+  transition: opacity .28s ease;
+}
+.svc-card:hover::before, .mz-products-list li:hover::before { opacity: 1; }
+
+.mz-products-list li small { color: var(--blue); }
+.mz-products-list li b { color: var(--ink); }
+.mz-products-list li p { color: var(--ink-muted); }
+.section-label { color: var(--violet); }
+
+/* ────────────────────────────────────────────────────── contato e rodapé */
+
+/* A seção de contato é a faixa escura do mockup: azul-marinho com o
+   gradiente da marca passando por baixo. */
+#contato, .calculator {
+  background:
+    radial-gradient(900px 520px at 84% 30%, rgba(103, 56, 255, .34), transparent 62%),
+    radial-gradient(760px 460px at 20% 84%, rgba(247, 37, 199, .2), transparent 60%),
+    var(--ink);
+}
+
+.site-footer {
+  border-top: 1px solid var(--hairline);
+  background: var(--paper-bright);
+  color: var(--ink-muted);
+}
+.site-footer h3 { color: var(--ink); }
+.site-footer a { color: var(--ink-muted); }
+.site-footer a:hover { color: var(--violet); }
+.site-footer .footer-brand img { width: auto; height: 40px; }
+.footer-brand-block > p { color: var(--ink-muted); }
+.footer-bottom, .footer-top { border-color: var(--hairline); }
+.footer-cta { border-color: var(--hairline); color: var(--ink); }
+.footer-cta:hover { border-color: var(--violet); color: var(--violet); }
+.footer-contact svg { color: var(--violet); }
+
+/* O rodapé claro pede o nome ao lado da marca, como no cabeçalho. */
+.footer-brand > span {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 660;
+  letter-spacing: .18em;
+  color: var(--ink);
+}
+
+/* ─────────────────────────── seções da matriz que vinham do fundo escuro */
+
+.mz-units, .mz-integrations { background: var(--paper); color: var(--ink); }
+.mz-units h2, .mz-integrations h2 { color: var(--ink); }
+.mz-units h2 em, .mz-integrations h2 em { color: transparent; }
+.mz-units .section-head > p,
+.mz-integrations .section-head > p { border-color: var(--hairline); color: var(--ink-muted); }
+
+.mz-unit {
+  border: 1px solid var(--hairline);
+  background: var(--paper-bright);
+  box-shadow: var(--sombra-card);
+}
+.mz-unit-head small { color: var(--blue); }
+.mz-unit-head b { color: var(--ink); }
+.mz-unit p { color: var(--ink-muted); }
+.mz-unit-tag { border-color: var(--hairline); color: var(--ink-muted); }
+.mz-unit.is-branch:hover,
+.mz-unit.is-matrix:hover { border-color: rgba(103, 56, 255, .34); box-shadow: var(--sombra-alta); }
+
+.integration-item { border-color: var(--hairline); background: var(--paper-bright); color: var(--ink); }
+.integration-brandmark { color: var(--violet); }
+.integration-flow-copy p { color: var(--ink-muted); }
+.integration-track::before, .integration-track::after { display: none; }
+.mz-integrations .mz-btn-ghost { border-color: var(--hairline); background: var(--paper-bright); color: var(--ink); }
+
+/* O bloco "a gente cria" é a faixa de chamada do mockup: fica escura, agora
+   com o gradiente da marca por baixo do azul-marinho. */
+.mz-products-custom {
+  border-color: rgba(2, 24, 44, .1);
+  background:
+    radial-gradient(700px 320px at 88% 20%, rgba(103, 56, 255, .5), transparent 62%),
+    radial-gradient(520px 300px at 8% 100%, rgba(247, 37, 199, .28), transparent 60%),
+    var(--ink);
+  color: #fff;
+  box-shadow: var(--sombra-alta);
+}
+.mz-products-custom-copy small { color: var(--magenta-bright); }
+.mz-products-custom-copy strong { color: #fff; }
+.mz-products-custom-copy p { color: rgba(255, 255, 255, .74); }
+.mz-products-custom .button-primary {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 8px 22px rgba(2, 24, 44, .3);
+}
+.mz-products-custom .button-primary:hover { background: #fff; color: var(--violet); }
+.mz-products-custom .button-primary span,
+.mz-products-custom .button-primary .button-arrow { color: inherit; }
+
+/* ───────────────────────────────────── seção de contato, que segue escura */
+
+#contato h2, #contato .contact-intro-foot, #contato .contact-direct > span { color: #fff; }
+#contato h2 em { color: transparent; background: var(--grad-glow); -webkit-background-clip: text; background-clip: text; }
+#contato .section-label { color: var(--magenta-bright); }
+#contato .contact-direct a { color: #fff; }
+
+/* ────────────────────────────────────────────────────────── rodapé claro */
+
+.site-footer, .site-footer .footer-top, .site-footer .footer-bottom { color: var(--ink-muted); }
+.site-footer nav a, .site-footer .footer-contact a { color: var(--ink-muted); }
+.site-footer nav a:hover, .site-footer .footer-contact a:hover { color: var(--violet); }
+.site-footer .footer-contact li { color: var(--ink-muted); }
+.footer-brand { gap: 12px; }
+
+/* ────────────────────────────────────── cards da vitrine de soluções */
+
+.gallery-card {
+  border: 1px solid var(--hairline);
+  background: var(--paper-bright);
+  color: var(--ink);
+  box-shadow: var(--sombra-card);
+}
+.gallery-card::before { background: radial-gradient(circle, rgba(103, 56, 255, .1), transparent 66%); }
+.gallery-card:hover, .gallery-card:focus-visible {
+  border-color: rgba(103, 56, 255, .38);
+  box-shadow: var(--sombra-alta);
+}
+.gallery-ic {
+  border: 1px solid rgba(103, 56, 255, .22);
+  background: var(--paper-deep);
+  color: var(--violet);
+}
+.gallery-card-body small { color: var(--blue); }
+.gallery-card-body h3 { color: var(--ink); }
+
+/* ────────────────────────── formulário de contato sobre o azul-marinho */
+
+/* Os rótulos e os campos foram desenhados escuros; sobre o fundo escuro da
+   seção eles só funcionam dentro de um cartão branco, que é também o
+   acabamento do mockup. */
+#contato.contact-commit-1adc .contact-form {
+  padding: 34px 36px 38px;
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 30px 70px rgba(1, 12, 30, .34);
+}
+#contato.contact-commit-1adc .contact-form::after { display: none; }
+#contato.contact-commit-1adc .contact-form-heading { border-bottom-color: var(--hairline); }
+#contato.contact-commit-1adc .field input,
+#contato.contact-commit-1adc .field select,
+#contato.contact-commit-1adc .field textarea {
+  border-color: var(--hairline);
+  background: var(--paper);
+  color: var(--ink);
+}
+#contato.contact-commit-1adc .field input:focus,
+#contato.contact-commit-1adc .field select:focus,
+#contato.contact-commit-1adc .field textarea:focus {
+  border-color: var(--violet);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(103, 56, 255, .14);
+}
+#contato .contact-form-action .button-primary {
+  border: 0;
+  background: var(--grad-brand);
+  color: #fff;
+}
+#contato .contact-form-action .button-primary:hover { background: var(--grad-glow); }
+#contato .contact-form-action .button-arrow { border-left-color: rgba(255, 255, 255, .3); }
+
+/* Texto da seção, que fica fora do cartão e portanto sobre o escuro. */
+#contato .contact-intro-foot > p { color: rgba(255, 255, 255, .74); }
+#contato .contact-assurances li { border-top-color: rgba(255, 255, 255, .26); color: rgba(255, 255, 255, .66); }
+#contato .contact-assurances li::before { background: var(--magenta-bright); }
+
+/* No escuro o gradiente do destaque perde legibilidade nas pontas; um tom
+   sólido da paleta segura melhor o contraste. */
+/* O destaque desta seção é pintado por -webkit-text-fill-color mais uma
+   camada ::after sobreposta; as duas precisam clarear sobre o escuro. */
+#contato.contact-commit-1adc h2 em {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+#contato h2 em::after {
+  color: var(--magenta-bright);
+  -webkit-text-fill-color: var(--magenta-bright);
+}
+#contato h2 em::before { background: var(--grad-glow); }
+
+/* A faixa de instrumentos do hero era desenhada para fundo escuro. */
+.mz-hud-bottom { background: transparent; border-top: 1px solid var(--hairline); }
+
+/* O cartão branco pede que os rótulos e o texto de apoio voltem ao escuro. */
+#contato.contact-commit-1adc .contact-form-heading span,
+#contato.contact-commit-1adc .contact-form-heading small { color: var(--ink-muted); }
+#contato.contact-commit-1adc .contact-form-heading strong { color: var(--ink); }
+#contato.contact-commit-1adc .field label { color: var(--ink-muted); }
+#contato.contact-commit-1adc .field { border-bottom: 0; }
+
+/* O rodapé tinha vários tons pensados para o fundo escuro; no claro todos
+   precisam vir do azul-marinho. */
+.site-footer.footer-rich .footer-col a,
+.site-footer.footer-rich .footer-brand-block > p,
+.site-footer.footer-rich .footer-contact li,
+.site-footer.footer-rich .footer-bottom span { color: var(--ink-muted); }
+.site-footer.footer-rich .footer-col h3 { color: var(--ink); }
+.site-footer.footer-rich .footer-col a:hover { color: var(--violet); }
+.site-footer.footer-rich .footer-top,
+.site-footer.footer-rich .footer-bottom { border-color: var(--hairline); }
+
+/* ──────────────────────────────── órbita do hero jurídico, agora no claro */
+
+/* O conjunto foi desenhado em branco sobre fundo escuro. Os anéis e as
+   legendas passam ao azul-marinho, e o núcleo — que carrega a marca — vira
+   um disco branco, mantendo o mesmo desenho. */
+.orbit-ring { border-color: rgba(2, 24, 44, .16); }
+.orbit-ring span { color: var(--ink-muted); }
+.orbit-ring::before { background: var(--violet); box-shadow: 0 0 18px rgba(103, 56, 255, .5); }
+.orbit-axis { background: linear-gradient(90deg, transparent, rgba(2, 24, 44, .14), transparent); }
+.orbit-axis::after { background: linear-gradient(transparent, rgba(2, 24, 44, .1), transparent); }
+
+.orbit-halo { background: radial-gradient(circle at 42% 36%, rgba(103, 56, 255, .16), rgba(247, 37, 199, .05) 46%, transparent 68%); }
+
+.orbit-core {
+  border: 1px solid var(--hairline);
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(2, 24, 44, .14), inset 0 0 0 10px rgba(2, 24, 44, .02);
+}
+.orbit-core::before { border-color: rgba(103, 56, 255, .22); }
+.orbit-core small, .orbit-stage, .core-index { color: var(--ink-muted); }
+.orbit-steps i { background: rgba(2, 24, 44, .14); }
+.orbit-steps i.done { background: rgba(103, 56, 255, .45); }
+.orbit-steps i.on { background: var(--violet); box-shadow: 0 0 10px rgba(103, 56, 255, .45); }
+
+.orbit-signature { color: rgba(2, 24, 44, .34); }
+.legal-orbit:hover .orbit-signature { color: rgba(2, 24, 44, .55); }
+.orbit-signature::before, .orbit-signature::after { background: rgba(103, 56, 255, .3); }
+
+.orbit-note {
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, .92);
+  color: var(--ink-muted);
+  box-shadow: var(--sombra-card);
+}
+.orbit-note b { color: var(--violet); }
+.legal-orbit::after { background: radial-gradient(circle, rgba(103, 56, 255, .1), transparent 62%); }
+
+/* ──────────────────────────────────────────────── ajustes finais de acabamento */
+
+/* A trama de caracteres do hero pesava demais sobre o fundo claro. */
+.mz-ascii { opacity: .22; }
+
+/* O balão do usuário e o selo do chat ficavam com texto marinho sobre roxo. */
+.bv-user, .bv-badge { background: var(--violet); color: #fff; }
+.bv-chat-launcher.bv-alerta::after, .bv-chat-launcher:focus-visible { border-color: var(--violet); }
+.bv-opt:hover, .bv-opt:focus-visible { border-color: var(--violet-soft); background: rgba(103, 56, 255, .18); }
+.bv-msg-link { color: var(--magenta-bright); border-bottom-color: rgba(255, 79, 216, .5); }
+
+/* Rolagem de progresso e link de atalho acompanham a marca. */
+.page-progress i { background: var(--grad-brand); }
+.skip-link { background: var(--ink); color: #fff; }

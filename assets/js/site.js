@@ -502,9 +502,11 @@
         var base = 0.05 + 0.045 * Math.sin(c.phase + elapsed * 0.7);
         var alpha = base + bright * 0.55;
         if (bright > 0.85 && Math.random() < 0.03) c.ch = glyphs[(Math.random() * glyphs.length) | 0];
+        /* O hero passou a ser claro: os caracteres saem do roxo da marca para
+           o azul-marinho, em vez do âmbar sobre o papel. */
         asciiCtx.fillStyle = bright > 0.55
-          ? 'rgba(239,182,111,' + alpha.toFixed(3) + ')'
-          : 'rgba(242,239,231,' + alpha.toFixed(3) + ')';
+          ? 'rgba(103,56,255,' + (alpha * 0.85).toFixed(3) + ')'
+          : 'rgba(2,24,44,' + (alpha * 0.55).toFixed(3) + ')';
         asciiCtx.fillText(c.ch, c.px, c.py);
       }
     }
