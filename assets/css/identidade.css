@@ -1413,3 +1413,23 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 }
 .calculator-result::before { border-color: rgba(145, 70, 255, .26); }
 .calculator-progress i { background: var(--grad-glow); }
+
+/* ─── Chamada do hero: o parágrafo em gradiente ────────────────────────── */
+
+/* O gradiente vai de cinza claro a um cinza azulado, não às cores da marca:
+   num parágrafo inteiro o gradiente colorido come a legibilidade. Assim ele
+   ganha o brilho técnico e mantém contraste em toda a extensão. */
+.mz-hero-lead {
+  background: linear-gradient(103deg, #dbe6f5 0%, #b7c9e2 38%, #9fb3d6 62%, #b9a8e8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: .008em;
+}
+
+/* Sem suporte a recorte de fundo em texto, o parágrafo volta ao cinza sólido
+   em vez de sumir. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .mz-hero-lead { color: #ccd7e6; -webkit-text-fill-color: #ccd7e6; }
+}
