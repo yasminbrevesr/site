@@ -933,3 +933,58 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
       rgba(0, 0, 0, 1) 92%);
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   CORREÇÃO DE DESEMPENHO DO HERO
+   O hero acumulou seis camadas animadas: cinco com filter: blur() entre 58 e
+   72px e um anel cônico mascarado girando sobre 1,4 milhão de px². Animar
+   transform num elemento borrado obriga o navegador a refazer o blur a cada
+   quadro, e o conjunto derrubou a página para 4 fps, com travadas de meio
+   segundo — daí o fundo piscar e o conteúdo sumir.
+
+   A luz roxa continua, mas parada: um degradê radial já nasce suave e não
+   precisa de filtro nem de animação para parecer difuso.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* As massas borradas e o anel giratório saem de cena. */
+.mz-aurora { display: none; }
+.mz-hero .hero-atmosphere { display: none; }
+
+/* A mesma luz, agora assada no fundo da seção — custo zero por quadro. */
+.mz-hero {
+  background:
+    linear-gradient(to top, var(--paper-bright) 0, rgba(255, 255, 255, 0) 190px),
+    radial-gradient(760px 460px at 50% 34%, rgba(103, 56, 255, .2), transparent 68%),
+    radial-gradient(560px 520px at 27% 24%, rgba(145, 70, 255, .16), transparent 66%),
+    radial-gradient(520px 480px at 74% 62%, rgba(145, 70, 255, .15), transparent 66%),
+    linear-gradient(180deg, #e6efff 0%, var(--paper-deep) 42%, #f2f6ff 100%);
+  background-color: var(--paper-deep);
+}
+
+/* As linhas ficam, mas com uma única propriedade animada em vez de duas. */
+.mz-paths path {
+  animation: mz-paths-correr var(--dur, 24s) linear infinite;
+  animation-delay: var(--atraso, 0s);
+  opacity: .42;
+}
+
+/* As curvas ficam paradas. Medido: com a animação de traço nos 36 caminhos o
+   hero fica em 27 fps, com metade deles em 39, e só sem animação alguma
+   chega a 60. Animação de stroke em SVG roda na CPU e não pode ser
+   acelerada; animar transform no SVG também não resolve, porque escalar ou
+   mover vetor obriga a rasterizar de novo. O desenho é o mesmo — o que sai é
+   o movimento, que não vale um site que pisca. */
+.mz-paths path {
+  animation: none;
+  stroke-dasharray: none;
+  opacity: .32;
+}
+
+/* O hero jurídico tem as mesmas duas massas borradas de 72px em movimento, e
+   elas o derrubavam para 10 fps. A luz continua; o que sai é a deriva — e o
+   seletor precisa casar o :nth-child da regra original para vencê-la. */
+.hero-atmosphere i:nth-child(1),
+.hero-atmosphere i:nth-child(2) { animation: none; will-change: auto; }
+
+/* Os anéis da órbita e as notas continuam girando: são transform em áreas
+   pequenas e sem filtro, que o compositor resolve sozinho. */

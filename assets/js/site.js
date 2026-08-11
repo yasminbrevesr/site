@@ -487,7 +487,11 @@
 
     function asciiFrame(now) {
       asciiRaf = window.requestAnimationFrame(asciiFrame);
-      if (now - lastDraw < 33) return; /* ~30fps */
+      /* A trama é um texto por célula, redesenhado inteiro a cada passada, e
+         a 30fps ela sozinha derrubava o hero jurídico para 30fps. A 10fps o
+         desenho é o mesmo — a deriva é lenta demais para a diferença
+         aparecer — e sobra quadro para o resto da página. */
+      if (now - lastDraw < 100) return; /* ~10fps */
       lastDraw = now;
       if (!startTime) startTime = now;
       var elapsed = (now - startTime) / 1000;
