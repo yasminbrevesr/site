@@ -988,3 +988,55 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 
 /* Os anéis da órbita e as notas continuam girando: são transform em áreas
    pequenas e sem filtro, que o compositor resolve sozinho. */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MOVIMENTO NAS LINHAS, DENTRO DO ORÇAMENTO DE QUADRO
+   Animar o traço dentro do SVG custa a repintura da camada inteira a cada
+   quadro — medido, três curvas custam o mesmo que trinta e seis, e ambos
+   travam em ~27fps. O movimento sai então de dentro do SVG: as curvas ficam
+   paradas e uma faixa de luz atravessa por cima, com o gradiente da marca.
+   É uma única camada, uma única propriedade, composta pela GPU.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.mz-sweep {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* Isola a camada: o que se mexe aqui dentro não convida o resto da página
+     para a conta. */
+  contain: strict;
+}
+
+.mz-sweep i {
+  position: absolute;
+  inset: 0;
+  display: block;
+  /* A cor muda porque a faixa carrega o gradiente inteiro da marca: onde ela
+     passa, as curvas viram azul, depois roxo, depois magenta. */
+  background: linear-gradient(108deg,
+    transparent 41%,
+    rgba(22, 155, 255, .1) 45%,
+    rgba(103, 56, 255, .17) 48.5%,
+    rgba(145, 70, 255, .16) 51.5%,
+    rgba(247, 37, 199, .1) 55%,
+    transparent 59%);
+  will-change: transform;
+  transform: translate3d(-72%, 0, 0);
+  animation: mz-varre 9s linear infinite;
+}
+
+@keyframes mz-varre {
+  from { transform: translate3d(-72%, 0, 0); }
+  to { transform: translate3d(72%, 0, 0); }
+}
+
+/* Fora da tela a faixa para: abaixo do hero ela não custa nada. */
+.mz-hero[data-fora] .mz-sweep i { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mz-sweep i { animation: none; transform: translate3d(0, 0, 0); opacity: .5; }
+}
+
+/* A marcação da aurora saiu; a regra que a escondia não tem mais alvo. */
