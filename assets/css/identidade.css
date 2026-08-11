@@ -1420,7 +1420,10 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
    num parágrafo inteiro o gradiente colorido come a legibilidade. Assim ele
    ganha o brilho técnico e mantém contraste em toda a extensão. */
 .mz-hero-lead {
-  background: linear-gradient(103deg, #dbe6f5 0%, #b7c9e2 38%, #9fb3d6 62%, #b9a8e8 100%);
+  /* Na horizontal, quatro linhas centralizadas caem todas no meio da rampa e
+     o gradiente some. Na diagonal fechada cada linha pega um trecho
+     diferente, que é o que torna o efeito visível de fato. */
+  background: linear-gradient(163deg, #f2f7ff 0%, #c3d5f4 34%, #8fa8e0 66%, #b07cf7 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
