@@ -775,3 +775,63 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   .mz-aurora .a { width: 130vw; height: 70vw; filter: blur(46px); }
   .mz-aurora .arco { width: 150vw; height: 150vw; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HERO DA MATRIZ — de volta ao fundo claro
+   O azul-marinho sai e volta o azul claro da paleta, com o título em preto.
+   O elemento gráfico em roxo continua, mas reajustado: sobre claro os mesmos
+   valores de alfa que funcionavam no escuro viram manchas. Aqui ele entra
+   como a lavagem suave que colore o fundo, não como luz sobre o escuro.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.mz-hero {
+  background:
+    /* saída encontrando o branco da seção de produtos */
+    linear-gradient(to top, var(--paper-bright) 0, rgba(255, 255, 255, 0) 190px),
+    linear-gradient(180deg, #e6efff 0%, var(--paper-deep) 42%, #f2f6ff 100%);
+  background-color: var(--paper-deep);
+}
+
+.mz-hero h1 { color: #000; }
+.mz-hero-lead { color: var(--ink-muted); }
+.hero-kicker { color: var(--blue); }
+.hero-kicker span { background: var(--grad-brand); }
+
+/* O secundário volta ao acabamento claro dos demais botões do site. */
+.mz-hero .mz-btn-ghost {
+  border: 1px solid var(--hairline);
+  background: var(--paper-bright);
+  color: var(--ink);
+  box-shadow: var(--sombra-card);
+}
+.mz-hero .mz-btn-ghost:hover {
+  border-color: rgba(103, 56, 255, .45);
+  background: var(--paper-bright);
+  color: var(--violet);
+}
+
+/* ─────────────────────────────────── a aurora, calibrada para fundo claro */
+
+.mz-aurora .a {
+  background: radial-gradient(closest-side, rgba(103, 56, 255, .2), rgba(103, 56, 255, 0) 72%);
+  filter: blur(64px);
+}
+.mz-aurora .b {
+  background: radial-gradient(closest-side, rgba(145, 70, 255, .17), rgba(145, 70, 255, 0) 70%);
+  filter: blur(58px);
+}
+.mz-aurora .c {
+  background: radial-gradient(closest-side, rgba(145, 70, 255, .16), rgba(103, 56, 255, 0) 70%);
+  filter: blur(60px);
+}
+
+/* O arco fica só como um traço de contorno; no claro ele não pode brilhar. */
+.mz-aurora .arco {
+  background: conic-gradient(from 200deg,
+    rgba(103, 56, 255, 0) 0deg,
+    rgba(103, 56, 255, .34) 42deg,
+    rgba(145, 70, 255, .2) 96deg,
+    rgba(145, 70, 255, 0) 150deg,
+    rgba(145, 70, 255, 0) 360deg);
+  opacity: .55;
+}
