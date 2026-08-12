@@ -66,17 +66,6 @@
 .pd-section { padding: 100px 0; background: var(--paper-bright); }
 .pd-section.is-alt { background: var(--paper); }
 
-.pd-section.is-dark {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(1000px 620px at 80% 8%, rgba(103, 56, 255, .3), transparent 64%),
-    linear-gradient(158deg, #02182c 0%, #06294f 48%, #21226f 100%);
-  color: #fff;
-}
-.pd-section.is-dark h2 { color: #fff; }
-.pd-section.is-dark .section-label { color: rgba(255, 255, 255, .5); }
-.pd-section.is-dark .section-head > p { border-top-color: rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .66); }
 
 /* ───────────────────────────────────────── como funciona: linha do tempo */
 
@@ -313,25 +302,6 @@
 .pd-feat:hover .pd-feat-ic { background: rgba(103, 56, 255, .18); transform: translateY(-2px); }
 .pd-feat b { display: block; margin-bottom: 11px; color: var(--ink); font-size: 18px; font-weight: 660; letter-spacing: -.022em; }
 .pd-feat p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.68; }
-
-/* ──────────────────────────────────────────────────────────────── canais */
-
-.pd-channels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.pd-channel {
-  padding: 26px 24px 28px;
-  border: 1px solid rgba(255, 255, 255, .13);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, .05);
-  transition: border-color .25s ease, background .25s ease, transform .25s ease;
-}
-.pd-channel:hover { border-color: rgba(145, 70, 255, .42); background: rgba(255, 255, 255, .08); transform: translateY(-3px); }
-.pd-channel-ic { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 18px; border-radius: 11px; background: rgba(255, 255, 255, .08); }
-/* Só os ícones de marca são sólidos; os desenhados a traço precisam manter o
-   miolo vazado, senão viram um bloco branco. */
-.pd-channel-ic svg { width: 20px; height: 20px; }
-.pd-channel-ic svg:not([stroke]) { fill: #fff; }
-.pd-channel b { display: block; margin-bottom: 8px; color: #fff; font-size: 15px; font-weight: 620; }
-.pd-channel p { color: rgba(255, 255, 255, .6); font-size: 13px; line-height: 1.6; }
 
 /* ─────────────────────────────────────────────────── chamada de fechamento */
 
@@ -655,12 +625,11 @@
   .pd-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pd-passo { gap: 0 56px; }
   .pd-passo-copy h3 { font-size: 20px; }
-  .pd-channels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 720px) {
   .pd-section, .pd-final { padding: 72px 0; }
-  .pd-feats, .pd-channels { grid-template-columns: 1fr; }
+  .pd-feats { grid-template-columns: 1fr; }
   .pd-final-card { padding: 44px 26px; }
 
   /* Sem espaço para duas colunas, a linha encosta na esquerda e todo o
