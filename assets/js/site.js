@@ -101,6 +101,48 @@
     }
     updateNavSpy();
     revealVisible();
+    atualizarLinha();
+  }
+
+  /* Linha do "como funciona": o preenchimento acompanha a rolagem e cada
+     ponto acende quando a linha chega nele. Só existe na página de produto;
+     nas outras, as duas buscas abaixo voltam vazias e nada disso roda. */
+  var linha = document.querySelector('[data-linha]');
+  var linhaPreenche = document.querySelector('[data-linha-preenche]');
+  var marcos = linha ? Array.prototype.slice.call(linha.querySelectorAll('[data-passo]')) : [];
+  var alturas = [];
+
+  function medirLinha() {
+    if (!linha) return;
+    var topo = linha.getBoundingClientRect().top + window.scrollY;
+    alturas = marcos.map(function (no) {
+      var caixa = no.getBoundingClientRect();
+      /* O ponto de um passo fica no meio dele; o do botão, no começo. */
+      var centro = no.hasAttribute('data-linha-fim') ? 0 : caixa.height / 2;
+      return caixa.top + window.scrollY - topo + centro;
+    });
+  }
+
+  function atualizarLinha() {
+    if (!linha || !linhaPreenche || reducedMotion) return;
+    var caixa = linha.getBoundingClientRect();
+    var altura = Math.max(caixa.height, 1);
+    /* A linha persegue um ponto a 58% da tela: um pouco abaixo do centro, que
+       é onde o olho está quando se lê rolando. */
+    var avanco = Math.min(1, Math.max(0, (window.innerHeight * 0.58 - caixa.top) / altura));
+    linhaPreenche.style.transform = 'scaleY(' + avanco.toFixed(4) + ')';
+
+    var preenchido = avanco * altura;
+    for (var i = 0; i < marcos.length; i++) {
+      marcos[i].classList.toggle('is-on', preenchido >= alturas[i]);
+    }
+  }
+
+  if (linha) {
+    medirLinha();
+    atualizarLinha();
+    window.addEventListener('resize', function () { medirLinha(); atualizarLinha(); });
+    window.addEventListener('load', function () { medirLinha(); atualizarLinha(); });
   }
 
   window.addEventListener('scroll', function () {
