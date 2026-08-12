@@ -527,9 +527,12 @@
   background: linear-gradient(160deg, #1d2733, #0b141c);
   box-shadow: 0 34px 90px rgba(2, 24, 44, .28), 0 2px 0 rgba(255, 255, 255, .16) inset;
 }
+/* Altura fixa de proposito: e ela que faz o teclado empurrar a conversa para
+   cima quando abre, em vez de esticar o celular. */
 .pd-fone-tela {
   display: flex;
   flex-direction: column;
+  height: 552px;
   overflow: hidden;
   border-radius: 32px;
   background: #f2f4f6;
@@ -571,14 +574,21 @@
 .pd-fone-nome b { font-size: 13px; font-weight: 620; }
 .pd-fone-nome small { color: var(--ink-muted); font-size: 10px; }
 
+/* justify-content: flex-end faz as mensagens novas empurrarem as antigas para
+   cima sozinhas — sem nenhum calculo de rolagem no script. */
 .pd-fone-log {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   gap: 8px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   padding: 14px 12px 16px;
   background: #eceff2;
 }
 .pd-fone-dia {
-  justify-self: center;
+  align-self: center;
   margin-bottom: 2px;
   padding: 4px 11px;
   border-radius: 999px;
@@ -607,12 +617,12 @@
 }
 .pd-bal-hora b { color: #3aa3f0; font-weight: 400; letter-spacing: -2px; }
 
-.pd-bal.is-bot { justify-self: start; border-top-left-radius: 3px; }
+.pd-bal.is-bot { align-self: flex-start; border-top-left-radius: 3px; }
 /* O verde do WhatsApp, porque a tela e do WhatsApp: quem manda e o cliente. */
-.pd-bal.is-cliente { justify-self: end; border-top-right-radius: 3px; background: #d9fdd3; }
+.pd-bal.is-cliente { align-self: flex-end; border-top-right-radius: 3px; background: #d9fdd3; }
 
 .pd-bal.is-aviso {
-  justify-self: center;
+  align-self: center;
   max-width: 92%;
   background: #fff5d6;
   color: #6b5a1e;
@@ -662,6 +672,114 @@
 .pd-audio-onda i:nth-child(-n+9) { background: rgba(11, 20, 28, .55); }
 .pd-audio-tempo { flex: none; color: rgba(11, 20, 28, .45); font-size: 9.5px; }
 
+/* ── a encenacao: teclado, digitacao e envio ────────────────────────────── */
+
+/* As mensagens comecam escondidas e entram uma a uma, no ritmo do roteiro que
+   vive no site.js. Sem o script — ou com movimento reduzido — a classe .is-vis
+   e aplicada em todas de uma vez e a conversa aparece inteira. */
+.pd-fone[data-encena] .pd-bal[data-msg] { display: none; }
+.pd-fone[data-encena] .pd-bal[data-msg].is-vis {
+  display: block;
+  animation: pd-msg-entra .3s cubic-bezier(.2, .7, .3, 1);
+}
+@keyframes pd-msg-entra {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+}
+
+/* O campo de texto: cursor piscando e o texto sendo escrito dentro dele. */
+.pd-fone-campo {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  min-width: 0;
+  padding: 0 12px;
+  overflow: hidden;
+  transition: box-shadow .25s ease;
+}
+.pd-fone-campo.is-ativo { box-shadow: 0 0 0 1.5px rgba(103, 56, 255, .35); }
+.pd-fone-texto {
+  color: #0b141c;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.pd-fone-cursor {
+  width: 1.5px;
+  height: 14px;
+  flex: none;
+  background: var(--violet);
+  opacity: 0;
+}
+.pd-fone-campo.is-ativo .pd-fone-cursor { animation: pd-cursor 1.05s steps(1) infinite; }
+@keyframes pd-cursor { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+/* O estado de gravacao, que antecede o audio. */
+.pd-fone-grava {
+  display: none;
+  align-items: center;
+  gap: 7px;
+  flex: 1;
+  padding: 0 12px;
+  color: var(--ink-muted);
+  font-size: 11px;
+}
+.pd-fone-grava i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e5484d;
+  animation: pd-grava 1.1s ease-in-out infinite;
+}
+@keyframes pd-grava { 50% { opacity: .25; } }
+.pd-fone-barra.is-gravando .pd-fone-campo { display: none; }
+.pd-fone-barra.is-gravando .pd-fone-grava { display: flex; }
+
+/* O microfone vira seta de enviar assim que ha texto no campo. */
+.pd-fone-acao { display: grid; place-items: center; width: 26px; height: 26px; flex: none; border-radius: 50%; }
+.pd-fone-acao svg { grid-area: 1 / 1; width: 16px; height: 16px; color: var(--ink-muted); }
+.pd-ic-envia { opacity: 0; }
+.pd-fone-barra.is-enviando .pd-fone-acao { background: var(--grad-brand); }
+.pd-fone-barra.is-enviando .pd-ic-mic { opacity: 0; }
+.pd-fone-barra.is-enviando .pd-ic-envia { opacity: 1; color: #fff; width: 14px; height: 14px; }
+
+/* O teclado sobe e desce mudando a altura, e nao com transform: e a altura que
+   devolve espaco para a conversa, que e o comportamento real do aparelho. */
+.pd-fone-teclado {
+  display: grid;
+  gap: 5px;
+  height: 0;
+  padding: 0 4px;
+  overflow: hidden;
+  background: #d6dae0;
+  transition: height .3s cubic-bezier(.3, .8, .3, 1), padding .3s ease;
+}
+.pd-fone-teclado.is-aberto { height: 152px; padding: 8px 4px 12px; }
+
+.pd-tecla-linha { display: flex; gap: 4px; justify-content: center; }
+.pd-tecla-linha.is-2 { padding: 0 14px; }
+.pd-tecla-linha.is-3 { padding: 0 2px; }
+.pd-tecla-linha b {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(2, 24, 44, .22);
+  color: #0b141c;
+  font-size: 12px;
+  font-weight: 400;
+  transition: background .1s ease;
+}
+.pd-tecla-linha b.is-larga { flex: 1.5; background: #adb4bd; font-size: 11px; }
+.pd-tecla-linha b.is-espaco { flex: 5; }
+/* A tecla acesa acompanha a letra que esta sendo escrita. */
+.pd-tecla-linha b.is-tocada { background: #adb4bd; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-fone[data-encena] .pd-bal[data-msg] { display: block; }
+  .pd-fone-teclado, .pd-fone-cursor, .pd-fone-grava i { animation: none; transition: none; }
+}
+
 .pd-fone-barra {
   display: flex;
   align-items: center;
@@ -670,7 +788,7 @@
   background: #fff;
 }
 .pd-fone-campo { flex: 1; height: 26px; border-radius: 999px; background: #eceff2; }
-.pd-fone-barra svg { width: 16px; height: 16px; flex: none; color: var(--ink-muted); }
+
 
 .pd-final { padding: 96px 0; background: var(--paper-bright); }
 .pd-final-card {

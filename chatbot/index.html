@@ -103,7 +103,7 @@
 <link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-7">
 <link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-23">
-<link rel="stylesheet" href="../assets/css/produto.css?v=produto-9">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-10">
 </head>
 <body>
 
@@ -377,12 +377,12 @@
             <span class="pd-fone-nome"><b>BREVES</b><small>Atendimento</small></span>
           </div>
 
-          <div class="pd-fone-log">
+          <div class="pd-fone-log" data-fone-log>
             <span class="pd-fone-dia">Hoje</span>
 
             <div class="pd-bal is-aviso">Esta empresa usa um atendimento automatizado para responder mais rápido.</div>
 
-            <div class="pd-bal is-cliente">
+            <div class="pd-bal is-cliente" data-msg>
               <div class="pd-audio">
                 <span class="pd-audio-play" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
@@ -393,31 +393,42 @@
               <span class="pd-bal-hora">15:04 <b aria-hidden="true">&#10003;&#10003;</b></span>
             </div>
 
-            <div class="pd-bal is-bot">
+            <div class="pd-bal is-bot" data-msg>
               <span class="pd-bal-tag">Áudio transcrito</span>
               <p>&ldquo;oi, bom dia, é o Rafael... preciso remarcar minha consulta de quinta pra sexta de manhã, se tiver horário&rdquo;</p>
               <span class="pd-bal-hora">15:04</span>
             </div>
 
-            <div class="pd-bal is-bot">
+            <div class="pd-bal is-bot" data-msg>
               <p>Bom dia, Rafael! Sexta tem 9h20 e 10h40 livres. Qual fica melhor?</p>
               <span class="pd-bal-hora">15:04</span>
             </div>
 
-            <div class="pd-bal is-cliente">
+            <div class="pd-bal is-cliente" data-msg>
               <p>9h20 tá ótimo</p>
               <span class="pd-bal-hora">15:05 <b aria-hidden="true">&#10003;&#10003;</b></span>
             </div>
 
-            <div class="pd-bal is-bot">
+            <div class="pd-bal is-bot" data-msg>
               <p>Remarcado para sexta às 9h20. A confirmação já saiu no seu e-mail.</p>
               <span class="pd-bal-hora">15:05</span>
             </div>
           </div>
 
           <div class="pd-fone-barra" aria-hidden="true">
-            <span class="pd-fone-campo"></span>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12h-2Z"/></svg>
+            <span class="pd-fone-campo" data-fone-campo><span class="pd-fone-texto" data-fone-texto></span><i class="pd-fone-cursor"></i></span>
+            <span class="pd-fone-grava" data-fone-grava><i></i>0:14</span>
+            <span class="pd-fone-acao" data-fone-acao>
+              <svg class="pd-ic-mic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12h-2Z"/></svg>
+              <svg class="pd-ic-envia" viewBox="0 0 24 24" fill="currentColor"><path d="m2.5 21 19-9-19-9 .01 7L16 12 2.51 14l-.01 7Z"/></svg>
+            </span>
+          </div>
+
+          <div class="pd-fone-teclado" data-fone-teclado aria-hidden="true">
+            <div class="pd-tecla-linha"><b>q</b><b>w</b><b>e</b><b>r</b><b>t</b><b>y</b><b>u</b><b>i</b><b>o</b><b>p</b></div>
+            <div class="pd-tecla-linha is-2"><b>a</b><b>s</b><b>d</b><b>f</b><b>g</b><b>h</b><b>j</b><b>k</b><b>l</b></div>
+            <div class="pd-tecla-linha is-3"><b class="is-larga">&#8679;</b><b>z</b><b>x</b><b>c</b><b>v</b><b>b</b><b>n</b><b>m</b><b class="is-larga">&#9003;</b></div>
+            <div class="pd-tecla-linha is-4"><b class="is-larga">123</b><b class="is-espaco"></b><b class="is-larga">&#9166;</b></div>
           </div>
         </div>
       </div>
@@ -577,7 +588,7 @@
 
 
 <script type="module" src="../assets/js/contact-form.js?v=20260804a"></script>
-<script defer src="../assets/js/site.js?v=identidade-4"></script>
+<script defer src="../assets/js/site.js?v=identidade-5"></script>
 <script defer data-breves-chat="chatbot" src="../assets/js/chat.js?v=chat-8"></script>
 </body>
 </html>

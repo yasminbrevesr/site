@@ -138,6 +138,118 @@
     }
   }
 
+  /* ── O celular da seção de setores encena a conversa ───────────────────
+     Grava o áudio, o chatbot transcreve e responde, o cliente abre o teclado
+     e digita a resposta. Tudo acontece em momentos marcados, não a cada
+     quadro: o roteiro só toca o DOM quando muda de passo, e a digitação
+     escreve uma letra a cada 55ms. Roda em laço enquanto o celular está na
+     tela e para assim que ele sai. */
+  var fone = document.querySelector('.pd-fone');
+
+  if (fone && !reducedMotion) {
+    var log = fone.querySelector('[data-fone-log]');
+    var barra = fone.querySelector('.pd-fone-barra');
+    var campo = fone.querySelector('[data-fone-campo]');
+    var texto = fone.querySelector('[data-fone-texto]');
+    var teclado = fone.querySelector('[data-fone-teclado]');
+    var mensagens = Array.prototype.slice.call(fone.querySelectorAll('[data-msg]'));
+    var teclas = Array.prototype.slice.call(fone.querySelectorAll('.pd-tecla-linha b'));
+
+    fone.setAttribute('data-encena', '');
+
+    var relogios = [];
+    var tocando = false;
+
+    function esperar(ms) {
+      return new Promise(function (resolve) { relogios.push(setTimeout(resolve, ms)); });
+    }
+
+    function mostrar(indice) {
+      if (mensagens[indice]) mensagens[indice].classList.add('is-vis');
+    }
+
+    /* Acende a tecla correspondente à letra, quando ela existe no teclado. */
+    function acender(letra) {
+      var tecla = null;
+      for (var i = 0; i < teclas.length; i++) {
+        if (teclas[i].textContent === letra.toLowerCase()) { tecla = teclas[i]; break; }
+      }
+      if (!tecla) return;
+      tecla.classList.add('is-tocada');
+      relogios.push(setTimeout(function () { tecla.classList.remove('is-tocada'); }, 110));
+    }
+
+    function digitar(frase) {
+      var i = 0;
+      return new Promise(function (resolve) {
+        (function passo() {
+          if (!tocando) return resolve();
+          texto.textContent = frase.slice(0, i);
+          if (i > 0) acender(frase.charAt(i - 1));
+          if (i === 1) barra.classList.add('is-enviando');
+          if (i++ > frase.length) return resolve();
+          relogios.push(setTimeout(passo, 55));
+        })();
+      });
+    }
+
+    function limpar() {
+      relogios.forEach(clearTimeout);
+      relogios = [];
+      mensagens.forEach(function (no) { no.classList.remove('is-vis'); });
+      texto.textContent = '';
+      campo.classList.remove('is-ativo');
+      barra.classList.remove('is-gravando', 'is-enviando');
+      teclado.classList.remove('is-aberto');
+    }
+
+    /* "digitando…" no lugar do subtítulo do topo, como no aplicativo. */
+    var subtitulo = fone.querySelector('.pd-fone-nome small');
+    var subtituloOriginal = subtitulo ? subtitulo.textContent : '';
+    function digitandoBot(ligado) {
+      if (subtitulo) subtitulo.textContent = ligado ? 'digitando…' : subtituloOriginal;
+    }
+
+    function roteiro() {
+      if (!tocando) return;
+      limpar();
+      Promise.resolve()
+        .then(function () { return esperar(700); })
+        .then(function () { barra.classList.add('is-gravando'); return esperar(1500); })
+        .then(function () { barra.classList.remove('is-gravando'); mostrar(0); return esperar(600); })
+        .then(function () { digitandoBot(true); return esperar(1300); })
+        .then(function () { digitandoBot(false); mostrar(1); return esperar(700); })
+        .then(function () { digitandoBot(true); return esperar(1100); })
+        .then(function () { digitandoBot(false); mostrar(2); return esperar(900); })
+        .then(function () { campo.classList.add('is-ativo'); teclado.classList.add('is-aberto'); return esperar(600); })
+        .then(function () { return digitar('9h20 tá ótimo'); })
+        .then(function () { return esperar(450); })
+        .then(function () {
+          texto.textContent = '';
+          barra.classList.remove('is-enviando');
+          campo.classList.remove('is-ativo');
+          teclado.classList.remove('is-aberto');
+          mostrar(3);
+          return esperar(900);
+        })
+        .then(function () { digitandoBot(true); return esperar(1200); })
+        .then(function () { digitandoBot(false); mostrar(4); return esperar(4200); })
+        .then(function () { if (tocando) roteiro(); });
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting && !tocando) { tocando = true; roteiro(); }
+          else if (!entrada.isIntersecting && tocando) { tocando = false; limpar(); digitandoBot(false); }
+        });
+      }, { threshold: 0.25 }).observe(fone);
+    } else {
+      tocando = true;
+      roteiro();
+    }
+  }
+
   if (linha) {
     medirLinha();
     atualizarLinha();
