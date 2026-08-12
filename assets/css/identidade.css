@@ -23,12 +23,24 @@
 html, body { background: var(--paper-bright); color: var(--ink); }
 
 /* Texto em gradiente — a assinatura da marca, usada só nos destaques. */
+
+/* Sobre box-decoration-break e o padding: como a letra é pintada pelo fundo
+   recortado, o navegador só pinta dentro da caixa do trecho. Quando o destaque
+   quebra em duas linhas, a última letra de cada trecho é itálica e a sua ponta
+   passa do fim da caixa — essa ponta fica sem tinta e a letra aparece cortada.
+   Com "clone" cada trecho ganha caixa própria, e o respiro do padding cabe a
+   todos eles; a margem negativa devolve o espaço para o texto não afastar do
+   que vem depois. */
 h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   background: var(--grad-brand);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-right: .07em;
+  margin-right: -.07em;
 }
 
 /* ───────────────────────────────────────────────────────────────── header */
