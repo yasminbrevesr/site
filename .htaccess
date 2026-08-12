@@ -29,4 +29,9 @@ RedirectMatch 404 \.ai$
   <FilesMatch "\.(png|jpg|jpeg|svg|webp|woff2)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
+  # Os ícones não têm ?v= no endereço. Se a marca mudar de novo, um cache de
+  # 30 dias seguraria o ícone antigo no navegador — por isso ficam em 1 dia.
+  <FilesMatch "^(favicon\.ico|favicon-\d+\.png|apple-touch-icon\.png)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
 </IfModule>
