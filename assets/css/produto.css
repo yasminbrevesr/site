@@ -189,7 +189,9 @@
 .pd-strip {
   position: relative;
   z-index: 2;
-  padding: 0;
+  /* O cartão é puxado 42px para cima, então ele encosta no fim da seção. O
+     espaço embaixo tem de vir daqui, senão ele cola na faixa seguinte. */
+  padding: 0 0 92px;
   background: var(--paper-bright);
 }
 .pd-strip-grid {
@@ -234,34 +236,6 @@
 .pd-section.is-dark h2 { color: #fff; }
 .pd-section.is-dark .section-label { color: rgba(255, 255, 255, .5); }
 .pd-section.is-dark .section-head > p { border-top-color: rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .66); }
-
-/* ────────────────────────────────────────────────────── o que trava hoje */
-
-.pd-pain-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-.pd-pain {
-  padding: 30px 28px 32px;
-  border: 1px solid var(--hairline);
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: var(--sombra-card);
-}
-.pd-pain-mark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 20px;
-  border-radius: 11px;
-  background: linear-gradient(135deg, rgba(247, 37, 199, .12), rgba(103, 56, 255, .12));
-  color: var(--violet);
-}
-.pd-pain-mark svg { width: 20px; height: 20px; }
-.pd-pain b { display: block; margin-bottom: 10px; font-size: 17px; font-weight: 600; letter-spacing: -.015em; }
-.pd-pain p { color: var(--ink-muted); font-size: 14px; line-height: 1.65; }
 
 /* ──────────────────────────────────────────────────────── como funciona */
 
@@ -377,7 +351,7 @@
 
 @media (max-width: 1040px) {
   .pd-hero .mz-hero-inner { grid-template-columns: 1fr; gap: 44px; }
-  .pd-feats, .pd-pain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pd-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pd-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 0; }
   .pd-step::after { display: none; }
   .pd-step:nth-child(odd) { padding-left: 0; }
@@ -389,10 +363,11 @@
 
 @media (max-width: 720px) {
   .pd-section, .pd-final { padding: 72px 0; }
-  .pd-feats, .pd-pain-grid, .pd-channels, .pd-steps, .pd-strip-grid { grid-template-columns: 1fr; }
+  .pd-feats, .pd-channels, .pd-steps, .pd-strip-grid { grid-template-columns: 1fr; }
   .pd-strip-item { border-right: 0; border-bottom: 1px solid var(--hairline); }
   .pd-strip-item:last-child { border-bottom: 0; }
   .pd-strip-grid { transform: translateY(-28px); }
+  .pd-strip { padding-bottom: 60px; }
   .pd-step { padding: 0; }
   .pd-final-card { padding: 44px 26px; }
   .pd-msg { max-width: 92%; }
