@@ -103,7 +103,7 @@
 <link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-7">
 <link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-22">
-<link rel="stylesheet" href="../assets/css/produto.css?v=produto-3">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-5">
 </head>
 <body>
 
@@ -241,34 +241,93 @@
     </div>
   </section>
 
-  <section class="pd-section is-dark" id="como-funciona">
+  <section class="pd-flow" id="como-funciona">
     <div class="section-frame">
-      <header class="section-head compact reveal">
-        <div class="section-label light">Como funciona</div>
+      <header class="pd-flow-head reveal">
+        <div class="section-label">Como funciona</div>
         <h2 data-editorial>Da pergunta à resolução, <em>sem passar por ninguém.</em></h2>
       </header>
 
-      <div class="pd-steps reveal">
-        <article class="pd-step">
-          <span class="pd-step-n" aria-hidden="true">01</span>
-          <b>Entende o que foi pedido</b>
-          <p>Não é menu de opções. A pessoa escreve do jeito dela e o chatbot compreende a intenção, mesmo com erro de digitação ou áudio transcrito.</p>
+      <div class="pd-linha" data-linha>
+        <div class="pd-linha-trilho" aria-hidden="true"><i data-linha-preenche></i></div>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">01</span>
+            <h3>Entende o que foi pedido</h3>
+            <p>Não é menu de opções. A pessoa escreve do jeito dela e o chatbot compreende a intenção, mesmo com erro de digitação ou áudio transcrito.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <p class="pd-arte-bolha">bom dia, o 4192 chega qnd?</p>
+              <div class="pd-arte-chips">
+                <span>intenção · status do pedido</span>
+                <span>pedido · 4192</span>
+                <span>tom · informal</span>
+              </div>
+            </div>
+          </div>
         </article>
-        <article class="pd-step">
-          <span class="pd-step-n" aria-hidden="true">02</span>
-          <b>Busca a informação certa</b>
-          <p>Responde a partir do que foi definido com você e, quando o assunto exige dado atualizado, consulta o seu sistema na hora da conversa.</p>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">02</span>
+            <h3>Busca a informação certa</h3>
+            <p>Responde a partir do que foi definido com você e, quando o assunto exige dado atualizado, consulta o seu sistema na hora da conversa.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <div class="pd-arte-topo"><span>Consulta ao sistema</span><b>200 OK</b></div>
+              <ul class="pd-arte-campos">
+                <li><span>Pedido</span><b>4192</b></li>
+                <li><span>Situação</span><b class="is-ok">Separado</b></li>
+                <li><span>Previsão</span><b>quinta-feira</b></li>
+              </ul>
+            </div>
+          </div>
         </article>
-        <article class="pd-step">
-          <span class="pd-step-n" aria-hidden="true">03</span>
-          <b>Resolve ou entrega para uma pessoa</b>
-          <p>O que dá para concluir, ele conclui. O que exige julgamento, negociação ou exceção vai para a sua equipe com o histórico junto.</p>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">03</span>
+            <h3>Resolve ou entrega para uma pessoa</h3>
+            <p>O que dá para concluir, ele conclui. O que exige julgamento, negociação ou exceção vai para a sua equipe com o histórico junto.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <div class="pd-arte-passagem">
+                <span class="pd-arte-quem is-ia">Agente&nbsp;IA</span>
+                <span class="pd-arte-seta">→</span>
+                <span class="pd-arte-quem is-gente">Camila · Logística</span>
+              </div>
+              <p class="pd-arte-nota">Motivo: alteração de endereço fora da rota</p>
+              <p class="pd-arte-nota is-ok">Conversa inteira anexada</p>
+            </div>
+          </div>
         </article>
-        <article class="pd-step">
-          <span class="pd-step-n" aria-hidden="true">04</span>
-          <b>Registra tudo</b>
-          <p>Cada conversa fica gravada e organizada: dá para ver o que mais perguntam, onde o atendimento trava e o que vale automatizar em seguida.</p>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">04</span>
+            <h3>Registra tudo</h3>
+            <p>Cada conversa fica gravada e organizada: dá para ver o que mais perguntam, onde o atendimento trava e o que vale automatizar em seguida.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <div class="pd-arte-topo"><span>Assuntos da semana</span></div>
+              <ul class="pd-arte-barras">
+                <li><span>Status do pedido</span><i style="--n:.92"></i></li>
+                <li><span>Prazo de entrega</span><i style="--n:.68"></i></li>
+                <li><span>Horário e endereço</span><i style="--n:.51"></i></li>
+                <li><span>Segunda via</span><i style="--n:.3"></i></li>
+              </ul>
+            </div>
+          </div>
         </article>
+
+        <div class="pd-linha-fim" data-passo data-linha-fim>
+          <a class="button button-primary" href="#contato" data-magnetic>Começar agora <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -500,7 +559,7 @@
 
 
 <script type="module" src="../assets/js/contact-form.js?v=20260804a"></script>
-<script defer src="../assets/js/site.js?v=identidade-3"></script>
+<script defer src="../assets/js/site.js?v=identidade-4"></script>
 <script defer data-breves-chat="chatbot" src="../assets/js/chat.js?v=chat-8"></script>
 </body>
 </html>

@@ -237,43 +237,214 @@
 .pd-section.is-dark .section-label { color: rgba(255, 255, 255, .5); }
 .pd-section.is-dark .section-head > p { border-top-color: rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .66); }
 
-/* ──────────────────────────────────────────────────────── como funciona */
+/* ───────────────────────────────────────── como funciona: linha do tempo */
 
-.pd-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
-.pd-step { position: relative; padding: 0 26px; }
-.pd-step:first-child { padding-left: 0; }
-.pd-step:last-child { padding-right: 0; }
+/* Uma linha vertical no meio, com os passos alternando de lado. O trilho é
+   cinza; por cima dele um segundo elemento cresce conforme a página rola,
+   e cada ponto acende quando o preenchimento chega nele. O crescimento é
+   feito com scaleY, e não com height, para não disparar layout a cada
+   quadro — o navegador resolve isso na composição. */
 
-/* A linha que liga um passo ao seguinte. */
-.pd-step::after {
+.pd-flow { padding: 110px 0 96px; background: var(--paper-bright); }
+.pd-flow-head { max-width: 760px; margin: 0 auto 76px; text-align: center; }
+.pd-flow-head .section-label { justify-content: center; margin-bottom: 18px; }
+.pd-flow-head h2 {
+  font-size: clamp(32px, 3.9vw, 52px);
+  font-weight: 350;
+  line-height: 1.06;
+  letter-spacing: -.042em;
+}
+
+.pd-linha { position: relative; max-width: 1080px; margin-inline: auto; padding: 8px 0 0; }
+
+/* O trilho e o preenchimento. */
+.pd-linha-trilho {
+  position: absolute;
+  top: 0;
+  bottom: 46px;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--hairline);
+  border-radius: 2px;
+}
+.pd-linha-trilho i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #065bff, #6738ff 62%, #9146ff);
+  transform: scaleY(0);
+  transform-origin: top;
+  will-change: transform;
+}
+
+/* Cada passo: texto de um lado, ilustração do outro. */
+.pd-passo {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 96px;
+  align-items: center;
+  padding-bottom: 78px;
+}
+
+/* O ponto que marca o passo em cima da linha. */
+.pd-passo::before {
   content: '';
   position: absolute;
-  top: 19px;
-  right: -18px;
-  width: 36px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(103, 56, 255, .5), rgba(103, 56, 255, .08));
-}
-.pd-step:last-child::after { display: none; }
-
-.pd-step-n {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  margin-bottom: 20px;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 11px;
+  height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  border: 2px solid var(--hairline);
   border-radius: 50%;
-  background: var(--grad-brand);
-  color: #fff;
-  font: 12px/1 var(--mono);
-  letter-spacing: .04em;
-  box-shadow: 0 8px 20px rgba(103, 56, 255, .3);
+  background: var(--paper-bright);
+  transition: border-color .35s ease, background .35s ease, box-shadow .35s ease;
 }
-.pd-step b { display: block; margin-bottom: 9px; font-size: 16px; font-weight: 620; letter-spacing: -.015em; }
-.pd-step p { color: var(--ink-muted); font-size: 13.5px; line-height: 1.62; }
-.pd-section.is-dark .pd-step p { color: rgba(255, 255, 255, .64); }
-.pd-section.is-dark .pd-step b { color: #fff; }
+.pd-passo.is-on::before {
+  border-color: var(--violet);
+  background: var(--violet);
+  box-shadow: 0 0 0 5px rgba(103, 56, 255, .14);
+}
 
+/* Ímpares: arte à esquerda, texto à direita. Pares, o contrário. O texto
+   sempre encosta na linha, que é o que dá a leitura de trilha.
+   É nth-of-type, e não nth-child: o trilho é o primeiro filho de .pd-linha e
+   deslocaria a contagem, invertendo todos os lados. */
+.pd-passo:nth-of-type(odd) .pd-passo-copy { grid-column: 2; text-align: left; }
+.pd-passo:nth-of-type(odd) .pd-passo-arte { grid-column: 1; grid-row: 1; }
+.pd-passo:nth-of-type(even) .pd-passo-copy { grid-column: 1; text-align: right; }
+.pd-passo:nth-of-type(even) .pd-passo-arte { grid-column: 2; grid-row: 1; }
+
+.pd-passo-copy { position: relative; padding-top: 6px; }
+.pd-passo-copy h3 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 620;
+  letter-spacing: -.025em;
+}
+.pd-passo-copy p { max-width: 34em; color: var(--ink-muted); font-size: 14.5px; line-height: 1.68; }
+.pd-passo:nth-of-type(even) .pd-passo-copy p { margin-left: auto; }
+
+/* O número grande e apagado atrás do título. */
+.pd-passo-n {
+  position: absolute;
+  top: -34px;
+  z-index: 0;
+  color: rgba(103, 56, 255, .1);
+  font: 700 68px/1 var(--mono);
+  letter-spacing: -.04em;
+  pointer-events: none;
+}
+.pd-passo:nth-of-type(odd) .pd-passo-n { left: -26px; }
+.pd-passo:nth-of-type(even) .pd-passo-n { right: -26px; }
+
+/* ── as ilustrações ─────────────────────────────────────────────────────── */
+
+.pd-arte {
+  padding: 20px 20px 22px;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--sombra-card);
+  text-align: left;
+}
+
+.pd-arte-bolha {
+  display: inline-block;
+  max-width: 100%;
+  padding: 11px 15px;
+  border-radius: 13px;
+  border-bottom-left-radius: 5px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.pd-arte-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.pd-arte-chips span {
+  padding: 6px 11px;
+  border: 1px solid rgba(103, 56, 255, .22);
+  border-radius: 999px;
+  background: rgba(103, 56, 255, .06);
+  color: var(--violet);
+  font: 10px/1 var(--mono);
+  letter-spacing: .05em;
+}
+
+.pd-arte-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 13px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  font: 10px/1 var(--mono);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.pd-arte-topo b { color: #12a150; font-weight: 400; }
+
+.pd-arte-campos { list-style: none; display: grid; gap: 11px; }
+.pd-arte-campos li { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; font-size: 13px; }
+.pd-arte-campos span { color: var(--ink-muted); }
+.pd-arte-campos b { font-weight: 580; }
+.pd-arte-campos b.is-ok { color: #12a150; }
+
+.pd-arte-passagem { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.pd-arte-quem { padding: 8px 13px; border-radius: 9px; font-size: 12.5px; font-weight: 560; }
+.pd-arte-quem.is-ia { background: rgba(103, 56, 255, .1); color: var(--violet); }
+.pd-arte-quem.is-gente { background: var(--paper); border: 1px solid var(--hairline); color: var(--ink); }
+.pd-arte-seta { color: var(--ink-muted); font-size: 15px; }
+.pd-arte-nota { margin-top: 13px; color: var(--ink-muted); font-size: 12.5px; line-height: 1.5; }
+.pd-arte-nota.is-ok { color: #12a150; }
+
+.pd-arte-barras { list-style: none; display: grid; gap: 13px; }
+.pd-arte-barras li { display: grid; gap: 7px; font-size: 12.5px; color: var(--ink-muted); }
+.pd-arte-barras i {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+.pd-arte-barras i::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--n) * 100%);
+  border-radius: 3px;
+  background: var(--grad-brand);
+}
+
+/* ── o botão que fecha a linha ──────────────────────────────────────────── */
+
+.pd-linha-fim {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+}
+.pd-linha-fim .button {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .45s ease, transform .45s cubic-bezier(.2, .7, .3, 1);
+}
+.pd-linha-fim.is-on .button { opacity: 1; transform: translateY(0); }
+
+/* Sem animação por preferência do sistema, a linha já nasce cheia e tudo
+   aparece — o conteúdo nunca depende do movimento para existir. */
+@media (prefers-reduced-motion: reduce) {
+  .pd-linha-trilho i { transform: scaleY(1); }
+  .pd-passo::before { border-color: var(--violet); background: var(--violet); }
+  .pd-linha-fim .button { opacity: 1; transform: none; }
+}
 /* ─────────────────────────────────────────────────────────────  recursos */
 
 .pd-feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 14px; overflow: hidden; }
@@ -352,9 +523,8 @@
 @media (max-width: 1040px) {
   .pd-hero .mz-hero-inner { grid-template-columns: 1fr; gap: 44px; }
   .pd-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .pd-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 0; }
-  .pd-step::after { display: none; }
-  .pd-step:nth-child(odd) { padding-left: 0; }
+  .pd-passo { gap: 0 56px; }
+  .pd-passo-copy h3 { font-size: 20px; }
   .pd-channels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pd-strip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pd-strip-item:nth-child(2) { border-right: 0; }
@@ -363,13 +533,30 @@
 
 @media (max-width: 720px) {
   .pd-section, .pd-final { padding: 72px 0; }
-  .pd-feats, .pd-channels, .pd-steps, .pd-strip-grid { grid-template-columns: 1fr; }
+  .pd-feats, .pd-channels, .pd-strip-grid { grid-template-columns: 1fr; }
   .pd-strip-item { border-right: 0; border-bottom: 1px solid var(--hairline); }
   .pd-strip-item:last-child { border-bottom: 0; }
   .pd-strip-grid { transform: translateY(-28px); }
   .pd-strip { padding-bottom: 60px; }
-  .pd-step { padding: 0; }
   .pd-final-card { padding: 44px 26px; }
   .pd-msg { max-width: 92%; }
   .pd-talk { padding: 14px 12px 16px; }
+
+  /* Sem espaço para duas colunas, a linha encosta na esquerda e todo o
+     conteúdo passa a correr ao lado dela, sempre no mesmo sentido. */
+  .pd-flow { padding: 72px 0 64px; }
+  .pd-flow-head { margin-bottom: 48px; }
+  .pd-linha { padding-left: 30px; }
+  .pd-linha-trilho { left: 0; margin-left: 0; }
+  .pd-passo { grid-template-columns: 1fr; gap: 20px; padding-bottom: 52px; }
+  .pd-passo::before { top: 8px; left: -30px; margin-left: -4.5px; }
+  .pd-passo:nth-of-type(odd) .pd-passo-copy,
+  .pd-passo:nth-of-type(even) .pd-passo-copy { grid-column: 1; text-align: left; }
+  .pd-passo:nth-of-type(odd) .pd-passo-arte,
+  .pd-passo:nth-of-type(even) .pd-passo-arte { grid-column: 1; grid-row: 2; }
+  .pd-passo:nth-of-type(even) .pd-passo-copy p { margin-left: 0; }
+  .pd-passo-n { top: -22px; font-size: 52px; }
+  .pd-passo:nth-of-type(odd) .pd-passo-n,
+  .pd-passo:nth-of-type(even) .pd-passo-n { left: -6px; right: auto; }
+  .pd-linha-fim { justify-content: flex-start; margin-left: -30px; }
 }
