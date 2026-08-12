@@ -193,6 +193,24 @@
       });
     }
 
+    /* Abre o teclado, escreve a frase, envia e fecha. Duas trocas do roteiro
+       fazem exatamente isso, então vive numa função só. */
+    function escrever(frase, indice) {
+      campo.classList.add('is-ativo');
+      teclado.classList.add('is-aberto');
+      return esperar(550)
+        .then(function () { return digitar(frase); })
+        .then(function () { return esperar(450); })
+        .then(function () {
+          texto.textContent = '';
+          barra.classList.remove('is-enviando');
+          campo.classList.remove('is-ativo');
+          teclado.classList.remove('is-aberto');
+          mostrar(indice);
+          return esperar(900);
+        });
+    }
+
     function limpar() {
       relogios.forEach(clearTimeout);
       relogios = [];
@@ -221,19 +239,14 @@
         .then(function () { digitandoBot(false); mostrar(1); return esperar(700); })
         .then(function () { digitandoBot(true); return esperar(1100); })
         .then(function () { digitandoBot(false); mostrar(2); return esperar(900); })
-        .then(function () { campo.classList.add('is-ativo'); teclado.classList.add('is-aberto'); return esperar(600); })
-        .then(function () { return digitar('9h20 tá ótimo'); })
-        .then(function () { return esperar(450); })
-        .then(function () {
-          texto.textContent = '';
-          barra.classList.remove('is-enviando');
-          campo.classList.remove('is-ativo');
-          teclado.classList.remove('is-aberto');
-          mostrar(3);
-          return esperar(900);
-        })
+        .then(function () { return escrever('9h20 tá ótimo', 3); })
         .then(function () { digitandoBot(true); return esperar(1200); })
-        .then(function () { digitandoBot(false); mostrar(4); return esperar(4200); })
+        /* O chatbot precisa perguntar o e-mail antes de dizer que mandou a
+           confirmação — senão a conversa fecha com um dado que ninguém deu. */
+        .then(function () { digitandoBot(false); mostrar(4); return esperar(900); })
+        .then(function () { return escrever('rafael.m@gmail.com', 5); })
+        .then(function () { digitandoBot(true); return esperar(1200); })
+        .then(function () { digitandoBot(false); mostrar(6); return esperar(4200); })
         .then(function () { if (tocando) roteiro(); });
     }
 
