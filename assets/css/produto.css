@@ -61,146 +61,6 @@
 }
 .pd-hero-badge svg { width: 16px; height: 16px; fill: #25d366; }
 
-/* ────────────────────────────────────────────────── a conversa do hero */
-
-/* Um recorte de conversa, não a captura de um aparelho: o mesmo cartão de
-   vidro usado no resto do site, com as bolhas entrando em sequência. */
-.pd-talk {
-  position: relative;
-  /* O hero centraliza o texto; dentro da conversa isso não vale. */
-  text-align: left;
-  padding: 16px 16px 20px;
-  border: 1px solid rgba(255, 255, 255, .13);
-  border-radius: 22px;
-  /* Sem backdrop-filter de propósito. Ele custava 40 fps contra os 60 do resto
-     do site quando o hero ainda tinha camadas animadas atrás; hoje o fundo é
-     parado, mas o desfoque continua sendo o efeito mais caro da página e o
-     cartão não precisa dele: a sensação de vidro vem do gradiente e do brilho
-     da borda, que são de graça. */
-  background:
-    radial-gradient(520px 300px at 80% 0%, rgba(103, 56, 255, .26), transparent 62%),
-    linear-gradient(165deg, rgba(12, 40, 80, .72), rgba(4, 26, 54, .66) 60%, rgba(12, 40, 80, .7));
-  box-shadow: 0 30px 80px rgba(1, 12, 30, .42), inset 0 1px 0 rgba(255, 255, 255, .14);
-}
-
-.pd-talk-head {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 4px 6px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, .1);
-}
-.pd-talk-avatar {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  flex: none;
-  border-radius: 12px;
-  background: var(--grad-brand);
-}
-.pd-talk-avatar img { width: 20px; height: 20px; object-fit: contain; filter: brightness(0) invert(1); }
-.pd-talk-id { display: grid; gap: 3px; line-height: 1; }
-.pd-talk-id b { color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .01em; }
-.pd-talk-id small {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: rgba(255, 255, 255, .5);
-  font: 9px/1 var(--mono);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.pd-talk-id small::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #25d366;
-  box-shadow: 0 0 0 3px rgba(37, 211, 102, .18);
-}
-
-.pd-talk-log { display: grid; gap: 12px; padding: 20px 4px 6px; }
-
-.pd-msg { display: grid; gap: 5px; max-width: 84%; }
-.pd-msg small {
-  color: rgba(255, 255, 255, .42);
-  font: 8px/1 var(--mono);
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-.pd-msg p {
-  padding: 11px 14px;
-  border-radius: 14px;
-  font-size: 13.5px;
-  line-height: 1.5;
-}
-
-/* Quem escreve de fora fica à esquerda, em vidro claro. */
-.pd-msg.is-cliente { justify-items: start; }
-.pd-msg.is-cliente p {
-  border: 1px solid rgba(255, 255, 255, .14);
-  border-bottom-left-radius: 5px;
-  background: rgba(255, 255, 255, .1);
-  color: rgba(255, 255, 255, .9);
-}
-
-/* O agente fica à direita, nas cores da marca. */
-.pd-msg.is-agente { justify-items: end; margin-left: auto; text-align: right; }
-.pd-msg.is-agente p {
-  border-bottom-right-radius: 5px;
-  background: linear-gradient(118deg, rgba(6, 91, 255, .92), rgba(103, 56, 255, .92));
-  color: #fff;
-  text-align: left;
-  box-shadow: 0 10px 26px rgba(6, 91, 255, .26);
-}
-
-/* As bolhas entram uma a uma quando a seção aparece. */
-.pd-msg { opacity: 0; transform: translateY(10px); }
-.reveal.in .pd-msg,
-.pd-talk.in .pd-msg { animation: pd-bolha .5s cubic-bezier(.2, .7, .3, 1) forwards; }
-.pd-talk .pd-msg:nth-child(1) { animation-delay: .25s; }
-.pd-talk .pd-msg:nth-child(2) { animation-delay: .85s; }
-.pd-talk .pd-msg:nth-child(3) { animation-delay: 1.45s; }
-.pd-talk .pd-msg:nth-child(4) { animation-delay: 2.1s; }
-.pd-talk .pd-msg:nth-child(5) { animation-delay: 2.75s; }
-
-@keyframes pd-bolha {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Os três pontinhos de "digitando" — o único laço infinito do bloco, e o mais
-   barato possível: três elementos de 5px animando só a opacidade. */
-.pd-typing {
-  display: inline-flex;
-  gap: 4px;
-  align-items: center;
-  padding: 13px 15px;
-  border: 1px solid rgba(255, 255, 255, .14);
-  border-radius: 14px;
-  border-bottom-left-radius: 5px;
-  background: rgba(255, 255, 255, .08);
-}
-.pd-typing i {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .6);
-  animation: pd-pontos 1.25s ease-in-out infinite;
-}
-.pd-typing i:nth-child(2) { animation-delay: .18s; }
-.pd-typing i:nth-child(3) { animation-delay: .36s; }
-
-@keyframes pd-pontos {
-  0%, 60%, 100% { opacity: .3; }
-  30% { opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pd-msg { opacity: 1; transform: none; animation: none !important; }
-  .pd-typing i { animation: none; opacity: .6; }
-}
-
 /* ─────────────────────────────────────────────────────────────── seções */
 
 .pd-section { padding: 100px 0; background: var(--paper-bright); }
@@ -475,65 +335,23 @@
 
 /* ─────────────────────────────────────────────────── chamada de fechamento */
 
-/* ────────────────────────────────────────────────── setores e o celular */
-
-/* Texto de um lado, um celular do outro. O celular existe para mostrar uma
-   coisa que texto nenhum mostra bem: a pessoa manda um audio e a conversa
-   segue normalmente, com a transcricao aparecendo antes da resposta. */
-
-.pd-setores { padding: 104px 0; background: var(--paper-bright); overflow: hidden; }
-.pd-setores-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, .82fr);
-  gap: 72px;
-  align-items: center;
-}
-
-.pd-setores-copy .section-label { margin-bottom: 18px; }
-.pd-setores-copy h2 {
-  font-size: clamp(32px, 3.8vw, 50px);
-  font-weight: 350;
-  line-height: 1.05;
-  letter-spacing: -.042em;
-}
-.pd-setores-copy > p { max-width: 40em; margin-top: 20px; color: var(--ink-muted); font-size: 15px; line-height: 1.7; }
-
-.pd-setores-lista { list-style: none; display: grid; gap: 2px; margin-top: 34px; }
-.pd-setores-lista li,
-.pd-setores-lista a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 0;
-  color: var(--violet);
-  font-size: 17px;
-  font-weight: 620;
-  letter-spacing: -.018em;
-}
-/* A seta de cada item, desenhada na borda para nao carregar mais um SVG. */
-.pd-setores-lista li::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  flex: none;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
-}
-.pd-setores-lista a { padding: 0; gap: 7px; }
-.pd-setores-lista a span { font-size: 12px; opacity: .7; }
-.pd-setores-lista a:hover { color: var(--magenta); }
-
 /* ── o celular ──────────────────────────────────────────────────────────── */
 
+/* O celular vive no hero, sobre o gradiente escuro: a sombra e o brilho da
+   borda sao mais fortes do que seriam sobre fundo claro, senao ele afunda. */
 .pd-fone {
   justify-self: center;
+  /* O hero centraliza o texto; dentro da conversa isso nao vale. */
+  text-align: left;
   width: 100%;
   max-width: 330px;
   padding: 11px;
   border-radius: 42px;
-  background: linear-gradient(160deg, #1d2733, #0b141c);
-  box-shadow: 0 34px 90px rgba(2, 24, 44, .28), 0 2px 0 rgba(255, 255, 255, .16) inset;
+  background: linear-gradient(160deg, #2a3644, #0b141c);
+  box-shadow:
+    0 40px 100px rgba(1, 8, 24, .55),
+    0 0 0 1px rgba(255, 255, 255, .1),
+    0 2px 0 rgba(255, 255, 255, .2) inset;
 }
 /* Altura fixa de proposito: e ela que faz o teclado empurrar a conversa para
    cima quando abre, em vez de esticar o celular. */
@@ -834,7 +652,6 @@
 
 @media (max-width: 1040px) {
   .pd-hero .mz-hero-inner { grid-template-columns: 1fr; gap: 44px; }
-  .pd-setores-grid { gap: 44px; }
   .pd-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pd-passo { gap: 0 56px; }
   .pd-passo-copy h3 { font-size: 20px; }
@@ -843,14 +660,8 @@
 
 @media (max-width: 720px) {
   .pd-section, .pd-final { padding: 72px 0; }
-  /* Em tela estreita o celular vai para baixo do texto, centralizado. */
-  .pd-setores { padding: 72px 0; }
-  .pd-setores-grid { grid-template-columns: 1fr; gap: 44px; }
-  .pd-setores-lista { margin-top: 26px; }
   .pd-feats, .pd-channels { grid-template-columns: 1fr; }
   .pd-final-card { padding: 44px 26px; }
-  .pd-msg { max-width: 92%; }
-  .pd-talk { padding: 14px 12px 16px; }
 
   /* Sem espaço para duas colunas, a linha encosta na esquerda e todo o
      conteúdo passa a correr ao lado dela, sempre no mesmo sentido. */
