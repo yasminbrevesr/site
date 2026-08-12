@@ -1436,3 +1436,37 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
   .mz-hero-lead { color: #ccd7e6; -webkit-text-fill-color: #ccd7e6; }
 }
+
+/* ─── Hero no azul da logo, e não no roxo ──────────────────────────────── */
+
+/* As lavagens roxa e magenta dominavam e o conjunto lia arroxeado. O tom
+   base passa a ser o #02182C da logo, e as luzes vêm do azul elétrico e do
+   azul luminoso; o roxo fica como sotaque, não como cor do fundo. */
+.mz-hero {
+  background:
+    radial-gradient(900px 540px at 50% 30%, rgba(6, 91, 255, .34), transparent 66%),
+    radial-gradient(640px 560px at 20% 20%, rgba(22, 155, 255, .2), transparent 64%),
+    radial-gradient(600px 520px at 82% 70%, rgba(103, 56, 255, .16), transparent 64%),
+    linear-gradient(180deg, #02182c 0%, #06305c 46%, #02182c 100%);
+  background-color: #02182c;
+}
+
+/* A faixa de luz acompanha: mais azul, com o roxo só na crista. */
+.mz-sweep i {
+  background: linear-gradient(108deg,
+    transparent 41%,
+    rgba(22, 155, 255, .22) 45%,
+    rgba(6, 91, 255, .3) 48.5%,
+    rgba(103, 56, 255, .22) 51.5%,
+    rgba(22, 155, 255, .16) 55%,
+    transparent 59%);
+}
+
+/* E o parágrafo fecha no azul, em vez de puxar para o violeta. O recorte
+   precisa ser redeclarado: o atalho background zera background-clip, e sem
+   ele o gradiente pinta a caixa inteira em vez das letras. */
+.mz-hero-lead {
+  background: linear-gradient(163deg, #f2f7ff 0%, #c3d9f8 34%, #8fb4e8 66%, #6f9ff0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
