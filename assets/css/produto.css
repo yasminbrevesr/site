@@ -5,12 +5,29 @@
    FAQ e a esteira de integrações continuam vindo dos arquivos compartilhados,
    para que a página nasça com a mesma identidade do resto do site.
 
-   Este arquivo carrega DEPOIS de identidade.css. O hero reaproveita .mz-hero
-   inteiro — fundo marinho, curvas e faixa de luz —, e aqui só refazemos o que
-   muda: o miolo deixa de ser centralizado e passa a ter duas colunas.
+   Este arquivo carrega DEPOIS de identidade.css. O hero herda a estrutura de
+   .mz-hero, mas nada do movimento: aqui o fundo é um gradiente parado e o
+   miolo tem duas colunas.
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────── hero em duas colunas */
+
+/* Um gradiente só, sem nenhuma camada animada por cima. As curvas correndo, a
+   faixa de luz e as manchas da atmosfera saíram da marcação; o que resta são
+   duas luzes paradas sobre a rampa do azul da logo até o violeta. Fundo parado
+   também significa zero trabalho de composição por quadro. */
+.pd-hero {
+  background:
+    radial-gradient(1180px 720px at 84% 6%, rgba(103, 56, 255, .4), transparent 64%),
+    radial-gradient(920px 640px at 6% 92%, rgba(22, 155, 255, .24), transparent 62%),
+    linear-gradient(152deg, #02182c 0%, #062c58 36%, #0a3c85 63%, #33299b 100%);
+  background-color: #02182c;
+}
+
+/* O hero da matriz traz uma trama de pontos nos pseudoelementos; aqui ela sai,
+   que é o que sobrava de ruído sobre o gradiente. */
+.pd-hero::before,
+.pd-hero::after { display: none; }
 
 .pd-hero .mz-hero-inner {
   display: grid;
@@ -22,13 +39,12 @@
 }
 
 .pd-hero .mz-hero-copy { max-width: none; text-align: left; }
-.pd-hero .hero-kicker { justify-content: flex-start; }
 .pd-hero .mz-hero-actions { justify-content: flex-start; }
 
 .pd-hero h1 { font-size: clamp(38px, 4.5vw, 62px); }
 .pd-hero .mz-hero-lead { margin-inline: 0; max-width: 33em; }
 
-/* O selo de canal, logo abaixo do kicker. */
+/* O selo de canal abre a coluna de texto, no lugar do antigo kicker. */
 .pd-hero-badge {
   display: inline-flex;
   align-items: center;
@@ -56,10 +72,11 @@
   padding: 16px 16px 20px;
   border: 1px solid rgba(255, 255, 255, .13);
   border-radius: 22px;
-  /* Sem backdrop-filter de propósito. O cartão fica sobre as curvas animadas
-     do hero, e desfocar o fundo obriga o navegador a redesenhar o desfoque a
-     cada quadro: medido, custava 40 fps contra os 60 do resto do site. A
-     sensação de vidro vem do gradiente e do brilho da borda, que são de graça. */
+  /* Sem backdrop-filter de propósito. Ele custava 40 fps contra os 60 do resto
+     do site quando o hero ainda tinha camadas animadas atrás; hoje o fundo é
+     parado, mas o desfoque continua sendo o efeito mais caro da página e o
+     cartão não precisa dele: a sensação de vidro vem do gradiente e do brilho
+     da borda, que são de graça. */
   background:
     radial-gradient(520px 300px at 80% 0%, rgba(103, 56, 255, .26), transparent 62%),
     linear-gradient(165deg, rgba(12, 40, 80, .72), rgba(4, 26, 54, .66) 60%, rgba(12, 40, 80, .7));
@@ -193,9 +210,8 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(800px 500px at 76% 12%, rgba(103, 56, 255, .22), transparent 64%),
-    radial-gradient(680px 460px at 12% 88%, rgba(6, 91, 255, .2), transparent 62%),
-    #02182c;
+    radial-gradient(1000px 620px at 80% 8%, rgba(103, 56, 255, .3), transparent 64%),
+    linear-gradient(158deg, #02182c 0%, #06294f 48%, #21226f 100%);
   color: #fff;
 }
 .pd-section.is-dark h2 { color: #fff; }
