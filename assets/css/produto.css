@@ -428,23 +428,31 @@
 }
 /* ─────────────────────────────────────────────────────────────  recursos */
 
-.pd-feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 14px; overflow: hidden; }
-.pd-feat { padding: 32px 28px 34px; background: #fff; transition: background .25s ease; }
-.pd-feat:hover { background: var(--paper); }
+/* Sem cartão e sem moldura: os itens respiram no espaço da seção, separados
+   só pelo intervalo entre eles. O selo redondo de check abre cada um. */
+.pd-feats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 56px 48px;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+.pd-feat { max-width: 24em; }
 .pd-feat-ic {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  margin-bottom: 18px;
-  border: 1px solid rgba(103, 56, 255, .2);
-  border-radius: 10px;
-  background: rgba(103, 56, 255, .07);
+  width: 54px;
+  height: 54px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: rgba(103, 56, 255, .11);
   color: var(--violet);
+  transition: background .25s ease, transform .25s ease;
 }
-.pd-feat-ic svg { width: 19px; height: 19px; }
-.pd-feat b { display: block; margin-bottom: 9px; font-size: 16px; font-weight: 620; letter-spacing: -.015em; }
-.pd-feat p { color: var(--ink-muted); font-size: 13.5px; line-height: 1.62; }
+.pd-feat-ic svg { width: 22px; height: 22px; }
+.pd-feat:hover .pd-feat-ic { background: rgba(103, 56, 255, .18); transform: translateY(-2px); }
+.pd-feat b { display: block; margin-bottom: 11px; color: var(--ink); font-size: 18px; font-weight: 660; letter-spacing: -.022em; }
+.pd-feat p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.68; }
 
 /* ──────────────────────────────────────────────────────────────── canais */
 
