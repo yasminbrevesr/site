@@ -1,0 +1,400 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   PÁGINAS DE PRODUTO
+   Uma página por produto, começando pelo chatbot. Tudo aqui é prefixado com
+   .pd- e só existe nestas páginas: o cabeçalho, o rodapé, o formulário, o
+   FAQ e a esteira de integrações continuam vindo dos arquivos compartilhados,
+   para que a página nasça com a mesma identidade do resto do site.
+
+   Este arquivo carrega DEPOIS de identidade.css. O hero reaproveita .mz-hero
+   inteiro — fundo marinho, curvas e faixa de luz —, e aqui só refazemos o que
+   muda: o miolo deixa de ser centralizado e passa a ter duas colunas.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────── hero em duas colunas */
+
+.pd-hero .mz-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .86fr);
+  gap: 56px;
+  align-items: center;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.pd-hero .mz-hero-copy { max-width: none; text-align: left; }
+.pd-hero .hero-kicker { justify-content: flex-start; }
+.pd-hero .mz-hero-actions { justify-content: flex-start; }
+
+.pd-hero h1 { font-size: clamp(38px, 4.5vw, 62px); }
+.pd-hero .mz-hero-lead { margin-inline: 0; max-width: 33em; }
+
+/* O selo de canal, logo abaixo do kicker. */
+.pd-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 22px;
+  padding: 7px 14px 7px 9px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .82);
+  font: 10px/1 var(--mono);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.pd-hero-badge svg { width: 16px; height: 16px; fill: #25d366; }
+
+/* ────────────────────────────────────────────────── a conversa do hero */
+
+/* Um recorte de conversa, não a captura de um aparelho: o mesmo cartão de
+   vidro usado no resto do site, com as bolhas entrando em sequência. */
+.pd-talk {
+  position: relative;
+  /* O hero centraliza o texto; dentro da conversa isso não vale. */
+  text-align: left;
+  padding: 16px 16px 20px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 22px;
+  /* Sem backdrop-filter de propósito. O cartão fica sobre as curvas animadas
+     do hero, e desfocar o fundo obriga o navegador a redesenhar o desfoque a
+     cada quadro: medido, custava 40 fps contra os 60 do resto do site. A
+     sensação de vidro vem do gradiente e do brilho da borda, que são de graça. */
+  background:
+    radial-gradient(520px 300px at 80% 0%, rgba(103, 56, 255, .26), transparent 62%),
+    linear-gradient(165deg, rgba(12, 40, 80, .72), rgba(4, 26, 54, .66) 60%, rgba(12, 40, 80, .7));
+  box-shadow: 0 30px 80px rgba(1, 12, 30, .42), inset 0 1px 0 rgba(255, 255, 255, .14);
+}
+
+.pd-talk-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 4px 6px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+.pd-talk-avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 12px;
+  background: var(--grad-brand);
+}
+.pd-talk-avatar img { width: 20px; height: 20px; object-fit: contain; filter: brightness(0) invert(1); }
+.pd-talk-id { display: grid; gap: 3px; line-height: 1; }
+.pd-talk-id b { color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .01em; }
+.pd-talk-id small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, .5);
+  font: 9px/1 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.pd-talk-id small::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, .18);
+}
+
+.pd-talk-log { display: grid; gap: 12px; padding: 20px 4px 6px; }
+
+.pd-msg { display: grid; gap: 5px; max-width: 84%; }
+.pd-msg small {
+  color: rgba(255, 255, 255, .42);
+  font: 8px/1 var(--mono);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.pd-msg p {
+  padding: 11px 14px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+/* Quem escreve de fora fica à esquerda, em vidro claro. */
+.pd-msg.is-cliente { justify-items: start; }
+.pd-msg.is-cliente p {
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-bottom-left-radius: 5px;
+  background: rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .9);
+}
+
+/* O agente fica à direita, nas cores da marca. */
+.pd-msg.is-agente { justify-items: end; margin-left: auto; text-align: right; }
+.pd-msg.is-agente p {
+  border-bottom-right-radius: 5px;
+  background: linear-gradient(118deg, rgba(6, 91, 255, .92), rgba(103, 56, 255, .92));
+  color: #fff;
+  text-align: left;
+  box-shadow: 0 10px 26px rgba(6, 91, 255, .26);
+}
+
+/* As bolhas entram uma a uma quando a seção aparece. */
+.pd-msg { opacity: 0; transform: translateY(10px); }
+.reveal.in .pd-msg,
+.pd-talk.in .pd-msg { animation: pd-bolha .5s cubic-bezier(.2, .7, .3, 1) forwards; }
+.pd-talk .pd-msg:nth-child(1) { animation-delay: .25s; }
+.pd-talk .pd-msg:nth-child(2) { animation-delay: .85s; }
+.pd-talk .pd-msg:nth-child(3) { animation-delay: 1.45s; }
+.pd-talk .pd-msg:nth-child(4) { animation-delay: 2.1s; }
+.pd-talk .pd-msg:nth-child(5) { animation-delay: 2.75s; }
+
+@keyframes pd-bolha {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Os três pontinhos de "digitando" — o único laço infinito do bloco, e o mais
+   barato possível: três elementos de 5px animando só a opacidade. */
+.pd-typing {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 14px;
+  border-bottom-left-radius: 5px;
+  background: rgba(255, 255, 255, .08);
+}
+.pd-typing i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .6);
+  animation: pd-pontos 1.25s ease-in-out infinite;
+}
+.pd-typing i:nth-child(2) { animation-delay: .18s; }
+.pd-typing i:nth-child(3) { animation-delay: .36s; }
+
+@keyframes pd-pontos {
+  0%, 60%, 100% { opacity: .3; }
+  30% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-msg { opacity: 1; transform: none; animation: none !important; }
+  .pd-typing i { animation: none; opacity: .6; }
+}
+
+/* ──────────────────────────────────────────────────── faixa de destaques */
+
+.pd-strip {
+  position: relative;
+  z-index: 2;
+  padding: 0;
+  background: var(--paper-bright);
+}
+.pd-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--sombra-card);
+  transform: translateY(-42px);
+}
+.pd-strip-item { padding: 26px 24px; border-right: 1px solid var(--hairline); }
+.pd-strip-item:last-child { border-right: 0; }
+.pd-strip-item b {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 19px;
+  font-weight: 620;
+  letter-spacing: -.02em;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.pd-strip-item span { display: block; color: var(--ink-muted); font-size: 13px; line-height: 1.55; }
+
+/* ─────────────────────────────────────────────────────────────── seções */
+
+.pd-section { padding: 100px 0; background: var(--paper-bright); }
+.pd-section.is-alt { background: var(--paper); }
+
+.pd-section.is-dark {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(800px 500px at 76% 12%, rgba(103, 56, 255, .22), transparent 64%),
+    radial-gradient(680px 460px at 12% 88%, rgba(6, 91, 255, .2), transparent 62%),
+    #02182c;
+  color: #fff;
+}
+.pd-section.is-dark h2 { color: #fff; }
+.pd-section.is-dark .section-label { color: rgba(255, 255, 255, .5); }
+.pd-section.is-dark .section-head > p { border-top-color: rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .66); }
+
+/* ────────────────────────────────────────────────────── o que trava hoje */
+
+.pd-pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.pd-pain {
+  padding: 30px 28px 32px;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--sombra-card);
+}
+.pd-pain-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, rgba(247, 37, 199, .12), rgba(103, 56, 255, .12));
+  color: var(--violet);
+}
+.pd-pain-mark svg { width: 20px; height: 20px; }
+.pd-pain b { display: block; margin-bottom: 10px; font-size: 17px; font-weight: 600; letter-spacing: -.015em; }
+.pd-pain p { color: var(--ink-muted); font-size: 14px; line-height: 1.65; }
+
+/* ──────────────────────────────────────────────────────── como funciona */
+
+.pd-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.pd-step { position: relative; padding: 0 26px; }
+.pd-step:first-child { padding-left: 0; }
+.pd-step:last-child { padding-right: 0; }
+
+/* A linha que liga um passo ao seguinte. */
+.pd-step::after {
+  content: '';
+  position: absolute;
+  top: 19px;
+  right: -18px;
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(103, 56, 255, .5), rgba(103, 56, 255, .08));
+}
+.pd-step:last-child::after { display: none; }
+
+.pd-step-n {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: var(--grad-brand);
+  color: #fff;
+  font: 12px/1 var(--mono);
+  letter-spacing: .04em;
+  box-shadow: 0 8px 20px rgba(103, 56, 255, .3);
+}
+.pd-step b { display: block; margin-bottom: 9px; font-size: 16px; font-weight: 620; letter-spacing: -.015em; }
+.pd-step p { color: var(--ink-muted); font-size: 13.5px; line-height: 1.62; }
+.pd-section.is-dark .pd-step p { color: rgba(255, 255, 255, .64); }
+.pd-section.is-dark .pd-step b { color: #fff; }
+
+/* ─────────────────────────────────────────────────────────────  recursos */
+
+.pd-feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 14px; overflow: hidden; }
+.pd-feat { padding: 32px 28px 34px; background: #fff; transition: background .25s ease; }
+.pd-feat:hover { background: var(--paper); }
+.pd-feat-ic {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(103, 56, 255, .2);
+  border-radius: 10px;
+  background: rgba(103, 56, 255, .07);
+  color: var(--violet);
+}
+.pd-feat-ic svg { width: 19px; height: 19px; }
+.pd-feat b { display: block; margin-bottom: 9px; font-size: 16px; font-weight: 620; letter-spacing: -.015em; }
+.pd-feat p { color: var(--ink-muted); font-size: 13.5px; line-height: 1.62; }
+
+/* ──────────────────────────────────────────────────────────────── canais */
+
+.pd-channels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.pd-channel {
+  padding: 26px 24px 28px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .05);
+  transition: border-color .25s ease, background .25s ease, transform .25s ease;
+}
+.pd-channel:hover { border-color: rgba(145, 70, 255, .42); background: rgba(255, 255, 255, .08); transform: translateY(-3px); }
+.pd-channel-ic { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 18px; border-radius: 11px; background: rgba(255, 255, 255, .08); }
+/* Só os ícones de marca são sólidos; os desenhados a traço precisam manter o
+   miolo vazado, senão viram um bloco branco. */
+.pd-channel-ic svg { width: 20px; height: 20px; }
+.pd-channel-ic svg:not([stroke]) { fill: #fff; }
+.pd-channel b { display: block; margin-bottom: 8px; color: #fff; font-size: 15px; font-weight: 620; }
+.pd-channel p { color: rgba(255, 255, 255, .6); font-size: 13px; line-height: 1.6; }
+
+/* ─────────────────────────────────────────────────── chamada de fechamento */
+
+.pd-final { padding: 96px 0; background: var(--paper-bright); }
+.pd-final-card {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 56px;
+  border-radius: 22px;
+  background:
+    radial-gradient(700px 420px at 82% 10%, rgba(145, 70, 255, .34), transparent 64%),
+    linear-gradient(122deg, #065bff, #6738ff 56%, #9146ff);
+  color: #fff;
+  box-shadow: 0 30px 80px rgba(6, 91, 255, .26);
+  text-align: center;
+}
+.pd-final-card h2 { max-width: 17em; margin: 0 auto 18px; font-size: clamp(30px, 3.6vw, 46px); font-weight: 400; line-height: 1.08; letter-spacing: -.035em; color: #fff; }
+.pd-final-card h2 em { color: #fff; -webkit-text-fill-color: #fff; background: none; font-style: italic; }
+.pd-final-card p { max-width: 46em; margin: 0 auto 32px; color: rgba(255, 255, 255, .84); font-size: 15px; line-height: 1.65; }
+.pd-final-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.pd-final-card .button-primary { background: #fff; color: #02182c; box-shadow: 0 12px 30px rgba(1, 12, 30, .22); }
+.pd-final-card .button-primary:hover { background: #fff; }
+/* A seta é branca por padrão; sobre o botão branco ela precisa escurecer. */
+.pd-final-card .button-primary span { color: var(--violet); }
+.pd-final-card .mz-btn-ghost { border-color: rgba(255, 255, 255, .5); color: #fff; background: transparent; }
+.pd-final-card .mz-btn-ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .12); }
+
+/* ─────────────────────────────────────────── migalhas de navegação (topo) */
+
+.pd-crumbs { display: flex; align-items: center; gap: 9px; margin-bottom: 20px; font: 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.pd-crumbs a { color: rgba(255, 255, 255, .5); }
+.pd-crumbs a:hover { color: #fff; }
+.pd-crumbs span { color: rgba(255, 255, 255, .28); }
+.pd-crumbs b { color: var(--violet-soft); font-weight: 400; }
+
+/* ──────────────────────────────────────────────────────────── responsivo */
+
+@media (max-width: 1040px) {
+  .pd-hero .mz-hero-inner { grid-template-columns: 1fr; gap: 44px; }
+  .pd-feats, .pd-pain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pd-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 0; }
+  .pd-step::after { display: none; }
+  .pd-step:nth-child(odd) { padding-left: 0; }
+  .pd-channels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pd-strip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pd-strip-item:nth-child(2) { border-right: 0; }
+  .pd-strip-item:nth-child(-n+2) { border-bottom: 1px solid var(--hairline); }
+}
+
+@media (max-width: 720px) {
+  .pd-section, .pd-final { padding: 72px 0; }
+  .pd-feats, .pd-pain-grid, .pd-channels, .pd-steps, .pd-strip-grid { grid-template-columns: 1fr; }
+  .pd-strip-item { border-right: 0; border-bottom: 1px solid var(--hairline); }
+  .pd-strip-item:last-child { border-bottom: 0; }
+  .pd-strip-grid { transform: translateY(-28px); }
+  .pd-step { padding: 0; }
+  .pd-final-card { padding: 44px 26px; }
+  .pd-msg { max-width: 92%; }
+  .pd-talk { padding: 14px 12px 16px; }
+}

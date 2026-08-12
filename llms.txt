@@ -217,6 +217,8 @@ O trabalho pode envolver desde a análise do processo atual até desenvolvimento
 
 - [BREVES Jurídico](https://brevestech.com/juridico/): Soluções de tecnologia e automação direcionadas a escritórios de advocacia.
 
+- [Chatbot com IA](https://brevestech.com/chatbot/): Página do produto de chatbot com inteligência artificial para atendimento no WhatsApp, no site e nas redes sociais.
+
 ## Recursos
 
 - [Sitemap](https://brevestech.com/sitemap.xml): Lista das páginas públicas do site.

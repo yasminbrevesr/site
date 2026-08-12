@@ -50,6 +50,44 @@
       ]
     },
 
+    /* Página do produto chatbot. Aqui o widget é a própria demonstração do que
+       a página vende, então as perguntas são todas sobre atendimento. */
+    chatbot: {
+      saudacao: 'Olá! Este chat é um exemplo do que fazemos. Sobre o chatbot com IA, o que você quer saber?',
+      perguntas: [
+        {
+          p: 'Como o chatbot atende meus clientes?',
+          r: 'Ele entende o que a pessoa escreveu — sem menu de opções e mesmo com erro de digitação —, responde a partir do que foi definido com você e, quando o assunto exige dado atualizado, consulta o seu sistema na hora. O que dá para concluir, ele conclui; o que exige julgamento vai para a sua equipe com o histórico junto.',
+          wa: 'Olá! Queria entender como funciona o chatbot com IA da BREVES.'
+        },
+        {
+          p: 'Ele funciona no meu WhatsApp?',
+          r: 'Sim, no mesmo número que a sua empresa já usa. Sua equipe continua enxergando as conversas e pode assumir qualquer uma quando quiser — o chatbot não toma o canal para si. Também dá para atender pelo site e pelo Instagram.',
+          wa: 'Olá! Queria saber se o chatbot da BREVES funciona no WhatsApp que eu já uso.'
+        },
+        {
+          p: 'Ele consulta meus sistemas?',
+          r: 'Quando o sistema abre uma API, sim — e é isso que separa um robô de respostas prontas de um atendimento de verdade. Em vez de texto genérico, ele consulta pedido, status, agenda ou cadastro durante a conversa. Já conectamos ERPs, CRMs, planilhas, agenda, Power BI, n8n e Zapier.',
+          wa: 'Olá! Queria saber se o chatbot da BREVES integra com os sistemas que eu já uso.'
+        },
+        {
+          p: 'E se ele não souber responder?',
+          r: 'Ele não inventa. Quando a pergunta sai do que foi definido, assume que não tem a resposta e encaminha para uma pessoa, com a conversa inteira junto — sem pedir para o cliente repetir a história. Chute em atendimento custa cliente, e o desenho parte disso.',
+          wa: 'Olá! Queria entender como o chatbot da BREVES lida com perguntas fora do escopo.'
+        },
+        {
+          p: 'Quanto tempo leva para colocar no ar?',
+          r: 'Depende do escopo, mas a implantação acontece por etapas. Começa pelo conjunto de perguntas que mais se repete, entra em operação e cresce a partir do que as conversas reais mostram — em vez de tentar prever tudo antes de começar.',
+          wa: 'Olá! Queria entender o prazo para colocar um chatbot no ar com a BREVES.'
+        },
+        {
+          p: 'Quanto custa?',
+          r: 'Não temos tabela de preço, e chutar um valor sem conhecer o atendimento seria desonesto. O escopo sai de uma conversa inicial, em que entendemos por onde chega a demanda e o que mais perguntam — e essa primeira conversa é sem compromisso.',
+          wa: 'Olá! Queria entender como funciona o orçamento do chatbot da BREVES.'
+        }
+      ]
+    },
+
     juridico: {
       saudacao: 'Olá! Aqui dá para tirar as dúvidas mais comuns sobre a BREVES Jurídico. Sobre o que você quer saber?',
       perguntas: [
@@ -94,7 +132,8 @@
   var SUPABASE_KEY = 'sb_publishable_tBvoqhNTb_Aw-HSLoKblsA_LD2M3Qye';
   var ORIGEM = {
     matriz: 'site-matriz-tecnologia',
-    juridico: 'site-principal-juridico'
+    juridico: 'site-principal-juridico',
+    chatbot: 'site-produto-chatbot'
   };
 
   var script = document.querySelector('script[data-breves-chat]');

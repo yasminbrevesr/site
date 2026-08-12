@@ -67,7 +67,7 @@
 <link rel="stylesheet" href="assets/css/site.css?v=identidade-1">
 <link rel="stylesheet" href="assets/css/matriz.css?v=identidade-1">
 <link rel="stylesheet" href="assets/css/chat.css?v=chat-7">
-<link rel="stylesheet" href="assets/css/identidade.css?v=identidade-21">
+<link rel="stylesheet" href="assets/css/identidade.css?v=identidade-22">
 </head>
 <body>
 
@@ -82,7 +82,17 @@
     </a>
 
     <nav id="main-nav" aria-label="Navegação principal">
-      <a href="#produtos" data-nav="produtos">Produtos</a>
+      <div class="nav-drop">
+        <a class="nav-drop-trigger" href="#produtos" data-nav="produtos">Produtos <i aria-hidden="true"></i></a>
+        <div class="nav-drop-menu">
+          <a href="chatbot/">Chatbot com IA</a>
+          <a href="#produtos">Automação de processos</a>
+          <a href="#produtos">Integração entre sistemas</a>
+          <a href="#produtos">Agentes de IA</a>
+          <a href="#produtos">Gestão de marketplace</a>
+          <a href="#produtos">Painéis em Power BI</a>
+        </div>
+      </div>
       <a href="#duvidas" data-nav="duvidas">Dúvidas</a>
       <a href="#unidades" data-nav="unidades">Unidades</a>
       <a href="juridico/" class="nav-external">Jurídico <span aria-hidden="true">↗︎</span></a>
@@ -172,7 +182,7 @@
         <li><small>Rotinas</small><b>Automação de processos</b><p>Sua equipe livre do repetitivo. Cada hora gasta copiando dado e refazendo a mesma tarefa é margem que evapora — as rotinas passam a rodar sozinhas e sobra tempo para o trabalho que só gente faz.</p></li>
         <li><small>APIs</small><b>Integração entre sistemas</b><p>Um dado digitado uma vez só. Informação redigitada em dois lugares vira divergência, e divergência vira prejuízo no fechamento do mês — aqui seus sistemas conversam entre si e a informação circula sozinha.</p></li>
         <li><small>Inteligência artificial</small><b>Agentes de IA</b><p>Um funcionário que nunca dorme. Demanda não espera o expediente abrir: um agente treinado na sua operação atende, organiza e executa 24 horas por dia — sem férias, sem rotatividade e sem treinar de novo.</p></li>
-        <li><small>Atendimento</small><b>Chatbot com IA</b><p>Resposta na hora, a qualquer hora. Quem espera acaba comprando de quem respondeu antes — as perguntas de sempre são resolvidas na hora e a sua equipe só entra quando a conversa exige gente.</p></li>
+        <li class="has-page"><small>Atendimento</small><b>Chatbot com IA</b><p>Resposta na hora, a qualquer hora. Quem espera acaba comprando de quem respondeu antes — as perguntas de sempre são resolvidas na hora e a sua equipe só entra quando a conversa exige gente.</p><a class="mz-product-link" href="chatbot/">Ver a página do chatbot <span aria-hidden="true">→</span></a></li>
         <li><small>Vendas</small><b>Gestão de marketplace</b><p>Sua loja vendendo mais. Loja mal cuidada entrega venda de graça ao concorrente — cuidamos de anúncio, publicidade e estratégia até o faturamento subir, e o número mostra.</p></li>
         <li><small>Dados</small><b>Painéis em Power BI</b><p>Decisão com número, não com achismo. Decidir no escuro sai caro e você só descobre quando o mês já fechou — o número certo passa a aparecer na sua frente, atualizado sozinho, na hora de decidir.</p></li>
       </ul>
@@ -318,7 +328,7 @@
         <a href="#produtos">Automação de processos</a>
         <a href="#produtos">Integração entre sistemas</a>
         <a href="#produtos">Agentes de IA</a>
-        <a href="#produtos">Chatbot com IA</a>
+        <a href="chatbot/">Chatbot com IA</a>
         <a href="#produtos">Gestão de marketplace</a>
         <a href="#produtos">Painéis em Power BI</a>
       </nav>
@@ -354,6 +364,6 @@
 
 <script type="module" src="assets/js/contact-form.js?v=20260804a"></script>
 <script defer src="assets/js/site.js?v=identidade-3"></script>
-<script defer data-breves-chat="matriz" src="assets/js/chat.js?v=chat-7"></script>
+<script defer data-breves-chat="matriz" src="assets/js/chat.js?v=chat-8"></script>
 </body>
 </html>
