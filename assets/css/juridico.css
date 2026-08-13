@@ -397,3 +397,131 @@ body.sobrio .lex-pe b { color: var(--ink); font-size: 13px; font-weight: 600; le
 @media (max-width: 979px) {
   body.sobrio .lex-peca { width: min(400px, 100%); margin-top: 34px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ESCALA: TRES CENARIOS LADO A LADO
+   O peso cresce da esquerda para a direita — o cartao claro e o de hoje, o
+   marinho e o do meio, o mais escuro e o alvo. E o cinza sai de cena para o
+   marinho entrar, sem precisar de uma cor nova.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.sobrio .lex-escala { padding: 104px 0; background: var(--paper-bright); }
+
+body.sobrio .lex-escala-head { max-width: 780px; margin: 0 auto 54px; text-align: center; }
+body.sobrio .lex-escala-head .section-label { justify-content: center; margin-bottom: 18px; }
+body.sobrio .lex-escala-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(34px, 4.2vw, 58px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -.018em;
+}
+body.sobrio .lex-escala-head h2 em { font-weight: 400; font-style: italic; }
+body.sobrio .lex-escala-head > p { max-width: 44em; margin: 20px auto 0; color: var(--ink-muted); font-size: 15px; line-height: 1.7; }
+
+body.sobrio .lex-escala-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+body.sobrio .lex-cenario {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 28px 32px;
+  border: 1px solid rgba(2, 24, 44, .12);
+  border-radius: 14px;
+  background: var(--paper);
+}
+body.sobrio .lex-cenario-tag {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--ink-muted);
+  font: 9.5px/1 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+body.sobrio .lex-cenario-texto { flex: 1; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
+
+body.sobrio .lex-cenario-num { margin-top: 30px; }
+body.sobrio .lex-cenario-num b {
+  display: block;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.022em;
+}
+body.sobrio .lex-cenario-num small { display: block; margin-top: 9px; color: var(--ink-muted); font-size: 12px; }
+
+body.sobrio .lex-cenario-total {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(2, 24, 44, .12);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 620;
+  letter-spacing: -.012em;
+}
+
+/* O cartao do meio: marinho cheio. */
+body.sobrio .lex-cenario.is-meio {
+  border-color: transparent;
+  background: var(--marinho-claro);
+}
+body.sobrio .lex-cenario.is-meio .lex-cenario-tag { color: rgba(255, 255, 255, .72); }
+body.sobrio .lex-cenario.is-meio .lex-cenario-texto { color: rgba(255, 255, 255, .78); }
+body.sobrio .lex-cenario.is-meio .lex-cenario-num b,
+body.sobrio .lex-cenario.is-meio .lex-cenario-total { color: #fff; }
+body.sobrio .lex-cenario.is-meio .lex-cenario-num small { color: rgba(255, 255, 255, .7); }
+body.sobrio .lex-cenario.is-meio .lex-cenario-total { border-top-color: rgba(255, 255, 255, .26); }
+
+/* E o da direita fecha no marinho da logo, com um fio claro no topo para
+   marcar que ele e o destino, nao so mais um cartao escuro. */
+body.sobrio .lex-cenario.is-alto {
+  position: relative;
+  border-color: transparent;
+  background: linear-gradient(168deg, #02182c, #061f36 60%, #02182c);
+  box-shadow: 0 26px 60px rgba(2, 24, 44, .22);
+}
+body.sobrio .lex-cenario.is-alto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 22px;
+  right: 22px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: #d3e4f4;
+}
+body.sobrio .lex-cenario.is-alto .lex-cenario-tag { color: #d3e4f4; }
+body.sobrio .lex-cenario.is-alto .lex-cenario-texto { color: rgba(255, 255, 255, .74); }
+body.sobrio .lex-cenario.is-alto .lex-cenario-num b { color: #d3e4f4; }
+body.sobrio .lex-cenario.is-alto .lex-cenario-num small { color: rgba(255, 255, 255, .66); }
+body.sobrio .lex-cenario.is-alto .lex-cenario-total { color: #fff; border-top-color: rgba(255, 255, 255, .24); }
+
+/* A conta fica visivel de proposito: numero grande sem a conta atras vira
+   promessa, e promessa nao e o tom desta pagina. */
+body.sobrio .lex-escala-conta {
+  max-width: 68em;
+  margin: 34px auto 0;
+  padding: 18px 22px;
+  border: 1px solid rgba(2, 24, 44, .1);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink-muted);
+  font-size: 12.5px;
+  line-height: 1.7;
+  text-align: center;
+}
+body.sobrio .lex-escala-conta b { color: var(--ink); font-weight: 620; }
+
+body.sobrio .lex-escala-acao { display: flex; justify-content: center; margin-top: 34px; }
+
+@media (max-width: 900px) {
+  body.sobrio .lex-escala-grid { grid-template-columns: 1fr; }
+  body.sobrio .lex-escala { padding: 76px 0; }
+  body.sobrio .lex-cenario-num { margin-top: 22px; }
+}
