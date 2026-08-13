@@ -42,7 +42,17 @@
 .pd-hero .mz-hero-actions { justify-content: flex-start; }
 
 .pd-hero h1 { font-size: clamp(38px, 4.5vw, 62px); }
-.pd-hero .mz-hero-lead { margin-inline: 0; max-width: 33em; }
+
+/* O paragrafo abaixo do titulo. O hero tinha perdido a linha de apoio; ela
+   volta porque e onde a pagina diz, em texto corrido, o que vende — o titulo
+   sozinho nao cobre WhatsApp, site, Instagram e integracao. */
+.pd-hero-text {
+  max-width: 34em;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, .76);
+  font-size: 16px;
+  line-height: 1.72;
+}
 
 /* O selo de canal abre a coluna de texto, no lugar do antigo kicker. */
 .pd-hero-badge {
