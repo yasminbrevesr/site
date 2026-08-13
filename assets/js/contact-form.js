@@ -52,6 +52,26 @@ async function submitContact(payload) {
   }
 }
 
+/* Uma pagina de produto pode mandar a pessoa para ca com ?produto=..., e o
+   formulario abre com o assunto ja escrito. E uma chave, e nao o texto solto
+   na URL: assim a mensagem que chega no banco e sempre uma das nossas, e nao
+   o que alguem digitou no endereco. */
+const ASSUNTOS = {
+  chatbot: 'Quero um chatbot com IA para o meu atendimento.',
+};
+
+function preencherAssunto() {
+  const chave = new URLSearchParams(window.location.search).get('produto');
+  const texto = chave && ASSUNTOS[chave];
+  if (!texto) return;
+  document.querySelectorAll('[data-contact-form] [name="mensagem"]').forEach((campo) => {
+    /* Nao sobrescreve o que a pessoa ja escreveu. */
+    if (!campo.value.trim()) campo.value = texto;
+  });
+}
+
+preencherAssunto();
+
 document.querySelectorAll('[data-contact-form]').forEach((form) => {
   const honeypot = document.createElement('input');
   honeypot.type = 'text';
