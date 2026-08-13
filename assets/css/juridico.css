@@ -1,0 +1,239 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   BREVES JURÍDICO — CAMADA SÓBRIA
+   A identidade da matriz trabalha com a rampa azul → violeta → magenta. Numa
+   página dirigida a escritórios de advocacia isso lê como tecnologia de
+   consumo; aqui a paleta fecha em três cores: o azul-marinho da logo, o preto
+   e o branco.
+
+   Este arquivo carrega DEPOIS de identidade.css e vale só nesta página, por
+   causa da classe .sobrio no <body>. A maior parte do trabalho é feita
+   redefinindo os tokens da marca: como as regras compartilhadas usam
+   var(--violet), var(--grad-brand) e afins, elas seguem sozinhas. O resto do
+   arquivo cuida do que ficou com cor escrita à mão no CSS original.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.sobrio {
+  /* O azul-marinho da logo e dois degraus dele, para hover e sotaque. */
+  --marinho: #02182c;
+  --marinho-claro: #17456f;
+  --marinho-suave: #2c6394;
+
+  /* Os tokens da marca passam a apontar todos para a mesma família. */
+  --blue: var(--marinho);
+  --blue-bright: var(--marinho-claro);
+  --violet: var(--marinho);
+  --violet-soft: var(--marinho-claro);
+  --magenta: var(--marinho);
+  --magenta-bright: var(--marinho-claro);
+
+  /* Os tokens antigos do acento continuam vivos em 99 regras do site.css.
+     Redirecionar os tres aqui resolve todas de uma vez. */
+  --amber: var(--marinho);
+  --amber-bright: var(--marinho-claro);
+  --amber-dark: var(--marinho);
+
+  --grad-brand: linear-gradient(100deg, #02182c, #17456f 58%, #02182c);
+  --grad-glow: linear-gradient(100deg, #17456f, #2c6394 58%, #17456f);
+}
+
+/* ─────────────────────────────────────────────────── texto em destaque */
+
+/* O destaque perde o gradiente e vira marinho sólido. O itálico serifado
+   permanece: é ele que dá o tom editorial, e isso a página deve manter. */
+body.sobrio h1 em,
+body.sobrio h2 em,
+body.sobrio .svc-highlight b em,
+body.sobrio .calculator h2 em {
+  background: none;
+  color: var(--marinho);
+  -webkit-text-fill-color: var(--marinho);
+}
+
+/* ────────────────────────────────────────────────────── fundos de seção */
+
+/* As auroras coloridas dão lugar a uma lavagem única de marinho, quase
+   imperceptível — o suficiente para as seções não ficarem chapadas. */
+body.sobrio .hero {
+  background:
+    radial-gradient(1100px 620px at 78% 22%, rgba(2, 24, 44, .07), transparent 62%),
+    radial-gradient(820px 480px at 10% 8%, rgba(23, 69, 111, .06), transparent 64%),
+    var(--paper-bright);
+}
+body.sobrio .hero::before { background-image: radial-gradient(rgba(2, 24, 44, .1) .6px, transparent .6px); }
+
+body.sobrio .practice,
+body.sobrio .faq,
+body.sobrio .integration-section {
+  background:
+    radial-gradient(900px 500px at 88% 14%, rgba(2, 24, 44, .05), transparent 62%),
+    var(--paper-bright);
+}
+body.sobrio .cta-gallery {
+  background:
+    radial-gradient(860px 500px at 8% 20%, rgba(2, 24, 44, .06), transparent 62%),
+    var(--paper);
+}
+body.sobrio .integration-section { background: linear-gradient(to bottom, var(--paper-bright) 0 50%, var(--paper) 50% 100%); }
+
+/* A calculadora e o contato continuam escuros, mas em marinho puro. */
+body.sobrio .calculator,
+body.sobrio #contato.contact-commit-1adc {
+  background:
+    radial-gradient(900px 520px at 82% 26%, rgba(23, 69, 111, .5), transparent 62%),
+    linear-gradient(168deg, #02182c 0%, #061f36 52%, #02182c 100%);
+}
+
+body.sobrio .site-footer {
+  background: linear-gradient(to bottom, var(--paper) 0, var(--paper-bright) 260px), var(--paper-bright);
+}
+
+/* ────────────────────────────────────────────────── cabeçalho e botões */
+
+body.sobrio .nav-cta {
+  background: var(--marinho);
+  box-shadow: 0 6px 18px rgba(2, 24, 44, .22);
+}
+body.sobrio .nav-cta:hover { background: var(--marinho-claro); box-shadow: 0 10px 26px rgba(2, 24, 44, .28); }
+body.sobrio .nav-external { color: var(--marinho-claro) !important; }
+body.sobrio .site-header nav a::after { background: var(--marinho); }
+
+body.sobrio .button-primary {
+  background: var(--marinho);
+  box-shadow: 0 8px 22px rgba(2, 24, 44, .2);
+}
+body.sobrio .button-primary:hover { background: var(--marinho-claro); }
+
+/* ───────────────────────────────────────────────────────────── cartões */
+
+body.sobrio .svc-card:hover,
+body.sobrio .faq details[open],
+body.sobrio .gallery-card:hover { border-color: rgba(2, 24, 44, .3); }
+body.sobrio .svc-card::before,
+body.sobrio .gallery-card::before { background: radial-gradient(circle, rgba(2, 24, 44, .06), transparent 66%); }
+body.sobrio .integration-brandmark { color: var(--marinho); }
+body.sobrio .integration-marquee::before { background: linear-gradient(90deg, transparent, rgba(2, 24, 44, .12), transparent); }
+
+/* O relógio do hero: o halo e os passos deixam de ser violeta. */
+body.sobrio .orbit-halo { background: radial-gradient(circle at 42% 36%, rgba(2, 24, 44, .12), rgba(23, 69, 111, .05) 46%, transparent 68%); }
+body.sobrio .orbit-core::before { border-color: rgba(2, 24, 44, .2); }
+body.sobrio .orbit-steps i.done { background: rgba(2, 24, 44, .45); }
+body.sobrio .orbit-signature::before,
+body.sobrio .orbit-signature::after { background: rgba(2, 24, 44, .28); }
+body.sobrio .legal-orbit::after { background: radial-gradient(circle, rgba(2, 24, 44, .08), transparent 62%); }
+
+/* ─────────────────────────────────────────────────────────── calculadora */
+
+body.sobrio .calculator-shell {
+  background:
+    radial-gradient(680px 400px at 88% 8%, rgba(23, 69, 111, .3), transparent 62%),
+    linear-gradient(142deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02) 58%, rgba(255, 255, 255, .04));
+}
+body.sobrio .calculator-result {
+  background:
+    radial-gradient(460px 320px at 70% 0%, rgba(44, 99, 148, .3), transparent 64%),
+    linear-gradient(158deg, rgba(23, 69, 111, .24), rgba(2, 24, 44, .34));
+}
+body.sobrio .calculator-result::before { border-color: rgba(44, 99, 148, .3); }
+body.sobrio .calculator-progress i { background: linear-gradient(90deg, #2c6394, #5f9ac9); }
+
+/* ────────────────────────────────────────────────────── redes no rodapé */
+
+/* As marcas de terceiros perdem a cor própria: numa página de três cores, o
+   degradê do Instagram e o verde do WhatsApp são justamente o que quebra a
+   sobriedade. Se um dia fizer falta, é só apagar este bloco. */
+body.sobrio .footer-social a {
+  background: rgba(2, 24, 44, .06);
+  border-color: rgba(2, 24, 44, .12);
+  color: var(--marinho);
+}
+body.sobrio .footer-social a svg { fill: var(--marinho); }
+body.sobrio .footer-social a:hover { background: var(--marinho); }
+body.sobrio .footer-social a:hover svg { fill: #fff; }
+
+/* ────────────────────────────────────────────────────────── chat do site */
+
+body.sobrio .bv-chat-launcher { background: var(--marinho); }
+body.sobrio .bv-chat-launcher:hover { background: var(--marinho-claro); }
+body.sobrio .bv-chat-cabeca { background: var(--marinho); }
+body.sobrio .bv-lead-enviar,
+body.sobrio .bv-op:hover { background: var(--marinho); border-color: var(--marinho); }
+body.sobrio .bv-lead-campo input:focus { border-color: var(--marinho-claro); box-shadow: 0 0 0 3px rgba(2, 24, 44, .12); }
+body.sobrio .bv-convite { background: var(--marinho); }
+
+/* ─────────────────────────────────── o que ficou com cor escrita a mao */
+
+/* Estes vieram do CSS original com o valor cravado, entao token nenhum os
+   alcanca: e preciso repetir o seletor. */
+
+/* As manchas de atmosfera do hero e o halo da calculadora. */
+body.sobrio .hero::after { background: rgba(2, 24, 44, .1); }
+body.sobrio .hero-atmosphere i:nth-child(1) { background: radial-gradient(circle, rgba(2, 24, 44, .1), transparent 66%); }
+body.sobrio .hero-atmosphere i:nth-child(2) { background: radial-gradient(circle, rgba(23, 69, 111, .08), transparent 68%); }
+body.sobrio .calculator::before { background: radial-gradient(circle, rgba(44, 99, 148, .12), transparent 66%); }
+
+/* O ponteiro do relogio do hero. */
+body.sobrio .orbit-ring::before { box-shadow: 0 0 18px rgba(2, 24, 44, .4); }
+
+/* O painel de resultado da calculadora: borda, moldura interna e o brilho do
+   numero quando ele muda. */
+body.sobrio .calculator-result {
+  border-left-color: rgba(44, 99, 148, .32);
+  border-top-color: rgba(44, 99, 148, .32);
+}
+body.sobrio .calculator-result::before { border-color: rgba(44, 99, 148, .22); }
+body.sobrio .calculator-result > strong { text-shadow: 0 0 28px rgba(44, 99, 148, .18); }
+body.sobrio .calculator-result.is-updating > strong { text-shadow: 0 0 34px rgba(95, 154, 201, .5); }
+
+/* A barra de progresso do topo, o ponto do kicker, o passo aceso do relogio,
+   o destaque de servicos, o brilho da barra da calculadora, a lavagem do topo
+   do contato e o brilho dentro do botao de enviar. */
+body.sobrio .page-progress i { box-shadow: 0 0 18px rgba(2, 24, 44, .45); }
+body.sobrio .hero-kicker span { box-shadow: 0 0 0 5px rgba(2, 24, 44, .1); }
+body.sobrio .orbit-steps i.on { box-shadow: 0 0 10px rgba(2, 24, 44, .4); }
+body.sobrio .svc-highlight {
+  border-color: rgba(2, 24, 44, .22);
+  background-image: linear-gradient(135deg, rgba(2, 24, 44, .07), rgba(2, 24, 44, .02));
+}
+body.sobrio .calculator-progress i { box-shadow: 0 0 14px rgba(44, 99, 148, .34); }
+body.sobrio #contato.contact-commit-1adc::before {
+  background-image:
+    linear-gradient(rgba(23, 69, 111, .16), rgba(0, 0, 0, 0) 105px),
+    radial-gradient(circle at 90% 5%, rgba(44, 99, 148, .14), transparent 42%);
+}
+body.sobrio .contact-form .button-primary::after {
+  background-image: radial-gradient(circle at 78% 20%, rgba(255, 255, 255, .12), transparent 38%);
+}
+
+/* ───────────────────────────────── acento sobre as superficies escuras */
+
+/* O mesmo token de acento serve fundo claro e fundo escuro. Em marinho sobre
+   marinho o texto sumia: medido, 1,44:1 no valor dos controles. Dentro das
+   duas secoes escuras os tokens passam a apontar para um azul claro, e como
+   variavel se herda, tudo que esta dentro delas acompanha. */
+body.sobrio .calculator,
+body.sobrio #contato.contact-commit-1adc {
+  --amber: #a8c8e6;
+  --amber-bright: #d3e4f4;
+  --amber-dark: #a8c8e6;
+  --blue: #a8c8e6;
+  --blue-bright: #d3e4f4;
+  --violet: #d3e4f4;
+  --violet-soft: #d3e4f4;
+  --magenta: #d3e4f4;
+  --magenta-bright: #d3e4f4;
+}
+
+/* E o destaque dos titulos dessas secoes clareia junto. */
+body.sobrio .calculator h2 em,
+body.sobrio #contato.contact-commit-1adc h2 em {
+  color: #d3e4f4;
+  -webkit-text-fill-color: #d3e4f4;
+}
+
+/* Os rotulos miudos das secoes escuras vinham em branco a 38% e 48%. Sobre o
+   marinho uniforme isso caiu para 3,1:1 e 3,4:1 — abaixo do minimo legivel
+   para texto pequeno. Sobem para uma opacidade que devolve o contraste sem
+   competir com o numero, que continua sendo o que a pessoa deve olhar. */
+body.sobrio .calculator-metrics span { color: rgba(255, 255, 255, .58); }
+body.sobrio .calculator-note { color: rgba(255, 255, 255, .55); }
+body.sobrio .calculator-result > small { color: rgba(255, 255, 255, .62); }
