@@ -405,7 +405,15 @@ body.sobrio .lex-pe b { color: var(--ink); font-size: 13px; font-weight: 600; le
    marinho entrar, sem precisar de uma cor nova.
    ══════════════════════════════════════════════════════════════════════════ */
 
-body.sobrio .lex-escala { padding: 104px 0; background: var(--paper-bright); }
+/* O fundo da secao desce do branco para um cinza azulado, na direcao oposta
+   a do hero: assim as duas nao se parecem, e a base mais escura sustenta o
+   cartao marinho da direita em vez de deixa-lo flutuando no branco. */
+body.sobrio .lex-escala {
+  padding: 104px 0;
+  background:
+    radial-gradient(1000px 560px at 82% 92%, rgba(23, 69, 111, .1), transparent 64%),
+    linear-gradient(172deg, #ffffff 0%, #f4f7fa 42%, #e7edf4 100%);
+}
 
 body.sobrio .lex-escala-head { max-width: 780px; margin: 0 auto 54px; text-align: center; }
 body.sobrio .lex-escala-head .section-label { justify-content: center; margin-bottom: 18px; }
@@ -432,7 +440,8 @@ body.sobrio .lex-cenario {
   padding: 30px 28px 32px;
   border: 1px solid rgba(2, 24, 44, .12);
   border-radius: 14px;
-  background: var(--paper);
+  /* Branco, e nao --paper: sobre o gradiente o cinza do token sumia. */
+  background: #fff;
 }
 body.sobrio .lex-cenario-tag {
   display: block;
@@ -501,22 +510,6 @@ body.sobrio .lex-cenario.is-alto .lex-cenario-texto { color: rgba(255, 255, 255,
 body.sobrio .lex-cenario.is-alto .lex-cenario-num b { color: #d3e4f4; }
 body.sobrio .lex-cenario.is-alto .lex-cenario-num small { color: rgba(255, 255, 255, .66); }
 body.sobrio .lex-cenario.is-alto .lex-cenario-total { color: #fff; border-top-color: rgba(255, 255, 255, .24); }
-
-/* A conta fica visivel de proposito: numero grande sem a conta atras vira
-   promessa, e promessa nao e o tom desta pagina. */
-body.sobrio .lex-escala-conta {
-  max-width: 68em;
-  margin: 34px auto 0;
-  padding: 18px 22px;
-  border: 1px solid rgba(2, 24, 44, .1);
-  border-radius: 10px;
-  background: var(--paper);
-  color: var(--ink-muted);
-  font-size: 12.5px;
-  line-height: 1.7;
-  text-align: center;
-}
-body.sobrio .lex-escala-conta b { color: var(--ink); font-weight: 620; }
 
 body.sobrio .lex-escala-acao { display: flex; justify-content: center; margin-top: 34px; }
 
