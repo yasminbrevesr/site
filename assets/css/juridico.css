@@ -82,9 +82,63 @@ body.sobrio #contato.contact-commit-1adc {
     linear-gradient(168deg, #02182c 0%, #061f36 52%, #02182c 100%);
 }
 
+/* ── o rodape fecha a pagina em marinho ─────────────────────────────────── */
+
+/* A secao acima do rodape e clara, e a pagina terminava branco sobre branco,
+   sem fechamento. Aqui ela desce para o marinho da logo. Isso obriga a
+   inverter tudo que a camada clara tinha escurecido dentro do rodape — o
+   estilo base ja era pensado para fundo escuro, entao o trabalho e desfazer,
+   nao inventar. */
 body.sobrio .site-footer {
-  background: linear-gradient(to bottom, var(--paper) 0, var(--paper-bright) 260px), var(--paper-bright);
+  background:
+    radial-gradient(900px 460px at 82% 8%, rgba(23, 69, 111, .45), transparent 64%),
+    linear-gradient(172deg, #041f38 0%, #02182c 58%, #010f1e 100%);
+  border-top: 0;
+  color: rgba(255, 255, 255, .62);
 }
+
+/* A emenda com a secao clara de cima, para a virada nao ser um corte seco. */
+body.sobrio .site-footer::before {
+  content: '';
+  display: block;
+  height: 1px;
+  margin-bottom: -1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+}
+
+body.sobrio .site-footer h3,
+body.sobrio .site-footer.footer-rich .footer-col h3 { color: #d3e4f4; }
+body.sobrio .site-footer a,
+body.sobrio .site-footer nav a,
+body.sobrio .site-footer .footer-contact a,
+body.sobrio .site-footer.footer-rich .footer-col a { color: rgba(255, 255, 255, .68); }
+body.sobrio .site-footer a:hover,
+body.sobrio .site-footer nav a:hover,
+body.sobrio .site-footer .footer-contact a:hover,
+body.sobrio .site-footer.footer-rich .footer-col a:hover { color: #fff; }
+body.sobrio .site-footer.footer-rich .footer-col a span { color: #a8c8e6; }
+
+body.sobrio .site-footer,
+body.sobrio .site-footer .footer-top,
+body.sobrio .site-footer .footer-bottom,
+body.sobrio .footer-brand-block > p,
+body.sobrio .site-footer.footer-rich .footer-brand-block > p,
+body.sobrio .site-footer .footer-contact li,
+body.sobrio .site-footer.footer-rich .footer-contact li { color: rgba(255, 255, 255, .62); }
+body.sobrio .site-footer.footer-rich .footer-bottom span { color: rgba(255, 255, 255, .58); }
+
+body.sobrio .site-footer .footer-top,
+body.sobrio .site-footer .footer-bottom,
+body.sobrio .site-footer.footer-rich .footer-top,
+body.sobrio .site-footer.footer-rich .footer-bottom { border-color: rgba(255, 255, 255, .14); }
+
+body.sobrio .footer-contact svg { color: #a8c8e6; }
+body.sobrio .footer-cta { border-color: rgba(255, 255, 255, .3); color: #fff; }
+body.sobrio .footer-cta:hover { border-color: #fff; color: #fff; background: rgba(255, 255, 255, .08); }
+
+/* A marca do rodape e um PNG marinho: sobre o marinho ela sumiria. */
+body.sobrio .site-footer .footer-brand img { filter: brightness(0) invert(1); }
+body.sobrio .footer-brand > span { color: #fff; }
 
 /* ────────────────────────────────────────────────── cabeçalho e botões */
 
@@ -139,13 +193,12 @@ body.sobrio .calculator-progress i { background: linear-gradient(90deg, #2c6394,
    degradê do Instagram e o verde do WhatsApp são justamente o que quebra a
    sobriedade. Se um dia fizer falta, é só apagar este bloco. */
 body.sobrio .footer-social a {
-  background: rgba(2, 24, 44, .06);
-  border-color: rgba(2, 24, 44, .12);
-  color: var(--marinho);
+  background: rgba(255, 255, 255, .06);
+  border-color: rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .8);
 }
-body.sobrio .footer-social a svg { fill: var(--marinho); }
-body.sobrio .footer-social a:hover { background: var(--marinho); }
-body.sobrio .footer-social a:hover svg { fill: #fff; }
+body.sobrio .footer-social a svg { fill: currentColor; }
+body.sobrio .footer-social a:hover { background: rgba(255, 255, 255, .14); border-color: #fff; color: #fff; }
 
 /* ────────────────────────────────────────────────────────── chat do site */
 
