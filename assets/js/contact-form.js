@@ -53,20 +53,34 @@ async function submitContact(payload) {
 }
 
 /* Uma pagina de produto pode mandar a pessoa para ca com ?produto=..., e o
-   formulario abre com o assunto ja escrito. E uma chave, e nao o texto solto
-   na URL: assim a mensagem que chega no banco e sempre uma das nossas, e nao
-   o que alguem digitou no endereco. */
-const ASSUNTOS = {
-  chatbot: 'Quero um chatbot com IA para o meu atendimento.',
+   formulario abre com o assunto ja escrito e a origem trocada. E uma chave, e
+   nao o texto solto na URL: assim tanto a mensagem quanto a origem que chegam
+   no banco sao sempre valores nossos, e nao o que alguem digitou no endereco.
+
+   As origens abaixo tem de ser as mesmas do chat do site (assets/js/chat.js),
+   senao o mesmo lead entra com dois nomes diferentes dependendo de por onde
+   veio. */
+const PRODUTOS = {
+  chatbot: {
+    mensagem: 'Quero um chatbot com IA para o meu atendimento.',
+    origem: 'site-produto-chatbot',
+  },
 };
 
 function preencherAssunto() {
   const chave = new URLSearchParams(window.location.search).get('produto');
-  const texto = chave && ASSUNTOS[chave];
-  if (!texto) return;
-  document.querySelectorAll('[data-contact-form] [name="mensagem"]').forEach((campo) => {
+  const produto = chave && PRODUTOS[chave];
+  if (!produto) return;
+
+  document.querySelectorAll('[data-contact-form]').forEach((form) => {
+    const mensagem = form.querySelector('[name="mensagem"]');
     /* Nao sobrescreve o que a pessoa ja escreveu. */
-    if (!campo.value.trim()) campo.value = texto;
+    if (mensagem && !mensagem.value.trim()) mensagem.value = produto.mensagem;
+
+    /* A origem, ao contrario, sempre troca: ela diz de onde a pessoa veio, e
+       isso nao depende do que ela digitou. */
+    const origem = form.querySelector('[name="origem"]');
+    if (origem) origem.value = produto.origem;
   });
 }
 
