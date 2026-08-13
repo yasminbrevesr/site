@@ -261,143 +261,6 @@ body.sobrio .hero h1 em {
   letter-spacing: -.012em;
 }
 
-/* ── o painel de processo, no lugar do globo ────────────────────────────── */
-
-/* O globo era um enfeite abstrato. Aqui entra o que a operacao de um
-   escritorio realmente mostra: uma peca com numero, vara, prazo e
-   responsavel, percorrendo os quatro estagios. O texto do estagio, o indice
-   e os quatro pontos continuam sendo os mesmos elementos de antes, entao o
-   script que gira a narrativa nao precisou mudar. */
-body.sobrio .lex-peca {
-  width: min(400px, 100%);
-  height: auto;
-  perspective: none;
-  transform: none;
-  transition: none;
-}
-
-/* As duas folhas atras, que dao a ideia de pilha de autos. */
-body.sobrio .lex-pilha { position: absolute; inset: 0; z-index: 0; }
-body.sobrio .lex-pilha i {
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(2, 24, 44, .1);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, .7);
-}
-body.sobrio .lex-pilha i:nth-child(1) { transform: translate(10px, 12px) rotate(1.6deg); }
-body.sobrio .lex-pilha i:nth-child(2) { transform: translate(5px, 6px) rotate(.8deg); }
-
-body.sobrio .lex-carta {
-  position: relative;
-  z-index: 1;
-  padding: 24px 24px 20px;
-  border: 1px solid rgba(2, 24, 44, .13);
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 26px 60px rgba(2, 24, 44, .12);
-  text-align: left;
-}
-
-body.sobrio .lex-topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-body.sobrio .lex-selo {
-  padding: 5px 10px;
-  border-radius: 5px;
-  background: var(--marinho);
-  color: #fff;
-  font: 8.5px/1 var(--mono);
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-body.sobrio .lex-estado {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--ink-muted);
-  font: 9px/1 var(--mono);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-body.sobrio .lex-estado i { width: 6px; height: 6px; border-radius: 50%; background: #1f8a52; }
-
-body.sobrio .lex-num {
-  display: block;
-  color: var(--ink);
-  font: 17px/1.2 var(--mono);
-  font-weight: 500;
-  letter-spacing: -.01em;
-}
-body.sobrio .lex-vara { margin-top: 7px; color: var(--ink-muted); font-size: 12.5px; }
-
-/* O estagio corrente, que gira a cada 3,4s. */
-body.sobrio .lex-etapa {
-  position: relative;
-  margin: 20px 0 18px;
-  padding: 15px 16px;
-  border-left: 2px solid var(--marinho);
-  border-radius: 0 8px 8px 0;
-  background: rgba(2, 24, 44, .04);
-}
-body.sobrio .lex-etapa .core-index {
-  position: static;
-  display: block;
-  margin-bottom: 7px;
-  color: var(--ink-muted);
-  font: 8.5px/1 var(--mono);
-  letter-spacing: .14em;
-}
-/* O estilo antigo deixava esse texto em caixa alta, centralizado e com
-   entreletra de rotulo. Aqui ele e uma frase, entao os tres precisam voltar
-   ao normal explicitamente. */
-body.sobrio .lex-etapa .orbit-stage {
-  display: block;
-  /* O estilo antigo prendia esse texto em 118px de largura, o que fazia a
-     frase quebrar no meio. */
-  width: auto;
-  color: var(--ink);
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: -.015em;
-  text-transform: none;
-  text-align: left;
-}
-/* E as barras vinham posicionadas de forma absoluta, por cima do texto.
-   Voltam para o fluxo. */
-body.sobrio .lex-etapa .orbit-steps {
-  position: static;
-  /* position: static ignora o left do estilo antigo, mas nao o transform:
-     ele continuava puxando a fileira meia largura para a esquerda, para fora
-     do cartao. */
-  transform: none;
-  display: flex;
-  width: 100%;
-  gap: 5px;
-  margin-top: 13px;
-}
-/* flex: 1, e nao width: 100%: as barras herdavam largura fixa do estilo
-   antigo e resolviam para zero dentro do flex. */
-body.sobrio .lex-etapa .orbit-steps i {
-  flex: 1;
-  width: auto;
-  min-width: 0;
-  height: 3px;
-  border-radius: 2px;
-  background: rgba(2, 24, 44, .13);
-  transition: background .4s ease;
-}
-body.sobrio .lex-etapa .orbit-steps i.done { background: rgba(2, 24, 44, .4); }
-body.sobrio .lex-etapa .orbit-steps i.on { background: var(--marinho); }
-
-body.sobrio .lex-pe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding-top: 16px; border-top: 1px solid rgba(2, 24, 44, .1); }
-body.sobrio .lex-pe span { display: grid; gap: 5px; }
-body.sobrio .lex-pe small { color: var(--ink-muted); font: 7.5px/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
-body.sobrio .lex-pe b { color: var(--ink); font-size: 13px; font-weight: 600; letter-spacing: -.01em; }
-
-@media (max-width: 979px) {
-  body.sobrio .lex-peca { width: min(400px, 100%); margin-top: 34px; }
-}
-
 /* ══════════════════════════════════════════════════════════════════════════
    ESCALA: TRES CENARIOS LADO A LADO
    O peso cresce da esquerda para a direita — o cartao claro e o de hoje, o
@@ -517,4 +380,90 @@ body.sobrio .lex-escala-acao { display: flex; justify-content: center; margin-to
   body.sobrio .lex-escala-grid { grid-template-columns: 1fr; }
   body.sobrio .lex-escala { padding: 76px 0; }
   body.sobrio .lex-cenario-num { margin-top: 22px; }
+}
+/* ── a marca no topo, maior ─────────────────────────────────────────────── */
+
+/* Numa pagina que agora abre com formulario, a marca precisa segurar o lado
+   esquerdo do cabecalho sozinha. */
+body.sobrio .brand img { height: 40px; }
+body.sobrio .brand b { font-size: 16px; letter-spacing: .22em; }
+body.sobrio .brand small { font-size: 9px; letter-spacing: .2em; }
+body.sobrio .nav-shell { height: 76px; }
+
+/* ── o formulario no hero ───────────────────────────────────────────────── */
+
+/* O formulario sobe do rodape da pagina para a coluna direita do hero: quem
+   chega decidido preenche sem rolar nada. Comprimido a tres campos — o que a
+   tabela do Supabase guarda hoje. */
+/* A ancora se chama #fale, e nao #contato: em identidade.css o id "contato"
+   carrega o fundo escuro da secao do rodape e mais uma duzia de regras
+   pensadas para ela. Renomear custa quatro links e evita brigar com todas. */
+body.sobrio .lex-form {
+  width: 100%;
+  max-width: 420px;
+  justify-self: center;
+  padding: 30px 28px 26px;
+  border: 1px solid rgba(2, 24, 44, .12);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 26px 64px rgba(2, 24, 44, .11);
+  text-align: left;
+}
+
+body.sobrio .lex-form h2 {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -.02em;
+}
+body.sobrio .lex-form-sub { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.6; }
+
+/* Sem a classe .contact-form de proposito: o id "contato" e alvo de um monte
+   de regra desenhada para a secao escura do rodape, e a primeira delas pintava
+   este cartao com o gradiente da marca. O script so precisa do data-atributo. */
+body.sobrio .lex-form-campos { display: grid; gap: 14px; margin-top: 24px; }
+body.sobrio .lex-form-campos .field { display: grid; gap: 7px; }
+body.sobrio .lex-form-campos label {
+  color: var(--ink);
+  font: 9px/1 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+body.sobrio .lex-form-campos input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(2, 24, 44, .16);
+  border-radius: 9px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+body.sobrio .lex-form-campos input::placeholder { color: rgba(85, 101, 122, .7); }
+body.sobrio .lex-form-campos input:focus {
+  outline: none;
+  border-color: var(--marinho);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(2, 24, 44, .1);
+}
+
+body.sobrio .lex-form-enviar {
+  width: 100%;
+  height: 50px;
+  margin-top: 4px;
+  justify-content: center;
+}
+body.sobrio .lex-form .form-ok { display: none; margin-top: 2px; font-size: 12.5px; }
+body.sobrio .lex-form .form-ok[data-state] { display: block; }
+body.sobrio .lex-form .form-ok[data-state="error"] { color: #b4232a; }
+body.sobrio .lex-form .form-ok[data-state="success"] { color: #1f8a52; }
+
+body.sobrio .lex-form-nota { margin-top: 16px; color: var(--ink-muted); font-size: 11.5px; text-align: center; }
+
+@media (max-width: 979px) {
+  body.sobrio .lex-form { margin-top: 40px; max-width: 520px; margin-inline: auto; }
 }
