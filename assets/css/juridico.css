@@ -61,12 +61,20 @@ body.sobrio .hero {
 }
 body.sobrio .hero::before { background-image: radial-gradient(rgba(2, 24, 44, .08) .6px, transparent .6px); }
 
-body.sobrio .practice,
-body.sobrio .faq,
-body.sobrio .integration-section {
+body.sobrio .faq {
   background:
     radial-gradient(900px 500px at 88% 14%, rgba(2, 24, 44, .05), transparent 62%),
     var(--paper-bright);
+}
+
+/* Servicos passa ao marinho e adota o layout de "Recursos" da pagina do
+   chatbot: cabecalho centralizado, itens soltos no espaco e um selo redondo
+   de check abrindo cada um. */
+body.sobrio .practice {
+  background:
+    radial-gradient(1000px 620px at 84% 10%, rgba(23, 69, 111, .42), transparent 64%),
+    linear-gradient(172deg, #02182c 0%, #061f36 54%, #02182c 100%);
+  color: #fff;
 }
 body.sobrio .cta-gallery {
   background:
@@ -95,15 +103,6 @@ body.sobrio .site-footer {
     linear-gradient(172deg, #041f38 0%, #02182c 58%, #010f1e 100%);
   border-top: 0;
   color: rgba(255, 255, 255, .62);
-}
-
-/* A emenda com a secao clara de cima, para a virada nao ser um corte seco. */
-body.sobrio .site-footer::before {
-  content: '';
-  display: block;
-  height: 1px;
-  margin-bottom: -1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
 }
 
 body.sobrio .site-footer h3,
@@ -519,4 +518,73 @@ body.sobrio .lex-form-nota { margin-top: 16px; color: var(--ink-muted); font-siz
 
 @media (max-width: 979px) {
   body.sobrio .lex-form { margin-top: 40px; max-width: 520px; margin-inline: auto; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SERVICOS NO LAYOUT DE "RECURSOS"
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.sobrio .svc-head { max-width: 820px; margin: 0 auto 56px; text-align: center; }
+body.sobrio .svc-head .section-label { justify-content: center; margin-bottom: 18px; color: rgba(255, 255, 255, .58); }
+body.sobrio .svc-head h2 {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(34px, 4.2vw, 56px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -.018em;
+}
+body.sobrio .svc-head h2 em { color: #d3e4f4; -webkit-text-fill-color: #d3e4f4; font-weight: 400; font-style: italic; }
+
+/* O bloco do "100% personalizado" vira uma faixa discreta sobre o marinho. */
+body.sobrio .svc-highlight {
+  max-width: 1120px;
+  margin-inline: auto;
+  border-color: rgba(255, 255, 255, .16);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+}
+body.sobrio .svc-highlight b { color: #fff; }
+body.sobrio .svc-highlight b em { color: #d3e4f4; -webkit-text-fill-color: #d3e4f4; }
+body.sobrio .svc-highlight p { color: rgba(255, 255, 255, .72); }
+
+/* A grade perde moldura e divisoria: os itens respiram no espaco da secao. */
+body.sobrio .svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 56px 48px;
+  max-width: 1120px;
+  margin: 64px auto 0;
+}
+body.sobrio .svc-card {
+  max-width: 24em;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+body.sobrio .svc-card::before { display: none; }
+body.sobrio .svc-card:hover { border: 0; transform: none; box-shadow: none; }
+
+body.sobrio .svc-ic {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .1);
+  color: #d3e4f4;
+  transition: background .25s ease, transform .25s ease;
+}
+body.sobrio .svc-ic svg { width: 22px; height: 22px; }
+body.sobrio .svc-card:hover .svc-ic { background: rgba(255, 255, 255, .18); transform: translateY(-2px); }
+
+body.sobrio .svc-card h3 { margin-bottom: 11px; color: #fff; font-size: 18px; font-weight: 660; letter-spacing: -.022em; }
+body.sobrio .svc-card p { color: rgba(255, 255, 255, .7); font-size: 14.5px; line-height: 1.68; }
+
+@media (max-width: 1040px) {
+  body.sobrio .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  body.sobrio .svc-grid { grid-template-columns: 1fr; gap: 44px; margin-top: 48px; }
 }
