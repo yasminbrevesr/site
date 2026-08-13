@@ -163,7 +163,9 @@ body.sobrio .bv-convite { background: var(--marinho); }
    alcanca: e preciso repetir o seletor. */
 
 /* As manchas de atmosfera do hero e o halo da calculadora. */
-body.sobrio .hero::after { display: none; }
+/* Oculto e sem cor: so o display bastaria, mas deixar o violeta declarado
+   vira armadilha para quem reativar o elemento um dia. */
+body.sobrio .hero::after { display: none; background: none; }
 body.sobrio .hero-atmosphere { display: none; }
 body.sobrio .hero-atmosphere i:nth-child(1) { background: none; }
 body.sobrio .hero-atmosphere i:nth-child(2) { background: radial-gradient(circle, rgba(23, 69, 111, .08), transparent 68%); }
@@ -235,3 +237,163 @@ body.sobrio #contato.contact-commit-1adc h2 em {
 body.sobrio .calculator-metrics span { color: rgba(255, 255, 255, .58); }
 body.sobrio .calculator-note { color: rgba(255, 255, 255, .55); }
 body.sobrio .calculator-result > small { color: rgba(255, 255, 255, .62); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HERO: TIPOGRAFIA SERIFADA E O PAINEL DE PROCESSO
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* A chamada sai da sans fina e vai para a serifa com peso. Numa pagina de
+   advocacia a serifa nao e enfeite: e o que da autoridade ao texto — e o
+   contraste entre a linha reta e a linha italica faz o trabalho que antes
+   dependia de cor. */
+body.sobrio .hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(46px, 5.4vw, 78px);
+  line-height: 1.03;
+  /* Serifa pede entreletra bem mais folgada que sans: os -.055em originais
+     amassavam as hastes umas nas outras. */
+  letter-spacing: -.018em;
+}
+body.sobrio .hero h1 em {
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -.012em;
+}
+
+/* ── o painel de processo, no lugar do globo ────────────────────────────── */
+
+/* O globo era um enfeite abstrato. Aqui entra o que a operacao de um
+   escritorio realmente mostra: uma peca com numero, vara, prazo e
+   responsavel, percorrendo os quatro estagios. O texto do estagio, o indice
+   e os quatro pontos continuam sendo os mesmos elementos de antes, entao o
+   script que gira a narrativa nao precisou mudar. */
+body.sobrio .lex-peca {
+  width: min(400px, 100%);
+  height: auto;
+  perspective: none;
+  transform: none;
+  transition: none;
+}
+
+/* As duas folhas atras, que dao a ideia de pilha de autos. */
+body.sobrio .lex-pilha { position: absolute; inset: 0; z-index: 0; }
+body.sobrio .lex-pilha i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(2, 24, 44, .1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .7);
+}
+body.sobrio .lex-pilha i:nth-child(1) { transform: translate(10px, 12px) rotate(1.6deg); }
+body.sobrio .lex-pilha i:nth-child(2) { transform: translate(5px, 6px) rotate(.8deg); }
+
+body.sobrio .lex-carta {
+  position: relative;
+  z-index: 1;
+  padding: 24px 24px 20px;
+  border: 1px solid rgba(2, 24, 44, .13);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 26px 60px rgba(2, 24, 44, .12);
+  text-align: left;
+}
+
+body.sobrio .lex-topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+body.sobrio .lex-selo {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: var(--marinho);
+  color: #fff;
+  font: 8.5px/1 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+body.sobrio .lex-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-muted);
+  font: 9px/1 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+body.sobrio .lex-estado i { width: 6px; height: 6px; border-radius: 50%; background: #1f8a52; }
+
+body.sobrio .lex-num {
+  display: block;
+  color: var(--ink);
+  font: 17px/1.2 var(--mono);
+  font-weight: 500;
+  letter-spacing: -.01em;
+}
+body.sobrio .lex-vara { margin-top: 7px; color: var(--ink-muted); font-size: 12.5px; }
+
+/* O estagio corrente, que gira a cada 3,4s. */
+body.sobrio .lex-etapa {
+  position: relative;
+  margin: 20px 0 18px;
+  padding: 15px 16px;
+  border-left: 2px solid var(--marinho);
+  border-radius: 0 8px 8px 0;
+  background: rgba(2, 24, 44, .04);
+}
+body.sobrio .lex-etapa .core-index {
+  position: static;
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink-muted);
+  font: 8.5px/1 var(--mono);
+  letter-spacing: .14em;
+}
+/* O estilo antigo deixava esse texto em caixa alta, centralizado e com
+   entreletra de rotulo. Aqui ele e uma frase, entao os tres precisam voltar
+   ao normal explicitamente. */
+body.sobrio .lex-etapa .orbit-stage {
+  display: block;
+  /* O estilo antigo prendia esse texto em 118px de largura, o que fazia a
+     frase quebrar no meio. */
+  width: auto;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  text-transform: none;
+  text-align: left;
+}
+/* E as barras vinham posicionadas de forma absoluta, por cima do texto.
+   Voltam para o fluxo. */
+body.sobrio .lex-etapa .orbit-steps {
+  position: static;
+  /* position: static ignora o left do estilo antigo, mas nao o transform:
+     ele continuava puxando a fileira meia largura para a esquerda, para fora
+     do cartao. */
+  transform: none;
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  margin-top: 13px;
+}
+/* flex: 1, e nao width: 100%: as barras herdavam largura fixa do estilo
+   antigo e resolviam para zero dentro do flex. */
+body.sobrio .lex-etapa .orbit-steps i {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(2, 24, 44, .13);
+  transition: background .4s ease;
+}
+body.sobrio .lex-etapa .orbit-steps i.done { background: rgba(2, 24, 44, .4); }
+body.sobrio .lex-etapa .orbit-steps i.on { background: var(--marinho); }
+
+body.sobrio .lex-pe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding-top: 16px; border-top: 1px solid rgba(2, 24, 44, .1); }
+body.sobrio .lex-pe span { display: grid; gap: 5px; }
+body.sobrio .lex-pe small { color: var(--ink-muted); font: 7.5px/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+body.sobrio .lex-pe b { color: var(--ink); font-size: 13px; font-weight: 600; letter-spacing: -.01em; }
+
+@media (max-width: 979px) {
+  body.sobrio .lex-peca { width: min(400px, 100%); margin-top: 34px; }
+}
