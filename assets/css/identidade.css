@@ -129,7 +129,6 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-units .section-head > p,
 .mz-integrations .section-head > p { border-color: var(--hairline); color: var(--ink-muted); }
 .mz-units-grid > * { border-color: var(--hairline); background: var(--paper-bright); color: var(--ink); }
-.integration-section { background: var(--paper-bright); }
 
 /* ─────────────────────────────────────────────────────────── botões e CTAs */
 
@@ -245,10 +244,6 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-unit.is-branch:hover,
 .mz-unit.is-matrix:hover { border-color: rgba(103, 56, 255, .34); box-shadow: var(--sombra-alta); }
 
-.integration-item { border-color: var(--hairline); background: var(--paper-bright); color: var(--ink); }
-.integration-brandmark { color: var(--violet); }
-.integration-flow-copy p { color: var(--ink-muted); }
-.integration-track::before, .integration-track::after { display: none; }
 .mz-integrations .mz-btn-ghost { border-color: var(--hairline); background: var(--paper-bright); color: var(--ink); }
 
 /* O bloco "a gente cria" é a faixa de chamada do mockup: fica escura, agora
