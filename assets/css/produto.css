@@ -280,6 +280,33 @@
 
 /* ── o botão que fecha a linha ──────────────────────────────────────────── */
 
+/* ── a linha do tempo sem arte ──────────────────────────────────────────── */
+
+/* Quando a pagina ja mostrou o mecanismo em outro lugar, desenhar um cartao ao
+   lado de cada passo e contar a mesma coisa duas vezes — e enche a tela de
+   bloco branco logo antes da secao de casos, que tambem e uma grade. Sem os
+   cartoes os passos alternam como texto puro dos dois lados do trilho.
+
+   O respiro entre passos foi medido para caber um cartao ao lado. Sem ele
+   sobra buraco: a coluna vazia da frente ja e espaco de sobra. E o ponto do
+   trilho deixa de ficar no meio da altura da linha, que so fazia sentido
+   quando havia um cartao alto do outro lado — passa a marcar o titulo. */
+.pd-linha.is-texto .pd-passo {
+  align-items: start;
+  gap: 0 72px;
+  padding-bottom: 46px;
+}
+.pd-linha.is-texto .pd-passo::before { top: 16px; }
+.pd-linha.is-texto .pd-passo-copy { padding-top: 0; }
+.pd-linha.is-texto .pd-passo-copy p { max-width: 30em; }
+.pd-linha.is-texto .pd-passo:nth-of-type(even) .pd-passo-copy p { margin-left: auto; }
+
+@media (max-width: 720px) {
+  .pd-linha.is-texto .pd-passo { padding-bottom: 38px; }
+  .pd-linha.is-texto .pd-passo::before { top: 8px; }
+  .pd-linha.is-texto .pd-passo-copy p { max-width: none; }
+}
+
 .pd-linha-fim {
   position: relative;
   display: flex;
