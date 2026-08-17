@@ -88,6 +88,46 @@
       ]
     },
 
+    /* Página do produto agentes de IA. A primeira pergunta é a diferença para o
+       chatbot de propósito: é a dúvida que aparece antes de qualquer outra, e
+       responder isso mal manda o lead para o produto errado. */
+    agentes: {
+      saudacao: 'Olá! Este chat responde as dúvidas mais comuns sobre agentes de IA. O que você quer saber?',
+      perguntas: [
+        {
+          p: 'Qual a diferença para o chatbot?',
+          r: 'O chatbot conversa; o agente executa. Um chatbot responde a quem escreveu para ele. Um agente é acionado por um horário, por um e-mail que chegou ou por um registro que mudou — consulta as bases da empresa, decide pela regra do negócio e conclui a tarefa, mesmo sem ninguém conversando com ele.',
+          wa: 'Olá! Queria entender a diferença entre um agente de IA e um chatbot.',
+          link: { texto: 'Ver a página do chatbot', href: '../chatbot/' }
+        },
+        {
+          p: 'O que um agente consegue fazer?',
+          r: 'Ler um e-mail em texto livre e responder, consultar uma base antes de decidir, registrar um lead com os campos preenchidos a partir da própria conversa, percorrer uma equipe inteira comparando resultados com uma meta e disparar o aviso certo para quem precisa agir. A página traz quatro exemplos de agentes que já construímos.',
+          wa: 'Olá! Queria entender o que um agente de IA consegue fazer na minha operação.'
+        },
+        {
+          p: 'Ele mexe nos meus sistemas?',
+          r: 'Quando o sistema abre API, sim, e nos dois sentidos: consulta o dado antes de responder e grava o resultado onde a operação precisa — planilha, banco, CRM ou ERP. É essa parte que separa um agente de um texto bem escrito. Se a sua ferramenta não abre integração, dá para avaliar outros caminhos.',
+          wa: 'Olá! Queria saber se um agente de IA da BREVES integra com os sistemas que eu já uso.'
+        },
+        {
+          p: 'E se o agente errar?',
+          r: 'O desenho começa pelo que ele não pode fazer. Definimos junto quais decisões o agente toma sozinho, quais exigem confirmação de uma pessoa e o que ele nunca deve afirmar — prazo, valor ou promessa de resultado, por exemplo. Toda execução fica registrada, então dá para auditar qualquer caso depois.',
+          wa: 'Olá! Queria entender como vocês controlam o que um agente de IA pode ou não fazer.'
+        },
+        {
+          p: 'Todo processo precisa de um agente?',
+          r: 'Não, e dizer isso faz parte do trabalho. Quando a regra é clara e não muda — avisar que um item ficou abaixo do estoque mínimo, por exemplo —, uma automação simples resolve, custa menos e não erra. O agente entra quando o texto é livre, o pedido chega diferente a cada vez ou a decisão exige interpretar o contexto.',
+          wa: 'Olá! Queria entender se o meu caso pede um agente de IA ou uma automação simples.'
+        },
+        {
+          p: 'Quanto custa?',
+          r: 'Não temos tabela de preço, e chutar um valor sem conhecer o processo seria desonesto. O escopo sai de uma conversa inicial, em que entendemos quem faz a tarefa hoje, de onde vem a informação e o que decide o resultado — e essa primeira conversa é sem compromisso.',
+          wa: 'Olá! Queria entender como funciona o orçamento de um agente de IA da BREVES.'
+        }
+      ]
+    },
+
     juridico: {
       saudacao: 'Olá! Aqui dá para tirar as dúvidas mais comuns sobre a BREVES Jurídico. Sobre o que você quer saber?',
       perguntas: [
@@ -133,7 +173,8 @@
   var ORIGEM = {
     matriz: 'site-matriz-tecnologia',
     juridico: 'site-principal-juridico',
-    chatbot: 'site-produto-chatbot'
+    chatbot: 'site-produto-chatbot',
+    agentes: 'site-produto-agentes-de-ia'
   };
 
   var script = document.querySelector('script[data-breves-chat]');

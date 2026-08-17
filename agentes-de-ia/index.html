@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKBH3N8BSZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKBH3N8BSZ');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<title>Agentes de IA para empresas | BREVES</title>
+
+<meta name="description" content="Agentes de IA que leem e-mails, consultam as suas bases, decidem pela regra do seu negócio e executam a tarefa. Veja exemplos de agentes já construídos.">
+
+<link rel="canonical" href="https://brevestech.com/agentes-de-ia/">
+
+<!-- Identidade da página -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BREVES">
+<meta property="og:title" content="Agentes de IA para empresas | BREVES">
+<meta property="og:description" content="Agentes que não só conversam: recebem o gatilho, consultam os seus sistemas, decidem pela sua regra e executam a tarefa até o fim.">
+<meta property="og:url" content="https://brevestech.com/agentes-de-ia/">
+<meta property="og:image" content="https://brevestech.com/assets/media/og-breves.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BREVES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://brevestech.com/assets/media/og-breves.png">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/media/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/media/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/media/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/media/apple-touch-icon.png">
+
+<!-- Dados estruturados da página -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://brevestech.com/agentes-de-ia/#webpage",
+      "url": "https://brevestech.com/agentes-de-ia/",
+      "name": "Agentes de IA para empresas | BREVES",
+      "description": "Desenvolvimento de agentes de inteligência artificial que executam tarefas dentro da operação da empresa.",
+      "isPartOf": { "@id": "https://brevestech.com/#website" },
+      "publisher": { "@id": "https://brevestech.com/#organization" },
+      "breadcrumb": { "@id": "https://brevestech.com/agentes-de-ia/#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://brevestech.com/agentes-de-ia/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://brevestech.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Produtos", "item": "https://brevestech.com/#produtos" },
+        { "@type": "ListItem", "position": 3, "name": "Agentes de IA" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://brevestech.com/agentes-de-ia/#servico",
+      "name": "Desenvolvimento de agentes de IA",
+      "serviceType": "Agentes de inteligência artificial para empresas",
+      "description": "Desenvolvimento de agentes de inteligência artificial que recebem gatilhos, consultam bases e sistemas, decidem segundo as regras do negócio e executam tarefas de atendimento, gestão e operação.",
+      "provider": { "@id": "https://brevestech.com/#organization" },
+      "areaServed": "BR"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://brevestech.com/agentes-de-ia/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual é a diferença entre um agente de IA e um chatbot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O chatbot conversa. O agente executa. Um chatbot responde a quem escreveu para ele; um agente pode ser acionado por um horário, por um e-mail que chegou ou por um registro que mudou, consultar as bases da empresa, decidir pela regra do negócio e concluir a tarefa — mesmo que ninguém esteja conversando com ele."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O agente consegue consultar e escrever nos meus sistemas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quando o sistema abre API, sim — nos dois sentidos. O agente consulta o dado antes de responder e grava o resultado onde a operação precisa: planilha, banco, CRM ou ERP. É essa parte que separa um agente de um texto bem escrito."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E se o agente errar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O desenho começa pelo que ele não pode fazer. Definimos junto quais decisões o agente toma sozinho, quais exigem confirmação de uma pessoa e o que ele nunca deve afirmar — prazo, valor ou promessa de resultado, por exemplo. Toda execução fica registrada, então dá para auditar o que aconteceu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso trocar os sistemas que já uso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O agente entra em volta do que já existe. Ele lê a planilha, o e-mail e o sistema que a sua equipe usa hoje — trocar a ferramenta é um projeto à parte, e raramente é o que resolve o problema."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Todo processo precisa de um agente de IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não, e isso importa. Quando a regra é clara e não muda — como avisar que um item ficou abaixo do estoque mínimo —, uma automação simples resolve, custa menos e não erra. O agente entra quando o texto é livre, o pedido vem de um jeito diferente a cada vez ou a decisão exige interpretar o contexto."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="../assets/css/site.css?v=identidade-1">
+<link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
+<link rel="stylesheet" href="../assets/css/chat.css?v=chat-7">
+<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-23">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-15">
+<link rel="stylesheet" href="../assets/css/agentes.css?v=agentes-2">
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<div class="page-progress" aria-hidden="true"><i data-page-progress></i></div>
+
+<header class="site-header" data-header>
+  <div class="nav-shell">
+    <a class="brand" href="../" aria-label="BREVES — início">
+      <img src="../assets/media/newlogo-mark.png" alt="">
+      <span><b>BREVES</b><small>TECNOLOGIA</small></span>
+    </a>
+
+    <nav id="main-nav" aria-label="Navegação principal">
+      <div class="nav-drop">
+        <a class="nav-drop-trigger" href="../#produtos">Produtos <i aria-hidden="true"></i></a>
+        <div class="nav-drop-menu">
+          <a class="is-here" href="./">Agentes de IA</a>
+          <a href="../chatbot/">Chatbot com IA</a>
+          <a href="../#produtos">Automação de processos</a>
+          <a href="../#produtos">Integração entre sistemas</a>
+          <a href="../#produtos">Gestão de marketplace</a>
+          <a href="../#produtos">Painéis em Power BI</a>
+        </div>
+      </div>
+      <a href="#como-funciona" data-nav="como-funciona">Como funciona</a>
+      <a href="#exemplos" data-nav="exemplos">Exemplos</a>
+      <a href="#recursos" data-nav="recursos">Recursos</a>
+      <a href="#duvidas" data-nav="duvidas">Dúvidas</a>
+      <a href="../juridico/" class="nav-external">Jurídico <span aria-hidden="true">↗︎</span></a>
+    </nav>
+
+    <a class="nav-cta" href="../#contato" data-magnetic>Iniciar conversa <span aria-hidden="true">↗︎</span></a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="mz-hero pd-hero" id="inicio" data-hero>
+
+    <div class="mz-hero-inner">
+      <div class="mz-hero-copy">
+        <nav class="pd-crumbs reveal in" aria-label="Trilha de navegação">
+          <a href="../">Início</a><span aria-hidden="true">/</span><a href="../#produtos">Produtos</a><span aria-hidden="true">/</span><b>Agentes de IA</b>
+        </nav>
+        <div class="pd-hero-badge ag-badge reveal in">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 14h.01M15 14h.01"/></svg>
+          E-mail · Planilhas · Sistemas
+        </div>
+        <h1 class="reveal in">Agentes de IA que executam tarefas da sua operação, <em>não só conversam.</em></h1>
+        <p class="pd-hero-text reveal in">Um agente de intelig&ecirc;ncia artificial recebe o gatilho, consulta as bases da sua empresa, decide pela regra do seu neg&oacute;cio e conclui a tarefa &mdash; respondendo um e-mail, registrando um lead ou disparando o aviso certo para a pessoa certa.</p>
+        <div class="mz-hero-actions reveal in">
+          <a class="button button-primary" href="../?produto=agentes#contato" data-magnetic>Quero um agente de IA <span aria-hidden="true">→</span></a>
+          <a class="mz-btn-ghost" href="#exemplos">Ver exemplos</a>
+        </div>
+      </div>
+
+      <div class="ag-run reveal" aria-label="Exemplo de uma execução: o agente recebe um e-mail, consulta a base de imóveis, registra o lead e responde">
+        <div class="ag-run-topo">
+          <span class="ag-run-nome">
+            <small>Agente</small>
+            <b>Atendimento imobiliário</b>
+          </span>
+          <span class="ag-run-estado"><i aria-hidden="true"></i>em operação</span>
+        </div>
+
+        <div class="ag-run-etapa">
+          <span class="ag-run-rot">Gatilho</span>
+          <p>Novo e-mail na caixa de entrada</p>
+          <p class="ag-run-cita">&ldquo;Boa tarde, procuro apartamento de 2 quartos para alugar na região da Tijuca, até uns 2.500. Tem alguma coisa?&rdquo;</p>
+        </div>
+
+        <div class="ag-run-etapa">
+          <span class="ag-run-rot">Ferramentas</span>
+          <ul class="ag-run-fer">
+            <li><code>buscar_imoveis</code> <span>3 resultados</span></li>
+            <li><code>registrar_lead</code> <span>gravado</span></li>
+          </ul>
+        </div>
+
+        <div class="ag-run-etapa is-fim">
+          <span class="ag-run-rot">Ação</span>
+          <p>Respondeu na mesma conversa com os 3 imóveis que batem com o pedido, e registrou o lead com região, número de quartos, faixa de orçamento e tipo de interesse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pd-flow" id="como-funciona">
+    <div class="section-frame">
+      <header class="pd-flow-head reveal">
+        <div class="section-label">Como funciona</div>
+        <h2 data-editorial>Do gatilho à tarefa concluída,<br><em>sem ninguém no meio.</em></h2>
+      </header>
+
+      <div class="pd-linha" data-linha>
+        <div class="pd-linha-trilho" aria-hidden="true"><i data-linha-preenche></i></div>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">01</span>
+            <h3>Alguma coisa acontece</h3>
+            <p>O agente não espera ninguém abrir uma conversa. Ele acorda quando um e-mail chega, quando dá o horário combinado ou quando um registro muda na sua base.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <div class="pd-arte-topo"><span>Gatilhos</span></div>
+              <div class="pd-arte-chips">
+                <span>e-mail recebido</span>
+                <span>todo dia às 9h</span>
+                <span>linha alterada na planilha</span>
+                <span>chamada de sistema</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">02</span>
+            <h3>Entende o que foi pedido</h3>
+            <p>O texto chega do jeito que a pessoa escreveu — sem formulário, sem campo obrigatório, sem padrão. É o agente que separa o que é pedido, o que é contexto e o que é ruído.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <p class="pd-arte-bolha">tem 2 qts pra alugar na tijuca? até uns 2.5</p>
+              <div class="pd-arte-chips">
+                <span>interesse · aluguel</span>
+                <span>quartos · 2</span>
+                <span>região · Tijuca</span>
+                <span>orçamento · 2.500</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">03</span>
+            <h3>Consulta e decide</h3>
+            <p>Antes de responder, ele vai buscar o dado na fonte. E a decisão segue a sua regra, não a opinião do modelo: abaixo da nota, fora do estoque mínimo, dentro da faixa de preço.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <div class="pd-arte-topo"><span>Consulta à base</span><b>3 encontrados</b></div>
+              <ul class="pd-arte-campos">
+                <li><span>Regra</span><b>orçamento &le; 2.500</b></li>
+                <li><span>Filtro</span><b>2 quartos · Tijuca</b></li>
+                <li><span>Decisão</span><b class="is-ok">responder com os 3</b></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">04</span>
+            <h3>Executa e deixa registro</h3>
+            <p>Ele não devolve uma sugestão para alguém executar depois. Responde o e-mail, grava a linha, anexa a planilha, envia o aviso — e tudo o que fez fica registrado para auditoria.</p>
+          </div>
+          <div class="pd-passo-arte" aria-hidden="true">
+            <div class="pd-arte">
+              <div class="pd-arte-passagem">
+                <span class="pd-arte-quem is-ia">Agente&nbsp;IA</span>
+                <span class="pd-arte-seta">→</span>
+                <span class="pd-arte-quem is-gente">Base de leads</span>
+              </div>
+              <p class="pd-arte-nota">Resposta enviada na mesma conversa</p>
+              <p class="pd-arte-nota is-ok">Lead qualificado registrado</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="pd-linha-fim" data-passo data-linha-fim>
+          <a class="button button-primary" href="../?produto=agentes#contato" data-magnetic>Começar agora <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section is-alt" id="exemplos">
+    <div class="section-frame">
+      <header class="pd-flow-head reveal">
+        <div class="section-label">Exemplos</div>
+        <h2 data-editorial>Quatro agentes que já construímos,<br><em>e o que cada um resolve.</em></h2>
+      </header>
+
+      <div class="ag-ex-grid reveal">
+
+        <article class="ag-ex">
+          <span class="ag-ex-tipo">Comercial</span>
+          <h3>Atendimento imobiliário por e-mail</h3>
+          <p>Responde quem escreve procurando imóvel. Lê o pedido em texto livre, consulta a base de apartamentos, sugere o que bate com região, número de quartos e faixa de orçamento — e registra o contato como lead qualificado, com os campos preenchidos a partir da própria conversa.</p>
+          <dl class="ag-ex-ficha">
+            <dt>Gatilho</dt><dd>E-mail recebido</dd>
+            <dt>Ferramentas</dt><dd><code>buscar_imoveis</code> <code>registrar_lead</code></dd>
+            <dt>Ação</dt><dd>Responde na mesma conversa e grava o lead com <b>interesse, região, quartos, orçamento e imóvel de interesse</b></dd>
+          </dl>
+        </article>
+
+        <article class="ag-ex">
+          <span class="ag-ex-tipo">Atendimento</span>
+          <h3>Primeira resposta comercial</h3>
+          <p>Assume o primeiro contato que chega por e-mail. Entende qual é a dor descrita, explica a frente de solução que se aplica e mantém o fio da conversa nas respostas seguintes. Por desenho, nunca cita prazo, valor ou promessa de resultado — isso é assunto de gente.</p>
+          <dl class="ag-ex-ficha">
+            <dt>Gatilho</dt><dd>E-mail recebido</dd>
+            <dt>Memória</dt><dd>Guarda o histórico por conversa, para não recomeçar do zero a cada resposta</dd>
+            <dt>Ação</dt><dd>Responde na mesma conversa, em texto formatado e curto — <b>no máximo 3 ou 4 parágrafos</b></dd>
+          </dl>
+        </article>
+
+        <article class="ag-ex">
+          <span class="ag-ex-tipo">Gestão</span>
+          <h3>Supervisor de qualidade</h3>
+          <p>Todo fim de dia percorre a equipe de consultores, junta as avaliações que os clientes deixaram naquele dia e calcula a média de cada um. Quem ficou abaixo da meta recebe um e-mail de feedback: o agente agrupa os comentários por tema — pontualidade, clareza, domínio técnico — em vez de listar um a um, e fecha com uma recomendação prática.</p>
+          <dl class="ag-ex-ficha">
+            <dt>Gatilho</dt><dd>Todo dia, no fim do expediente</dd>
+            <dt>Regra</dt><dd>Só dispara para quem ficou <b>abaixo da nota de corte</b></dd>
+            <dt>Ação</dt><dd>Envia o feedback com a <b>planilha das avaliações do dia anexada</b></dd>
+          </dl>
+        </article>
+
+        <article class="ag-ex is-sem-ia">
+          <span class="ag-ex-tipo">Operação · sem IA</span>
+          <h3>Alerta de estoque crítico</h3>
+          <p>Todo dia de manhã lê a planilha de estoque, separa os itens em que o saldo atual caiu abaixo do mínimo e envia essa lista por e-mail para quem faz a compra. Não usa inteligência artificial nenhuma — a regra é uma comparação de dois números, e um agente aqui só encareceria a solução.</p>
+          <dl class="ag-ex-ficha">
+            <dt>Gatilho</dt><dd>Todo dia de manhã</dd>
+            <dt>Regra</dt><dd><b>saldo atual &lt; estoque mínimo</b></dd>
+            <dt>Ação</dt><dd>Gera a planilha só com os itens em falta e envia por e-mail</dd>
+          </dl>
+        </article>
+
+      </div>
+
+      <p class="ag-ex-nota reveal">O quarto exemplo está aqui de propósito. <b>Nem todo processo precisa de um agente de IA</b> — quando a regra é clara e não muda, uma automação simples resolve melhor, custa menos e nunca interpreta errado. Parte do trabalho é dizer qual dos dois o seu caso pede.</p>
+    </div>
+  </section>
+
+  <section class="pd-section" id="recursos">
+    <div class="section-frame">
+      <header class="pd-flow-head reveal">
+        <div class="section-label">Recursos</div>
+        <h2 data-editorial>O que separa um agente<br><em>de um texto bem escrito.</em></h2>
+      </header>
+
+      <div class="pd-feats reveal">
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Trabalha sem ninguém pedindo</b>
+          <p>Horário marcado, e-mail que chegou, registro que mudou. O agente é acionado pelo evento — não depende de alguém lembrar de abrir alguma coisa.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Lê e escreve nas suas bases</b>
+          <p>Consulta antes de responder e grava depois de decidir. Planilha, banco, CRM ou ERP: onde houver API, o agente entra nos dois sentidos.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Decide pela sua regra</b>
+          <p>Abaixo da nota de corte, fora do estoque mínimo, dentro da faixa de orçamento. O critério é do seu negócio e fica escrito — não é o modelo escolhendo sozinho.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Tem limite definido</b>
+          <p>O desenho começa pelo que ele não pode fazer. O que exige julgamento vai para uma pessoa, e o que ele nunca deve afirmar fica combinado antes de entrar no ar.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Deixa rastro</b>
+          <p>Cada execução fica registrada: o que chegou, o que ele consultou, o que decidiu e o que fez. Dá para auditar qualquer caso depois, um a um.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Entra em volta do que já existe</b>
+          <p>Ele se encaixa nas ferramentas que a sua equipe usa hoje. Trocar sistema é outro projeto — e quase nunca é o que estava travando.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="duvidas">
+    <div class="section-frame faq-grid">
+      <div class="faq-intro reveal">
+        <div class="section-label">Dúvidas frequentes</div>
+        <h2 data-editorial>Antes de colocar para rodar, <em>é importante saber.</em></h2>
+        <p>Se a sua dúvida não estiver aqui, use o formulário e conte brevemente sobre o cenário.</p>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary><span>01</span>Qual é a diferença entre um agente de IA e um chatbot?<i></i></summary>
+          <p>O chatbot conversa. O agente executa. Um chatbot responde a quem escreveu para ele; um agente pode ser acionado por um horário, por um e-mail que chegou ou por um registro que mudou, consultar as bases da empresa, decidir pela regra do negócio e concluir a tarefa — mesmo que ninguém esteja conversando com ele. Se o seu caso é atendimento em conversa, veja a <a href="../chatbot/">página do chatbot com IA</a>.</p>
+        </details>
+        <details>
+          <summary><span>02</span>O agente consegue consultar e escrever nos meus sistemas?<i></i></summary>
+          <p>Quando o sistema abre API, sim — nos dois sentidos. O agente consulta o dado antes de responder e grava o resultado onde a operação precisa: planilha, banco, CRM ou ERP. É essa parte que separa um agente de um texto bem escrito. Se a sua ferramenta não abre integração, dá para avaliar outros caminhos.</p>
+        </details>
+        <details>
+          <summary><span>03</span>E se o agente errar?<i></i></summary>
+          <p>O desenho começa pelo que ele não pode fazer. Definimos junto quais decisões o agente toma sozinho, quais exigem confirmação de uma pessoa e o que ele nunca deve afirmar — prazo, valor ou promessa de resultado, por exemplo. Toda execução fica registrada, então dá para auditar o que aconteceu em qualquer caso específico.</p>
+        </details>
+        <details>
+          <summary><span>04</span>Preciso trocar os sistemas que já uso?<i></i></summary>
+          <p>Não. O agente entra em volta do que já existe. Ele lê a planilha, o e-mail e o sistema que a sua equipe usa hoje — trocar a ferramenta é um projeto à parte, e raramente é o que resolve o problema.</p>
+        </details>
+        <details>
+          <summary><span>05</span>Todo processo precisa de um agente de IA?<i></i></summary>
+          <p>Não, e isso importa. Quando a regra é clara e não muda — como avisar que um item ficou abaixo do estoque mínimo —, uma automação simples resolve, custa menos e não erra. O agente entra quando o texto é livre, o pedido vem de um jeito diferente a cada vez ou a decisão exige interpretar o contexto. Dizer qual dos dois o seu caso pede faz parte do trabalho.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-final">
+    <div class="section-frame">
+      <div class="pd-final-card reveal">
+        <h2>Existe uma tarefa que alguém refaz <em>toda semana igual.</em></h2>
+        <p>Conte qual é: quem faz hoje, de onde vem a informação e o que decide o resultado. A partir daí desenhamos o agente em cima do seu processo — ou dizemos que uma automação simples resolve melhor.</p>
+        <div class="pd-final-actions">
+          <a class="button button-primary" href="../?produto=agentes#contato" data-magnetic>Falar sobre a minha operação <span aria-hidden="true">→</span></a>
+          <a class="mz-btn-ghost" href="../#produtos">Ver todos os produtos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer footer-rich">
+  <div class="section-frame">
+    <div class="footer-top">
+      <div class="footer-brand-block">
+        <a class="brand footer-brand" href="../" aria-label="BREVES Tecnologia — voltar ao início">
+          <img src="../assets/media/newlogo-mark.png" alt="BREVES"><span>BREVES</span>
+        </a>
+        <p>Tecnologia, dados e automação sob medida — a base que conecta toda a operação do seu negócio.</p>
+        <div class="footer-social" aria-label="Redes sociais">
+          <a class="fs-linkedin" href="https://www.linkedin.com/company/breves-corp/" target="_blank" rel="noopener noreferrer" aria-label="BREVES no LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.1 20.45H3.54V8.98H7.1v11.47Z"/></svg></a>
+          <a class="fs-instagram" href="https://www.instagram.com/brevescorp" target="_blank" rel="noopener noreferrer" aria-label="BREVES no Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></a>
+          <a class="fs-whatsapp" href="https://wa.me/5521984371741?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20agentes%20de%20IA%20da%20BREVES." target="_blank" rel="noopener noreferrer" aria-label="Falar com a BREVES no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.87 9.87 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2Zm0 1.83c2.16 0 4.19.84 5.72 2.37a8.03 8.03 0 0 1 2.37 5.72c0 4.46-3.63 8.08-8.09 8.08a8.2 8.2 0 0 1-4.13-1.13l-.3-.18-3.13.82.84-3.05-.2-.31a8.02 8.02 0 0 1-1.24-4.3c0-4.45 3.63-8.08 8.09-8.08Zm-3.2 4.3c-.15 0-.4.06-.61.28-.21.22-.8.79-.8 1.92s.82 2.23.94 2.38c.11.15 1.6 2.44 3.88 3.42.54.23.96.37 1.29.48.54.17 1.04.15 1.43.09.44-.06 1.34-.55 1.53-1.08.19-.53.19-.98.13-1.08-.06-.09-.21-.15-.44-.26-.23-.12-1.34-.66-1.55-.74-.21-.08-.36-.11-.51.11-.15.23-.58.74-.71.89-.13.15-.26.17-.49.06-.23-.12-.96-.36-1.83-1.13-.68-.6-1.13-1.35-1.27-1.57-.13-.23-.01-.35.1-.46.1-.1.23-.27.34-.4.11-.14.15-.23.23-.38.08-.15.04-.29-.02-.4-.06-.12-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39h-.43Z"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="footer-col" aria-label="Produtos">
+        <h3>Produtos</h3>
+        <a href="./">Agentes de IA</a>
+        <a href="../chatbot/">Chatbot com IA</a>
+        <a href="../#produtos">Automação de processos</a>
+        <a href="../#produtos">Integração entre sistemas</a>
+        <a href="../#produtos">Gestão de marketplace</a>
+        <a href="../#produtos">Painéis em Power BI</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Links">
+        <h3>Links</h3>
+        <a href="../juridico/">BREVES Jurídico <span aria-hidden="true">↗︎</span></a>
+        <a href="../">Início</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#exemplos">Exemplos</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="../#contato">Contato</a>
+      </nav>
+
+      <div class="footer-col footer-contact" aria-label="Contato">
+        <h3>Contato</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:contato@brevestech.com">contato@brevestech.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg> <a href="tel:+5521984371741">+55 21 98437-1741</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg> <a href="https://www.linkedin.com/company/breves-corp/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+        <a class="footer-cta" href="../#contato">Iniciar conversa <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 BREVES</span>
+      <span>CNPJ 68.054.344/0001-17</span>
+      <span>Tecnologia · Dados · Automação</span>
+    </div>
+  </div>
+</footer>
+
+
+<script defer src="../assets/js/site.js?v=identidade-6"></script>
+<script defer data-breves-chat="agentes" src="../assets/js/chat.js?v=chat-9"></script>
+</body>
+</html>

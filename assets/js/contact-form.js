@@ -65,6 +65,10 @@ const PRODUTOS = {
     mensagem: 'Quero um chatbot com IA para o meu atendimento.',
     origem: 'site-produto-chatbot',
   },
+  agentes: {
+    mensagem: 'Quero um agente de IA para a minha operação.',
+    origem: 'site-produto-agentes-de-ia',
+  },
 };
 
 function preencherAssunto() {
