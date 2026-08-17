@@ -69,7 +69,22 @@
   letter-spacing: .11em;
   text-transform: uppercase;
 }
-.pd-hero-badge svg { width: 16px; height: 16px; fill: #25d366; }
+.pd-hero-badge svg { width: 16px; height: 16px; }
+/* O verde e o preenchimento pertencem ao logo do WhatsApp, nao ao selo. Sem
+   este recorte, um icone de traco em outra pagina vira um bloco verde. */
+.pd-hero-badge.is-whatsapp svg { fill: #25d366; }
+
+/* A coluna direita do hero quando a arte nao e o celular: os mesmos cartoes
+   .pd-arte que a linha do tempo ja usa, empilhados. Assim uma pagina de
+   produto sem aparelho para mostrar nao precisa inventar componente novo. */
+.pd-hero-arte {
+  display: grid;
+  gap: 14px;
+  justify-self: center;
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
+}
 
 /* ─────────────────────────────────────────────────────────────── seções */
 
@@ -296,6 +311,9 @@
   max-width: 1120px;
   margin-inline: auto;
 }
+.pd-feats.is-par { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 940px; }
+.pd-feats.is-par .pd-feat { max-width: 30em; }
+
 .pd-feat { max-width: 24em; }
 .pd-feat-ic {
   display: grid;
@@ -639,7 +657,7 @@
 
 @media (max-width: 720px) {
   .pd-section, .pd-final { padding: 72px 0; }
-  .pd-feats { grid-template-columns: 1fr; }
+  .pd-feats, .pd-feats.is-par { grid-template-columns: 1fr; }
   .pd-final-card { padding: 44px 26px; }
 
   /* Sem espaço para duas colunas, a linha encosta na esquerda e todo o

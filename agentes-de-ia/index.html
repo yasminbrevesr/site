@@ -130,8 +130,7 @@
 <link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-7">
 <link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-23">
-<link rel="stylesheet" href="../assets/css/produto.css?v=produto-15">
-<link rel="stylesheet" href="../assets/css/agentes.css?v=agentes-2">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-16">
 </head>
 <body>
 
@@ -179,7 +178,7 @@
         <nav class="pd-crumbs reveal in" aria-label="Trilha de navegação">
           <a href="../">Início</a><span aria-hidden="true">/</span><a href="../#produtos">Produtos</a><span aria-hidden="true">/</span><b>Agentes de IA</b>
         </nav>
-        <div class="pd-hero-badge ag-badge reveal in">
+        <div class="pd-hero-badge reveal in">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 14h.01M15 14h.01"/></svg>
           E-mail · Planilhas · Sistemas
         </div>
@@ -191,32 +190,34 @@
         </div>
       </div>
 
-      <div class="ag-run reveal" aria-label="Exemplo de uma execução: o agente recebe um e-mail, consulta a base de imóveis, registra o lead e responde">
-        <div class="ag-run-topo">
-          <span class="ag-run-nome">
-            <small>Agente</small>
-            <b>Atendimento imobiliário</b>
-          </span>
-          <span class="ag-run-estado"><i aria-hidden="true"></i>em operação</span>
+      <div class="pd-hero-arte reveal" aria-label="Exemplo de uma execução: o agente recebe um e-mail, consulta a base de imóveis, registra o lead e responde">
+        <div class="pd-arte">
+          <div class="pd-arte-topo"><span>Gatilho</span><b>e-mail recebido</b></div>
+          <p class="pd-arte-bolha">tem 2 qts pra alugar na tijuca? até uns 2.5</p>
+          <div class="pd-arte-chips">
+            <span>interesse · aluguel</span>
+            <span>quartos · 2</span>
+            <span>região · Tijuca</span>
+            <span>orçamento · 2.500</span>
+          </div>
         </div>
 
-        <div class="ag-run-etapa">
-          <span class="ag-run-rot">Gatilho</span>
-          <p>Novo e-mail na caixa de entrada</p>
-          <p class="ag-run-cita">&ldquo;Boa tarde, procuro apartamento de 2 quartos para alugar na região da Tijuca, até uns 2.500. Tem alguma coisa?&rdquo;</p>
-        </div>
-
-        <div class="ag-run-etapa">
-          <span class="ag-run-rot">Ferramentas</span>
-          <ul class="ag-run-fer">
-            <li><code>buscar_imoveis</code> <span>3 resultados</span></li>
-            <li><code>registrar_lead</code> <span>gravado</span></li>
+        <div class="pd-arte">
+          <div class="pd-arte-topo"><span>Consulta à base</span><b>3 encontrados</b></div>
+          <ul class="pd-arte-campos">
+            <li><span>Buscar imóveis</span><b>3 resultados</b></li>
+            <li><span>Registrar lead</span><b class="is-ok">gravado</b></li>
           </ul>
         </div>
 
-        <div class="ag-run-etapa is-fim">
-          <span class="ag-run-rot">Ação</span>
-          <p>Respondeu na mesma conversa com os 3 imóveis que batem com o pedido, e registrou o lead com região, número de quartos, faixa de orçamento e tipo de interesse.</p>
+        <div class="pd-arte">
+          <div class="pd-arte-passagem">
+            <span class="pd-arte-quem is-ia">Agente&nbsp;IA</span>
+            <span class="pd-arte-seta">&rarr;</span>
+            <span class="pd-arte-quem is-gente">Base de leads</span>
+          </div>
+          <p class="pd-arte-nota">Respondeu na mesma conversa com os 3 imóveis</p>
+          <p class="pd-arte-nota is-ok">Lead registrado com região, quartos e orçamento</p>
         </div>
       </div>
     </div>
@@ -322,55 +323,28 @@
         <h2 data-editorial>Quatro agentes que já construímos,<br><em>e o que cada um resolve.</em></h2>
       </header>
 
-      <div class="ag-ex-grid reveal">
-
-        <article class="ag-ex">
-          <span class="ag-ex-tipo">Comercial</span>
-          <h3>Atendimento imobiliário por e-mail</h3>
-          <p>Responde quem escreve procurando imóvel. Lê o pedido em texto livre, consulta a base de apartamentos, sugere o que bate com região, número de quartos e faixa de orçamento — e registra o contato como lead qualificado, com os campos preenchidos a partir da própria conversa.</p>
-          <dl class="ag-ex-ficha">
-            <dt>Gatilho</dt><dd>E-mail recebido</dd>
-            <dt>Ferramentas</dt><dd><code>buscar_imoveis</code> <code>registrar_lead</code></dd>
-            <dt>Ação</dt><dd>Responde na mesma conversa e grava o lead com <b>interesse, região, quartos, orçamento e imóvel de interesse</b></dd>
-          </dl>
+      <div class="pd-feats is-par reveal">
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Atendimento imobiliário por e-mail</b>
+          <p>Responde quem escreve procurando imóvel. Lê o pedido em texto livre, consulta a base de apartamentos e sugere o que bate com região, número de quartos e faixa de orçamento — e registra o contato como lead qualificado, com os campos preenchidos a partir da própria conversa.</p>
         </article>
-
-        <article class="ag-ex">
-          <span class="ag-ex-tipo">Atendimento</span>
-          <h3>Primeira resposta comercial</h3>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Primeira resposta comercial</b>
           <p>Assume o primeiro contato que chega por e-mail. Entende qual é a dor descrita, explica a frente de solução que se aplica e mantém o fio da conversa nas respostas seguintes. Por desenho, nunca cita prazo, valor ou promessa de resultado — isso é assunto de gente.</p>
-          <dl class="ag-ex-ficha">
-            <dt>Gatilho</dt><dd>E-mail recebido</dd>
-            <dt>Memória</dt><dd>Guarda o histórico por conversa, para não recomeçar do zero a cada resposta</dd>
-            <dt>Ação</dt><dd>Responde na mesma conversa, em texto formatado e curto — <b>no máximo 3 ou 4 parágrafos</b></dd>
-          </dl>
         </article>
-
-        <article class="ag-ex">
-          <span class="ag-ex-tipo">Gestão</span>
-          <h3>Supervisor de qualidade</h3>
-          <p>Todo fim de dia percorre a equipe de consultores, junta as avaliações que os clientes deixaram naquele dia e calcula a média de cada um. Quem ficou abaixo da meta recebe um e-mail de feedback: o agente agrupa os comentários por tema — pontualidade, clareza, domínio técnico — em vez de listar um a um, e fecha com uma recomendação prática.</p>
-          <dl class="ag-ex-ficha">
-            <dt>Gatilho</dt><dd>Todo dia, no fim do expediente</dd>
-            <dt>Regra</dt><dd>Só dispara para quem ficou <b>abaixo da nota de corte</b></dd>
-            <dt>Ação</dt><dd>Envia o feedback com a <b>planilha das avaliações do dia anexada</b></dd>
-          </dl>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Supervisor de qualidade</b>
+          <p>Todo fim de dia percorre a equipe de consultores, junta as avaliações que os clientes deixaram naquele dia e calcula a média de cada um. Quem ficou abaixo da meta recebe um e-mail de feedback: o agente agrupa os comentários por tema — pontualidade, clareza, domínio técnico — em vez de listar um a um, e anexa a planilha do dia.</p>
         </article>
-
-        <article class="ag-ex is-sem-ia">
-          <span class="ag-ex-tipo">Operação · sem IA</span>
-          <h3>Alerta de estoque crítico</h3>
-          <p>Todo dia de manhã lê a planilha de estoque, separa os itens em que o saldo atual caiu abaixo do mínimo e envia essa lista por e-mail para quem faz a compra. Não usa inteligência artificial nenhuma — a regra é uma comparação de dois números, e um agente aqui só encareceria a solução.</p>
-          <dl class="ag-ex-ficha">
-            <dt>Gatilho</dt><dd>Todo dia de manhã</dd>
-            <dt>Regra</dt><dd><b>saldo atual &lt; estoque mínimo</b></dd>
-            <dt>Ação</dt><dd>Gera a planilha só com os itens em falta e envia por e-mail</dd>
-          </dl>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Alerta de estoque crítico, sem IA</b>
+          <p>Todo dia de manhã lê a planilha de estoque, separa os itens em que o saldo atual caiu abaixo do mínimo e envia essa lista para quem faz a compra. Não usa inteligência artificial nenhuma, e está aqui por isso: quando a regra é uma comparação de dois números, uma automação simples resolve melhor e custa menos. Dizer qual dos dois o seu caso pede faz parte do trabalho.</p>
         </article>
-
       </div>
-
-      <p class="ag-ex-nota reveal">O quarto exemplo está aqui de propósito. <b>Nem todo processo precisa de um agente de IA</b> — quando a regra é clara e não muda, uma automação simples resolve melhor, custa menos e nunca interpreta errado. Parte do trabalho é dizer qual dos dois o seu caso pede.</p>
     </div>
   </section>
 
