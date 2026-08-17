@@ -130,7 +130,7 @@
 <link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-7">
 <link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-23">
-<link rel="stylesheet" href="../assets/css/produto.css?v=produto-16">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-17">
 </head>
 <body>
 
@@ -158,7 +158,6 @@
       </div>
       <a href="#como-funciona" data-nav="como-funciona">Como funciona</a>
       <a href="#exemplos" data-nav="exemplos">Exemplos</a>
-      <a href="#recursos" data-nav="recursos">Recursos</a>
       <a href="#duvidas" data-nav="duvidas">Dúvidas</a>
       <a href="../juridico/" class="nav-external">Jurídico <span aria-hidden="true">↗︎</span></a>
     </nav>
@@ -190,7 +189,7 @@
         </div>
       </div>
 
-      <div class="pd-hero-arte reveal" aria-label="Exemplo de uma execução: o agente recebe um e-mail, consulta a base de imóveis, registra o lead e responde">
+      <div class="pd-hero-arte reveal" aria-label="Exemplo de uma execução: o agente recebe um e-mail, consulta a base de imóveis e responde registrando o lead">
         <div class="pd-arte">
           <div class="pd-arte-topo"><span>Gatilho</span><b>e-mail recebido</b></div>
           <p class="pd-arte-bolha">tem 2 qts pra alugar na tijuca? até uns 2.5</p>
@@ -203,21 +202,12 @@
         </div>
 
         <div class="pd-arte">
-          <div class="pd-arte-topo"><span>Consulta à base</span><b>3 encontrados</b></div>
+          <div class="pd-arte-topo"><span>Execução</span><b>concluída</b></div>
           <ul class="pd-arte-campos">
-            <li><span>Buscar imóveis</span><b>3 resultados</b></li>
-            <li><span>Registrar lead</span><b class="is-ok">gravado</b></li>
+            <li><span>Consulta à base</span><b>3 imóveis</b></li>
+            <li><span>Resposta</span><b class="is-ok">na mesma conversa</b></li>
+            <li><span>Lead</span><b class="is-ok">registrado</b></li>
           </ul>
-        </div>
-
-        <div class="pd-arte">
-          <div class="pd-arte-passagem">
-            <span class="pd-arte-quem is-ia">Agente&nbsp;IA</span>
-            <span class="pd-arte-seta">&rarr;</span>
-            <span class="pd-arte-quem is-gente">Base de leads</span>
-          </div>
-          <p class="pd-arte-nota">Respondeu na mesma conversa com os 3 imóveis</p>
-          <p class="pd-arte-nota is-ok">Lead registrado com região, quartos e orçamento</p>
         </div>
       </div>
     </div>
@@ -298,13 +288,13 @@
           </div>
           <div class="pd-passo-arte" aria-hidden="true">
             <div class="pd-arte">
-              <div class="pd-arte-passagem">
-                <span class="pd-arte-quem is-ia">Agente&nbsp;IA</span>
-                <span class="pd-arte-seta">→</span>
-                <span class="pd-arte-quem is-gente">Base de leads</span>
-              </div>
-              <p class="pd-arte-nota">Resposta enviada na mesma conversa</p>
-              <p class="pd-arte-nota is-ok">Lead qualificado registrado</p>
+              <div class="pd-arte-topo"><span>Registro da execução</span><b>salvo</b></div>
+              <ul class="pd-arte-campos">
+                <li><span>O que chegou</span><b>e-mail 14:32</b></li>
+                <li><span>O que consultou</span><b>base de imóveis</b></li>
+                <li><span>O que decidiu</span><b>3 compatíveis</b></li>
+                <li><span>O que fez</span><b class="is-ok">respondeu e gravou</b></li>
+              </ul>
             </div>
           </div>
         </article>
@@ -323,68 +313,30 @@
         <h2 data-editorial>Quatro agentes que já construímos,<br><em>e o que cada um resolve.</em></h2>
       </header>
 
-      <div class="pd-feats is-par reveal">
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Atendimento imobiliário por e-mail</b>
-          <p>Responde quem escreve procurando imóvel. Lê o pedido em texto livre, consulta a base de apartamentos e sugere o que bate com região, número de quartos e faixa de orçamento — e registra o contato como lead qualificado, com os campos preenchidos a partir da própria conversa.</p>
+      <div class="pd-casos reveal">
+        <article class="pd-caso">
+          <span class="pd-caso-quando">E-mail recebido</span>
+          <h3>Atendimento imobiliário</h3>
+          <p>Responde quem escreve procurando imóvel. Lê o pedido em texto livre — região, número de quartos, faixa de orçamento — e consulta a base de apartamentos antes de dizer qualquer coisa.</p>
+          <p class="pd-caso-faz"><b>O que faz:</b> responde na mesma conversa com os imóveis que batem e registra o contato como lead, com os campos preenchidos a partir do que a pessoa escreveu.</p>
         </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Primeira resposta comercial</b>
-          <p>Assume o primeiro contato que chega por e-mail. Entende qual é a dor descrita, explica a frente de solução que se aplica e mantém o fio da conversa nas respostas seguintes. Por desenho, nunca cita prazo, valor ou promessa de resultado — isso é assunto de gente.</p>
+        <article class="pd-caso">
+          <span class="pd-caso-quando">E-mail recebido</span>
+          <h3>Primeira resposta comercial</h3>
+          <p>Assume o primeiro contato que chega. Entende qual é a dor descrita, explica a frente de solução que se aplica e guarda o histórico para não recomeçar do zero na resposta seguinte.</p>
+          <p class="pd-caso-faz"><b>O que faz:</b> responde em até quatro parágrafos e, por desenho, nunca cita prazo, valor ou promessa de resultado — isso é assunto de gente.</p>
         </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Supervisor de qualidade</b>
-          <p>Todo fim de dia percorre a equipe de consultores, junta as avaliações que os clientes deixaram naquele dia e calcula a média de cada um. Quem ficou abaixo da meta recebe um e-mail de feedback: o agente agrupa os comentários por tema — pontualidade, clareza, domínio técnico — em vez de listar um a um, e anexa a planilha do dia.</p>
+        <article class="pd-caso">
+          <span class="pd-caso-quando">Todo dia, no fim do expediente</span>
+          <h3>Supervisor de qualidade</h3>
+          <p>Percorre a equipe de consultores, junta as avaliações que os clientes deixaram naquele dia e calcula a média de cada um. Só age sobre quem ficou abaixo da meta.</p>
+          <p class="pd-caso-faz"><b>O que faz:</b> escreve o feedback agrupando os comentários por tema — pontualidade, clareza, domínio técnico — em vez de listar um a um, e envia com a planilha do dia anexada.</p>
         </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Alerta de estoque crítico, sem IA</b>
-          <p>Todo dia de manhã lê a planilha de estoque, separa os itens em que o saldo atual caiu abaixo do mínimo e envia essa lista para quem faz a compra. Não usa inteligência artificial nenhuma, e está aqui por isso: quando a regra é uma comparação de dois números, uma automação simples resolve melhor e custa menos. Dizer qual dos dois o seu caso pede faz parte do trabalho.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="pd-section" id="recursos">
-    <div class="section-frame">
-      <header class="pd-flow-head reveal">
-        <div class="section-label">Recursos</div>
-        <h2 data-editorial>O que separa um agente<br><em>de um texto bem escrito.</em></h2>
-      </header>
-
-      <div class="pd-feats reveal">
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Trabalha sem ninguém pedindo</b>
-          <p>Horário marcado, e-mail que chegou, registro que mudou. O agente é acionado pelo evento — não depende de alguém lembrar de abrir alguma coisa.</p>
-        </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Lê e escreve nas suas bases</b>
-          <p>Consulta antes de responder e grava depois de decidir. Planilha, banco, CRM ou ERP: onde houver API, o agente entra nos dois sentidos.</p>
-        </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Decide pela sua regra</b>
-          <p>Abaixo da nota de corte, fora do estoque mínimo, dentro da faixa de orçamento. O critério é do seu negócio e fica escrito — não é o modelo escolhendo sozinho.</p>
-        </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Tem limite definido</b>
-          <p>O desenho começa pelo que ele não pode fazer. O que exige julgamento vai para uma pessoa, e o que ele nunca deve afirmar fica combinado antes de entrar no ar.</p>
-        </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Deixa rastro</b>
-          <p>Cada execução fica registrada: o que chegou, o que ele consultou, o que decidiu e o que fez. Dá para auditar qualquer caso depois, um a um.</p>
-        </article>
-        <article class="pd-feat">
-          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
-          <b>Entra em volta do que já existe</b>
-          <p>Ele se encaixa nas ferramentas que a sua equipe usa hoje. Trocar sistema é outro projeto — e quase nunca é o que estava travando.</p>
+        <article class="pd-caso is-sem-ia">
+          <span class="pd-caso-quando">Todo dia de manhã · sem IA</span>
+          <h3>Alerta de estoque crítico</h3>
+          <p>Lê a planilha de estoque e separa os itens em que o saldo atual caiu abaixo do mínimo. Não usa inteligência artificial nenhuma, e está aqui por isso: a regra é uma comparação de dois números.</p>
+          <p class="pd-caso-faz"><b>O que faz:</b> envia a lista para quem faz a compra. Quando a regra é clara e não muda, uma automação simples resolve melhor e custa menos — e dizer qual dos dois o seu caso pede faz parte do trabalho.</p>
         </article>
       </div>
     </div>
