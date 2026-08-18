@@ -355,6 +355,100 @@
 .pd-feat b { display: block; margin-bottom: 11px; color: var(--ink); font-size: 18px; font-weight: 660; letter-spacing: -.022em; }
 .pd-feat p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.68; }
 
+/* ────────────────────────────────── grade de motivos sobre fundo escuro ── */
+
+/* Uma variante da secao de recursos: os mesmos seis itens, mas em cartao claro
+   sobre fundo escuro. Serve quando a pagina precisa de um respiro visual no
+   meio — tres blocos claros seguidos cansam — e quando os itens sao motivos
+   para escolher, e nao capacidades soltas: o cartao fechado agrupa titulo,
+   icone e texto numa unidade que se compara com a de baixo.
+
+   Vive aqui, e nao numa folha propria, porque qualquer pagina de produto pode
+   trocar .pd-feats por .pd-cartoes com uma classe. */
+.pd-section.is-escuro {
+  background:
+    radial-gradient(900px 520px at 14% 12%, rgba(103, 56, 255, .3), transparent 62%),
+    radial-gradient(780px 500px at 88% 88%, rgba(22, 155, 255, .2), transparent 60%),
+    linear-gradient(162deg, #04101c 0%, #02182c 52%, #072544 100%);
+  background-color: #02182c;
+}
+
+/* O titulo e o rotulo da secao invertem, como ja fazem no contato e na
+   calculadora. O <em> troca o gradiente da marca pelo mais claro: o original
+   tem azul escuro na ponta esquerda e some no fundo. */
+.pd-section.is-escuro .pd-flow-head h2 { color: #fff; }
+.pd-section.is-escuro .pd-flow-head h2 em {
+  background: var(--grad-glow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.pd-section.is-escuro .section-label { color: var(--magenta-bright); }
+
+/* A linha de apoio abaixo do titulo. So existe nesta variante — nas outras o
+   titulo fala sozinho. */
+.pd-flow-head-apoio {
+  max-width: 46em;
+  margin: 18px auto 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.pd-section.is-escuro .pd-flow-head-apoio { color: rgba(255, 255, 255, .66); }
+
+.pd-cartoes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+.pd-cartao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 30px 34px;
+  border-radius: 16px;
+  background: #f1f4f8;
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.pd-cartao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 48px rgba(1, 8, 24, .38);
+}
+
+/* O icone e de traco e herda a cor do texto do cartao, para nao virar mais um
+   tom a manter. */
+.pd-cartao-ic {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+.pd-cartao-ic svg { width: 100%; height: 100%; stroke-width: 1.55; }
+
+.pd-cartao b {
+  margin-bottom: 14px;
+  color: var(--violet);
+  font-size: 17px;
+  font-weight: 660;
+  line-height: 1.25;
+  letter-spacing: -.018em;
+}
+.pd-cartao p { color: var(--ink-muted); font-size: 14px; line-height: 1.68; }
+
+@media (max-width: 1040px) {
+  .pd-cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .pd-cartoes { grid-template-columns: 1fr; gap: 16px; }
+  .pd-cartao { padding: 32px 24px 28px; }
+}
+
 /* ─────────────────────────────────────────────────────── grade de casos */
 
 /* Ocupa o mesmo lugar que .pd-feats ocupa na pagina de chatbot: a secao de
