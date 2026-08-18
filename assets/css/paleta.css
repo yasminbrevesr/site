@@ -1,16 +1,191 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   PALETAS DE TESTE
-   Carrega por último de propósito. Nada aqui vale até alguém pedir: a paleta
-   só entra com ?paleta=<nome> no endereço, e o padrão do site continua o que
-   sempre foi. Serve para comparar uma paleta nova em qualquer página, lado a
-   lado com a atual em outra aba, antes de decidir.
+   PALETA DO SITE
+   Carrega por último de propósito: é ela que decide a cor de tudo. Os tokens
+   ficam no `body`, e não no `:root`, porque propriedade herdada resolve pelo
+   ancestral mais próximo — declarada no body, esta folha vence a de
+   identidade.css sem depender de ordem nem de peso de seletor. Os seletores
+   de teste alcançam o mesmo `body` pelo mesmo motivo.
 
-   O seletor é `html[data-paleta] body`, e não `body.paleta`, por um motivo
-   prático: a página de Power BI já define os tokens dela em `body.pd-sobrio`,
-   e propriedade herdada resolve pelo elemento mais próximo. Declarada no
-   `html`, a paleta perderia para o `body` mesmo carregando depois. Alcançando
-   o mesmo `body` com um seletor mais específico, ela ganha em toda página.
+   Qualquer página aceita ?paleta=<nome> no endereço e troca ao vivo, o que
+   serve para comparar lado a lado: ?paleta=marca volta às cores antigas do
+   site, ?paleta=pale mostra a alternativa azul e roxo.
    ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── padrão: dois escuros frios, um preto neutro, cinza claro e branco ──
+   #151b26  #2c2739  #131313  #d9d9d9  #ffffff
+
+   (Os valores acima foram lidos da imagem a olho; se tiver os hex exatos, é
+   só trocar aqui — todo o resto sai destes cinco.)
+
+   O oposto da pale: não tem cor de acento nenhuma. É tonal, e isso muda o
+   desenho, não só as cores. Sem um tom vivo para destacar, quem separa uma
+   coisa da outra passa a ser o contraste entre claro e escuro — botão escuro
+   sobre branco, texto claro sobre preto, e o azul e o roxo aparecendo como
+   fundo, não como grito.
+
+   Combina com o site por um motivo concreto: o marinho da logo já é um azul
+   escuro dessaturado, e #151b26 é ele com menos saturação ainda. */
+
+body {
+  --blue: #151b26;
+  --blue-bright: #2c2739;
+  --violet: #2c2739;
+  --violet-soft: #3d3750;
+  --magenta: #2c2739;
+  --magenta-bright: #3d3750;
+  --amber: #2c2739;
+  --amber-bright: #151b26;
+  --amber-dark: #2c2739;
+
+  --grad-brand: linear-gradient(100deg, #131313, #151b26 48%, #2c2739);
+  --grad-glow: linear-gradient(100deg, #151b26, #2c2739 55%, #3d3750);
+}
+
+/* Sobre fundo escuro o acento inverte: sem cor viva na paleta, quem destaca
+   é o claro. */
+.pd-hero,
+.pd-section.is-escuro,
+.mz-hero,
+#contato,
+.calculator {
+  --violet: #d9d9d9;
+  --violet-soft: #d9d9d9;
+  --amber: #d9d9d9;
+  --amber-bright: #fff;
+  --amber-dark: #d9d9d9;
+  --magenta-bright: #d9d9d9;
+}
+
+/* Os fundos escuros: preto neutro com o azul e o roxo entrando como luz. */
+.mz-hero.is-limpo {
+  background:
+    repeating-linear-gradient(115deg, transparent 0 26px, rgba(255, 255, 255, .018) 26px 27px),
+    radial-gradient(1000px 700px at 18% 12%, rgba(44, 39, 57, .85), transparent 70%),
+    #131313;
+  background-color: #131313;
+}
+.mz-hero.is-limpo .hero-kicker { color: #d9d9d9; }
+/* Sem acento, o que destaca a palavra é o peso e o branco puro contra o
+   cinza do resto da frase.
+
+   Precisa trocar color E -webkit-text-fill-color: a regra do hero limpo fixa
+   o segundo, e ele manda no primeiro na hora de pintar a letra. */
+.mz-hero.is-limpo h1 { color: #9aa1ab; }
+.mz-hero.is-limpo h1 em {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+.pd-hero {
+  background:
+    radial-gradient(1180px 720px at 84% 6%, rgba(44, 39, 57, .9), transparent 66%),
+    radial-gradient(920px 640px at 6% 92%, rgba(21, 27, 38, .95), transparent 64%),
+    linear-gradient(152deg, #131313 0%, #151b26 55%, #2c2739 100%);
+  background-color: #131313;
+}
+.pd-section.is-escuro {
+  background:
+    radial-gradient(900px 520px at 14% 12%, rgba(44, 39, 57, .8), transparent 64%),
+    linear-gradient(162deg, #131313 0%, #151b26 60%, #1d2130 100%);
+  background-color: #131313;
+}
+
+.pd-hero h1 em,
+.pd-section.is-escuro .pd-flow-head h2 em {
+  background: linear-gradient(100deg, #d9d9d9, #fff 60%, #d9d9d9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.pd-section.is-escuro .section-label,
+.pd-crumbs b { color: #d9d9d9; }
+
+.pd-linha-trilho i { background: linear-gradient(180deg, #151b26, #2c2739 60%, #3d3750); }
+.pd-passo-n { color: rgba(44, 39, 57, .12); }
+.pd-passo.is-on::before { box-shadow: 0 0 0 5px rgba(44, 39, 57, .16); }
+
+/* No painel, a escala vem só da opacidade de um tom — que é o que uma paleta
+   sem acento permite fazer, e continua legível. */
+.pd-pn-kpi { border-left-color: #151b26; }
+.pd-pn-kpi:nth-child(2) { border-left-color: #2c2739; }
+.pd-pn-kpi:nth-child(3) { border-left-color: #3d3750; }
+.pd-pn-meta u::before { background: #151b26; }
+.pd-pn-barras u { background: #2c2739; }
+.pd-pn-barras li:nth-child(2) u { background: #3d3750; }
+.pd-pn-barras li:nth-child(3) u { background: #524c68; }
+.pd-pn-barras li:nth-child(4) u { background: #6b657f; }
+.pd-pn-barras li:nth-child(5) u { background: #8b8799; }
+.pd-pn-barras li:nth-child(6) u { background: #adaab6; }
+.pd-pn-serie i { background: #c9c7d0; }
+.pd-pn-serie i:last-child { background: #2c2739; }
+.pd-pn-tag { background: rgba(44, 39, 57, .1); color: #2c2739; }
+
+/* O cinza da paleta nas seções claras alternadas. */
+.pd-section.is-alt,
+.faq { background: #d9d9d9; }
+.pd-cartao { background: #d9d9d9; }
+
+/* ── o botao primario sobre fundo escuro ─────────────────────────────────
+   O gradiente da marca era claro o bastante para aparecer sobre marinho. O
+   desta paleta e escuro — sobre preto, o botao vira um retangulo invisivel.
+   Numa paleta sem cor viva, quem destaca e o claro: sobre escuro o botao
+   inverte, e o texto vai junto.
+
+   Vale para todas as superficies escuras do site, e nao so para o hero: a
+   chamada de fechamento e a secao de contato tem o mesmo problema. */
+.pd-hero .button-primary,
+.pd-section.is-escuro .button-primary,
+.pd-final-card .button-primary,
+#contato .button-primary,
+.calculator .button-primary {
+  background: linear-gradient(100deg, #fff, #d9d9d9);
+  color: #131313;
+  box-shadow: 0 10px 40px rgba(217, 217, 217, .16);
+}
+.pd-hero .button-primary:hover,
+.pd-section.is-escuro .button-primary:hover,
+.pd-final-card .button-primary:hover,
+#contato .button-primary:hover,
+.calculator .button-primary:hover {
+  background: linear-gradient(100deg, #fff, #efefef);
+  box-shadow: 0 14px 52px rgba(255, 255, 255, .24);
+}
+.pd-hero .button-primary span,
+.pd-section.is-escuro .button-primary span,
+.pd-final-card .button-primary span,
+#contato .button-primary span,
+.calculator .button-primary span { color: #131313; }
+
+/* ── os fundos com hex escrito à mão ─────────────────────────────────────
+   Trocar token não alcança gradiente com a cor digitada dentro. Estes três
+   são os que aparecem: o card de fechamento das páginas de produto, a faixa
+   de contato e o brilho do botão do menu. O resto do violeta que sobrou no
+   identidade.css está em sombra, borda e halo de baixa opacidade — some no
+   escuro e quase não se vê no claro. O conserto de verdade seria tokenizar
+   aquilo, e é um trabalho à parte. */
+.pd-final-card {
+  background:
+    radial-gradient(700px 420px at 82% 10%, rgba(61, 55, 80, .7), transparent 64%),
+    linear-gradient(122deg, #131313, #151b26 52%, #2c2739);
+  box-shadow: 0 30px 80px rgba(19, 19, 19, .4);
+}
+
+#contato, .calculator {
+  background:
+    linear-gradient(to bottom,
+      rgba(247, 249, 252, 1) 0,
+      rgba(217, 217, 217, .96) calc(var(--costura) * .28),
+      rgba(120, 118, 132, .72) calc(var(--costura) * .56),
+      rgba(44, 39, 57, .4) calc(var(--costura) * .8),
+      rgba(19, 19, 19, 0) var(--costura)),
+    radial-gradient(900px 520px at 84% 30%, rgba(44, 39, 57, .8), transparent 62%),
+    linear-gradient(168deg, #131313 0%, #151b26 60%, #1d2130 100%);
+  background-color: #131313;
+}
+
+.nav-cta { box-shadow: 0 6px 18px rgba(19, 19, 19, .3); }
+.nav-cta:hover { box-shadow: 0 10px 26px rgba(19, 19, 19, .42); }
 
 /* ── pale: azul e roxo dessaturados, cinza quase branco e dois pretos ─────
    #6fa8dc  #8e7cc3  #eeeeee  #252525  #000000
@@ -121,121 +296,6 @@ html[data-paleta="pale"] .pd-section.is-alt,
 html[data-paleta="pale"] .faq { background: #eee; }
 html[data-paleta="pale"] .pd-cartao { background: #eee; }
 
-/* ── noite: dois escuros frios, um preto neutro, cinza claro e branco ─────
-   #151b26  #2c2739  #131313  #d9d9d9  #ffffff
-
-   (Os valores acima foram lidos da imagem a olho; se tiver os hex exatos, é
-   só trocar aqui — todo o resto sai destes cinco.)
-
-   O oposto da pale: não tem cor de acento nenhuma. É tonal, e isso muda o
-   desenho, não só as cores. Sem um tom vivo para destacar, quem separa uma
-   coisa da outra passa a ser o contraste entre claro e escuro — botão escuro
-   sobre branco, texto claro sobre preto, e o azul e o roxo aparecendo como
-   fundo, não como grito.
-
-   Combina com o site por um motivo concreto: o marinho da logo já é um azul
-   escuro dessaturado, e #151b26 é ele com menos saturação ainda. */
-
-html[data-paleta="noite"] body {
-  --blue: #151b26;
-  --blue-bright: #2c2739;
-  --violet: #2c2739;
-  --violet-soft: #3d3750;
-  --magenta: #2c2739;
-  --magenta-bright: #3d3750;
-  --amber: #2c2739;
-  --amber-bright: #151b26;
-  --amber-dark: #2c2739;
-
-  --grad-brand: linear-gradient(100deg, #131313, #151b26 48%, #2c2739);
-  --grad-glow: linear-gradient(100deg, #151b26, #2c2739 55%, #3d3750);
-}
-
-/* Sobre fundo escuro o acento inverte: sem cor viva na paleta, quem destaca
-   é o claro. */
-html[data-paleta="noite"] .pd-hero,
-html[data-paleta="noite"] .pd-section.is-escuro,
-html[data-paleta="noite"] .mz-hero,
-html[data-paleta="noite"] #contato,
-html[data-paleta="noite"] .calculator {
-  --violet: #d9d9d9;
-  --violet-soft: #d9d9d9;
-  --amber: #d9d9d9;
-  --amber-bright: #fff;
-  --amber-dark: #d9d9d9;
-  --magenta-bright: #d9d9d9;
-}
-
-/* Os fundos escuros: preto neutro com o azul e o roxo entrando como luz. */
-html[data-paleta="noite"] .mz-hero.is-limpo {
-  background:
-    repeating-linear-gradient(115deg, transparent 0 26px, rgba(255, 255, 255, .018) 26px 27px),
-    radial-gradient(1000px 700px at 18% 12%, rgba(44, 39, 57, .85), transparent 70%),
-    #131313;
-  background-color: #131313;
-}
-html[data-paleta="noite"] .mz-hero.is-limpo .hero-kicker { color: #d9d9d9; }
-/* Sem acento, o que destaca a palavra é o peso e o branco puro contra o
-   cinza do resto da frase.
-
-   Precisa trocar color E -webkit-text-fill-color: a regra do hero limpo fixa
-   o segundo, e ele manda no primeiro na hora de pintar a letra. */
-html[data-paleta="noite"] .mz-hero.is-limpo h1 { color: #9aa1ab; }
-html[data-paleta="noite"] .mz-hero.is-limpo h1 em {
-  color: #fff;
-  -webkit-text-fill-color: #fff;
-}
-
-html[data-paleta="noite"] .pd-hero {
-  background:
-    radial-gradient(1180px 720px at 84% 6%, rgba(44, 39, 57, .9), transparent 66%),
-    radial-gradient(920px 640px at 6% 92%, rgba(21, 27, 38, .95), transparent 64%),
-    linear-gradient(152deg, #131313 0%, #151b26 55%, #2c2739 100%);
-  background-color: #131313;
-}
-html[data-paleta="noite"] .pd-section.is-escuro {
-  background:
-    radial-gradient(900px 520px at 14% 12%, rgba(44, 39, 57, .8), transparent 64%),
-    linear-gradient(162deg, #131313 0%, #151b26 60%, #1d2130 100%);
-  background-color: #131313;
-}
-
-html[data-paleta="noite"] .pd-hero h1 em,
-html[data-paleta="noite"] .pd-section.is-escuro .pd-flow-head h2 em {
-  background: linear-gradient(100deg, #d9d9d9, #fff 60%, #d9d9d9);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-html[data-paleta="noite"] .pd-section.is-escuro .section-label,
-html[data-paleta="noite"] .pd-crumbs b { color: #d9d9d9; }
-
-html[data-paleta="noite"] .pd-linha-trilho i { background: linear-gradient(180deg, #151b26, #2c2739 60%, #3d3750); }
-html[data-paleta="noite"] .pd-passo-n { color: rgba(44, 39, 57, .12); }
-html[data-paleta="noite"] .pd-passo.is-on::before { box-shadow: 0 0 0 5px rgba(44, 39, 57, .16); }
-
-/* No painel, a escala vem só da opacidade de um tom — que é o que uma paleta
-   sem acento permite fazer, e continua legível. */
-html[data-paleta="noite"] .pd-pn-kpi { border-left-color: #151b26; }
-html[data-paleta="noite"] .pd-pn-kpi:nth-child(2) { border-left-color: #2c2739; }
-html[data-paleta="noite"] .pd-pn-kpi:nth-child(3) { border-left-color: #3d3750; }
-html[data-paleta="noite"] .pd-pn-meta u::before { background: #151b26; }
-html[data-paleta="noite"] .pd-pn-barras u { background: #2c2739; }
-html[data-paleta="noite"] .pd-pn-barras li:nth-child(2) u { background: #3d3750; }
-html[data-paleta="noite"] .pd-pn-barras li:nth-child(3) u { background: #524c68; }
-html[data-paleta="noite"] .pd-pn-barras li:nth-child(4) u { background: #6b657f; }
-html[data-paleta="noite"] .pd-pn-barras li:nth-child(5) u { background: #8b8799; }
-html[data-paleta="noite"] .pd-pn-barras li:nth-child(6) u { background: #adaab6; }
-html[data-paleta="noite"] .pd-pn-serie i { background: #c9c7d0; }
-html[data-paleta="noite"] .pd-pn-serie i:last-child { background: #2c2739; }
-html[data-paleta="noite"] .pd-pn-tag { background: rgba(44, 39, 57, .1); color: #2c2739; }
-
-/* O cinza da paleta nas seções claras alternadas. */
-html[data-paleta="noite"] .pd-section.is-alt,
-html[data-paleta="noite"] .faq { background: #d9d9d9; }
-html[data-paleta="noite"] .pd-cartao { background: #d9d9d9; }
-
 /* ── restos de violeta que não passam por token ─────────────────────────────
    O brilho do botão é uma sombra com rgba escrito à mão, então nenhuma troca
    de token o alcança. Sem esta regra, o botão fica preto com um halo roxo. */
@@ -244,7 +304,22 @@ html[data-paleta="pale"] .button-primary:hover { box-shadow: 0 12px 30px rgba(74
 html[data-paleta="pale"] .mz-hero.is-limpo .button-primary { box-shadow: 0 10px 40px rgba(111, 168, 220, .34); }
 html[data-paleta="pale"] .mz-hero.is-limpo .button-primary:hover { box-shadow: 0 14px 52px rgba(111, 168, 220, .46); }
 
-html[data-paleta="noite"] .button-primary { box-shadow: 0 8px 22px rgba(19, 19, 19, .35); }
-html[data-paleta="noite"] .button-primary:hover { box-shadow: 0 12px 30px rgba(19, 19, 19, .48); }
-html[data-paleta="noite"] .mz-hero.is-limpo .button-primary { box-shadow: 0 10px 40px rgba(44, 39, 57, .8); }
-html[data-paleta="noite"] .mz-hero.is-limpo .button-primary:hover { box-shadow: 0 14px 52px rgba(44, 39, 57, .95); }
+.button-primary { box-shadow: 0 8px 22px rgba(19, 19, 19, .35); }
+.button-primary:hover { box-shadow: 0 12px 30px rgba(19, 19, 19, .48); }
+.mz-hero.is-limpo .button-primary { box-shadow: 0 10px 40px rgba(44, 39, 57, .8); }
+.mz-hero.is-limpo .button-primary:hover { box-shadow: 0 14px 52px rgba(44, 39, 57, .95); }
+
+/* ── marca: as cores originais do site, para comparação ────────────────── */
+html[data-paleta="marca"] body {
+  --blue: #065bff;
+  --blue-bright: #169bff;
+  --violet: #6738ff;
+  --violet-soft: #9146ff;
+  --magenta: #f725c7;
+  --magenta-bright: #ff4fd8;
+  --amber: #6738ff;
+  --amber-bright: #9146ff;
+  --amber-dark: #6738ff;
+  --grad-brand: linear-gradient(100deg, #065bff, #6738ff 52%, #f725c7);
+  --grad-glow: linear-gradient(100deg, #169bff, #9146ff 52%, #ff4fd8);
+}
