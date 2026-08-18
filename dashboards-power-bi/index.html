@@ -152,7 +152,7 @@
 <link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-7">
 <link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-23">
-<link rel="stylesheet" href="../assets/css/produto.css?v=produto-20">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-22">
 </head>
 <body>
 
@@ -192,7 +192,7 @@
 </header>
 
 <main id="conteudo">
-  <section class="mz-hero pd-hero" id="inicio" data-hero>
+  <section class="mz-hero pd-hero is-vitrine" id="inicio" data-hero>
 
     <div class="mz-hero-inner">
       <div class="mz-hero-copy">
@@ -211,23 +211,76 @@
         </div>
       </div>
 
-      <div class="pd-hero-arte reveal" aria-label="Exemplo da entrega: as fontes são integradas e o painel se atualiza sozinho">
-        <div class="pd-arte">
-          <div class="pd-arte-topo"><span>Fontes</span><b>integradas</b></div>
-          <ul class="pd-arte-campos">
-            <li><span>ERP</span><b>venda e estoque</b></li>
-            <li><span>Planilhas</span><b>metas por área</b></li>
-            <li><span>Atualização</span><b class="is-ok">diária, automática</b></li>
-          </ul>
+      <div class="pd-painel reveal" role="img" aria-label="Ilustração de um relatório de vendas em Power BI, com indicadores, faturamento por grupo de produto, série ao longo do tempo e quebra por região. Os dados são de exemplo.">
+        <div class="pd-pn-topo" aria-hidden="true">
+          <span class="pd-pn-nome"><b>Performance de vendas</b><span class="pd-pn-tag">exemplo</span></span>
+          <span class="pd-pn-filtros">
+            <span class="pd-pn-filtro"><small>Visão</small><b>Mês</b></span>
+            <span class="pd-pn-filtro"><small>Ano</small><b>2026</b></span>
+            <span class="pd-pn-filtro"><small>Período</small><b>Todos</b></span>
+            <span class="pd-pn-filtro"><small>Indicador</small><b>Faturamento</b></span>
+          </span>
         </div>
 
-        <div class="pd-arte">
-          <div class="pd-arte-topo"><span>Painel</span><b>publicado</b></div>
-          <ul class="pd-arte-campos">
-            <li><span>Indicadores</span><b>por área</b></li>
-            <li><span>Acesso</span><b>por login</b></li>
-            <li><span>Origem do número</span><b class="is-ok">rastreável</b></li>
-          </ul>
+        <div class="pd-pn-corpo" aria-hidden="true">
+          <div class="pd-pn-bloco">
+            <b>Principais indicadores</b>
+            <div class="pd-pn-kpis">
+            <div class="pd-pn-kpi">
+              <small>Faturamento</small>
+              <strong>R$ 6.978.211</strong>
+              <i>Melhor mês: outubro</i>
+              <i><em>+53,0% vs. ano anterior</em></i>
+              <span class="pd-pn-meta"><span>Meta</span><u style="--n:104%"></u><b>104%</b></span>
+            </div>
+            <div class="pd-pn-kpi">
+              <small>Margem bruta</small>
+              <strong>R$ 3.098.759</strong>
+              <i>44,4% do faturamento</i>
+              <i><em>+42,4% vs. ano anterior</em></i>
+              <span class="pd-pn-meta"><span>Meta</span><u style="--n:101%"></u><b>101%</b></span>
+            </div>
+            <div class="pd-pn-kpi">
+              <small>Pedidos</small>
+              <strong>22.456</strong>
+              <i>Ticket médio: R$ 310,75</i>
+              <i><em>+80,8% vs. ano anterior</em></i>
+              <span class="pd-pn-meta"><span>Meta</span><u style="--n:96%"></u><b>96%</b></span>
+            </div>
+            </div>
+          </div>
+
+          <div class="pd-pn-bloco">
+            <b>Faturamento por grupo de produto</b>
+            <ul class="pd-pn-barras">
+              <li><span>Farinhas de trigo</span><u style="--n:100%"></u><b>R$ 1,67 Mi</b></li>
+              <li><span>Fermentos</span><u style="--n:85%"></u><b>R$ 1,42 Mi</b></li>
+              <li><span>Óleos</span><u style="--n:71%"></u><b>R$ 1,18 Mi</b></li>
+              <li><span>Farinhas mistas</span><u style="--n:58%"></u><b>R$ 0,96 Mi</b></li>
+              <li><span>Farofas</span><u style="--n:53%"></u><b>R$ 0,88 Mi</b></li>
+              <li><span>Doces</span><u style="--n:52%"></u><b>R$ 0,87 Mi</b></li>
+            </ul>
+          </div>
+
+          <div class="pd-pn-bloco">
+            <b>Faturamento ao longo do tempo</b>
+            <div class="pd-pn-serie"><i style="--n:38%"></i><i style="--n:46%"></i><i style="--n:41%"></i><i style="--n:55%"></i><i style="--n:49%"></i><i style="--n:62%"></i><i style="--n:58%"></i><i style="--n:71%"></i><i style="--n:66%"></i><i style="--n:92%"></i><i style="--n:78%"></i><i style="--n:85%"></i></div>
+            <div class="pd-pn-meses"><span>jan</span><span>abr</span><span>jul</span><span>out</span><span>dez</span></div>
+          </div>
+
+          <div class="pd-pn-bloco">
+            <b>Faturamento por região</b>
+            <table class="pd-pn-tabela">
+              <thead><tr><th>Região</th><th>Faturamento</th><th>% da meta</th></tr></thead>
+              <tbody>
+                <tr><td>Sudeste</td><td>R$ 2,44 Mi</td><td class="is-ok">118%</td></tr>
+                <tr><td>Sul</td><td>R$ 1,68 Mi</td><td class="is-ok">109%</td></tr>
+                <tr><td>Nordeste</td><td>R$ 1,21 Mi</td><td class="is-ok">104%</td></tr>
+                <tr><td>Centro-Oeste</td><td>R$ 0,93 Mi</td><td class="">97%</td></tr>
+                <tr><td>Norte</td><td>R$ 0,72 Mi</td><td class="">91%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

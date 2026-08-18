@@ -86,6 +86,220 @@
   text-align: left;
 }
 
+/* ── hero vitrine: a copy em cima, o painel grande embaixo ──────────────── */
+
+/* Variante do hero para quando o produto se explica melhor sendo mostrado do
+   que descrito. A copy deixa de dividir a largura com a arte e o painel entra
+   inteiro embaixo, cortado pela borda da seção — o corte é de propósito: ele
+   diz que tem mais coisa ali do que cabe na tela, que é exatamente o que um
+   relatório é. */
+.pd-hero.is-vitrine { padding-bottom: 0; overflow: hidden; }
+.pd-hero.is-vitrine .mz-hero-inner { display: block; max-width: 1180px; }
+.pd-hero.is-vitrine .mz-hero-copy { max-width: 640px; margin-inline: 0; }
+
+/* ── o painel ───────────────────────────────────────────────────────────── */
+
+/* Uma ilustração de relatório, montada em HTML e não em imagem: o texto fica
+   nítido em qualquer tela, o peso é de alguns kB e dá para mexer nos números
+   sem abrir editor. Os dados são de exemplo, e a etiqueta no topo diz isso —
+   página de produto com número que parece de cliente é problema, não enfeite.
+
+   A escala inteira sai do font-size do bloco: tudo aqui dentro é em em, então
+   encolher o painel no celular é mudar uma linha. */
+.pd-painel {
+  max-width: 1180px;
+  margin: 68px auto -78px;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .12), 0 44px 120px rgba(1, 8, 24, .62);
+  font-size: 12px;
+  line-height: 1.4;
+  color: #1b2733;
+  text-align: left;
+}
+
+.pd-pn-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4em;
+  padding: 1em 1.3em;
+  border-bottom: 1px solid #e3e9f0;
+  background: #f5f7fa;
+}
+.pd-pn-nome { display: flex; align-items: center; gap: .9em; min-width: 0; }
+.pd-pn-nome b {
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pd-pn-tag {
+  flex: none;
+  padding: .3em .7em;
+  border-radius: .35em;
+  background: rgba(103, 56, 255, .1);
+  color: var(--violet);
+  font: .72em/1 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.pd-pn-filtros { display: flex; gap: .6em; }
+.pd-pn-filtro {
+  min-width: 7em;
+  padding: .45em .7em;
+  border: 1px solid #d9e1ea;
+  border-radius: .35em;
+  background: #fff;
+}
+.pd-pn-filtro small {
+  display: block;
+  margin-bottom: .25em;
+  color: #7e8ea0;
+  font-size: .7em;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.pd-pn-filtro b { font-size: .85em; font-weight: 600; }
+
+.pd-pn-corpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+  gap: .8em;
+  padding: .9em;
+  background: #edf1f6;
+}
+.pd-pn-bloco {
+  padding: 1em 1.1em 1.1em;
+  border-radius: .5em;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(2, 24, 44, .07);
+}
+.pd-pn-bloco > b {
+  display: block;
+  margin-bottom: 1.1em;
+  color: #56697d;
+  font-size: .78em;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* Os três indicadores do topo. A faixa colorida à esquerda é o que o Power BI
+   faz num cartão de KPI, e é ela que separa um número do outro sem borda. */
+.pd-pn-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7em; }
+.pd-pn-kpi {
+  padding: .85em .95em .95em;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 .4em .4em 0;
+  background: #f7f9fc;
+}
+.pd-pn-kpi:nth-child(2) { border-left-color: var(--violet); }
+.pd-pn-kpi:nth-child(3) { border-left-color: var(--magenta); }
+.pd-pn-kpi small {
+  display: block;
+  color: #7e8ea0;
+  font-size: .72em;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.pd-pn-kpi strong {
+  display: block;
+  margin: .35em 0 .6em;
+  font-size: 1.55em;
+  font-weight: 620;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+.pd-pn-kpi i { display: block; color: #6b7c8f; font-size: .76em; font-style: normal; }
+.pd-pn-kpi i em { color: #12a150; font-style: normal; font-weight: 600; }
+
+.pd-pn-meta { display: flex; align-items: center; gap: .5em; margin-top: .7em; }
+.pd-pn-meta span { flex: none; color: #7e8ea0; font-size: .7em; letter-spacing: .08em; text-transform: uppercase; }
+.pd-pn-meta u {
+  flex: 1;
+  height: .5em;
+  border-radius: .25em;
+  background: #dde5ee;
+  text-decoration: none;
+  overflow: hidden;
+}
+.pd-pn-meta u::before {
+  content: "";
+  display: block;
+  width: var(--n);
+  height: 100%;
+  border-radius: .25em;
+  background: var(--grad-brand);
+}
+.pd-pn-meta b { flex: none; font-size: .78em; font-variant-numeric: tabular-nums; }
+
+/* Barras horizontais: rótulo, trilho e valor na ponta. */
+.pd-pn-barras { list-style: none; display: grid; gap: .62em; }
+.pd-pn-barras li { display: grid; grid-template-columns: 8.5em minmax(0, 1fr) 4.6em; align-items: center; gap: .7em; }
+.pd-pn-barras span { color: #56697d; font-size: .8em; }
+.pd-pn-barras u {
+  height: 1.05em;
+  border-radius: .18em;
+  background: linear-gradient(90deg, var(--blue), var(--violet));
+  text-decoration: none;
+  width: var(--n);
+}
+.pd-pn-barras b { color: #1b2733; font-size: .78em; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* A série do tempo: barras verticais e uma linha de base. */
+.pd-pn-serie { display: flex; align-items: flex-end; gap: .4em; height: 10.2em; padding-bottom: .5em; border-bottom: 1px solid #e3e9f0; }
+.pd-pn-serie i {
+  flex: 1;
+  height: var(--n);
+  border-radius: .18em .18em 0 0;
+  background: linear-gradient(180deg, var(--violet), rgba(103, 56, 255, .38));
+}
+.pd-pn-serie i:last-child { background: linear-gradient(180deg, var(--magenta), rgba(247, 37, 199, .4)); }
+.pd-pn-meses { display: flex; justify-content: space-between; margin-top: .5em; color: #8395a6; font-size: .7em; }
+
+/* A tabela da direita. */
+.pd-pn-tabela { width: 100%; border-collapse: collapse; }
+.pd-pn-tabela th {
+  padding: 0 0 .6em;
+  border-bottom: 1px solid #e3e9f0;
+  color: #7e8ea0;
+  font-size: .7em;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: right;
+}
+.pd-pn-tabela th:first-child { text-align: left; }
+.pd-pn-tabela td {
+  padding: .62em 0;
+  border-bottom: 1px solid #f0f4f8;
+  font-size: .82em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.pd-pn-tabela td:first-child { text-align: left; color: #56697d; }
+.pd-pn-tabela tr:last-child td { border-bottom: 0; }
+.pd-pn-tabela .is-ok { color: #12a150; font-weight: 600; }
+
+@media (max-width: 1040px) {
+  .pd-painel { font-size: 10.5px; margin-bottom: -100px; }
+}
+@media (max-width: 780px) {
+  .pd-painel { font-size: 9px; margin-top: 48px; margin-bottom: -70px; }
+  .pd-pn-topo { flex-wrap: wrap; gap: .9em; }
+  .pd-pn-corpo { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  /* Abaixo disto o painel inteiro vira ilegível de qualquer jeito. Melhor
+     mostrar só o topo — os indicadores — do que espremer tudo. */
+  .pd-painel { font-size: 8px; }
+  .pd-pn-filtros { display: none; }
+}
+
 /* ─────────────────────────────────────────────────────────────── seções */
 
 .pd-section { padding: 100px 0; background: var(--paper-bright); }
