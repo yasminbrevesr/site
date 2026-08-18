@@ -128,6 +128,131 @@
       ]
     },
 
+    /* Página do produto automação de processos. */
+    automacao: {
+      saudacao: 'Olá! Este chat responde as dúvidas mais comuns sobre automação de processos. O que você quer saber?',
+      perguntas: [
+        {
+          p: 'O que dá para automatizar?',
+          r: 'Rotina que se repete e tem regra clara: transferir informação entre sistemas, atualizar planilha e banco de dados, conferir pedido contra nota, gerar documento e relatório, montar e enviar o arquivo de sempre. Se alguém faz a mesma coisa toda semana seguindo um critério, em geral dá para automatizar.',
+          wa: 'Olá! Queria entender o que dá para automatizar na minha operação.'
+        },
+        {
+          p: 'Preciso trocar de sistema?',
+          r: 'Não. A automação entra em volta do que já existe — lê a planilha, o e-mail e o sistema que a sua equipe usa hoje. Trocar de ferramenta é outro projeto, e quase nunca é o que estava travando a rotina.',
+          wa: 'Olá! Queria saber se a automação da BREVES funciona com os sistemas que eu já uso.'
+        },
+        {
+          p: 'E se der erro?',
+          r: 'A automação confere a estrutura antes de processar e para quando algo foge do previsto, avisando alguém em vez de gravar dado errado. Cada execução também deixa registro do que leu e do que fez, então dá para auditar qualquer dia depois.',
+          wa: 'Olá! Queria entender como a BREVES trata erro em automação.'
+        },
+        {
+          p: 'Vai substituir minha equipe?',
+          r: 'Não. Substitui a parte do dia que ninguém queria fazer: copiar, conferir linha por linha e montar o mesmo arquivo. O que exige julgamento, negociação ou exceção continua com quem sabe decidir.',
+          wa: 'Olá! Queria entender como a automação se encaixa na rotina da minha equipe.'
+        },
+        {
+          p: 'Quanto custa?',
+          r: 'Não temos tabela de preço, e chutar um valor sem conhecer a rotina seria desonesto. O escopo sai de uma conversa inicial, em que entendemos quem faz a tarefa hoje e o que decide o resultado — e essa primeira conversa é sem compromisso.',
+          wa: 'Olá! Queria entender como funciona o orçamento de uma automação da BREVES.'
+        }
+      ]
+    },
+    /* Página do produto integração entre sistemas. */
+    integracao: {
+      saudacao: 'Olá! Este chat responde as dúvidas mais comuns sobre integração entre sistemas. O que você quer saber?',
+      perguntas: [
+        {
+          p: 'O que dá para integrar?',
+          r: 'ERP, CRM, e-commerce, marketplace, banco de dados, planilha, agenda e ferramentas internas. Já conectamos ERPs, CRMs, marketplaces, Power BI, Excel, Google Sheets e plataformas de automação. Na prática depende da API que a ferramenta abre.',
+          wa: 'Olá! Queria saber o que a BREVES consegue integrar.'
+        },
+        {
+          p: 'Meu sistema não tem API.',
+          r: 'Em geral ainda dá, por outro caminho: exportação programada, acesso ao banco ou troca de arquivo em pasta compartilhada. Fica menos imediato, mas resolve. Quando não há caminho nenhum, dizemos isso em vez de prometer.',
+          wa: 'Olá! Meu sistema não tem API e queria saber se dá para integrar.'
+        },
+        {
+          p: 'Preciso trocar de ERP?',
+          r: 'Não é o ponto de partida. Integrar custa menos e para menos a operação do que migrar. Trocar de sistema só entra na conversa quando o próprio sistema é o gargalo.',
+          wa: 'Olá! Queria saber se preciso trocar de ERP para integrar meus sistemas.'
+        },
+        {
+          p: 'E se a integração falhar?',
+          r: 'O registro entra na fila e é tentado de novo quando o outro lado voltar, e a falha vira aviso para uma pessoa. Cada troca guarda o que saiu, o que entrou e o que o outro lado respondeu.',
+          wa: 'Olá! Queria entender como a BREVES trata falha em integração.'
+        },
+        {
+          p: 'Quanto custa?',
+          r: 'Não temos tabela de preço. O escopo depende de quantos sistemas entram e do que cada um permite, então sai de uma conversa inicial — sem compromisso — em que entendemos o cenário antes de propor caminho.',
+          wa: 'Olá! Queria entender como funciona o orçamento de uma integração da BREVES.'
+        }
+      ]
+    },
+    /* Página do produto gestão de marketplace. */
+    marketplace: {
+      saudacao: 'Olá! Este chat responde as dúvidas mais comuns sobre gestão de marketplace. O que você quer saber?',
+      perguntas: [
+        {
+          p: 'O que vocês fazem pela minha loja?',
+          r: 'Revisão do anúncio — título, ficha técnica, foto, descrição e preço —, publicidade dentro do canal, estratégia de venda e acompanhamento do resultado por número. Estoque e envio continuam com você.',
+          wa: 'Olá! Queria entender o que a BREVES faz na gestão de marketplace.'
+        },
+        {
+          p: 'Vocês garantem aumento de venda?',
+          r: 'Não, e desconfie de quem garante. Venda depende de preço, produto, estoque, prazo e concorrência, e parte disso é da sua operação. O que garantimos é o trabalho feito e o resultado medido de forma honesta.',
+          wa: 'Olá! Queria entender que resultado esperar da gestão de marketplace da BREVES.'
+        },
+        {
+          p: 'Já tenho anúncio no ar.',
+          r: 'Melhor ainda: começa por uma revisão do que já existe. Em geral a maior parte do ganho está no título, na ficha técnica e na foto, antes de qualquer verba de publicidade.',
+          wa: 'Olá! Já vendo em marketplace e queria uma revisão dos meus anúncios.'
+        },
+        {
+          p: 'Em quais canais vocês atuam?',
+          r: 'Nos marketplaces mais usados no Brasil. O que muda de um para o outro é a regra de anúncio, o formato de publicidade e o critério de posição. Conte em qual você vende e dizemos com franqueza se faz sentido.',
+          wa: 'Olá! Queria saber em quais marketplaces a BREVES trabalha.'
+        },
+        {
+          p: 'Quanto custa?',
+          r: 'Não temos tabela de preço. O escopo depende de quantos canais e de quantos anúncios entram, então sai de uma conversa inicial — sem compromisso — em que entendemos a loja antes de propor caminho.',
+          wa: 'Olá! Queria entender como funciona o orçamento da gestão de marketplace da BREVES.'
+        }
+      ]
+    },
+    /* Página do produto painéis em power bi. */
+    powerbi: {
+      saudacao: 'Olá! Este chat responde as dúvidas mais comuns sobre painéis em Power BI. O que você quer saber?',
+      perguntas: [
+        {
+          p: 'Como vocês trabalham?',
+          r: 'A ordem importa: primeiro entender qual decisão está travada, depois organizar de onde vem cada número, depois automatizar a carga e só então montar o painel. Painel sobre planilha alimentada à mão quebra na primeira semana em que alguém esquece de salvar.',
+          wa: 'Olá! Queria entender como a BREVES trabalha com Power BI.'
+        },
+        {
+          p: 'Meus dados estão em planilha.',
+          r: 'É o cenário mais comum, e dá para começar assim. A diferença é que a planilha entra como fonte a ser organizada e integrada, não como base permanente. Se ela continuar sendo alimentada à mão, o painel herda o mesmo problema.',
+          wa: 'Olá! Meus dados estão em planilha e queria saber se dá para montar um painel.'
+        },
+        {
+          p: 'Pronto ou sob medida?',
+          r: 'Modelo pronto serve para ver rápido como uma coisa parece, e trava assim que o seu processo não é igual ao do modelo. Sob medida custa mais no começo e é o que sobrevive à segunda mudança da operação.',
+          wa: 'Olá! Queria entender a diferença entre dashboard pronto e sob medida.'
+        },
+        {
+          p: 'Quem mantém depois?',
+          r: 'É combinado antes. Dá para entregar com documentação para a sua equipe assumir, ou acompanhar a evolução junto. O que não dá é entregar e sumir: fonte muda, e painel sem dono para de valer em poucos meses.',
+          wa: 'Olá! Queria entender como fica a manutenção de um painel feito pela BREVES.'
+        },
+        {
+          p: 'Quanto custa?',
+          r: 'Não temos tabela de preço. O valor depende de quantas fontes entram e do estado em que elas estão — integrar costuma pesar mais que montar o painel. O escopo sai de uma conversa inicial, sem compromisso.',
+          wa: 'Olá! Queria entender como funciona o orçamento de um painel em Power BI da BREVES.'
+        }
+      ]
+    },
+
     juridico: {
       saudacao: 'Olá! Aqui dá para tirar as dúvidas mais comuns sobre a BREVES Jurídico. Sobre o que você quer saber?',
       perguntas: [
@@ -173,8 +298,12 @@
   var ORIGEM = {
     matriz: 'site-matriz-tecnologia',
     juridico: 'site-principal-juridico',
+    automacao: 'site-produto-automacao-de-processos',
+    integracao: 'site-produto-integracao-de-sistemas',
+    agentes: 'site-produto-agentes-de-ia',
     chatbot: 'site-produto-chatbot',
-    agentes: 'site-produto-agentes-de-ia'
+    marketplace: 'site-produto-gestao-de-marketplace',
+    powerbi: 'site-produto-dashboards-power-bi'
   };
 
   var script = document.querySelector('script[data-breves-chat]');

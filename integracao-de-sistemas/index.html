@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKBH3N8BSZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKBH3N8BSZ');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<title>Integração entre sistemas e APIs | BREVES</title>
+
+<meta name="description" content="Conectamos ERP, CRM, e-commerce e planilhas por API para a informação circular sozinha entre os sistemas, sem redigitação e sem divergência.">
+
+<link rel="canonical" href="https://brevestech.com/integracao-de-sistemas/">
+
+<!-- Identidade da página -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BREVES">
+<meta property="og:title" content="Integração entre sistemas e APIs | BREVES">
+<meta property="og:description" content="Pedido, estoque, cadastro e status circulando sozinhos entre os sistemas que a sua empresa já usa — o dado digitado uma vez só.">
+<meta property="og:url" content="https://brevestech.com/integracao-de-sistemas/">
+<meta property="og:image" content="https://brevestech.com/assets/media/og-breves.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BREVES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://brevestech.com/assets/media/og-breves.png">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/media/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/media/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/media/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/media/apple-touch-icon.png">
+
+<!-- Dados estruturados da página -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://brevestech.com/integracao-de-sistemas/#webpage",
+      "url": "https://brevestech.com/integracao-de-sistemas/",
+      "name": "Integração entre sistemas e APIs | BREVES",
+      "description": "Desenvolvimento e integração de APIs entre ERPs, CRMs, e-commerce, bancos de dados e sistemas internos, para sincronizar informações e eliminar a digitação do mesmo dado em mais de um lugar.",
+      "isPartOf": {
+        "@id": "https://brevestech.com/#website"
+      },
+      "publisher": {
+        "@id": "https://brevestech.com/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://brevestech.com/integracao-de-sistemas/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://brevestech.com/integracao-de-sistemas/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://brevestech.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Produtos",
+          "item": "https://brevestech.com/#produtos"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Integração entre sistemas"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://brevestech.com/integracao-de-sistemas/#servico",
+      "name": "Integração entre sistemas e APIs",
+      "serviceType": "Integração de sistemas empresariais",
+      "description": "Desenvolvimento e integração de APIs entre ERPs, CRMs, e-commerce, bancos de dados e sistemas internos, para sincronizar informações e eliminar a digitação do mesmo dado em mais de um lugar.",
+      "provider": {
+        "@id": "https://brevestech.com/#organization"
+      },
+      "areaServed": "BR"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://brevestech.com/integracao-de-sistemas/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Meu sistema não tem API. Dá para integrar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Em geral sim, por outro caminho: exportação programada, acesso ao banco ou troca de arquivo em pasta compartilhada. Fica menos imediato que uma API, mas resolve. Quando não há caminho nenhum, dizemos isso em vez de vender uma integração que não vai existir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E se um dos sistemas sair do ar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O registro entra na fila e é tentado de novo quando o outro lado voltar. Nada é descartado em silêncio, e alguém é avisado se a falha persistir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês trocam meu ERP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não é o ponto de partida. Integrar custa menos e para menos a operação do que migrar. Trocar de sistema só entra na conversa quando o próprio sistema é o gargalo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo leva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de quantos sistemas entram e do que cada um permite. A implantação acontece por etapas: começa pela troca mais crítica, entra em operação e cresce a partir do que aparece na prática."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como fica a segurança dos dados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A integração usa as credenciais e as permissões que você definir, com acesso restrito ao que ela precisa ler e escrever. Cada troca fica registrada, então dá para auditar o que circulou."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="../assets/css/site.css?v=identidade-1">
+<link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
+<link rel="stylesheet" href="../assets/css/chat.css?v=chat-7">
+<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-23">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-18">
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<div class="page-progress" aria-hidden="true"><i data-page-progress></i></div>
+
+<header class="site-header" data-header>
+  <div class="nav-shell">
+    <a class="brand" href="../" aria-label="BREVES — início">
+      <img src="../assets/media/newlogo-mark.png" alt="">
+      <span><b>BREVES</b><small>TECNOLOGIA</small></span>
+    </a>
+
+    <nav id="main-nav" aria-label="Navegação principal">
+      <div class="nav-drop">
+        <a class="nav-drop-trigger" href="../#produtos">Produtos <i aria-hidden="true"></i></a>
+        <div class="nav-drop-menu">
+          <a href="../automacao-de-processos/">Automação de processos</a>
+          <a class="is-here" href="./">Integração entre sistemas</a>
+          <a href="../agentes-de-ia/">Agentes de IA</a>
+          <a href="../chatbot/">Chatbot com IA</a>
+          <a href="../gestao-de-marketplace/">Gestão de marketplace</a>
+          <a href="../dashboards-power-bi/">Painéis em Power BI</a>
+        </div>
+      </div>
+      <a href="#como-funciona" data-nav="como-funciona">Como funciona</a>
+      <a href="#recursos" data-nav="recursos">Recursos</a>
+      <a href="#duvidas" data-nav="duvidas">Dúvidas</a>
+      <a href="../juridico/" class="nav-external">Jurídico <span aria-hidden="true">↗︎</span></a>
+    </nav>
+
+    <a class="nav-cta" href="../#contato" data-magnetic>Iniciar conversa <span aria-hidden="true">↗︎</span></a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="mz-hero pd-hero" id="inicio" data-hero>
+
+    <div class="mz-hero-inner">
+      <div class="mz-hero-copy">
+        <nav class="pd-crumbs reveal in" aria-label="Trilha de navegação">
+          <a href="../">Início</a><span aria-hidden="true">/</span><a href="../#produtos">Produtos</a><span aria-hidden="true">/</span><b>Integração entre sistemas</b>
+        </nav>
+        <div class="pd-hero-badge reveal in">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H7a5 5 0 0 0 0 10h2m6-10h2a5 5 0 0 1 0 10h-2M8 12h8"/></svg>
+          API · ERP · CRM · Planilhas
+        </div>
+        <h1 class="reveal in">Integração entre sistemas para o dado ser digitado <em>uma vez só.</em></h1>
+        <p class="pd-hero-text reveal in">Informação redigitada em dois lugares vira divergência, e divergência aparece no fechamento do mês. Conectamos por API os sistemas que a sua empresa já usa, para que pedido, estoque, cadastro e status circulem sozinhos entre eles.</p>
+        <div class="mz-hero-actions reveal in">
+          <a class="button button-primary" href="../?produto=integracao#contato" data-magnetic>Quero integrar meus sistemas <span aria-hidden="true">→</span></a>
+          <a class="mz-btn-ghost" href="#como-funciona">Ver como funciona</a>
+        </div>
+      </div>
+
+      <div class="pd-hero-arte reveal" aria-label="Exemplo de uma integração: o pedido criado na loja chega ao ERP e ao CRM sem ninguém redigitar">
+        <div class="pd-arte">
+          <div class="pd-arte-topo"><span>Gatilho</span><b>pedido criado na loja</b></div>
+          <ul class="pd-arte-campos">
+            <li><span>Origem</span><b>e-commerce</b></li>
+            <li><span>Campos mapeados</span><b>14</b></li>
+            <li><span>Regra</span><b>só pedido pago</b></li>
+          </ul>
+        </div>
+
+        <div class="pd-arte">
+          <div class="pd-arte-topo"><span>Sincronização</span><b>concluída</b></div>
+          <ul class="pd-arte-campos">
+            <li><span>ERP</span><b class="is-ok">atualizado</b></li>
+            <li><span>CRM</span><b class="is-ok">atualizado</b></li>
+            <li><span>Estoque</span><b class="is-ok">baixado</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pd-flow" id="como-funciona">
+    <div class="section-frame">
+      <header class="pd-flow-head reveal">
+        <div class="section-label">Como funciona</div>
+        <h2 data-editorial>De um sistema ao outro,<br><em>sem ninguém redigitar.</em></h2>
+      </header>
+
+      <div class="pd-linha is-texto" data-linha>
+        <div class="pd-linha-trilho" aria-hidden="true"><i data-linha-preenche></i></div>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">01</span>
+            <h3>Mapeia o que precisa circular</h3>
+            <p>Nem todo dado precisa ir para todo lugar. O primeiro passo é decidir o que sai de onde, para onde vai, com que frequência e quem manda quando os dois lados discordam.</p>
+          </div>
+        </article>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">02</span>
+            <h3>Abre o caminho</h3>
+            <p>Onde o sistema publica API, a conexão é direta. Onde não publica, existem outros caminhos — exportação programada, banco, arquivo — e a escolha depende do que a ferramenta permite, não do que seria mais bonito.</p>
+          </div>
+        </article>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">03</span>
+            <h3>Traduz de um lado para o outro</h3>
+            <p>Cada sistema chama a mesma coisa por um nome diferente e guarda a data de um jeito. A integração faz essa tradução, que é onde a maioria delas quebra.</p>
+          </div>
+        </article>
+
+        <article class="pd-passo" data-passo>
+          <div class="pd-passo-copy">
+            <span class="pd-passo-n" aria-hidden="true">04</span>
+            <h3>Cuida do que falha</h3>
+            <p>Integração que quebra em silêncio é pior que integração nenhuma. Quando o outro lado sai do ar ou recusa o registro, o caso fica na fila, é tentado de novo e alguém é avisado.</p>
+          </div>
+        </article>
+
+        <div class="pd-linha-fim" data-passo data-linha-fim>
+          <a class="button button-primary" href="../?produto=integracao#contato" data-magnetic>Começar agora <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section is-alt" id="recursos">
+    <div class="section-frame">
+      <header class="pd-flow-head reveal">
+        <div class="section-label">Recursos</div>
+        <h2 data-editorial>O que separa uma integração<br><em>de uma exportação de planilha.</em></h2>
+      </header>
+
+      <div class="pd-feats reveal">
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Conecta os dois sentidos</b>
+          <p>Não é só puxar dado para relatório. O que precisa voltar volta: status, código, confirmação e baixa de estoque.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Sabe quem manda</b>
+          <p>Quando os dois lados têm a mesma informação diferente, a regra de precedência está definida antes — e não é decidida no susto.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Não perde registro</b>
+          <p>Se o outro sistema recusa ou sai do ar, o caso entra na fila e é tentado de novo, em vez de simplesmente sumir.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Avisa quando falha</b>
+          <p>Toda falha vira aviso para uma pessoa. Ninguém descobre no fechamento que a integração parou há duas semanas.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Deixa rastro</b>
+          <p>Cada troca guarda o que saiu, o que entrou e o que o outro lado respondeu. Dá para auditar um pedido específico depois.</p>
+        </article>
+        <article class="pd-feat">
+          <span class="pd-feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <b>Vale para o que existe hoje</b>
+          <p>Já conectamos ERPs, CRMs, marketplaces, bancos de dados, Power BI, Excel, Google Sheets e plataformas de automação. Na prática, depende da API que a ferramenta abre.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="duvidas">
+    <div class="section-frame faq-grid">
+      <div class="faq-intro reveal">
+        <div class="section-label">Dúvidas frequentes</div>
+        <h2 data-editorial>Antes de conectar, <em>é importante saber.</em></h2>
+        <p>Se a sua dúvida não estiver aqui, use o formulário e conte brevemente sobre o cenário.</p>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary><span>01</span>Meu sistema não tem API. Dá para integrar?<i></i></summary>
+          <p>Em geral sim, por outro caminho: exportação programada, acesso ao banco ou troca de arquivo em pasta compartilhada. Fica menos imediato que uma API, mas resolve. Quando não há caminho nenhum, dizemos isso em vez de vender uma integração que não vai existir.</p>
+        </details>
+        <details>
+          <summary><span>02</span>E se um dos sistemas sair do ar?<i></i></summary>
+          <p>O registro entra na fila e é tentado de novo quando o outro lado voltar. Nada é descartado em silêncio, e alguém é avisado se a falha persistir.</p>
+        </details>
+        <details>
+          <summary><span>03</span>Vocês trocam meu ERP?<i></i></summary>
+          <p>Não é o ponto de partida. Integrar custa menos e para menos a operação do que migrar. Trocar de sistema só entra na conversa quando o próprio sistema é o gargalo.</p>
+        </details>
+        <details>
+          <summary><span>04</span>Quanto tempo leva?<i></i></summary>
+          <p>Depende de quantos sistemas entram e do que cada um permite. A implantação acontece por etapas: começa pela troca mais crítica, entra em operação e cresce a partir do que aparece na prática.</p>
+        </details>
+        <details>
+          <summary><span>05</span>Como fica a segurança dos dados?<i></i></summary>
+          <p>A integração usa as credenciais e as permissões que você definir, com acesso restrito ao que ela precisa ler e escrever. Cada troca fica registrada, então dá para auditar o que circulou.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-final">
+    <div class="section-frame">
+      <div class="pd-final-card reveal">
+        <h2>Se o número não bate, <em>alguém está digitando duas vezes.</em></h2>
+        <p>Conte quais sistemas a sua empresa usa e onde a informação trava hoje. A partir daí desenhamos a integração em cima do que existe, e dizemos com franqueza o que dá e o que não dá para conectar.</p>
+        <div class="pd-final-actions">
+          <a class="button button-primary" href="../?produto=integracao#contato" data-magnetic>Falar sobre os meus sistemas <span aria-hidden="true">→</span></a>
+          <a class="mz-btn-ghost" href="../#produtos">Ver todos os produtos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer footer-rich">
+  <div class="section-frame">
+    <div class="footer-top">
+      <div class="footer-brand-block">
+        <a class="brand footer-brand" href="../" aria-label="BREVES Tecnologia — voltar ao início">
+          <img src="../assets/media/newlogo-mark.png" alt="BREVES"><span>BREVES</span>
+        </a>
+        <p>Tecnologia, dados e automação sob medida — a base que conecta toda a operação do seu negócio.</p>
+        <div class="footer-social" aria-label="Redes sociais">
+          <a class="fs-linkedin" href="https://www.linkedin.com/company/breves-corp/" target="_blank" rel="noopener noreferrer" aria-label="BREVES no LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.1 20.45H3.54V8.98H7.1v11.47Z"/></svg></a>
+          <a class="fs-instagram" href="https://www.instagram.com/brevescorp" target="_blank" rel="noopener noreferrer" aria-label="BREVES no Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></a>
+          <a class="fs-whatsapp" href="https://wa.me/5521984371741?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20integra%C3%A7%C3%A3o%20entre%20sistemas%20com%20a%20BREVES." target="_blank" rel="noopener noreferrer" aria-label="Falar com a BREVES no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.87 9.87 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2Zm0 1.83c2.16 0 4.19.84 5.72 2.37a8.03 8.03 0 0 1 2.37 5.72c0 4.46-3.63 8.08-8.09 8.08a8.2 8.2 0 0 1-4.13-1.13l-.3-.18-3.13.82.84-3.05-.2-.31a8.02 8.02 0 0 1-1.24-4.3c0-4.45 3.63-8.08 8.09-8.08Zm-3.2 4.3c-.15 0-.4.06-.61.28-.21.22-.8.79-.8 1.92s.82 2.23.94 2.38c.11.15 1.6 2.44 3.88 3.42.54.23.96.37 1.29.48.54.17 1.04.15 1.43.09.44-.06 1.34-.55 1.53-1.08.19-.53.19-.98.13-1.08-.06-.09-.21-.15-.44-.26-.23-.12-1.34-.66-1.55-.74-.21-.08-.36-.11-.51.11-.15.23-.58.74-.71.89-.13.15-.26.17-.49.06-.23-.12-.96-.36-1.83-1.13-.68-.6-1.13-1.35-1.27-1.57-.13-.23-.01-.35.1-.46.1-.1.23-.27.34-.4.11-.14.15-.23.23-.38.08-.15.04-.29-.02-.4-.06-.12-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39h-.43Z"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="footer-col" aria-label="Produtos">
+        <h3>Produtos</h3>
+        <a href="../automacao-de-processos/">Automação de processos</a>
+        <a class="is-here" href="./">Integração entre sistemas</a>
+        <a href="../agentes-de-ia/">Agentes de IA</a>
+        <a href="../chatbot/">Chatbot com IA</a>
+        <a href="../gestao-de-marketplace/">Gestão de marketplace</a>
+        <a href="../dashboards-power-bi/">Painéis em Power BI</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Links">
+        <h3>Links</h3>
+        <a href="../juridico/">BREVES Jurídico <span aria-hidden="true">↗︎</span></a>
+        <a href="../">Início</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="../#contato">Contato</a>
+      </nav>
+
+      <div class="footer-col footer-contact" aria-label="Contato">
+        <h3>Contato</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:contato@brevestech.com">contato@brevestech.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg> <a href="tel:+5521984371741">+55 21 98437-1741</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg> <a href="https://www.linkedin.com/company/breves-corp/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+        <a class="footer-cta" href="../#contato">Iniciar conversa <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 BREVES</span>
+      <span>CNPJ 68.054.344/0001-17</span>
+      <span>Tecnologia · Dados · Automação</span>
+    </div>
+  </div>
+</footer>
+
+
+<script defer src="../assets/js/site.js?v=identidade-6"></script>
+<script defer data-breves-chat="integracao" src="../assets/js/chat.js?v=chat-10"></script>
+</body>
+</html>

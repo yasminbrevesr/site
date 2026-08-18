@@ -61,13 +61,29 @@ async function submitContact(payload) {
    senao o mesmo lead entra com dois nomes diferentes dependendo de por onde
    veio. */
 const PRODUTOS = {
-  chatbot: {
-    mensagem: 'Quero um chatbot com IA para o meu atendimento.',
-    origem: 'site-produto-chatbot',
+  automacao: {
+    mensagem: 'Quero automatizar uma rotina da minha operação.',
+    origem: 'site-produto-automacao-de-processos',
+  },
+  integracao: {
+    mensagem: 'Quero integrar os sistemas que a minha empresa usa.',
+    origem: 'site-produto-integracao-de-sistemas',
   },
   agentes: {
     mensagem: 'Quero um agente de IA para a minha operação.',
     origem: 'site-produto-agentes-de-ia',
+  },
+  chatbot: {
+    mensagem: 'Quero um chatbot com IA para o meu atendimento.',
+    origem: 'site-produto-chatbot',
+  },
+  marketplace: {
+    mensagem: 'Quero ajuda com a gestão da minha loja em marketplace.',
+    origem: 'site-produto-gestao-de-marketplace',
+  },
+  powerbi: {
+    mensagem: 'Quero um painel em Power BI para a minha empresa.',
+    origem: 'site-produto-dashboards-power-bi',
   },
 };
 
