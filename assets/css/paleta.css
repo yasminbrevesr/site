@@ -7,8 +7,13 @@
    de teste alcançam o mesmo `body` pelo mesmo motivo.
 
    Qualquer página aceita ?paleta=<nome> no endereço e troca ao vivo, o que
-   serve para comparar lado a lado: ?paleta=marca volta às cores antigas do
-   site, ?paleta=pale mostra a alternativa azul e roxo.
+   serve para comparar lado a lado:
+
+     (sem nada)        a padrão — dois escuros frios sobre preto
+     ?paleta=grafite   a mesma escada em cinza puro, sem matiz nenhum
+     ?paleta=marinho   o azul da logo puxado para cima, em vez de dessaturado
+     ?paleta=pale      a alternativa azul e roxo, com acento vivo
+     ?paleta=marca     as cores antigas do site, para comparação
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ── padrão: dois escuros frios, um preto neutro, cinza claro e branco ──
@@ -27,18 +32,30 @@
    escuro dessaturado, e #151b26 é ele com menos saturação ainda. */
 
 body {
-  --blue: #151b26;
-  --blue-bright: #2c2739;
-  --violet: #2c2739;
-  --violet-soft: #3d3750;
-  --magenta: #2c2739;
-  --magenta-bright: #3d3750;
-  --amber: #2c2739;
-  --amber-bright: #151b26;
-  --amber-dark: #2c2739;
+  /* ── as superfícies ──────────────────────────────────────────────────────
+     Os fundos escuros do site inteiro saem destes cinco. Foram separados dos
+     tokens de acento porque fundo e texto mudam por motivos diferentes: uma
+     paleta nova é, quase sempre, só uma escada de escuros nova. Com eles
+     declarados aqui, testar outra é escrever cinco linhas — é o que fazem os
+     blocos ?paleta= no fim do arquivo. */
+  --s0: #131313;   /* o mais fundo: base de todas as seções escuras */
+  --s1: #151b26;   /* o escuro frio, primeiro degrau */
+  --s2: #2c2739;   /* o escuro roxo, segundo degrau */
+  --s3: #3d3750;   /* o mais claro dos escuros: entra como luz, não como fundo */
+  --claro: #d9d9d9;
 
-  --grad-brand: linear-gradient(100deg, #131313, #151b26 48%, #2c2739);
-  --grad-glow: linear-gradient(100deg, #151b26, #2c2739 55%, #3d3750);
+  --blue: var(--s1);
+  --blue-bright: var(--s2);
+  --violet: var(--s2);
+  --violet-soft: var(--s3);
+  --magenta: var(--s2);
+  --magenta-bright: var(--s3);
+  --amber: var(--s2);
+  --amber-bright: var(--s1);
+  --amber-dark: var(--s2);
+
+  --grad-brand: linear-gradient(100deg, var(--s0), var(--s1) 48%, var(--s2));
+  --grad-glow: linear-gradient(100deg, var(--s1), var(--s2) 55%, var(--s3));
 }
 
 /* Sobre fundo escuro o acento inverte: sem cor viva na paleta, quem destaca
@@ -56,38 +73,62 @@ body {
   --magenta-bright: #d9d9d9;
 }
 
-/* Os fundos escuros: preto neutro com o azul e o roxo entrando como luz. */
+/* ── o fundo do hero da home ─────────────────────────────────────────────
+   Era um preto quase chapado com um clarão no canto. Agora é uma descida: o
+   topo abre no escuro frio, o roxo entra como luz nos dois lados e o fundo
+   fecha no preto — que é justamente onde a costura de matriz.css puxa para o
+   branco dos produtos. O degradê e a emenda passam a ser o mesmo movimento,
+   em vez de um corte no meio.
+
+   O `background-color` fica depois do atalho de propósito: `background`
+   zera a cor de fundo, e é ela a rede de segurança se algum navegador
+   descartar a lista (o color-mix, por exemplo). */
 .mz-hero.is-limpo {
   background:
-    repeating-linear-gradient(115deg, transparent 0 26px, rgba(255, 255, 255, .018) 26px 27px),
-    radial-gradient(1000px 700px at 18% 12%, rgba(44, 39, 57, .85), transparent 70%),
-    #131313;
-  background-color: #131313;
+    repeating-linear-gradient(115deg, transparent 0 26px, rgba(255, 255, 255, .022) 26px 27px),
+    radial-gradient(1150px 780px at 14% 4%, color-mix(in srgb, var(--s3) 62%, transparent), transparent 68%),
+    radial-gradient(880px 620px at 96% 26%, color-mix(in srgb, var(--s2) 78%, transparent), transparent 64%),
+    linear-gradient(174deg, var(--s1) 0%, var(--s2) 26%, var(--s1) 58%, var(--s0) 92%);
+  background-color: var(--s0);
 }
-.mz-hero.is-limpo .hero-kicker { color: #d9d9d9; }
+/* O ponto do rótulo é um span pintado com --grad-brand, que nesta paleta é
+   escuro: sobre o hero ele sumia e sobrava só o roxo antigo vazando por
+   baixo. Sobre escuro ele inverte, como todo o resto. */
+.mz-hero.is-limpo .hero-kicker { color: var(--claro); }
+.mz-hero.is-limpo .hero-kicker span { background: var(--claro); }
 /* Sem acento, o que destaca a palavra é o peso e o branco puro contra o
    cinza do resto da frase.
 
    Precisa trocar color E -webkit-text-fill-color: a regra do hero limpo fixa
    o segundo, e ele manda no primeiro na hora de pintar a letra. */
-.mz-hero.is-limpo h1 { color: #9aa1ab; }
+.mz-hero.is-limpo h1 { color: #aeb6c1; }
 .mz-hero.is-limpo h1 em {
   color: #fff;
   -webkit-text-fill-color: #fff;
 }
+.mz-hero.is-limpo .mz-hero-lead { color: rgba(255, 255, 255, .7); }
+
+/* O cartão do formulário no hero: com o fundo agora degradê, a moldura de
+   antes se dissolvia na parte clara do topo. Um pouco mais de contorno e um
+   fundo próprio devolvem a borda do cartão sem clarear a seção. */
+.mz-hero.is-limpo .mz-fale {
+  border-color: rgba(255, 255, 255, .16);
+  background: rgba(10, 10, 14, .34);
+  backdrop-filter: blur(2px);
+}
 
 .pd-hero {
   background:
-    radial-gradient(1180px 720px at 84% 6%, rgba(44, 39, 57, .9), transparent 66%),
-    radial-gradient(920px 640px at 6% 92%, rgba(21, 27, 38, .95), transparent 64%),
-    linear-gradient(152deg, #131313 0%, #151b26 55%, #2c2739 100%);
-  background-color: #131313;
+    radial-gradient(1180px 720px at 84% 6%, color-mix(in srgb, var(--s2) 90%, transparent), transparent 66%),
+    radial-gradient(920px 640px at 6% 92%, color-mix(in srgb, var(--s1) 95%, transparent), transparent 64%),
+    linear-gradient(152deg, var(--s0) 0%, var(--s1) 55%, var(--s2) 100%);
+  background-color: var(--s0);
 }
 .pd-section.is-escuro {
   background:
-    radial-gradient(900px 520px at 14% 12%, rgba(44, 39, 57, .8), transparent 64%),
-    linear-gradient(162deg, #131313 0%, #151b26 60%, #1d2130 100%);
-  background-color: #131313;
+    radial-gradient(900px 520px at 14% 12%, color-mix(in srgb, var(--s2) 80%, transparent), transparent 64%),
+    linear-gradient(162deg, var(--s0) 0%, var(--s1) 60%, var(--s2) 100%);
+  background-color: var(--s0);
 }
 
 .pd-hero h1 em,
@@ -166,26 +207,41 @@ body {
    aquilo, e é um trabalho à parte. */
 .pd-final-card {
   background:
-    radial-gradient(700px 420px at 82% 10%, rgba(61, 55, 80, .7), transparent 64%),
-    linear-gradient(122deg, #131313, #151b26 52%, #2c2739);
-  box-shadow: 0 30px 80px rgba(19, 19, 19, .4);
+    radial-gradient(700px 420px at 82% 10%, color-mix(in srgb, var(--s3) 70%, transparent), transparent 64%),
+    linear-gradient(122deg, var(--s0), var(--s1) 52%, var(--s2));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
 }
 
 #contato, .calculator {
   background:
     linear-gradient(to bottom,
       rgba(247, 249, 252, 1) 0,
-      rgba(217, 217, 217, .96) calc(var(--costura) * .28),
-      rgba(120, 118, 132, .72) calc(var(--costura) * .56),
-      rgba(44, 39, 57, .4) calc(var(--costura) * .8),
-      rgba(19, 19, 19, 0) var(--costura)),
-    radial-gradient(900px 520px at 84% 30%, rgba(44, 39, 57, .8), transparent 62%),
-    linear-gradient(168deg, #131313 0%, #151b26 60%, #1d2130 100%);
-  background-color: #131313;
+      color-mix(in srgb, var(--claro) 96%, transparent) calc(var(--costura) * .28),
+      color-mix(in srgb, var(--s3) 72%, transparent) calc(var(--costura) * .56),
+      color-mix(in srgb, var(--s2) 40%, transparent) calc(var(--costura) * .8),
+      transparent var(--costura)),
+    radial-gradient(900px 520px at 84% 30%, color-mix(in srgb, var(--s2) 80%, transparent), transparent 62%),
+    linear-gradient(168deg, var(--s0) 0%, var(--s1) 60%, var(--s2) 100%);
+  background-color: var(--s0);
 }
 
 .nav-cta { box-shadow: 0 6px 18px rgba(19, 19, 19, .3); }
 .nav-cta:hover { box-shadow: 0 10px 26px rgba(19, 19, 19, .42); }
+
+/* ── o chat ──────────────────────────────────────────────────────────────
+   O widget vinha do marinho da identidade — a única superfície escura do
+   site que não tinha entrado na paleta. Ele expõe onze variáveis próprias
+   (chat.css), e é aqui que elas se ligam às superfícies: assim o painel
+   acompanha qualquer ?paleta= junto com o resto, sem regra duplicada. */
+.bv-chat,
+.bv-chat-launcher,
+.bv-invite {
+  --bv-surface: var(--s0);
+  --bv-surface-2: var(--s1);
+  --bv-realce: var(--claro);
+  --bv-realce-grad: linear-gradient(100deg, #fff, var(--claro));
+  --bv-realce-ink: var(--s0);
+}
 
 /* ── pale: azul e roxo dessaturados, cinza quase branco e dois pretos ─────
    #6fa8dc  #8e7cc3  #eeeeee  #252525  #000000
@@ -200,6 +256,13 @@ body {
    legibilidade. Os tons derivados estão marcados abaixo. */
 
 html[data-paleta="pale"] body {
+  /* as superfícies: a paleta pede preto onde o site tinha marinho */
+  --s0: #000;
+  --s1: #131320;
+  --s2: #252535;
+  --s3: #8e7cc3;
+  --claro: #eee;
+
   /* as duas da paleta, para preenchimento */
   --blue: #6fa8dc;
   --blue-bright: #8fbde6;
@@ -308,6 +371,42 @@ html[data-paleta="pale"] .mz-hero.is-limpo .button-primary:hover { box-shadow: 0
 .button-primary:hover { box-shadow: 0 12px 30px rgba(19, 19, 19, .48); }
 .mz-hero.is-limpo .button-primary { box-shadow: 0 10px 40px rgba(44, 39, 57, .8); }
 .mz-hero.is-limpo .button-primary:hover { box-shadow: 0 14px 52px rgba(44, 39, 57, .95); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   OUTRAS ESCADAS DE ESCURO PARA COMPARAR
+   As duas abaixo são variações da mesma ideia da paleta padrão — tonal, sem
+   cor de acento — e por isso não precisam de mais nada: todas as regras de
+   fundo, botão e título já leem as superfícies. Trocar os cinco valores
+   troca o site inteiro.
+
+   ?paleta=grafite  ?paleta=marinho
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── grafite: o mesmo desenho sem nenhum matiz ───────────────────────────
+   #0e0e0e  #1b1b1b  #2a2a2a  #3d3d3d  #e2e2e2
+   Serve para responder uma pergunta concreta: o azul e o roxo da padrão
+   estão fazendo trabalho, ou o site funcionaria em cinza puro? Se as duas
+   ficarem iguais na tela, o matiz da padrão está baixo demais para valer. */
+html[data-paleta="grafite"] body {
+  --s0: #0e0e0e;
+  --s1: #1b1b1b;
+  --s2: #2a2a2a;
+  --s3: #3d3d3d;
+  --claro: #e2e2e2;
+}
+
+/* ── marinho: o azul da logo puxado para cima ────────────────────────────
+   #0a1120  #101c31  #1d2d4a  #2f4467  #d5dee9
+   O contrário da grafite. A padrão dessatura o marinho da marca até quase
+   sumir; esta o mantém visível, e o site fica azul-escuro em vez de preto.
+   É a que mais se parece com a identidade antiga sem voltar ao violeta. */
+html[data-paleta="marinho"] body {
+  --s0: #0a1120;
+  --s1: #101c31;
+  --s2: #1d2d4a;
+  --s3: #2f4467;
+  --claro: #d5dee9;
+}
 
 /* ── marca: as cores originais do site, para comparação ────────────────── */
 html[data-paleta="marca"] body {
