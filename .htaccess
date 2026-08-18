@@ -15,6 +15,40 @@ RedirectMatch 404 ^/\.git(/|$)
 # Arquivos fonte do Illustrator
 RedirectMatch 404 \.ai$
 
+# ── Compressao ───────────────────────────────────────────────────────────
+# CSS e JS somam 434 KB sem comprimir, e CSS bloqueia renderizacao: nada
+# aparece na tela antes de o navegador baixar tudo. Comprimido, o mesmo
+# conjunto cai para 104 KB — 76% a menos. So o site.css vai de 137 KB para
+# 25 KB.
+#
+# Os dois blocos ficam em <IfModule> separados de proposito: diretiva de
+# modulo que nao esta carregado derruba o Apache com 500 na hora, e nem toda
+# hospedagem compartilhada tem o brotli. Assim, o que existir entra em uso e o
+# que faltar e simplesmente ignorado.
+#
+# O brotli vem primeiro por comprimir melhor; o navegador que nao o anuncia no
+# Accept-Encoding recebe o gzip do bloco seguinte.
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml application/xml
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+
+  # Sem isso, um proxy no meio do caminho pode entregar a versao comprimida
+  # para um cliente que nao sabe descomprimir.
+  <IfModule mod_headers.c>
+    Header append Vary Accept-Encoding
+  </IfModule>
+</IfModule>
+
+# Fonte e imagem ja chegam comprimidas: passar de novo gasta CPU e nao encolhe
+# nada. Ficam de fora das listas acima de proposito.
+
 # O CSS e o JS trazem ?v= no endereço, então podem ficar guardados. O HTML
 # não tem versão nenhuma — e é ele que aponta para as versões dos outros.
 # Quando o navegador guarda o HTML antigo, ele continua pedindo o CSS antigo
