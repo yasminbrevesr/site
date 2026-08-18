@@ -2,6 +2,25 @@ const SUPABASE_URL = 'https://mubkdnwzscnirfqnhcpu.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_tBvoqhNTb_Aw-HSLoKblsA_LD2M3Qye';
 const ENDPOINT = `${SUPABASE_URL}/rest/v1/contatos_site`;
 
+/* Envia um evento para o GA4.
+
+   A funcao esta repetida no chat.js de proposito. Os dois arquivos carregam de
+   formas diferentes — este e module, o chat e defer — e um helper compartilhado
+   criaria dependencia de ordem de execucao para ganhar oito linhas. Cada
+   arquivo continua removivel sozinho, como sempre foi.
+
+   O gtag pode nao existir: bloqueador de anuncio, falha de rede ou recusa de
+   consentimento. Medir e importante, mas nunca ao ponto de derrubar o envio do
+   lead — por isso a checagem e o try. */
+function evento(nome, parametros) {
+  try {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', nome, parametros);
+  } catch (erro) {
+    /* Analytics nao quebra formulario. */
+  }
+}
+
 function optional(value) {
   const normalized = String(value || '').trim();
   return normalized || null;
@@ -136,12 +155,33 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
     setFeedback(form, 'Enviando seus dados com segurança…', 'loading');
 
     try {
-      await submitContact(getPayload(form));
+      const payload = getPayload(form);
+      await submitContact(payload);
+
+      /* So depois do Supabase confirmar. Disparar antes contaria como lead o
+         envio que falhou, e a conversao do GA4 deixaria de bater com a lista
+         de contatos que o comercial atende. */
+      evento('generate_lead', {
+        metodo: 'formulario',
+        origem: payload.origem || 'site-matriz',
+        pagina: window.location.pathname,
+      });
+
       form.reset();
       setFeedback(form, 'Recebido — retornaremos em até 1 dia útil.', 'success');
       if (button) button.textContent = 'Recebido ✓';
     } catch (error) {
       console.error('Falha ao cadastrar contato:', error);
+
+      /* Falha de envio vira numero, e nao so linha no console: sem isso, uma
+         quebra no Supabase derruba a captacao em silencio e so se descobre
+         quando alguem estranha o volume de leads. */
+      evento('lead_falhou', {
+        metodo: 'formulario',
+        motivo: String(error.status || 'rede'),
+        pagina: window.location.pathname,
+      });
+
       setFeedback(form, 'Não foi possível enviar agora. Tente novamente em instantes.', 'error');
       if (button) {
         button.disabled = false;

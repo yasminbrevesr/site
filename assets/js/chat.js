@@ -316,6 +316,22 @@
   var aberto = false;
   var iniciado = false;
 
+  /* Espelho do helper do contact-form.js — ver o comentario de la sobre por que
+     os dois nao compartilham o mesmo arquivo.
+
+     Chama-se enviaEvento, e nao evento, porque dois ouvintes deste arquivo ja
+     usam `evento` como nome do objeto do evento. Com o nome curto, a chamada
+     dentro do submit do cadastro cairia no parametro sombreado em vez desta
+     funcao. */
+  function enviaEvento(nome, parametros) {
+    try {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', nome, parametros);
+    } catch (erro) {
+      /* Analytics nao quebra o chat. */
+    }
+  }
+
   function link(mensagem) {
     return WHATSAPP + '?text=' + encodeURIComponent(mensagem);
   }
@@ -543,14 +559,28 @@
       erro.hidden = true;
 
       registrar(n, t).then(function () {
+        enviaEvento('generate_lead', {
+          metodo: 'chat',
+          origem: ORIGEM[pagina] || ORIGEM.matriz,
+          pagina: window.location.pathname
+        });
         marcarIdentificado();
         bloco.remove();
         balao('bv-user', n + ' · ' + t);
         abrirMenu(n);
       }).catch(function (falha) {
         /* O cadastro não pode barrar a conversa: se o registro falha, a
-           pessoa segue para as respostas do mesmo jeito. */
+           pessoa segue para as respostas do mesmo jeito.
+
+           Mas o contato se perde, e antes isso morria num console.warn que
+           ninguém lê. Aqui vira evento: se o Supabase cair, o número aparece
+           no GA4 no mesmo dia em vez de sumir junto com os leads. */
         if (window.console && console.warn) console.warn('Chat: falha ao registrar contato:', falha.message);
+        enviaEvento('lead_falhou', {
+          metodo: 'chat',
+          motivo: 'registro',
+          pagina: window.location.pathname
+        });
         marcarIdentificado();
         bloco.remove();
         balao('bv-user', n + ' · ' + t);

@@ -922,4 +922,35 @@
     startProj();
   }
 
+  /* ─────────────────────────────────────────── saida para o WhatsApp no GA4
+
+     O site.js e o unico script que carrega nas oito paginas, entao e daqui que
+     o clique no WhatsApp e contado.
+
+     O ouvinte fica no document, e nao em cada link, por dois motivos: os links
+     do chat sao criados depois que esta funcao roda, e o do rodape troca de
+     href a cada pergunta respondida. Delegado, alcanca os dois sem precisar
+     saber quando eles aparecem.
+
+     Nao e conversao: e sinal de intencao. Quem sai para o WhatsApp pode nunca
+     mandar mensagem, e contar isso junto com o generate_lead inflaria o
+     numero que o comercial usa para decidir. */
+  document.addEventListener('click', function (evento) {
+    var alvo = evento.target.closest && evento.target.closest('a[href*="wa.me"]');
+    if (!alvo) return;
+
+    try {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', 'click_whatsapp', {
+        /* De onde saiu o clique: o chat tem os proprios botoes, o resto da
+           pagina e link comum. Separa iniciativa da conversa da iniciativa de
+           quem estava so lendo. */
+        local: alvo.closest('.bv-chat') ? 'chat' : 'pagina',
+        pagina: window.location.pathname
+      });
+    } catch (erro) {
+      /* Analytics nunca impede a saida para o WhatsApp. */
+    }
+  });
+
 })();
