@@ -1071,6 +1071,12 @@
    fazer e o botao pergunta se a pessoa quer. */
 .pd-solucoes-fim { display: flex; justify-content: center; margin-top: 60px; }
 
+/* Sobre fundo escuro. A pagina precisa de um respiro no meio — sem ele sao
+   tres blocos claros seguidos ate o rodape —, e o circulo do icone inverte:
+   de sombra sobre claro para luz sobre escuro. */
+.pd-section.is-escuro .pd-soluc-ic { background: rgba(255, 255, 255, .07); color: #cfe0ef; }
+.pd-section.is-escuro .pd-soluc p { color: rgba(255, 255, 255, .72); }
+
 @media (max-width: 720px) {
   .pd-solucoes { gap: 34px 28px; }
   .pd-soluc { width: 100%; max-width: 300px; }
