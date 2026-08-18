@@ -957,3 +957,77 @@
   .hero { grid-template-columns: minmax(320px, 720px) minmax(300px, 400px); }
   .hero .hero-copy { max-width: 720px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MÉTODO — os quatro passos de uma entrega
+
+   O diferencial da empresa estava enterrado em duas respostas do FAQ, onde
+   ninguém procura por ele. Aqui vira seção: é o bloco que separa a BREVES de
+   "mais um fornecedor de automação", e ele precisa aparecer antes de a pessoa
+   decidir se rola até as dúvidas.
+
+   A numeração é honesta porque isto é mesmo uma sequência — um passo depende
+   do anterior. Não é enfeite de layout.
+   ══════════════════════════════════════════════════════════════════════════ */
+.mz-metodo { padding: 96px 0; background: var(--paper); }
+
+.mz-metodo-lista {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 46px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+}
+
+.mz-metodo-lista li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 26px 32px;
+  background: var(--paper-bright);
+}
+
+.mz-metodo-lista small {
+  font: 600 10px/1 var(--mono);
+  letter-spacing: .18em;
+  color: var(--violet);
+  font-variant-numeric: tabular-nums;
+}
+
+.mz-metodo-lista b {
+  font-size: 17px;
+  font-weight: 660;
+  line-height: 1.28;
+  letter-spacing: -.016em;
+  color: var(--ink);
+}
+
+.mz-metodo-lista p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+/* A nota fecha o raciocínio: a sequência existe para não vender antes de
+   entender, e é isso que a frase precisa dizer sem soar a slogan. */
+.mz-metodo-nota {
+  margin-top: 26px;
+  color: var(--ink-muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .mz-metodo { padding: 68px 0; }
+  .mz-metodo-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .mz-metodo-lista { grid-template-columns: minmax(0, 1fr); }
+}
