@@ -158,7 +158,7 @@
 .pd-pn-filtro small {
   display: block;
   margin-bottom: .25em;
-  color: #7e8ea0;
+  color: #5c6e83;
   font-size: .7em;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -201,7 +201,7 @@
 .pd-pn-kpi:nth-child(3) { border-left-color: var(--magenta); }
 .pd-pn-kpi small {
   display: block;
-  color: #7e8ea0;
+  color: #5c6e83;
   font-size: .72em;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -218,7 +218,7 @@
 .pd-pn-kpi i em { color: #12a150; font-style: normal; font-weight: 600; }
 
 .pd-pn-meta { display: flex; align-items: center; gap: .5em; margin-top: .7em; }
-.pd-pn-meta span { flex: none; color: #7e8ea0; font-size: .7em; letter-spacing: .08em; text-transform: uppercase; }
+.pd-pn-meta span { flex: none; color: #5c6e83; font-size: .7em; letter-spacing: .08em; text-transform: uppercase; }
 .pd-pn-meta u {
   flex: 1;
   height: .5em;
@@ -259,14 +259,14 @@
   background: linear-gradient(180deg, var(--violet), rgba(103, 56, 255, .38));
 }
 .pd-pn-serie i:last-child { background: linear-gradient(180deg, var(--magenta), rgba(247, 37, 199, .4)); }
-.pd-pn-meses { display: flex; justify-content: space-between; margin-top: .5em; color: #8395a6; font-size: .7em; }
+.pd-pn-meses { display: flex; justify-content: space-between; margin-top: .5em; color: #62748a; font-size: .7em; }
 
 /* A tabela da direita. */
 .pd-pn-tabela { width: 100%; border-collapse: collapse; }
 .pd-pn-tabela th {
   padding: 0 0 .6em;
   border-bottom: 1px solid #e3e9f0;
-  color: #7e8ea0;
+  color: #5c6e83;
   font-size: .7em;
   font-weight: 700;
   letter-spacing: .08em;
@@ -1028,6 +1028,132 @@
 .pd-crumbs a:hover { color: #fff; }
 .pd-crumbs span { color: rgba(255, 255, 255, .28); }
 .pd-crumbs b { color: var(--violet-soft); font-weight: 400; }
+
+
+/* ─────────────────────────────────────────── o que fica mais fácil ────── */
+
+/* Uma lista do que o cliente passa a conseguir fazer. Fica entre a linha do
+   tempo e a grade de motivos, e por isso nao pode ter peso de cartao: sao
+   itens soltos, so icone e uma linha de texto, centralizados.
+
+   Flex com quebra, e nao grid: com oito itens numa grade de tres a ultima
+   linha fica com dois encostados a esquerda. No flex centralizado eles ficam
+   no meio, que e o que a referencia faz e o que parece resolvido. */
+.pd-solucoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 46px 40px;
+  max-width: 920px;
+  margin-inline: auto;
+}
+.pd-soluc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 240px;
+  text-align: center;
+}
+.pd-soluc-ic {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: rgba(2, 24, 44, .05);
+  color: var(--ink-soft);
+}
+.pd-soluc-ic svg { width: 21px; height: 21px; }
+.pd-soluc p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.6; }
+
+/* O botao fecha a secao, como na referencia: a lista mostra o que da para
+   fazer e o botao pergunta se a pessoa quer. */
+.pd-solucoes-fim { display: flex; justify-content: center; margin-top: 60px; }
+
+@media (max-width: 720px) {
+  .pd-solucoes { gap: 34px 28px; }
+  .pd-soluc { width: 100%; max-width: 300px; }
+  .pd-solucoes-fim { margin-top: 44px; }
+}
+
+/* ══════════════════════════════════════════════════════ paleta sóbria ══════
+   Uma página de produto pode pedir menos cor que o resto do site. A de Power
+   BI é o caso: ela mostra um relatório, e relatório executivo de verdade é
+   quase monocromático — um acento só, cinza no resto e verde reservado para o
+   que é positivo. O gradiente azul-violeta-magenta da marca, que funciona no
+   institucional, aqui competia com os próprios números.
+
+   O mecanismo é o mesmo que o Jurídico usa: redefinir os tokens do acento no
+   body e deixar a cascata levar. O que não é token — e nesta folha é bastante
+   coisa, porque as luzes dos fundos e o trilho da linha do tempo têm cor
+   escrita à mão — vem depois, uma regra por caso. */
+
+body.pd-sobrio {
+  --blue: #17456f;
+  --blue-bright: #2f74ab;
+  --violet: #17456f;
+  --violet-soft: #7ba9cf;
+  --magenta: #1c5b8f;
+  --magenta-bright: #7ba9cf;
+  --grad-brand: linear-gradient(100deg, #0d2b45, #17456f 55%, #2f74ab);
+  --grad-glow: linear-gradient(100deg, #17456f, #2f74ab 55%, #5b93bd);
+}
+
+/* Os fundos escuros perdem as luzes violeta e azul-elétrico. */
+body.pd-sobrio .pd-hero {
+  background:
+    radial-gradient(1180px 720px at 84% 6%, rgba(47, 116, 171, .34), transparent 64%),
+    radial-gradient(920px 640px at 6% 92%, rgba(23, 69, 111, .5), transparent 62%),
+    linear-gradient(152deg, #02182c 0%, #05253f 42%, #0c3557 72%, #123f66 100%);
+  background-color: #02182c;
+}
+body.pd-sobrio .pd-section.is-escuro {
+  background:
+    radial-gradient(900px 520px at 14% 12%, rgba(47, 116, 171, .26), transparent 62%),
+    radial-gradient(780px 500px at 88% 88%, rgba(23, 69, 111, .4), transparent 60%),
+    linear-gradient(162deg, #04101c 0%, #02182c 52%, #072544 100%);
+  background-color: #02182c;
+}
+
+/* Sobre fundo escuro o acento precisa clarear, senão some. É pontual de
+   propósito: um token claro herdado pelo bloco inteiro apagaria o botão
+   primário e o título dos cartões, que são claros e vivem lá dentro. */
+body.pd-sobrio .pd-hero h1 em,
+body.pd-sobrio .pd-section.is-escuro .pd-flow-head h2 em {
+  background: linear-gradient(100deg, #8fb8d8, #c5dcee 55%, #eaf3fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+body.pd-sobrio .pd-section.is-escuro .section-label { color: #8fb8d8; }
+body.pd-sobrio .pd-crumbs b { color: #8fb8d8; }
+
+/* O trilho da linha do tempo e o número apagado atrás do passo. */
+body.pd-sobrio .pd-linha-trilho i { background: linear-gradient(180deg, #17456f, #2f74ab 62%, #5b93bd); }
+body.pd-sobrio .pd-passo-n { color: rgba(23, 69, 111, .1); }
+body.pd-sobrio .pd-passo.is-on::before { box-shadow: 0 0 0 5px rgba(23, 69, 111, .14); }
+body.pd-sobrio .pd-cartao-ic { color: #17456f; }
+
+/* ── o painel em tom sóbrio ─────────────────────────────────────────────── */
+
+/* Um acento só nas barras, e a escala vem da opacidade — que é como um
+   relatório bem feito separa a primeira posição da última sem precisar de
+   arco-íris. O verde fica: ele não é decoração, quer dizer acima da meta. */
+body.pd-sobrio .pd-pn-kpi { border-left-color: #17456f; }
+body.pd-sobrio .pd-pn-kpi:nth-child(2) { border-left-color: #2f74ab; }
+body.pd-sobrio .pd-pn-kpi:nth-child(3) { border-left-color: #5b93bd; }
+body.pd-sobrio .pd-pn-meta u::before { background: #17456f; }
+body.pd-sobrio .pd-pn-barras u { background: #2f74ab; }
+body.pd-sobrio .pd-pn-barras li:nth-child(2) u { background: #3379ae; }
+body.pd-sobrio .pd-pn-barras li:nth-child(3) u { background: #4586b8; }
+body.pd-sobrio .pd-pn-barras li:nth-child(4) u { background: #5b93bd; }
+body.pd-sobrio .pd-pn-barras li:nth-child(5) u { background: #74a4c8; }
+body.pd-sobrio .pd-pn-barras li:nth-child(6) u { background: #8fb8d8; }
+body.pd-sobrio .pd-pn-serie i { background: #b9d1e5; }
+body.pd-sobrio .pd-pn-serie i:last-child { background: #17456f; }
+body.pd-sobrio .pd-pn-tag { background: rgba(23, 69, 111, .09); color: #17456f; }
 
 /* ──────────────────────────────────────────────────────────── responsivo */
 
