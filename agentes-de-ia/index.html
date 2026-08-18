@@ -127,10 +127,10 @@
 
 <link rel="stylesheet" href="../assets/css/shared.css">
 <link rel="stylesheet" href="../assets/css/site.css?v=identidade-1">
-<link rel="stylesheet" href="../assets/css/matriz.css?v=identidade-1">
+<link rel="stylesheet" href="../assets/css/matriz.css?v=matriz-8">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-8">
 <link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-23">
-<link rel="stylesheet" href="../assets/css/produto.css?v=produto-27">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-28">
 <link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-7">
 <script>
   /* ?paleta=<nome> liga uma paleta de teste em qualquer página. Inline e no
@@ -195,7 +195,7 @@
         <h1 class="reveal in">Agentes de IA que executam tarefas da sua operação, <em>não só conversam.</em></h1>
         <p class="pd-hero-text reveal in">Um agente de intelig&ecirc;ncia artificial recebe o gatilho, consulta as bases da sua empresa, decide pela regra do seu neg&oacute;cio e conclui a tarefa &mdash; respondendo um e-mail, registrando um lead ou disparando o aviso certo para a pessoa certa.</p>
         <div class="mz-hero-actions reveal in">
-          <a class="button button-primary" href="../?produto=agentes#fale" data-magnetic>Quero um agente de IA <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="#fale" data-magnetic>Quero um agente de IA <span aria-hidden="true">→</span></a>
           <a class="mz-btn-ghost" href="#exemplos">Ver exemplos</a>
         </div>
       </div>
@@ -268,7 +268,7 @@
         </article>
 
         <div class="pd-linha-fim" data-passo data-linha-fim>
-          <a class="button button-primary" href="../?produto=agentes#fale" data-magnetic>Começar agora <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="#fale" data-magnetic>Começar agora <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -342,15 +342,38 @@
     </div>
   </section>
 
-  <section class="pd-final">
+  <section class="pd-final" id="fale">
     <div class="section-frame">
-      <div class="pd-final-card reveal">
-        <h2>Existe uma tarefa que alguém refaz <em>toda semana igual.</em></h2>
-        <p>Conte qual é: quem faz hoje, de onde vem a informação e o que decide o resultado. A partir daí desenhamos o agente em cima do seu processo — ou dizemos que uma automação simples resolve melhor.</p>
-        <div class="pd-final-actions">
-          <a class="button button-primary" href="../?produto=agentes#fale" data-magnetic>Falar sobre a minha operação <span aria-hidden="true">→</span></a>
+      <div class="pd-final-card is-form reveal">
+        <div class="pd-final-copy">
+          <h2>Existe uma tarefa que alguém refaz <em>toda semana igual.</em></h2>
+          <p>Conte qual é: quem faz hoje, de onde vem a informação e o que decide o resultado. A partir daí desenhamos o agente em cima do seu processo — ou dizemos que uma automação simples resolve melhor.</p>
           <a class="mz-btn-ghost" href="../#produtos">Ver todos os produtos</a>
         </div>
+
+        <form class="mz-fale-campos pd-fale-form" data-contact-form novalidate>
+          <div class="field">
+            <label for="f-nome">Seu nome</label>
+            <input required minlength="2" maxlength="120" id="f-nome" type="text" name="nome" placeholder="Como podemos chamar você?" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-empresa">Empresa</label>
+            <input maxlength="160" id="f-empresa" type="text" name="escritorio" placeholder="Nome da empresa" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-contato">WhatsApp</label>
+            <input required maxlength="30" id="f-contato" type="tel" name="contato" placeholder="(00) 90000-0000" autocomplete="tel">
+            <input type="hidden" name="canal" value="whatsapp">
+          </div>
+          <div class="field">
+            <label for="f-msg">Sobre a sua operação</label>
+            <textarea maxlength="3000" id="f-msg" name="mensagem" placeholder="Onde isso trava hoje?"></textarea>
+          </div>
+          <input type="hidden" name="origem" value="site-produto-agentes-de-ia">
+          <button class="button button-primary mz-fale-enviar" type="submit">Falar sobre a minha operação <span aria-hidden="true">→</span></button>
+          <span class="form-ok" data-form-feedback role="status" aria-live="polite"></span>
+          <p class="pd-fale-nota">Retorno pessoal e confidencial, em até 1 dia útil.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -411,6 +434,7 @@
 </footer>
 
 
+<script type="module" src="../assets/js/contact-form.js?v=ga4-1"></script>
 <script defer src="../assets/js/site.js?v=ga4-1"></script>
 <script defer data-breves-chat="agentes" src="../assets/js/chat.js?v=chat-11"></script>
 </body>

@@ -1021,6 +1021,50 @@
 .pd-final-card .mz-btn-ghost { border-color: rgba(255, 255, 255, .5); color: #fff; background: transparent; }
 .pd-final-card .mz-btn-ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .12); }
 
+/* ── fechamento com formulario na propria pagina ─────────────────────────
+   Antes, todo CTA de pagina de produto levava para ../?produto=X#fale: quem
+   chegou por busca no termo certo, leu a pagina certa e se convenceu era
+   mandado embora dessa pagina para preencher formulario em outro lugar. Cada
+   carregamento a mais perde gente, e sao justamente estas as paginas que
+   recebem busca e anuncio.
+
+   O cartao vira duas colunas — a chamada de um lado, o formulario do outro,
+   no mesmo desenho do hero da home. Empilha abaixo de 900px. */
+.pd-final-card.is-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: 56px;
+  align-items: center;
+  padding: 52px 52px;
+  text-align: left;
+}
+.pd-final-card.is-form h2 { max-width: 14em; margin: 0 0 16px; }
+.pd-final-card.is-form p { max-width: 34em; margin: 0 0 26px; }
+.pd-final-copy { min-width: 0; }
+
+/* O cartao ja e escuro; o formulario dentro dele nao precisa de fundo
+   proprio, so da moldura que separa campo de chamada. */
+.pd-fale-form {
+  min-width: 0;
+  padding: 26px 24px 24px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, .18);
+}
+.pd-fale-form .mz-fale-enviar { margin-top: 6px; }
+.pd-fale-nota { margin-top: 14px; color: rgba(255, 255, 255, .5); font-size: 12px; line-height: 1.5; }
+.pd-fale-form .form-ok { display: block; margin-top: 10px; font-size: 13px; }
+
+@media (max-width: 900px) {
+  .pd-final-card.is-form {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+    padding: 44px 30px;
+  }
+  .pd-final-card.is-form h2,
+  .pd-final-card.is-form p { max-width: none; }
+}
+
 /* ─────────────────────────────────────────── migalhas de navegação (topo) */
 
 .pd-crumbs { display: flex; align-items: center; gap: 9px; margin-bottom: 20px; font: 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
