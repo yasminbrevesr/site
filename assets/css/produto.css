@@ -1215,23 +1215,36 @@
   padding: 0;
 }
 
-.pd-relac-lista a {
+/* O <li> e o cartao; o link e so o nome do produto. Envolvendo o cartao
+   inteiro num <a>, a ancora virava a soma de rotulo, titulo, motivo e "Ver a
+   pagina" — quarenta palavras onde o sinal deveria ser o nome do produto. Com
+   o ::after esticado, o alvo de clique continua sendo o cartao todo. */
+.pd-relac-lista li {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: 100%;
   padding: 24px 24px 22px;
   border: 1px solid var(--hairline);
   border-radius: 12px;
   background: var(--paper-bright);
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.pd-relac-lista a:hover,
-.pd-relac-lista a:focus-visible {
+.pd-relac-lista li:hover,
+.pd-relac-lista li:has(a:focus-visible) {
   border-color: var(--ink);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(19, 19, 19, .07);
 }
+
+.pd-relac-lista b a { color: inherit; text-decoration: none; }
+/* z-index porque o ::after pertence ao <b>, que vem antes do <p> e do <i> na
+   ordem do documento: sem ele, o texto pinta por cima e o canto do cartao
+   deixa de ser clicavel. */
+.pd-relac-lista b a::after { content: ''; position: absolute; inset: 0; z-index: 1; border-radius: 12px; }
+/* O foco precisa aparecer no cartao, e nao so nas letras do titulo. */
+.pd-relac-lista b a:focus-visible { outline: none; }
+.pd-relac-lista b a:focus-visible::after { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 .pd-relac-lista small {
   font: 600 10px/1 var(--mono);
