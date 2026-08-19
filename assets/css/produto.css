@@ -1159,3 +1159,28 @@
   .pd-passo:nth-of-type(even) .pd-passo-n { left: -6px; right: auto; }
   .pd-linha-fim { justify-content: flex-start; margin-left: -30px; }
 }
+
+/* Piso de legibilidade no celular — a regra geral vive no identidade.css, mas
+   esta folha carrega depois dele e ganharia a disputa nos componentes .pd-*.
+   Por isso a parte que e desta folha fica aqui, e nao la.
+
+   A maquete do painel (.pd-painel) e a do celular (.pd-fone) ficam de fora de
+   proposito: ali o texto e proporcao de uma ilustracao, e subir a fonte
+   estouraria o desenho. */
+@media (max-width: 620px) {
+  .pd-hero-badge,
+  .pd-arte-topo span,
+  .pd-arte-topo b,
+  .pd-arte-chips span,
+  .pd-caso-quando,
+  .pd-crumbs,
+  .pd-crumbs a,
+  .pd-crumbs b,
+  .pd-fale-form label,
+  .pd-fale-nota { font-size: 11px; }
+
+  /* A trilha tinha 11px de altura: errar o alvo aqui devolve a pessoa para a
+     home logo depois de ela ter chegado na pagina certa. */
+  .pd-crumbs a,
+  .pd-crumbs b { display: inline-flex; align-items: center; min-height: 32px; }
+}

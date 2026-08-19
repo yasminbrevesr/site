@@ -1569,3 +1569,70 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 }
 .mz-product-link span { transition: transform .25s ease; }
 .mz-products-list li.has-page:hover .mz-product-link span { transform: translateX(3px); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PISO DE LEGIBILIDADE NO CELULAR
+
+   Medido em iPhone 13: 31 rótulos de formulário a 9px, os selos dos cartões
+   de produto a 7px, a assinatura da marca e o kicker do hero a 8px. Abaixo de
+   11px o texto para de ser lido por quem tem mais de 45 anos — que é
+   exatamente quem assina contrato de tecnologia. O Google também trata fonte
+   miúda como problema de usabilidade mobile.
+
+   O piso vale só no celular: no desktop os mesmos rótulos ficam confortáveis,
+   e mexer lá mudaria um desenho já aprovado. O letter-spacing alto continua
+   sendo o que diferencia o rótulo do texto corrido, então nada se perde ao
+   subir dois pontos.
+
+   Ficam de fora, de propósito, as maquetes — o painel do Power BI e o celular
+   do chatbot. Ali o texto é proporção de uma ilustração feita em HTML, como
+   seria numa captura de tela; subir a fonte estouraria o desenho. O painel já
+   é aria-hidden e não chega a leitor de tela.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 620px) {
+  .brand small,
+  .hero-kicker,
+  .section-label,
+  .mz-products-list small,
+  .mz-products-custom-copy small,
+  .mz-metodo-lista small,
+  .mz-unit-tag,
+  .mz-unit-head small,
+  .scroll-cue,
+  .pd-crumbs,
+  .pd-crumbs a,
+  .pd-crumbs b,
+  .pd-hero-badge,
+  .pd-caso-quando,
+  .faq details summary span,
+  .footer-rich .footer-col h3,
+  .mz-fale-campos label,
+  .lex-form-campos label,
+  .pd-fale-form label,
+  .mz-fale-enviar,
+  .lex-form-enviar,
+  .footer-col a,
+  .footer-bottom,
+  .footer-bottom span { font-size: 11px; }
+
+  /* O chat é montado pelo JS e tem os próprios rótulos. */
+  .bv-lead-campo span,
+  .bv-lead-enviar,
+  .bv-chat-wa,
+  .bv-chat-title span { font-size: 11px; }
+
+  /* Alvo de toque: a WCAG 2.5.8 pede 24x24 e o próprio Google recomenda 44.
+     Os links de navegação e rodapé vinham com 33 a 34px de altura — erra-se o
+     alvo e volta-se para a página anterior. O padding cresce sem empurrar o
+     layout porque a altura já era próxima. */
+  .site-header nav a,
+  .footer-col a,
+  .nav-drop-menu a,
+  .mz-product-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .footer-social a { width: 44px; height: 44px; }
+}

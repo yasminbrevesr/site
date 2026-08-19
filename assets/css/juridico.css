@@ -588,3 +588,16 @@ body.sobrio .svc-card p { color: rgba(255, 255, 255, .7); font-size: 14.5px; lin
 @media (max-width: 720px) {
   body.sobrio .svc-grid { grid-template-columns: 1fr; gap: 44px; margin-top: 48px; }
 }
+
+/* Piso de legibilidade no celular — ver o comentario no identidade.css. Esta
+   folha carrega depois dele e venceria nos componentes do juridico. */
+@media (max-width: 620px) {
+  body.sobrio .brand small,
+  .hero-assurances li,
+  body.sobrio .lex-form-campos label,
+  body.sobrio .lex-cenario-tag,
+  .calculator-progress span,
+  .calculator-metrics span,
+  .calculator-result small,
+  .calculator-note { font-size: 11px; }
+}
