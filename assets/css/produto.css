@@ -1184,3 +1184,91 @@
   .pd-crumbs a,
   .pd-crumbs b { display: inline-flex; align-items: center; min-height: 32px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RELACIONADOS — a ligação entre as páginas de produto
+
+   Antes, todo link dentro do conteúdo de uma página de produto apontava para
+   a home. As seis eram folhas soltas: nada dizia ao Google que chatbot,
+   agentes e automação pertencem ao mesmo assunto, e a autoridade não
+   circulava entre elas. Para quem lê, o efeito era o mesmo — quem está vendo
+   Power BI e precisa de integração antes não recebia esse caminho.
+
+   Cada cartão traz o motivo da ligação, e não só o nome do produto. É o
+   motivo que faz a âncora valer alguma coisa, para o leitor e para a busca.
+   ══════════════════════════════════════════════════════════════════════════ */
+.pd-relac { padding: 0 0 96px; background: var(--paper-bright); }
+
+.pd-relac-head { margin-bottom: 26px; }
+.pd-relac-head .section-label { margin-bottom: 10px; }
+.pd-relac-head h2 {
+  max-width: 20em;
+  font-size: clamp(22px, 2.4vw, 29px);
+  font-weight: 660;
+  line-height: 1.22;
+  letter-spacing: -.022em;
+  color: var(--ink);
+}
+
+.pd-relac-lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pd-relac-lista a {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 24px 24px 22px;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--paper-bright);
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.pd-relac-lista a:hover,
+.pd-relac-lista a:focus-visible {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(19, 19, 19, .07);
+}
+
+.pd-relac-lista small {
+  font: 600 10px/1 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.pd-relac-lista b {
+  font-size: 17px;
+  font-weight: 660;
+  letter-spacing: -.016em;
+  color: var(--ink);
+}
+.pd-relac-lista p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.pd-relac-lista i {
+  margin-top: auto;
+  padding-top: 12px;
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 760px) {
+  .pd-relac { padding-bottom: 68px; }
+  .pd-relac-lista { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 620px) {
+  .pd-relac-lista small { font-size: 11px; }
+}
