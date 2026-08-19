@@ -1628,7 +1628,8 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   .site-header nav a,
   .footer-col a,
   .nav-drop-menu a,
-  .mz-product-link {
+  .mz-product-link,
+  .footer-legal {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -1698,3 +1699,17 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
    ponto de consulta, não chamada. */
 .footer-legal { color: inherit; opacity: .72; text-decoration: underline; text-underline-offset: 3px; }
 .footer-legal:hover { opacity: 1; }
+
+/* A linha de registro do rodapé: razão social mais CNPJ. É a linha mais longa
+   do site inteiro em caixa alta — 66 caracteres — e o rodapé é mono com
+   letter-spacing largo e line-height 1, herdados do atalho `font:`. No celular
+   ela estourava a largura e as linhas quebradas se encostavam.
+
+   Aqui o tracking afrouxa, a altura de linha volta e a quebra passa a poder
+   acontecer dentro da sequência — sem isso o CNPJ, que não tem espaço, empurra
+   a linha para fora da tela. */
+.footer-registro { line-height: 1.5; overflow-wrap: anywhere; }
+
+@media (max-width: 620px) {
+  .footer-registro { letter-spacing: .04em; }
+}
