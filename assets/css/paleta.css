@@ -164,7 +164,28 @@ body {
 
 /* O cinza da paleta nas seções claras alternadas. */
 .pd-section.is-alt,
-.faq { background: #d9d9d9; }
+.faq { background: var(--claro); }
+
+/* ── a costura das dúvidas com os relacionados ────────────────────────────
+   Nas páginas de produto, .pd-section.is-alt e .faq caíam com exatamente o
+   mesmo cinza, uma embaixo da outra: viravam um bloco só de 1.360px, sem
+   nada dizendo onde uma acabava. Logo abaixo, os relacionados entravam em
+   branco puro, de corte seco.
+
+   O degradê resolve os dois de uma vez. As dúvidas começam no cinza que vem
+   de cima, então a fronteira com a seção anterior deixa de ser um corte, e
+   terminam no branco em que os relacionados começam, então a passagem para
+   eles é contínua.
+
+   O seletor de irmão adjacente escopa isto sozinho: só existe onde o cinza
+   duplicado existe. Na home o FAQ fica entre dois quase-brancos e continua
+   sendo uma faixa cinza de propósito. */
+.pd-section.is-alt + .faq {
+  background: linear-gradient(to bottom,
+    var(--claro) 0%,
+    var(--claro) 38%,
+    var(--paper-bright) 94%);
+}
 .pd-cartao { background: #d9d9d9; }
 
 /* ── o botao primario sobre fundo escuro ─────────────────────────────────

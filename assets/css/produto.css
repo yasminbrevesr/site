@@ -1193,7 +1193,7 @@
    Cada cartão traz o motivo da ligação, e não só o nome do produto. É o
    motivo que faz a âncora valer alguma coisa, para o leitor e para a busca.
    ══════════════════════════════════════════════════════════════════════════ */
-.pd-relac { padding: 0 0 96px; background: var(--paper-bright); }
+.pd-relac { padding: 82px 0 96px; background: var(--paper-bright); }
 
 .pd-relac-head { margin-bottom: 26px; }
 .pd-relac-head .section-label { margin-bottom: 10px; }
@@ -1281,3 +1281,7 @@
 @media (max-width: 620px) {
   .pd-relac-lista small { font-size: 11px; }
 }
+
+/* O bloco de relacionados e o cartao de fechamento sao os dois brancos: sem
+   este corte, sobravam 192px de vazio entre um e outro. */
+.pd-relac + .pd-final { padding-top: 0; }
