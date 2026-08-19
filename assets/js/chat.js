@@ -539,10 +539,23 @@
     var enviar = el('button', 'bv-lead-enviar', 'Começar');
     enviar.type = 'submit';
 
+    /* O chat e o segundo ponto onde o site pede dado pessoal, e pedia sem
+       dizer para que. A finalidade fica junto do botao, onde a pessoa decide.
+       O caminho e absoluto porque este arquivo carrega de profundidades
+       diferentes — da raiz e de dentro das pastas de produto. */
+    var aviso = el('p', 'bv-lead-nota');
+    aviso.appendChild(document.createTextNode('Usamos só para responder você. '));
+    var politica = el('a', null, 'Como tratamos seus dados');
+    politica.href = '/privacidade/';
+    politica.target = '_blank';
+    politica.rel = 'noopener';
+    aviso.appendChild(politica);
+
     bloco.appendChild(campoNome);
     bloco.appendChild(campoTel);
     bloco.appendChild(erro);
     bloco.appendChild(enviar);
+    bloco.appendChild(aviso);
     log.appendChild(bloco);
 
     bloco.addEventListener('submit', function (evento) {

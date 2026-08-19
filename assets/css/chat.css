@@ -505,3 +505,14 @@
 .bv-lead-enviar:hover { filter: brightness(1.08); }
 .bv-lead-enviar:disabled { opacity: .6; cursor: progress; }
 .bv-lead-enviar:focus-visible { outline: 2px solid var(--bv-realce); outline-offset: 2px; }
+
+/* Finalidade do dado, junto do botao — e ali que a pessoa decide se digita o
+   WhatsApp. Discreta de proposito: informa sem competir com o Comecar. */
+.bv-lead-nota {
+  margin: 2px 0 0;
+  color: var(--bv-muted);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.bv-lead-nota a { color: var(--bv-realce); text-decoration: underline; text-underline-offset: 2px; }
+.bv-lead-nota a:hover { color: #fff; }
