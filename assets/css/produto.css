@@ -1179,10 +1179,6 @@
   .pd-fale-form label,
   .pd-fale-nota { font-size: 11px; }
 
-  /* A trilha tinha 11px de altura: errar o alvo aqui devolve a pessoa para a
-     home logo depois de ela ter chegado na pagina certa. */
-  .pd-crumbs a,
-  .pd-crumbs b { display: inline-flex; align-items: center; min-height: 32px; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

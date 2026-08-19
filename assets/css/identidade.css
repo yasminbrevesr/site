@@ -1635,6 +1635,13 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
     min-height: 44px;
   }
 
+  /* A trilha tinha 12px de altura: errar o alvo devolve a pessoa para a home
+     logo depois de ela ter chegado na pagina certa. Fica aqui, e nao no
+     produto.css, porque a pagina de privacidade tambem tem trilha e nao
+     carrega aquela folha — foi assim que a regra falhou da primeira vez. */
+  .pd-crumbs a,
+  .pd-crumbs b { display: inline-flex; align-items: center; min-height: 32px; }
+
   .footer-social a { width: 44px; height: 44px; }
 }
 
