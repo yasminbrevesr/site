@@ -18,8 +18,8 @@
    também significa zero trabalho de composição por quadro. */
 .pd-hero {
   background:
-    radial-gradient(1180px 720px at 84% 6%, rgba(103, 56, 255, .4), transparent 64%),
-    radial-gradient(920px 640px at 6% 92%, rgba(22, 155, 255, .24), transparent 62%),
+    radial-gradient(1180px 720px at 84% 6%, rgba(var(--tinta), .4), transparent 64%),
+    radial-gradient(920px 640px at 6% 92%, rgba(var(--tinta-4), .24), transparent 62%),
     linear-gradient(152deg, #02182c 0%, #062c58 36%, #0a3c85 63%, #33299b 100%);
   background-color: #02182c;
 }
@@ -140,7 +140,7 @@
   flex: none;
   padding: .3em .7em;
   border-radius: .35em;
-  background: rgba(103, 56, 255, .1);
+  background: rgba(var(--tinta), .1);
   color: var(--violet);
   font: .72em/1 var(--mono);
   letter-spacing: .1em;
@@ -256,9 +256,9 @@
   flex: 1;
   height: var(--n);
   border-radius: .18em .18em 0 0;
-  background: linear-gradient(180deg, var(--violet), rgba(103, 56, 255, .38));
+  background: linear-gradient(180deg, var(--violet), rgba(var(--tinta), .38));
 }
-.pd-pn-serie i:last-child { background: linear-gradient(180deg, var(--magenta), rgba(247, 37, 199, .4)); }
+.pd-pn-serie i:last-child { background: linear-gradient(180deg, var(--magenta), rgba(var(--tinta-5), .4)); }
 .pd-pn-meses { display: flex; justify-content: space-between; margin-top: .5em; color: #62748a; font-size: .7em; }
 
 /* A tabela da direita. */
@@ -375,7 +375,7 @@
 .pd-passo.is-on::before {
   border-color: var(--violet);
   background: var(--violet);
-  box-shadow: 0 0 0 5px rgba(103, 56, 255, .14);
+  box-shadow: 0 0 0 5px rgba(var(--tinta), .14);
 }
 
 /* Ímpares: arte à esquerda, texto à direita. Pares, o contrário. O texto
@@ -404,7 +404,7 @@
   position: absolute;
   top: -34px;
   z-index: 0;
-  color: rgba(103, 56, 255, .1);
+  color: rgba(var(--tinta), .1);
   font: 700 68px/1 var(--mono);
   letter-spacing: -.04em;
   pointer-events: none;
@@ -437,9 +437,9 @@
 .pd-arte-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
 .pd-arte-chips span {
   padding: 6px 11px;
-  border: 1px solid rgba(103, 56, 255, .22);
+  border: 1px solid rgba(var(--tinta), .22);
   border-radius: 999px;
-  background: rgba(103, 56, 255, .06);
+  background: rgba(var(--tinta), .06);
   color: var(--violet);
   font: 10px/1 var(--mono);
   letter-spacing: .05em;
@@ -467,7 +467,7 @@
 
 .pd-arte-passagem { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
 .pd-arte-quem { padding: 8px 13px; border-radius: 9px; font-size: 12.5px; font-weight: 560; }
-.pd-arte-quem.is-ia { background: rgba(103, 56, 255, .1); color: var(--violet); }
+.pd-arte-quem.is-ia { background: rgba(var(--tinta), .1); color: var(--violet); }
 .pd-arte-quem.is-gente { background: var(--paper); border: 1px solid var(--hairline); color: var(--ink); }
 .pd-arte-seta { color: var(--ink-muted); font-size: 15px; }
 .pd-arte-nota { margin-top: 13px; color: var(--ink-muted); font-size: 12.5px; line-height: 1.5; }
@@ -560,12 +560,12 @@
   height: 54px;
   margin-bottom: 22px;
   border-radius: 50%;
-  background: rgba(103, 56, 255, .11);
+  background: rgba(var(--tinta), .11);
   color: var(--violet);
   transition: background .25s ease, transform .25s ease;
 }
 .pd-feat-ic svg { width: 22px; height: 22px; }
-.pd-feat:hover .pd-feat-ic { background: rgba(103, 56, 255, .18); transform: translateY(-2px); }
+.pd-feat:hover .pd-feat-ic { background: rgba(var(--tinta), .18); transform: translateY(-2px); }
 .pd-feat b { display: block; margin-bottom: 11px; color: var(--ink); font-size: 18px; font-weight: 660; letter-spacing: -.022em; }
 .pd-feat p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.68; }
 
@@ -581,8 +581,8 @@
    trocar .pd-feats por .pd-cartoes com uma classe. */
 .pd-section.is-escuro {
   background:
-    radial-gradient(900px 520px at 14% 12%, rgba(103, 56, 255, .3), transparent 62%),
-    radial-gradient(780px 500px at 88% 88%, rgba(22, 155, 255, .2), transparent 60%),
+    radial-gradient(900px 520px at 14% 12%, rgba(var(--tinta), .3), transparent 62%),
+    radial-gradient(780px 500px at 88% 88%, rgba(var(--tinta-4), .2), transparent 60%),
     linear-gradient(162deg, #04101c 0%, #02182c 52%, #072544 100%);
   background-color: #02182c;
 }
@@ -688,7 +688,7 @@
   margin-bottom: 18px;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(103, 56, 255, .1);
+  background: rgba(var(--tinta), .1);
   color: var(--violet);
   font: 10px/1 var(--mono);
   letter-spacing: .11em;
@@ -845,7 +845,7 @@
   margin-bottom: 5px;
   padding: 3px 8px;
   border-radius: 999px;
-  background: rgba(103, 56, 255, .1);
+  background: rgba(var(--tinta), .1);
   color: var(--violet);
   font: 8.5px/1 var(--mono);
   letter-spacing: .09em;
@@ -903,7 +903,7 @@
   overflow: hidden;
   transition: box-shadow .25s ease;
 }
-.pd-fone-campo.is-ativo { box-shadow: 0 0 0 1.5px rgba(103, 56, 255, .35); }
+.pd-fone-campo.is-ativo { box-shadow: 0 0 0 1.5px rgba(var(--tinta), .35); }
 .pd-fone-texto {
   color: #0b141c;
   font-size: 12px;
@@ -1004,10 +1004,10 @@
   padding: 64px 56px;
   border-radius: 22px;
   background:
-    radial-gradient(700px 420px at 82% 10%, rgba(145, 70, 255, .34), transparent 64%),
+    radial-gradient(700px 420px at 82% 10%, rgba(var(--tinta-2), .34), transparent 64%),
     linear-gradient(122deg, #065bff, #6738ff 56%, #9146ff);
   color: #fff;
-  box-shadow: 0 30px 80px rgba(6, 91, 255, .26);
+  box-shadow: 0 30px 80px rgba(var(--tinta-3), .26);
   text-align: center;
 }
 .pd-final-card h2 { max-width: 17em; margin: 0 auto 18px; font-size: clamp(30px, 3.6vw, 46px); font-weight: 400; line-height: 1.08; letter-spacing: -.035em; color: #fff; }
@@ -1196,7 +1196,6 @@
 .pd-relac { padding: 82px 0 96px; background: var(--paper-bright); }
 
 .pd-relac-head { margin-bottom: 26px; }
-.pd-relac-head .section-label { margin-bottom: 10px; }
 .pd-relac-head h2 {
   max-width: 20em;
   font-size: clamp(22px, 2.4vw, 29px);
@@ -1213,6 +1212,20 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* A grade se ajusta à contagem, em vez de fixar duas colunas e deixar o
+   ímpar sozinho com um vazio do lado. Três cartões viram três colunas;
+   quatro voltam a duas, em duas linhas cheias. Duas continuam no padrão.
+
+   O número de relacionados vem do grafo de pares, não do layout — hoje é 2,
+   3 ou 4 por página — então quem tem de se adaptar é a grade. */
+/* Dentro de media query de propósito: :has() carrega a especificidade do
+   argumento mais específico — aqui 0,3,1 — e venceria o empilhamento do
+   celular, que é só .pd-relac-lista. Três colunas em 390px é o oposto do que
+   a regra existe para fazer. */
+@media (min-width: 761px) {
+  .pd-relac-lista:has(li:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* O <li> e o cartao; o link e so o nome do produto. Envolvendo o cartao

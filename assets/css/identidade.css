@@ -72,9 +72,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   border: 0;
   background: var(--grad-brand);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(103, 56, 255, .28);
+  box-shadow: 0 6px 18px rgba(var(--tinta), .28);
 }
-.nav-cta:hover { background: var(--grad-glow); box-shadow: 0 10px 26px rgba(103, 56, 255, .36); }
+.nav-cta:hover { background: var(--grad-glow); box-shadow: 0 10px 26px rgba(var(--tinta), .36); }
 .nav-cta span { color: rgba(255, 255, 255, .9); }
 .nav-toggle span { background: var(--ink); }
 
@@ -84,9 +84,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
    que é o que o mockup usa como atmosfera. */
 .hero, .mz-hero {
   background:
-    radial-gradient(1100px 620px at 78% 22%, rgba(103, 56, 255, .13), transparent 62%),
-    radial-gradient(900px 520px at 96% 46%, rgba(247, 37, 199, .1), transparent 60%),
-    radial-gradient(760px 460px at 12% 4%, rgba(6, 91, 255, .09), transparent 64%),
+    radial-gradient(1100px 620px at 78% 22%, rgba(var(--tinta), .13), transparent 62%),
+    radial-gradient(900px 520px at 96% 46%, rgba(var(--tinta-5), .1), transparent 60%),
+    radial-gradient(760px 460px at 12% 4%, rgba(var(--tinta-3), .09), transparent 64%),
     var(--paper-bright);
   color: var(--ink);
 }
@@ -136,9 +136,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   border: 0;
   background: var(--grad-brand);
   color: #fff;
-  box-shadow: 0 8px 22px rgba(103, 56, 255, .26);
+  box-shadow: 0 8px 22px rgba(var(--tinta), .26);
 }
-.button-primary:hover { background: var(--grad-glow); box-shadow: 0 12px 30px rgba(103, 56, 255, .34); }
+.button-primary:hover { background: var(--grad-glow); box-shadow: 0 12px 30px rgba(var(--tinta), .34); }
 .button-primary .button-arrow, .button-primary span { color: #fff; }
 
 /* O secundário fica limpo: fundo branco, contorno fino, sem peso. */
@@ -149,7 +149,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   box-shadow: var(--sombra-card);
 }
 .mz-btn-ghost:hover, .button-dark:hover {
-  border-color: rgba(103, 56, 255, .45);
+  border-color: rgba(var(--tinta), .45);
   background: var(--paper-bright);
   color: var(--violet);
 }
@@ -166,7 +166,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 }
 
 .svc-card:hover, .mz-card:hover, .mz-products-list li:hover {
-  border-color: rgba(103, 56, 255, .32);
+  border-color: rgba(var(--tinta), .32);
   box-shadow: var(--sombra-alta);
 }
 
@@ -195,8 +195,8 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
    gradiente da marca passando por baixo. */
 #contato, .calculator {
   background:
-    radial-gradient(900px 520px at 84% 30%, rgba(103, 56, 255, .34), transparent 62%),
-    radial-gradient(760px 460px at 20% 84%, rgba(247, 37, 199, .2), transparent 60%),
+    radial-gradient(900px 520px at 84% 30%, rgba(var(--tinta), .34), transparent 62%),
+    radial-gradient(760px 460px at 20% 84%, rgba(var(--tinta-5), .2), transparent 60%),
     var(--ink);
 }
 
@@ -242,7 +242,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-unit p { color: var(--ink-muted); }
 .mz-unit-tag { border-color: var(--hairline); color: var(--ink-muted); }
 .mz-unit.is-branch:hover,
-.mz-unit.is-matrix:hover { border-color: rgba(103, 56, 255, .34); box-shadow: var(--sombra-alta); }
+.mz-unit.is-matrix:hover { border-color: rgba(var(--tinta), .34); box-shadow: var(--sombra-alta); }
 
 .mz-integrations .mz-btn-ghost { border-color: var(--hairline); background: var(--paper-bright); color: var(--ink); }
 
@@ -251,8 +251,8 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-products-custom {
   border-color: rgba(2, 24, 44, .1);
   background:
-    radial-gradient(700px 320px at 88% 20%, rgba(103, 56, 255, .5), transparent 62%),
-    radial-gradient(520px 300px at 8% 100%, rgba(247, 37, 199, .28), transparent 60%),
+    radial-gradient(700px 320px at 88% 20%, rgba(var(--tinta), .5), transparent 62%),
+    radial-gradient(520px 300px at 8% 100%, rgba(var(--tinta-5), .28), transparent 60%),
     var(--ink);
   color: #fff;
   box-shadow: var(--sombra-alta);
@@ -292,13 +292,13 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   color: var(--ink);
   box-shadow: var(--sombra-card);
 }
-.gallery-card::before { background: radial-gradient(circle, rgba(103, 56, 255, .1), transparent 66%); }
+.gallery-card::before { background: radial-gradient(circle, rgba(var(--tinta), .1), transparent 66%); }
 .gallery-card:hover, .gallery-card:focus-visible {
-  border-color: rgba(103, 56, 255, .38);
+  border-color: rgba(var(--tinta), .38);
   box-shadow: var(--sombra-alta);
 }
 .gallery-ic {
-  border: 1px solid rgba(103, 56, 255, .22);
+  border: 1px solid rgba(var(--tinta), .22);
   background: var(--paper-deep);
   color: var(--violet);
 }
@@ -331,7 +331,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 #contato.contact-commit-1adc .field textarea:focus {
   border-color: var(--violet);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(103, 56, 255, .14);
+  box-shadow: 0 0 0 3px rgba(var(--tinta), .14);
 }
 #contato .contact-form-action .button-primary {
   border: 0;
@@ -391,26 +391,26 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
    um disco branco, mantendo o mesmo desenho. */
 .orbit-ring { border-color: rgba(2, 24, 44, .16); }
 .orbit-ring span { color: var(--ink-muted); }
-.orbit-ring::before { background: var(--violet); box-shadow: 0 0 18px rgba(103, 56, 255, .5); }
+.orbit-ring::before { background: var(--violet); box-shadow: 0 0 18px rgba(var(--tinta), .5); }
 .orbit-axis { background: linear-gradient(90deg, transparent, rgba(2, 24, 44, .14), transparent); }
 .orbit-axis::after { background: linear-gradient(transparent, rgba(2, 24, 44, .1), transparent); }
 
-.orbit-halo { background: radial-gradient(circle at 42% 36%, rgba(103, 56, 255, .16), rgba(247, 37, 199, .05) 46%, transparent 68%); }
+.orbit-halo { background: radial-gradient(circle at 42% 36%, rgba(var(--tinta), .16), rgba(var(--tinta-5), .05) 46%, transparent 68%); }
 
 .orbit-core {
   border: 1px solid var(--hairline);
   background: #fff;
   box-shadow: 0 24px 60px rgba(2, 24, 44, .14), inset 0 0 0 10px rgba(2, 24, 44, .02);
 }
-.orbit-core::before { border-color: rgba(103, 56, 255, .22); }
+.orbit-core::before { border-color: rgba(var(--tinta), .22); }
 .orbit-core small, .orbit-stage, .core-index { color: var(--ink-muted); }
 .orbit-steps i { background: rgba(2, 24, 44, .14); }
-.orbit-steps i.done { background: rgba(103, 56, 255, .45); }
-.orbit-steps i.on { background: var(--violet); box-shadow: 0 0 10px rgba(103, 56, 255, .45); }
+.orbit-steps i.done { background: rgba(var(--tinta), .45); }
+.orbit-steps i.on { background: var(--violet); box-shadow: 0 0 10px rgba(var(--tinta), .45); }
 
 .orbit-signature { color: rgba(2, 24, 44, .34); }
 .legal-orbit:hover .orbit-signature { color: rgba(2, 24, 44, .55); }
-.orbit-signature::before, .orbit-signature::after { background: rgba(103, 56, 255, .3); }
+.orbit-signature::before, .orbit-signature::after { background: rgba(var(--tinta), .3); }
 
 .orbit-note {
   border: 1px solid var(--hairline);
@@ -419,7 +419,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   box-shadow: var(--sombra-card);
 }
 .orbit-note b { color: var(--violet); }
-.legal-orbit::after { background: radial-gradient(circle, rgba(103, 56, 255, .1), transparent 62%); }
+.legal-orbit::after { background: radial-gradient(circle, rgba(var(--tinta), .1), transparent 62%); }
 
 /* ──────────────────────────────────────────────── ajustes finais de acabamento */
 
@@ -429,7 +429,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 /* O balão do usuário e o selo do chat ficavam com texto marinho sobre roxo. */
 .bv-user, .bv-badge { background: var(--violet); color: #fff; }
 .bv-chat-launcher.bv-alerta::after, .bv-chat-launcher:focus-visible { border-color: var(--violet); }
-.bv-opt:hover, .bv-opt:focus-visible { border-color: var(--violet-soft); background: rgba(103, 56, 255, .18); }
+.bv-opt:hover, .bv-opt:focus-visible { border-color: var(--violet-soft); background: rgba(var(--tinta), .18); }
 .bv-msg-link { color: var(--magenta-bright); border-bottom-color: rgba(255, 79, 216, .5); }
 
 /* Rolagem de progresso e link de atalho acompanham a marca. */
@@ -476,9 +476,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
       rgba(29, 111, 216, .42) calc(var(--costura) * .76),
       rgba(6, 42, 92, 0) var(--costura)),
     /* brilhos da marca, que dão o destaque */
-    radial-gradient(900px 520px at 82% 26%, rgba(103, 56, 255, .42), transparent 60%),
-    radial-gradient(760px 460px at 16% 82%, rgba(247, 37, 199, .24), transparent 58%),
-    radial-gradient(1100px 600px at 50% 50%, rgba(22, 155, 255, .2), transparent 62%),
+    radial-gradient(900px 520px at 82% 26%, rgba(var(--tinta), .42), transparent 60%),
+    radial-gradient(760px 460px at 16% 82%, rgba(var(--tinta-5), .24), transparent 58%),
+    radial-gradient(1100px 600px at 50% 50%, rgba(var(--tinta-4), .2), transparent 62%),
     /* corpo: marinho nas pontas, azul elétrico no miolo */
     linear-gradient(180deg, var(--marinho-fundo) 0%, #062a5c 30%, var(--azul-fundo) 50%, #062a5c 70%, var(--marinho-fundo) 100%);
   background-color: var(--marinho-fundo);
@@ -488,8 +488,8 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
    ganha a mesma passagem do marinho para o azul. */
 .mz-products-custom {
   background:
-    radial-gradient(680px 320px at 86% 18%, rgba(103, 56, 255, .5), transparent 62%),
-    radial-gradient(520px 300px at 6% 100%, rgba(247, 37, 199, .3), transparent 60%),
+    radial-gradient(680px 320px at 86% 18%, rgba(var(--tinta), .5), transparent 62%),
+    radial-gradient(520px 300px at 6% 100%, rgba(var(--tinta-5), .3), transparent 60%),
     linear-gradient(120deg, var(--marinho-fundo), #0a3a7d 58%, #062a5c);
   background-color: var(--marinho-fundo);
 }
@@ -502,35 +502,35 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-products {
   background:
     linear-gradient(to bottom, var(--paper) 0, transparent 220px),
-    radial-gradient(900px 520px at 88% 12%, rgba(103, 56, 255, .07), transparent 62%),
+    radial-gradient(900px 520px at 88% 12%, rgba(var(--tinta), .07), transparent 62%),
     var(--paper-bright);
 }
 
 .gallery {
   background:
-    radial-gradient(820px 480px at 8% 20%, rgba(6, 91, 255, .07), transparent 62%),
-    radial-gradient(700px 420px at 94% 88%, rgba(247, 37, 199, .05), transparent 60%),
+    radial-gradient(820px 480px at 8% 20%, rgba(var(--tinta-3), .07), transparent 62%),
+    radial-gradient(700px 420px at 94% 88%, rgba(var(--tinta-5), .05), transparent 60%),
     var(--paper-bright);
 }
 
 .mz-units {
   background:
     linear-gradient(to bottom, transparent 0, var(--paper) 180px),
-    radial-gradient(900px 520px at 20% 8%, rgba(103, 56, 255, .08), transparent 60%),
-    radial-gradient(760px 460px at 90% 96%, rgba(22, 155, 255, .08), transparent 58%),
+    radial-gradient(900px 520px at 20% 8%, rgba(var(--tinta), .08), transparent 60%),
+    radial-gradient(760px 460px at 90% 96%, rgba(var(--tinta-4), .08), transparent 58%),
     var(--paper);
 }
 
 .practice {
   background:
     linear-gradient(to bottom, var(--paper) 0, transparent 240px),
-    radial-gradient(880px 500px at 90% 16%, rgba(103, 56, 255, .06), transparent 62%),
+    radial-gradient(880px 500px at 90% 16%, rgba(var(--tinta), .06), transparent 62%),
     var(--paper-bright);
 }
 
 .faq {
   background:
-    radial-gradient(820px 460px at 6% 24%, rgba(6, 91, 255, .06), transparent 60%),
+    radial-gradient(820px 460px at 6% 24%, rgba(var(--tinta-3), .06), transparent 60%),
     linear-gradient(to bottom, transparent 0, var(--paper) 300px),
     var(--paper);
 }
@@ -538,13 +538,13 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .cta-gallery {
   background:
     linear-gradient(to bottom, var(--paper) 0, transparent 260px),
-    radial-gradient(860px 500px at 92% 78%, rgba(247, 37, 199, .06), transparent 60%),
+    radial-gradient(860px 500px at 92% 78%, rgba(var(--tinta-5), .06), transparent 60%),
     var(--paper-bright);
 }
 
 .integration-section {
   background:
-    radial-gradient(900px 460px at 50% 0%, rgba(103, 56, 255, .07), transparent 64%),
+    radial-gradient(900px 460px at 50% 0%, rgba(var(--tinta), .07), transparent 64%),
     var(--paper-bright);
 }
 
@@ -560,9 +560,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .hero, .mz-hero {
   background:
     linear-gradient(to top, var(--paper) 0, rgba(247, 249, 252, 0) 200px),
-    radial-gradient(1100px 620px at 78% 22%, rgba(103, 56, 255, .15), transparent 62%),
-    radial-gradient(900px 520px at 96% 46%, rgba(247, 37, 199, .11), transparent 60%),
-    radial-gradient(760px 460px at 12% 4%, rgba(6, 91, 255, .1), transparent 64%),
+    radial-gradient(1100px 620px at 78% 22%, rgba(var(--tinta), .15), transparent 62%),
+    radial-gradient(900px 520px at 96% 46%, rgba(var(--tinta-5), .11), transparent 60%),
+    radial-gradient(760px 460px at 12% 4%, rgba(var(--tinta-3), .1), transparent 64%),
     var(--paper-bright);
 }
 
@@ -599,9 +599,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
     /* saída do hero encontrando a próxima seção */
     linear-gradient(to top, var(--paper-bright) 0, rgba(255, 255, 255, 0) 190px),
     /* destaques da paleta, difusos, sem desenho */
-    radial-gradient(720px 420px at 16% 6%, rgba(6, 91, 255, .16), transparent 62%),
-    radial-gradient(760px 440px at 86% 14%, rgba(103, 56, 255, .16), transparent 62%),
-    radial-gradient(660px 400px at 62% 96%, rgba(247, 37, 199, .12), transparent 60%),
+    radial-gradient(720px 420px at 16% 6%, rgba(var(--tinta-3), .16), transparent 62%),
+    radial-gradient(760px 440px at 86% 14%, rgba(var(--tinta), .16), transparent 62%),
+    radial-gradient(660px 400px at 62% 96%, rgba(var(--tinta-5), .12), transparent 60%),
     /* o azul de fundo */
     linear-gradient(180deg, #e6efff 0%, var(--paper-deep) 42%, #f2f6ff 100%);
   background-color: var(--paper-deep);
@@ -683,7 +683,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 }
 .mz-hero .mz-btn-ghost:hover {
   border-color: var(--violet-soft);
-  background: rgba(145, 70, 255, .16);
+  background: rgba(var(--tinta-2), .16);
   color: #fff;
 }
 
@@ -709,7 +709,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   left: 50%; top: 34%;
   width: min(1120px, 96vw); height: min(620px, 62vw);
   transform: translate(-50%, -50%);
-  background: radial-gradient(closest-side, rgba(103, 56, 255, .55), rgba(103, 56, 255, 0) 72%);
+  background: radial-gradient(closest-side, rgba(var(--tinta), .55), rgba(var(--tinta), 0) 72%);
   filter: blur(58px);
   animation: aurora-respira 15s ease-in-out infinite;
 }
@@ -718,7 +718,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   left: 27%; top: 24%;
   width: min(560px, 62vw); height: min(560px, 62vw);
   transform: translate(-50%, -50%);
-  background: radial-gradient(closest-side, rgba(145, 70, 255, .5), rgba(145, 70, 255, 0) 70%);
+  background: radial-gradient(closest-side, rgba(var(--tinta-2), .5), rgba(var(--tinta-2), 0) 70%);
   filter: blur(52px);
   animation: aurora-deriva-a 19s ease-in-out infinite;
 }
@@ -727,7 +727,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   left: 74%; top: 62%;
   width: min(520px, 58vw); height: min(520px, 58vw);
   transform: translate(-50%, -50%);
-  background: radial-gradient(closest-side, rgba(145, 70, 255, .42), rgba(103, 56, 255, 0) 70%);
+  background: radial-gradient(closest-side, rgba(var(--tinta-2), .42), rgba(var(--tinta), 0) 70%);
   filter: blur(56px);
   animation: aurora-deriva-b 23s ease-in-out infinite;
 }
@@ -740,11 +740,11 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: conic-gradient(from 200deg,
-    rgba(145, 70, 255, 0) 0deg,
-    rgba(145, 70, 255, .9) 42deg,
-    rgba(103, 56, 255, .55) 96deg,
-    rgba(103, 56, 255, 0) 150deg,
-    rgba(103, 56, 255, 0) 360deg);
+    rgba(var(--tinta-2), 0) 0deg,
+    rgba(var(--tinta-2), .9) 42deg,
+    rgba(var(--tinta), .55) 96deg,
+    rgba(var(--tinta), 0) 150deg,
+    rgba(var(--tinta), 0) 360deg);
   padding: 1px;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -812,7 +812,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   box-shadow: var(--sombra-card);
 }
 .mz-hero .mz-btn-ghost:hover {
-  border-color: rgba(103, 56, 255, .45);
+  border-color: rgba(var(--tinta), .45);
   background: var(--paper-bright);
   color: var(--violet);
 }
@@ -820,26 +820,26 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 /* ─────────────────────────────────── a aurora, calibrada para fundo claro */
 
 .mz-aurora .a {
-  background: radial-gradient(closest-side, rgba(103, 56, 255, .2), rgba(103, 56, 255, 0) 72%);
+  background: radial-gradient(closest-side, rgba(var(--tinta), .2), rgba(var(--tinta), 0) 72%);
   filter: blur(64px);
 }
 .mz-aurora .b {
-  background: radial-gradient(closest-side, rgba(145, 70, 255, .17), rgba(145, 70, 255, 0) 70%);
+  background: radial-gradient(closest-side, rgba(var(--tinta-2), .17), rgba(var(--tinta-2), 0) 70%);
   filter: blur(58px);
 }
 .mz-aurora .c {
-  background: radial-gradient(closest-side, rgba(145, 70, 255, .16), rgba(103, 56, 255, 0) 70%);
+  background: radial-gradient(closest-side, rgba(var(--tinta-2), .16), rgba(var(--tinta), 0) 70%);
   filter: blur(60px);
 }
 
 /* O arco fica só como um traço de contorno; no claro ele não pode brilhar. */
 .mz-aurora .arco {
   background: conic-gradient(from 200deg,
-    rgba(103, 56, 255, 0) 0deg,
-    rgba(103, 56, 255, .34) 42deg,
-    rgba(145, 70, 255, .2) 96deg,
-    rgba(145, 70, 255, 0) 150deg,
-    rgba(145, 70, 255, 0) 360deg);
+    rgba(var(--tinta), 0) 0deg,
+    rgba(var(--tinta), .34) 42deg,
+    rgba(var(--tinta-2), .2) 96deg,
+    rgba(var(--tinta-2), 0) 150deg,
+    rgba(var(--tinta-2), 0) 360deg);
   opacity: .55;
 }
 
@@ -961,9 +961,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-hero {
   background:
     linear-gradient(to top, var(--paper-bright) 0, rgba(255, 255, 255, 0) 190px),
-    radial-gradient(760px 460px at 50% 34%, rgba(103, 56, 255, .2), transparent 68%),
-    radial-gradient(560px 520px at 27% 24%, rgba(145, 70, 255, .16), transparent 66%),
-    radial-gradient(520px 480px at 74% 62%, rgba(145, 70, 255, .15), transparent 66%),
+    radial-gradient(760px 460px at 50% 34%, rgba(var(--tinta), .2), transparent 68%),
+    radial-gradient(560px 520px at 27% 24%, rgba(var(--tinta-2), .16), transparent 66%),
+    radial-gradient(520px 480px at 74% 62%, rgba(var(--tinta-2), .15), transparent 66%),
     linear-gradient(180deg, #e6efff 0%, var(--paper-deep) 42%, #f2f6ff 100%);
   background-color: var(--paper-deep);
 }
@@ -1024,10 +1024,10 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
      passa, as curvas viram azul, depois roxo, depois magenta. */
   background: linear-gradient(108deg,
     transparent 41%,
-    rgba(22, 155, 255, .1) 45%,
-    rgba(103, 56, 255, .17) 48.5%,
-    rgba(145, 70, 255, .16) 51.5%,
-    rgba(247, 37, 199, .1) 55%,
+    rgba(var(--tinta-4), .1) 45%,
+    rgba(var(--tinta), .17) 48.5%,
+    rgba(var(--tinta-2), .16) 51.5%,
+    rgba(var(--tinta-5), .1) 55%,
     transparent 59%);
   will-change: transform;
   transform: translate3d(-72%, 0, 0);
@@ -1072,11 +1072,11 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   transition: border-color .25s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22, 1, .36, 1);
 }
 
-.faq details:hover { border-color: rgba(103, 56, 255, .3); box-shadow: var(--sombra-card); }
+.faq details:hover { border-color: rgba(var(--tinta), .3); box-shadow: var(--sombra-card); }
 
 /* Aberto, o cartão ganha um fio da marca no topo e sobe um pouco. */
 .faq details[open] {
-  border-color: rgba(103, 56, 255, .34);
+  border-color: rgba(var(--tinta), .34);
   box-shadow: var(--sombra-alta);
   transform: translateY(-1px);
 }
@@ -1128,7 +1128,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   background: var(--ink);
 }
 
-.faq details:hover summary i { border-color: rgba(103, 56, 255, .38); background: var(--paper-deep); }
+.faq details:hover summary i { border-color: rgba(var(--tinta), .38); background: var(--paper-deep); }
 
 .faq details[open] summary i {
   border-color: transparent;
@@ -1167,9 +1167,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 
 #contato, .calculator {
   background:
-    radial-gradient(900px 520px at 82% 26%, rgba(103, 56, 255, .42), transparent 60%),
-    radial-gradient(760px 460px at 16% 82%, rgba(247, 37, 199, .24), transparent 58%),
-    radial-gradient(1100px 600px at 50% 50%, rgba(22, 155, 255, .2), transparent 62%),
+    radial-gradient(900px 520px at 82% 26%, rgba(var(--tinta), .42), transparent 60%),
+    radial-gradient(760px 460px at 16% 82%, rgba(var(--tinta-5), .24), transparent 58%),
+    radial-gradient(1100px 600px at 50% 50%, rgba(var(--tinta-4), .2), transparent 62%),
     linear-gradient(180deg, var(--marinho-fundo) 0%, #062a5c 30%, var(--azul-fundo) 50%, #062a5c 70%, var(--marinho-fundo) 100%);
   background-color: var(--marinho-fundo);
 }
@@ -1177,32 +1177,32 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 /* As seções claras mantêm a lavagem de cor, sem o sangramento nas bordas. */
 .mz-products {
   background:
-    radial-gradient(900px 520px at 88% 12%, rgba(103, 56, 255, .07), transparent 62%),
+    radial-gradient(900px 520px at 88% 12%, rgba(var(--tinta), .07), transparent 62%),
     var(--paper-bright);
 }
 
 .mz-units {
   background:
-    radial-gradient(900px 520px at 20% 8%, rgba(103, 56, 255, .08), transparent 60%),
-    radial-gradient(760px 460px at 90% 96%, rgba(22, 155, 255, .08), transparent 58%),
+    radial-gradient(900px 520px at 20% 8%, rgba(var(--tinta), .08), transparent 60%),
+    radial-gradient(760px 460px at 90% 96%, rgba(var(--tinta-4), .08), transparent 58%),
     var(--paper);
 }
 
 .practice {
   background:
-    radial-gradient(880px 500px at 90% 16%, rgba(103, 56, 255, .06), transparent 62%),
+    radial-gradient(880px 500px at 90% 16%, rgba(var(--tinta), .06), transparent 62%),
     var(--paper-bright);
 }
 
 .faq {
   background:
-    radial-gradient(820px 460px at 6% 24%, rgba(6, 91, 255, .06), transparent 60%),
+    radial-gradient(820px 460px at 6% 24%, rgba(var(--tinta-3), .06), transparent 60%),
     var(--paper);
 }
 
 .cta-gallery {
   background:
-    radial-gradient(860px 500px at 92% 78%, rgba(247, 37, 199, .06), transparent 60%),
+    radial-gradient(860px 500px at 92% 78%, rgba(var(--tinta-5), .06), transparent 60%),
     var(--paper-bright);
 }
 
@@ -1210,9 +1210,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 
 .mz-hero {
   background:
-    radial-gradient(760px 460px at 50% 34%, rgba(103, 56, 255, .2), transparent 68%),
-    radial-gradient(560px 520px at 27% 24%, rgba(145, 70, 255, .16), transparent 66%),
-    radial-gradient(520px 480px at 74% 62%, rgba(145, 70, 255, .15), transparent 66%),
+    radial-gradient(760px 460px at 50% 34%, rgba(var(--tinta), .2), transparent 68%),
+    radial-gradient(560px 520px at 27% 24%, rgba(var(--tinta-2), .16), transparent 66%),
+    radial-gradient(520px 480px at 74% 62%, rgba(var(--tinta-2), .15), transparent 66%),
     linear-gradient(180deg, #e6efff 0%, var(--paper-deep) 42%, #f2f6ff 100%);
   background-color: var(--paper-deep);
 }
@@ -1254,10 +1254,10 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   height: 62%;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(103, 56, 255, .13), transparent 68%);
+  background: radial-gradient(circle, rgba(var(--tinta), .13), transparent 68%);
   transition: opacity .4s ease;
 }
-.mz-unit.is-branch::after { background: radial-gradient(circle, rgba(247, 37, 199, .13), transparent 68%); }
+.mz-unit.is-branch::after { background: radial-gradient(circle, rgba(var(--tinta-5), .13), transparent 68%); }
 .mz-unit > * { position: relative; z-index: 1; }
 
 .mz-unit-ic {
@@ -1266,14 +1266,14 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
   margin-bottom: 20px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(103, 56, 255, .22);
+  border: 1px solid rgba(var(--tinta), .22);
   border-radius: 13px;
   background: var(--paper-deep);
   color: var(--violet);
   transition: border-color .3s ease, background-color .3s ease, color .3s ease;
 }
 .mz-unit-ic svg { width: 23px; height: 23px; }
-.mz-unit.is-branch .mz-unit-ic { border-color: rgba(247, 37, 199, .24); color: var(--magenta); }
+.mz-unit.is-branch .mz-unit-ic { border-color: rgba(var(--tinta-5), .24); color: var(--magenta); }
 
 .mz-unit-head { gap: 7px; margin-bottom: 14px; }
 .mz-unit-head small { color: var(--blue); font-size: 8px; letter-spacing: .16em; }
@@ -1303,10 +1303,10 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
     opacity: 1;
     filter: none;
     transform: translateY(-5px);
-    border-color: rgba(103, 56, 255, .4);
+    border-color: rgba(var(--tinta), .4);
     box-shadow: var(--sombra-alta);
   }
-  .mz-units-grid .mz-unit.is-branch:hover { border-color: rgba(247, 37, 199, .42); }
+  .mz-units-grid .mz-unit.is-branch:hover { border-color: rgba(var(--tinta-5), .42); }
   .mz-units-grid:hover .mz-unit::after { opacity: .4; }
   .mz-units-grid .mz-unit:hover::after { opacity: 1; }
   .mz-units-grid .mz-unit:hover .mz-unit-ic { background: #fff; border-color: currentColor; }
@@ -1318,7 +1318,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-units-grid .mz-unit:focus-within {
   opacity: 1;
   filter: none;
-  border-color: rgba(103, 56, 255, .4);
+  border-color: rgba(var(--tinta), .4);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1360,9 +1360,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 
 .mz-hero {
   background:
-    radial-gradient(820px 500px at 50% 32%, rgba(103, 56, 255, .3), transparent 66%),
-    radial-gradient(600px 540px at 24% 22%, rgba(145, 70, 255, .22), transparent 64%),
-    radial-gradient(560px 500px at 78% 66%, rgba(247, 37, 199, .16), transparent 64%),
+    radial-gradient(820px 500px at 50% 32%, rgba(var(--tinta), .3), transparent 66%),
+    radial-gradient(600px 540px at 24% 22%, rgba(var(--tinta-2), .22), transparent 64%),
+    radial-gradient(560px 500px at 78% 66%, rgba(var(--tinta-5), .16), transparent 64%),
     linear-gradient(180deg, var(--marinho-fundo) 0%, #041f3a 48%, var(--marinho-fundo) 100%);
   background-color: var(--marinho-fundo);
 }
@@ -1384,7 +1384,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 }
 .mz-hero .mz-btn-ghost:hover {
   border-color: var(--violet-soft);
-  background: rgba(145, 70, 255, .16);
+  background: rgba(var(--tinta-2), .16);
   color: #fff;
 }
 
@@ -1393,10 +1393,10 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-sweep i {
   background: linear-gradient(108deg,
     transparent 41%,
-    rgba(22, 155, 255, .16) 45%,
-    rgba(103, 56, 255, .26) 48.5%,
-    rgba(145, 70, 255, .24) 51.5%,
-    rgba(247, 37, 199, .16) 55%,
+    rgba(var(--tinta-4), .16) 45%,
+    rgba(var(--tinta), .26) 48.5%,
+    rgba(var(--tinta-2), .24) 51.5%,
+    rgba(var(--tinta-5), .16) 55%,
     transparent 59%);
   /* Mais rápido, como pedido: de 9s para 5s por travessia. */
   animation-duration: 5s;
@@ -1407,18 +1407,18 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .calculator-shell {
   border-color: rgba(255, 255, 255, .14);
   background:
-    radial-gradient(680px 400px at 88% 8%, rgba(103, 56, 255, .22), transparent 62%),
-    radial-gradient(520px 340px at 6% 96%, rgba(247, 37, 199, .14), transparent 60%),
+    radial-gradient(680px 400px at 88% 8%, rgba(var(--tinta), .22), transparent 62%),
+    radial-gradient(520px 340px at 6% 96%, rgba(var(--tinta-5), .14), transparent 60%),
     linear-gradient(142deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02) 58%, rgba(255, 255, 255, .04));
   box-shadow: 0 34px 90px rgba(1, 12, 30, .4);
 }
 
 .calculator-result {
   background:
-    radial-gradient(460px 320px at 70% 0%, rgba(145, 70, 255, .26), transparent 64%),
-    linear-gradient(158deg, rgba(103, 56, 255, .16), rgba(2, 24, 44, .3));
+    radial-gradient(460px 320px at 70% 0%, rgba(var(--tinta-2), .26), transparent 64%),
+    linear-gradient(158deg, rgba(var(--tinta), .16), rgba(2, 24, 44, .3));
 }
-.calculator-result::before { border-color: rgba(145, 70, 255, .26); }
+.calculator-result::before { border-color: rgba(var(--tinta-2), .26); }
 .calculator-progress i { background: var(--grad-glow); }
 
 /* ─── Chamada do hero: o parágrafo em gradiente ────────────────────────── */
@@ -1451,9 +1451,9 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
    azul luminoso; o roxo fica como sotaque, não como cor do fundo. */
 .mz-hero {
   background:
-    radial-gradient(900px 540px at 50% 30%, rgba(6, 91, 255, .34), transparent 66%),
-    radial-gradient(640px 560px at 20% 20%, rgba(22, 155, 255, .2), transparent 64%),
-    radial-gradient(600px 520px at 82% 70%, rgba(103, 56, 255, .16), transparent 64%),
+    radial-gradient(900px 540px at 50% 30%, rgba(var(--tinta-3), .34), transparent 66%),
+    radial-gradient(640px 560px at 20% 20%, rgba(var(--tinta-4), .2), transparent 64%),
+    radial-gradient(600px 520px at 82% 70%, rgba(var(--tinta), .16), transparent 64%),
     linear-gradient(180deg, #02182c 0%, #06305c 46%, #02182c 100%);
   background-color: #02182c;
 }
@@ -1462,10 +1462,10 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 .mz-sweep i {
   background: linear-gradient(108deg,
     transparent 41%,
-    rgba(22, 155, 255, .22) 45%,
-    rgba(6, 91, 255, .3) 48.5%,
-    rgba(103, 56, 255, .22) 51.5%,
-    rgba(22, 155, 255, .16) 55%,
+    rgba(var(--tinta-4), .22) 45%,
+    rgba(var(--tinta-3), .3) 48.5%,
+    rgba(var(--tinta), .22) 51.5%,
+    rgba(var(--tinta-4), .16) 55%,
     transparent 59%);
 }
 
@@ -1521,7 +1521,7 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 }
 .site-header nav .nav-drop-menu a::after { display: none; }
 .site-header nav .nav-drop-menu a:hover { background: var(--paper); color: var(--ink); }
-.site-header nav .nav-drop-menu a.is-here { background: rgba(103, 56, 255, .09); color: var(--violet); font-weight: 560; }
+.site-header nav .nav-drop-menu a.is-here { background: rgba(var(--tinta), .09); color: var(--violet); font-weight: 560; }
 
 /* Abre no ponteiro e também no teclado — daí o :focus-within junto. */
 @media (hover: hover) {

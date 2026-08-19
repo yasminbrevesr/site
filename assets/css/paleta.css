@@ -56,6 +56,25 @@ body {
 
   --grad-brand: linear-gradient(100deg, var(--s0), var(--s1) 48%, var(--s2));
   --grad-glow: linear-gradient(100deg, var(--s1), var(--s2) 55%, var(--s3));
+
+  /* ── as tintas ───────────────────────────────────────────────────────────
+     Sombra, borda e fundo translúcido do site inteiro eram rgba() com o
+     violeta e o azul da marca antiga escritos à mão — 233 valores espalhados
+     por cinco folhas. Token nenhum os alcançava, então o roxo continuava
+     vazando por baixo de uma paleta que não tem roxo: um halo aqui, uma borda
+     ali, sempre translúcido e sempre fora de tom.
+
+     Como rgba() precisa dos canais separados, o token guarda a tripla e não a
+     cor. Trocar estas cinco linhas repinta cada sombra e cada borda do site.
+
+     Aqui elas apontam para as superfícies da própria paleta, então o brilho
+     de um botão passa a ser o mesmo escuro do fundo — o que numa paleta tonal
+     significa profundidade, e não cor. */
+  --tinta:   44, 39, 57;    /* era o violeta  #6738ff */
+  --tinta-2: 61, 55, 80;    /* era o lilás    #9146ff */
+  --tinta-3: 21, 27, 38;    /* era o azul     #065bff */
+  --tinta-4: 44, 39, 57;    /* era o ciano    #169bff */
+  --tinta-5: 61, 55, 80;    /* era o magenta  #f725c7 */
 }
 
 /* Sobre fundo escuro o acento inverte: sem cor viva na paleta, quem destaca
@@ -85,10 +104,24 @@ body {
    descartar a lista (o color-mix, por exemplo). */
 .mz-hero.is-limpo {
   background:
-    repeating-linear-gradient(115deg, transparent 0 26px, rgba(255, 255, 255, .022) 26px 27px),
-    radial-gradient(1150px 780px at 14% 4%, color-mix(in srgb, var(--s3) 62%, transparent), transparent 68%),
-    radial-gradient(880px 620px at 96% 26%, color-mix(in srgb, var(--s2) 78%, transparent), transparent 64%),
-    linear-gradient(174deg, var(--s1) 0%, var(--s2) 26%, var(--s1) 58%, var(--s0) 92%);
+    /* A trama diagonal, quase invisivel: da textura sem virar padrao. */
+    repeating-linear-gradient(115deg, transparent 0 30px, rgba(255, 255, 255, .016) 30px 31px),
+
+    /* O roxo entra por tras da coluna do formulario, onde ele fica atras de um
+       cartao e vira profundidade em vez de mancha. */
+    radial-gradient(760px 560px at 78% 34%, rgba(var(--tinta-2), .5), transparent 62%),
+
+    /* O azul frio abre no alto da coluna do titulo. E o degrau mais claro da
+       escada, e por isso fica onde o olho chega primeiro. */
+    radial-gradient(980px 680px at 10% 0%, rgba(var(--tinta-3), .92), transparent 66%),
+
+    /* A descida: abre no escuro frio, passa pelo roxo no meio e fecha no preto
+       — que e onde a costura de matriz.css puxa para o branco dos produtos. */
+    linear-gradient(176deg,
+      var(--s1) 0%,
+      var(--s2) 30%,
+      color-mix(in srgb, var(--s1) 70%, var(--s0)) 62%,
+      var(--s0) 94%);
   background-color: var(--s0);
 }
 /* O ponto do rótulo é um span pintado com --grad-brand, que nesta paleta é
@@ -299,6 +332,12 @@ html[data-paleta="pale"] body {
 
   --grad-brand: linear-gradient(100deg, #4a86bd, #6fa8dc 46%, #8e7cc3);
   --grad-glow: linear-gradient(100deg, #6fa8dc, #8e7cc3 55%, #a493d1);
+
+  --tinta:   142, 124, 195;  /* #8e7cc3 */
+  --tinta-2: 164, 147, 209;  /* #a493d1 */
+  --tinta-3: 111, 168, 220;  /* #6fa8dc */
+  --tinta-4: 143, 189, 230;  /* #8fbde6 */
+  --tinta-5: 142, 124, 195;
 }
 
 /* Sobre fundo escuro o acento volta a ser o da paleta: lá as duas claras
@@ -414,6 +453,9 @@ html[data-paleta="grafite"] body {
   --s2: #2a2a2a;
   --s3: #3d3d3d;
   --claro: #e2e2e2;
+
+  --tinta: 42, 42, 42;   --tinta-2: 61, 61, 61;   --tinta-3: 27, 27, 27;
+  --tinta-4: 42, 42, 42; --tinta-5: 61, 61, 61;
 }
 
 /* ── marinho: o azul da logo puxado para cima ────────────────────────────
@@ -427,6 +469,9 @@ html[data-paleta="marinho"] body {
   --s2: #1d2d4a;
   --s3: #2f4467;
   --claro: #d5dee9;
+
+  --tinta: 29, 45, 74;   --tinta-2: 47, 68, 103;  --tinta-3: 16, 28, 49;
+  --tinta-4: 29, 45, 74; --tinta-5: 47, 68, 103;
 }
 
 /* ── marca: as cores originais do site, para comparação ────────────────── */
@@ -442,4 +487,11 @@ html[data-paleta="marca"] body {
   --amber-dark: #6738ff;
   --grad-brand: linear-gradient(100deg, #065bff, #6738ff 52%, #f725c7);
   --grad-glow: linear-gradient(100deg, #169bff, #9146ff 52%, #ff4fd8);
+
+  /* As tintas originais, para a comparação continuar sendo comparação. */
+  --tinta:   103, 56, 255;
+  --tinta-2: 145, 70, 255;
+  --tinta-3: 6, 91, 255;
+  --tinta-4: 22, 155, 255;
+  --tinta-5: 247, 37, 199;
 }

@@ -151,11 +151,11 @@
 
 .mz-flow-row.is-done .mz-flow-dot { background: #5cb97f; border-color: transparent; }
 
-.mz-flow-row.is-active { background: rgba(103,56,255,.09); }
+.mz-flow-row.is-active { background: rgba(var(--tinta),.09); }
 
 .mz-flow-row.is-active .mz-flow-idx { color: var(--amber-bright); }
 
-.mz-flow-row.is-active .mz-flow-dot { background: var(--amber-bright); border-color: transparent; box-shadow: 0 0 0 4px rgba(103,56,255,.12); }
+.mz-flow-row.is-active .mz-flow-dot { background: var(--amber-bright); border-color: transparent; box-shadow: 0 0 0 4px rgba(var(--tinta),.12); }
 
 .footer-contact li svg { width: 13px; height: 13px; flex: 0 0 auto; color: var(--amber); }
 
@@ -185,8 +185,8 @@
 .svc-highlight {
   display: grid; gap: 12px;
   margin-bottom: 34px; padding: 26px 30px;
-  border: 1px solid rgba(103,56,255,.28); border-radius: 14px;
-  background: linear-gradient(135deg, rgba(103,56,255,.09), rgba(103,56,255,.02));
+  border: 1px solid rgba(var(--tinta),.28); border-radius: 14px;
+  background: linear-gradient(135deg, rgba(var(--tinta),.09), rgba(var(--tinta),.02));
 }
 
 .svc-highlight b { font-size: clamp(18px, 2vw, 23px); font-weight: 560; letter-spacing: -.02em; color: var(--ink); }
@@ -209,7 +209,7 @@
 
 .svc-card p { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.65; }
 
-.svc-card:hover { border-color: rgba(6,91,255,.34); box-shadow: 0 18px 40px rgba(2,24,44,.08); transform: translateY(-4px); }
+.svc-card:hover { border-color: rgba(var(--tinta-3),.34); box-shadow: 0 18px 40px rgba(2,24,44,.08); transform: translateY(-4px); }
 
 @media (max-width: 760px) {
   .svc-grid { grid-template-columns: 1fr; }

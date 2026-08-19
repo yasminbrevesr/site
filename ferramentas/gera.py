@@ -351,7 +351,6 @@ def bloco_relacionados(slug):
     return ('  <section class="pd-relac" aria-labelledby="pd-relac-titulo">\n'
             '    <div class="section-frame">\n'
             '      <div class="pd-relac-head reveal">\n'
-            '        <div class="section-label">Costuma vir junto</div>\n'
             '        <h2 id="pd-relac-titulo">O que quase sempre aparece na mesma conversa</h2>\n'
             '      </div>\n'
             '      <ul class="pd-relac-lista reveal">\n'
@@ -411,12 +410,12 @@ TEMPLATE = '''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link rel="stylesheet" href="../assets/css/shared.css?v=shared-1">
-<link rel="stylesheet" href="../assets/css/nucleo.css?v=nucleo-1">
-<link rel="stylesheet" href="../assets/css/base.css?v=base-1">
+<link rel="stylesheet" href="../assets/css/nucleo.css?v=nucleo-2">
+<link rel="stylesheet" href="../assets/css/base.css?v=base-2">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-9">
-<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-27">
-<link rel="stylesheet" href="../assets/css/produto.css?v=produto-34">
-<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-8">
+<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-28">
+<link rel="stylesheet" href="../assets/css/produto.css?v=produto-37">
+<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-9">
 <script>
   /* ?paleta=<nome> liga uma paleta de teste em qualquer página. Inline e no
      head de propósito: em <script defer> a página pisca na paleta antiga
