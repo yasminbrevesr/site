@@ -1636,3 +1636,65 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
 
   .footer-social a { width: 44px; height: 44px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PÁGINA LEGAL
+   Texto corrido, uma coluna, medida de leitura curta. É documento para ser
+   lido, não página de venda — nenhum cartão, nenhuma chamada, nenhum realce.
+   ══════════════════════════════════════════════════════════════════════════ */
+.pd-legal { padding: 128px 0 96px; background: var(--paper-bright); }
+.pd-legal .section-frame { max-width: 760px; }
+
+.pd-legal .pd-crumbs { margin-bottom: 32px; }
+
+.pd-legal h1 {
+  margin-bottom: 20px;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.032em;
+  color: var(--ink);
+}
+.pd-legal-lead { color: var(--ink-muted); font-size: 17px; line-height: 1.7; }
+.pd-legal-data {
+  margin-top: 18px;
+  padding-bottom: 34px;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  font: 11px/1 var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.pd-legal h2 {
+  margin: 44px 0 14px;
+  font-size: 22px;
+  font-weight: 660;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  color: var(--ink);
+}
+.pd-legal h3 {
+  margin: 28px 0 10px;
+  font-size: 16px;
+  font-weight: 660;
+  letter-spacing: -.012em;
+  color: var(--ink);
+  text-transform: none;
+}
+.pd-legal p { margin-bottom: 14px; color: var(--ink-muted); font-size: 15.5px; line-height: 1.75; }
+.pd-legal ul { margin: 0 0 14px; padding-left: 1.2em; }
+.pd-legal li { margin-bottom: 8px; color: var(--ink-muted); font-size: 15.5px; line-height: 1.7; }
+.pd-legal strong { color: var(--ink); font-weight: 620; }
+.pd-legal a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.pd-legal a:hover { text-decoration-thickness: 2px; }
+
+@media (max-width: 620px) {
+  .pd-legal { padding: 104px 0 68px; }
+  .pd-legal h2 { font-size: 20px; }
+}
+
+/* O link da política no rodapé: discreto de propósito — é obrigação legal e
+   ponto de consulta, não chamada. */
+.footer-legal { color: inherit; opacity: .72; text-decoration: underline; text-underline-offset: 3px; }
+.footer-legal:hover { opacity: 1; }
