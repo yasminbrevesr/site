@@ -151,6 +151,31 @@ body {
       var(--s0) 100%);
   background-color: var(--s0);
 }
+/* ── o fecho do hero ──────────────────────────────────────────────────────
+   O matriz.css usa esta faixa para dissolver o hero no branco dos produtos, e
+   era ela o borrão claro subindo pelo canto de baixo: 195px de branco por cima
+   de um fundo que é escuro e diagonal, o que deixava o pé do hero mais claro
+   de um lado que do outro.
+
+   Aqui ela deixa de puxar para o branco e passa a assentar no próprio preto da
+   paleta. Duas coisas saem de graça: o pé do hero fica de uma cor só, apesar
+   de o degradê ser diagonal e chegar embaixo em tons diferentes de cada lado;
+   e os feixes, que passam por baixo desta camada, somem antes da borda em vez
+   de serem cortados no meio.
+
+   O encontro com a seção branca vira uma linha limpa — que é o que ela já é em
+   toda seção escura do site.
+
+   E ela precisa do `opacity: 1`. O identidade.css deixa esta faixa a meia
+   opacidade (`.mz-hero::after { opacity: .5 }`), o que era metade do problema:
+   um branco a 50% sobre um fundo escuro e diagonal não vira degradê, vira
+   mancha cinza — mais clara de um lado que do outro, porque o que aparece por
+   baixo muda ao longo da largura. Opaca, a faixa fecha na cor que se pede. */
+.mz-hero.is-limpo::after {
+  background: linear-gradient(to bottom, transparent, var(--s0) 82%);
+  opacity: 1;
+}
+
 /* A camada dos feixes. O canvas é criado pelo JS e entra como primeiro filho
    do hero; sem script ele não existe e sobra o degradê, que já se sustenta.
 
