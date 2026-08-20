@@ -104,24 +104,28 @@ body {
    descartar a lista (o color-mix, por exemplo). */
 .mz-hero.is-limpo {
   background:
-    /* A trama diagonal, quase invisivel: da textura sem virar padrao. */
-    repeating-linear-gradient(115deg, transparent 0 30px, rgba(255, 255, 255, .016) 30px 31px),
+    /* Trama diagonal quase invisivel: textura, nao padrao. */
+    repeating-linear-gradient(115deg, transparent 0 34px, rgba(255, 255, 255, .014) 34px 35px),
 
-    /* O roxo entra por tras da coluna do formulario, onde ele fica atras de um
-       cartao e vira profundidade em vez de mancha. */
-    radial-gradient(760px 560px at 78% 34%, rgba(var(--tinta-2), .5), transparent 62%),
+    /* Uma luz so, larga e macia, no meio-alto. Antes eram dois radiais
+       competindo em cantos opostos, e o encontro deles deixava mancha; um
+       clarao unico e amplo da profundidade sem virar borrao. */
+    radial-gradient(1500px 1000px at 58% 14%, rgba(var(--tinta-2), .3), transparent 74%),
 
-    /* O azul frio abre no alto da coluna do titulo. E o degrau mais claro da
-       escada, e por isso fica onde o olho chega primeiro. */
-    radial-gradient(980px 680px at 10% 0%, rgba(var(--tinta-3), .92), transparent 66%),
+    /* O sweep: uma diagonal contínua que atravessa a escada inteira, do azul
+       frio ao roxo e do roxo ao preto. Com os degraus intermediarios em
+       color-mix, a passagem de uma cor para a outra nao tem emenda — e e isso
+       que faz o fundo ler como um campo so, e nao como faixas empilhadas.
 
-    /* A descida: abre no escuro frio, passa pelo roxo no meio e fecha no preto
-       — que e onde a costura de matriz.css puxa para o branco dos produtos. */
-    linear-gradient(176deg,
+       Termina no preto porque e ali que a costura de matriz.css puxa para o
+       branco dos produtos. */
+    linear-gradient(152deg,
       var(--s1) 0%,
-      var(--s2) 30%,
-      color-mix(in srgb, var(--s1) 70%, var(--s0)) 62%,
-      var(--s0) 94%);
+      color-mix(in srgb, var(--s1) 58%, var(--s2)) 20%,
+      var(--s2) 42%,
+      color-mix(in srgb, var(--s2) 62%, var(--s0)) 66%,
+      color-mix(in srgb, var(--s2) 22%, var(--s0)) 86%,
+      var(--s0) 100%);
   background-color: var(--s0);
 }
 /* O ponto do rótulo é um span pintado com --grad-brand, que nesta paleta é
