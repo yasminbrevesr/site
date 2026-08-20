@@ -210,6 +210,62 @@ body {
   filter: blur(30px);
 }
 
+/* ── a seção de produtos ──────────────────────────────────────────────────
+   O lado claro do site ainda falava a cor antiga: --ink era o marinho #02182c,
+   o fio dos cartões era #d9e2f0 (azulado) e toda sombra saía de rgba(2,24,44).
+   Ao lado de uma paleta que virou ardósia e roxo, isso lê como duas paletas na
+   mesma página — e a faixa escura no pé da seção era pior ainda, com o
+   #0a3a7d cravado à mão.
+
+   Em vez de trocar --ink no site inteiro (são 25 lugares, e cada um é uma
+   chance de quebrar contraste em página que eu não estou olhando), os tokens
+   são redeclarados aqui, na própria seção. Propriedade personalizada é
+   herdada: declarada em .mz-products, ela alcança cartão, título, texto,
+   sombra e fio de uma vez, e para na borda da seção.
+
+   Os neutros abaixo são os mesmos da paleta puxados para o claro — mantêm o
+   toque de violeta de --s2/--s3 em vez do azul do marinho. */
+.mz-products {
+  --ink: #1d1b26;         /* era #02182c, o marinho */
+  --ink-muted: #5d5a6b;   /* era #55657a, cinza-azul */
+  --hairline: #e4e2ea;    /* era #d9e2f0, fio azulado */
+  --paper: #f6f5f9;
+  --sombra-card: 0 1px 2px rgba(19, 19, 19, .04), 0 8px 24px rgba(var(--tinta), .07);
+  --sombra-alta: 0 2px 6px rgba(19, 19, 19, .06), 0 18px 44px rgba(var(--tinta), .14);
+
+  /* A seção era branca e os cartões também: sem diferença de superfície, o
+     cartão só existia pelo fio de 1px. Agora o fundo recua um degrau e o
+     cartão continua branco — é a diferença entre os dois que desenha o
+     cartão, não a borda. */
+  background:
+    radial-gradient(900px 520px at 88% 12%, rgba(var(--tinta), .07), transparent 62%),
+    var(--paper);
+}
+
+/* O rótulo de cada cartão vinha em --blue, quase preto, brigando com o título
+   logo abaixo. --s3 é o degrau que a paleta reserva para luz: sobre branco ele
+   vira um violeta acinzentado que se lê bem e não disputa. */
+.mz-products-list li small { color: var(--s3); }
+
+/* A faixa "a gente cria": o marinho cravado sai e entra a mesma varredura
+   diagonal do hero, com as mesmas três superfícies. É o que costura o pé desta
+   seção com o topo da página. */
+.mz-products-custom {
+  border-color: rgba(var(--tinta), .3);
+  background:
+    radial-gradient(680px 320px at 86% 18%, rgba(var(--tinta-2), .45), transparent 62%),
+    linear-gradient(120deg, var(--s1), var(--s2) 58%, var(--s0));
+  background-color: var(--s0);
+}
+
+/* Sobre a faixa escura o acento inverte, como em toda seção escura do site.
+   Sem isto o rótulo "SOB MEDIDA" fica em --s3 (#3d3750) sobre um fundo quase
+   preto — ilegível. */
+.mz-products-custom {
+  --magenta-bright: var(--claro);
+  --violet: var(--claro);
+}
+
 /* O ponto do rótulo é um span pintado com --grad-brand, que nesta paleta é
    escuro: sobre o hero ele sumia e sobrava só o roxo antigo vazando por
    baixo. Sobre escuro ele inverte, como todo o resto. */

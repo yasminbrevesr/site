@@ -413,9 +413,9 @@ TEMPLATE = '''<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/css/nucleo.css?v=nucleo-2">
 <link rel="stylesheet" href="../assets/css/base.css?v=base-2">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-9">
-<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-28">
+<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-29">
 <link rel="stylesheet" href="../assets/css/produto.css?v=produto-37">
-<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-12">
+<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-13">
 <script>
   /* ?paleta=<nome> liga uma paleta de teste em qualquer página. Inline e no
      head de propósito: em <script defer> a página pisca na paleta antiga
