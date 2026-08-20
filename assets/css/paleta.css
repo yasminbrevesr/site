@@ -103,9 +103,32 @@ body {
    zera a cor de fundo, e é ela a rede de segurança se algum navegador
    descartar a lista (o color-mix, por exemplo). */
 .mz-hero.is-limpo {
+  /* A cor dos feixes (assets/js/feixes.js) mora aqui, e nao no script: e
+     paleta, e paleta se troca neste arquivo. Numeros sem unidade — o JS monta
+     o hsla(). --feixe-h e a matiz inicial, --feixe-h-faixa o quanto o leque
+     abre a partir dela, --feixe-forca um multiplicador geral de opacidade.
+
+     214 → 266 e exatamente a escada da paleta: o azul frio de --s1 (216) de
+     um lado, o roxo de --s2/--s3 (258) do outro. */
+  --feixe-h: 214;
+  --feixe-h-faixa: 52;
+  --feixe-s: 38;
+  --feixe-l: 70;
+
+  /* Poucos e fortes, não muitos e fracos. Com 30 feixes — o número do
+     componente de origem, pensado para uma tela em pé — eles se sobrepõem por
+     toda a largura do hero e o `screen` soma tudo: o resultado é neblina
+     clara, e o escuro da paleta se perde. Com 12 dá para ver cada faixa
+     atravessar, e o fundo continua fundo.
+
+     --feixe-forca: 0 desliga o efeito sem tirar o script do ar. */
+  --feixe-n: 12;
+  --feixe-forca: 1.5;
+
   background:
-    /* Trama diagonal quase invisivel: textura, nao padrao. */
-    repeating-linear-gradient(115deg, transparent 0 34px, rgba(255, 255, 255, .014) 34px 35px),
+    /* A trama diagonal saiu: quem quebra o chapado agora sao os feixes, que
+       se movem. Duas texturas paradas por baixo de uma em movimento viravam
+       ruido — e a trama aparecia como listra, que era o oposto do pedido. */
 
     /* Uma luz so, larga e macia, no meio-alto. Antes eram dois radiais
        competindo em cantos opostos, e o encontro deles deixava mancha; um
@@ -128,6 +151,40 @@ body {
       var(--s0) 100%);
   background-color: var(--s0);
 }
+/* A camada dos feixes. O canvas é criado pelo JS e entra como primeiro filho
+   do hero; sem script ele não existe e sobra o degradê, que já se sustenta.
+
+   `screen` faz os feixes só clarearem o que está embaixo: eles somam luz ao
+   degradê em vez de tapá-lo, que é o que separa "luz passando" de "mancha por
+   cima".
+
+   O `blur` daqui é o efeito inteiro, não um acabamento. A versão de origem
+   borrava dentro do canvas, com `ctx.filter`, que roda na CPU e é reaplicado a
+   cada retângulo desenhado; aqui ele sai uma vez por quadro, na composição,
+   que é o caminho que a GPU acelera — e o canvas volta a desenhar só retângulo
+   com degradê.
+
+   Ressalva honesta sobre a medição: o navegador com que testei roda sem GPU,
+   compondo por software, e ali os dois caminhos custaram parecido. O que dá
+   para afirmar do que foi medido é o custo de main thread, que independe de
+   GPU: os feixes gastam cerca de 1,5 ms de script por segundo de relógio, e
+   não mexem
+   em layout nem em recálculo de estilo. O resto é rasterização, e é
+   exatamente a parte que placa de vídeo faz.
+
+   z-index 0 basta: .mz-hero-inner já é relative/z-index 2. */
+.mz-hero.is-limpo .mz-feixes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(30px);
+}
+
 /* O ponto do rótulo é um span pintado com --grad-brand, que nesta paleta é
    escuro: sobre o hero ele sumia e sobrava só o roxo antigo vazando por
    baixo. Sobre escuro ele inverte, como todo o resto. */
