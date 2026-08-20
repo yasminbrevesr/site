@@ -51,7 +51,42 @@ They land in `src/components/ui/`.
   `text-slate-950 dark:text-white`. Uses `motion/react`. Demo in
   `src/components/ui/floating-paths-demo.tsx`.
 
-  Two notes for anyone porting this component elsewhere. The upstream demo
+- `src/components/ui/beams-background.tsx` — `BeamsBackground`, a canvas of 30
+  blurred light beams drifting upward at ~-35°, each pulsing on its own phase.
+  Wrap it around whatever you pass as `children`. `intensity`
+  (`subtle`/`medium`/`strong`) scales overall opacity; `hue` (`[start, spread]`
+  in degrees), `saturation` and `lightness` set the colour range — the defaults
+  `[190, 70]` / `85` / `65` are the upstream cyan → blue. Uses `motion/react`
+  for the breathing overlay. Demo in
+  `src/components/ui/beams-background-demo.tsx`, which renders both the upstream
+  look and a `BeamsBackgroundBreves` variant tuned to the site palette
+  (`hue={[214, 52]} saturation={38} lightness={72}` over `#131313`).
+
+  Four changes from the upstream snippet, all of them load-bearing:
+
+  1. **Beams were seeded and recycled in device pixels while being drawn in CSS
+     pixels.** The context is scaled by `devicePixelRatio`, but `createBeam` and
+     `resetBeam` were handed `canvas.width`/`canvas.height` — the backing-store
+     size. On a 2× screen the field was spread over twice the visible area and
+     most beams sat outside it. Everything now measures in CSS pixels.
+  2. **`children` was declared in the props interface but never rendered** — the
+     component hard-coded its own "Beams / Background" headline, so it could not
+     actually be used as a background. The copy moved to the demo.
+  3. **It sized itself to `window.innerWidth/innerHeight`**, so it only worked
+     full-viewport. It now measures its own box through a `ResizeObserver`,
+     which is what lets the BREVES variant be a 560px hero.
+  4. **No reduced-motion or offscreen handling.** It now paints a single static
+     frame under `prefers-reduced-motion` (verified: the canvas is byte-identical
+     over 2.5s), and parks the loop while the tab is hidden or the element is
+     scrolled out of view.
+
+  Watch the cost. A full-bleed canvas carrying `ctx.filter = blur(35px)`, a CSS
+  `blur(15px)` on top and a `backdrop-filter: blur(50px)` overlay is genuinely
+  expensive — at `deviceScaleFactor: 2` on a 1440×900 viewport, Playwright could
+  not even complete a screenshot within 30s. `devicePixelRatio` is therefore
+  capped at 2 in the component, and it is worth keeping this off long pages.
+
+  Two notes for anyone porting the floating-paths component elsewhere. The upstream demo
   uses `aspect-16/9`, which is Tailwind **v4** syntax; on the 3.4 here the
   equivalent is `aspect-[16/9]`, and without the change the class emits no
   rule, the container gets no height and nothing shows. And the transition
