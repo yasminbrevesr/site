@@ -1286,3 +1286,104 @@ body.home-redesign .mz-hero.is-limpo .mz-fale .button-primary:hover {
       #121b24;
   }
 }
+
+
+/* BREVES_AUDIENCE_LIGHT_V5 — seção clara, compacta e sem blocos pesados. */
+body.home-redesign .mz-audience {
+  padding: 88px 0 92px;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  background: rgba(218, 218, 218, .18);
+  color: #121b24;
+}
+
+body.home-redesign .mz-audience-head {
+  max-width: 940px;
+  margin-bottom: 44px;
+}
+
+body.home-redesign .mz-audience .section-label {
+  margin-bottom: 16px;
+  border-color: #dadada;
+  background: #ffffff;
+  color: #2d273d;
+}
+
+body.home-redesign .mz-audience h2 {
+  max-width: 920px;
+  color: #121b24;
+  font-size: clamp(34px, 3vw, 46px);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -.035em;
+}
+
+body.home-redesign .mz-audience h2 em {
+  background: none !important;
+  color: #2d273d !important;
+  -webkit-text-fill-color: #2d273d !important;
+}
+
+body.home-redesign .mz-audience-head > p {
+  max-width: 680px;
+  margin-top: 18px;
+  color: #2d273d;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+body.home-redesign .mz-audience-grid {
+  gap: 18px;
+  align-items: stretch;
+}
+
+body.home-redesign .mz-audience-card {
+  min-height: 218px;
+  padding: 28px;
+  border: 1px solid #dadada;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #121b24;
+  box-shadow: 0 10px 28px rgba(18, 27, 36, .05);
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+body.home-redesign .mz-audience-card:hover {
+  border-color: rgba(45, 39, 61, .42);
+  box-shadow: 0 14px 34px rgba(18, 27, 36, .07);
+  transform: translateY(-2px);
+}
+
+body.home-redesign .mz-audience-card h3 {
+  color: #121b24;
+  font-size: 19px;
+  font-weight: 650;
+}
+
+body.home-redesign .mz-audience-card p {
+  margin-top: 12px;
+  color: #2d273d;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  body.home-redesign .mz-audience {
+    padding: 68px 0;
+  }
+
+  body.home-redesign .mz-audience-head {
+    align-items: flex-start;
+    margin-bottom: 34px;
+    text-align: left;
+  }
+
+  body.home-redesign .mz-audience h2 {
+    font-size: clamp(30px, 9vw, 38px);
+  }
+
+  body.home-redesign .mz-audience-card {
+    min-height: 0;
+    padding: 24px;
+  }
+}
