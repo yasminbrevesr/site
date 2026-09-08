@@ -959,11 +959,24 @@
 /* BREVES_NAV_HINTS_V1 — descrições contextuais e remoção das setas externas. */
 (function setupBrevesNavHints() {
   var nav = document.getElementById('main-nav');
-  var arrowOnly = /^[\s\u2197\uFE0E]+$/;
+  var arrowOnly = /^[\s\u2190-\u21FF\u27F0-\u27FF\uFE0E\uFE0F]+$/;
+  var arrowsAnywhere = /[\u2190-\u21FF\u27F0-\u27FF\uFE0E\uFE0F]/g;
 
-  Array.prototype.forEach.call(document.querySelectorAll('span[aria-hidden="true"]'), function (span) {
-    if (arrowOnly.test(span.textContent || '')) span.remove();
+  Array.prototype.forEach.call(document.querySelectorAll('span[aria-hidden="true"], i[aria-hidden="true"]'), function (node) {
+    if (arrowOnly.test(node.textContent || '')) node.remove();
   });
+
+  Array.prototype.forEach.call(document.querySelectorAll('a, button, i'), function (node) {
+    Array.prototype.forEach.call(node.childNodes, function (child) {
+      if (child.nodeType === 3 && arrowsAnywhere.test(child.nodeValue || '')) {
+        child.nodeValue = (child.nodeValue || '').replace(arrowsAnywhere, '');
+        arrowsAnywhere.lastIndex = 0;
+      }
+    });
+  });
+
+  var navChevron = document.querySelector('.nav-drop-trigger > i[aria-hidden="true"]');
+  if (navChevron) navChevron.remove();
 
   if (!nav) return;
 
