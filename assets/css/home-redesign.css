@@ -367,6 +367,108 @@ body.home-redesign .section-label.light {
   text-transform: none;
 }
 
+/* Público: seção inspirada na referência, traduzida para a identidade BREVES. */
+body.home-redesign .mz-audience {
+  padding: 104px 0;
+  background: var(--ink);
+  color: var(--paper-bright);
+}
+
+body.home-redesign .mz-audience-inner {
+  width: var(--frame);
+  margin-inline: auto;
+}
+
+body.home-redesign .mz-audience-head {
+  max-width: 790px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 54px;
+  text-align: center;
+}
+
+body.home-redesign .mz-audience .section-label {
+  margin-bottom: 18px;
+  border-color: var(--line-light);
+  background: transparent;
+  color: var(--amber-bright);
+}
+
+body.home-redesign .mz-audience h2 {
+  max-width: 760px;
+  font-family: var(--sans);
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 550;
+  line-height: 1.18;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+body.home-redesign .mz-audience h2 em {
+  color: var(--amber-bright);
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 700;
+}
+
+body.home-redesign .mz-audience-head > p {
+  max-width: 650px;
+  margin-top: 18px;
+  color: var(--paper);
+  font-size: 16px;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+body.home-redesign .mz-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+body.home-redesign .mz-audience-card {
+  min-height: 292px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  border: 1px solid var(--line-light);
+  border-radius: 24px;
+  background: var(--ink-soft);
+  box-shadow: none;
+}
+
+body.home-redesign .mz-audience-number {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 34px;
+  border: 1px solid var(--line-light);
+  border-radius: 15px;
+  color: var(--amber-bright);
+  font: 650 13px/1 var(--sans);
+  letter-spacing: .05em;
+}
+
+body.home-redesign .mz-audience-card h3 {
+  margin: 0;
+  color: var(--paper-bright);
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+}
+
+body.home-redesign .mz-audience-card p {
+  margin-top: 14px;
+  color: var(--paper);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 /* Soluções: cards simples, consistentes e com respiro. */
 body.home-redesign .mz-products-list {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -512,45 +614,55 @@ body.home-redesign .mz-metodo-nota {
   text-align: center;
 }
 
-/* FAQ em linhas editoriais, com leitura mais direta. */
+/* FAQ centralizado, largo e com acordeões bem definidos. */
 body.home-redesign .faq-grid {
-  grid-template-columns: minmax(260px, .8fr) minmax(0, 1.35fr);
-  gap: clamp(56px, 8vw, 110px);
+  max-width: 960px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 44px;
+}
+
+body.home-redesign .faq-intro {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
 }
 
 body.home-redesign .faq-intro .section-label {
-  margin-bottom: 24px;
+  margin: 0 auto 18px;
+}
+
+body.home-redesign .faq-intro h2 {
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 body.home-redesign .faq-intro p {
-  max-width: 430px;
-  margin-top: 22px;
-  font-size: 14px;
+  max-width: 590px;
+  margin: 18px auto 0;
+  font-size: 15px;
   line-height: 1.7;
 }
 
 body.home-redesign .faq-list {
-  border-top-width: 1px;
-  border-top-style: solid;
+  display: grid;
+  gap: 12px;
+  border-top: 0;
 }
 
 body.home-redesign .faq details {
-  border-top: 0;
-  border-right: 0;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-left: 0;
-  border-radius: 0;
-  background: transparent;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: var(--paper-bright);
   box-shadow: none;
 }
 
 body.home-redesign .faq summary {
-  min-height: 86px;
-  grid-template-columns: 34px minmax(0, 1fr) 20px;
-  gap: 16px;
-  padding: 22px 0;
-  font-size: 14px;
+  min-height: 78px;
+  grid-template-columns: 30px minmax(0, 1fr) 20px;
+  gap: 14px;
+  padding: 20px 24px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.5;
 }
@@ -562,8 +674,8 @@ body.home-redesign .faq summary span {
 
 body.home-redesign .faq details p {
   max-width: none;
-  padding: 0 36px 28px 50px;
-  font-size: 13px;
+  padding: 0 64px 24px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -693,6 +805,14 @@ body.home-redesign .site-footer.footer-rich {
     min-height: 42px;
     padding-inline: 16px;
   }
+
+  body.home-redesign .mz-audience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.home-redesign .mz-audience-card {
+    min-height: 0;
+  }
 }
 
 /* Mobile */
@@ -746,6 +866,27 @@ body.home-redesign .site-footer.footer-rich {
   body.home-redesign .faq,
   body.home-redesign .mz-units {
     padding: 76px 0;
+  }
+
+  body.home-redesign .mz-audience {
+    padding: 76px 0;
+  }
+
+  body.home-redesign .mz-audience-head {
+    margin-bottom: 36px;
+  }
+
+  body.home-redesign .mz-audience h2 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  body.home-redesign .mz-audience-card {
+    padding: 26px 24px;
+    border-radius: 20px;
+  }
+
+  body.home-redesign .mz-audience-number {
+    margin-bottom: 26px;
   }
 
   body.home-redesign .section-head,
@@ -803,18 +944,20 @@ body.home-redesign .site-footer.footer-rich {
   }
 
   body.home-redesign .faq-grid {
-    gap: 38px;
+    gap: 32px;
   }
 
   body.home-redesign .faq summary {
     min-height: 74px;
-    grid-template-columns: 26px minmax(0, 1fr) 18px;
+    grid-template-columns: 25px minmax(0, 1fr) 18px;
     gap: 10px;
-    padding: 18px 0;
+    padding: 18px 17px;
+    font-size: 14px;
   }
 
   body.home-redesign .faq details p {
-    padding: 0 0 24px 36px;
+    padding: 0 17px 22px 52px;
+    font-size: 14px;
   }
 
   body.home-redesign .mz-unit,
