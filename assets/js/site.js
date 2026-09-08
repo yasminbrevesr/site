@@ -954,3 +954,48 @@
   });
 
 })();
+
+
+/* BREVES_NAV_HINTS_V1 — descrições contextuais e remoção das setas externas. */
+(function setupBrevesNavHints() {
+  var nav = document.getElementById('main-nav');
+  var arrowOnly = /^[\s\u2197\uFE0E]+$/;
+
+  Array.prototype.forEach.call(document.querySelectorAll('span[aria-hidden="true"]'), function (span) {
+    if (arrowOnly.test(span.textContent || '')) span.remove();
+  });
+
+  if (!nav) return;
+
+  var hints = {
+    'Início': 'Visão geral da página e das principais soluções.',
+    'Visão geral': 'Resumo da solução, benefícios e aplicações.',
+    'Produtos': 'Automações, integrações, inteligência artificial, atendimento, vendas e dados.',
+    'Como funciona': 'Etapas do trabalho, do diagnóstico à implantação.',
+    'Recursos': 'Capacidades e entregas incluídas nesta solução.',
+    'Exemplos': 'Casos de uso e possibilidades práticas.',
+    'Soluções': 'Formatos de análise e painéis disponíveis.',
+    'Serviços': 'Frentes de atuação para escritórios e equipes jurídicas.',
+    'Diagnóstico': 'Como identificamos gargalos antes da implementação.',
+    'Dúvidas': 'Respostas rápidas para as perguntas mais comuns.',
+    'Jurídico': 'Tecnologia e automação para operações jurídicas.',
+    'Matriz': 'Voltar para a BREVES Tecnologia.'
+  };
+
+  Array.prototype.forEach.call(nav.children, function (item) {
+    if (item.tagName !== 'A') return;
+    var label = (item.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!hints[label]) return;
+    item.setAttribute('data-nav-hint', hints[label]);
+    item.classList.add('has-nav-hint');
+  });
+
+  var productTrigger = nav.querySelector('.nav-drop-trigger');
+  var productMenu = nav.querySelector('.nav-drop-menu');
+  if (productTrigger && productMenu && !productMenu.querySelector('.nav-drop-intro')) {
+    var intro = document.createElement('p');
+    intro.className = 'nav-drop-intro';
+    intro.textContent = hints.Produtos;
+    productMenu.insertBefore(intro, productMenu.firstChild);
+  }
+})();
