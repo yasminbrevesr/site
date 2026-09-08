@@ -230,7 +230,7 @@ def secao_solucoes(p):
       </div>
 
       <div class="pd-solucoes-fim reveal">
-        <a class="button button-primary" href="#fale" data-magnetic>{p['cta_hero']} <span aria-hidden="true">&rarr;</span></a>
+        <a class="button button-primary" href="#fale" data-magnetic>{p['cta_hero']}</a>
       </div>
     </div>
   </section>
@@ -346,7 +346,7 @@ def bloco_relacionados(slug):
             '          <small>%s</small>\n'
             '          <b><a href="../%s/">%s</a></b>\n'
             '          <p>%s</p>\n'
-            '          <i aria-hidden="true">Ver a página &rarr;</i>\n'
+            '          <i aria-hidden="true">Ver a página </i>\n'
             '        </li>' % (eyebrow, alvo, nome, motivo))
     return ('  <section class="pd-relac" aria-labelledby="pd-relac-titulo">\n'
             '    <div class="section-frame">\n'
@@ -413,9 +413,9 @@ TEMPLATE = '''<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/css/nucleo.css?v=nucleo-2">
 <link rel="stylesheet" href="../assets/css/base.css?v=base-2">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-9">
-<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-30">
+<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-31">
 <link rel="stylesheet" href="../assets/css/produto.css?v=produto-37">
-<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-13">
+<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-14">
 <script>
   /* ?paleta=<nome> liga uma paleta de teste em qualquer página. Inline e no
      head de propósito: em <script defer> a página pisca na paleta antiga
@@ -441,7 +441,7 @@ TEMPLATE = '''<!DOCTYPE html>
 
     <nav id="main-nav" aria-label="Navegação principal">
       <div class="nav-drop">
-        <a class="nav-drop-trigger" href="../#produtos">Produtos <i aria-hidden="true"></i></a>
+        <a class="nav-drop-trigger" href="../#produtos">Produtos</a>
         <div class="nav-drop-menu">
 {menu}
         </div>
@@ -472,7 +472,7 @@ TEMPLATE = '''<!DOCTYPE html>
         <h1 class="reveal in">{h1}</h1>
         <p class="pd-hero-text reveal in">{lead}</p>
         <div class="mz-hero-actions reveal in">
-          <a class="button button-primary" href="#fale" data-magnetic>{cta_hero} <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="#fale" data-magnetic>{cta_hero}</a>
           <a class="mz-btn-ghost" href="#como-funciona">Ver como funciona</a>
         </div>
       </div>
@@ -495,7 +495,7 @@ TEMPLATE = '''<!DOCTYPE html>
 {passos}
 
         <div class="pd-linha-fim" data-passo data-linha-fim>
-          <a class="button button-primary" href="#fale" data-magnetic>Começar agora <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="#fale" data-magnetic>Começar agora</a>
         </div>
       </div>
     </div>
@@ -547,7 +547,7 @@ TEMPLATE = '''<!DOCTYPE html>
             <textarea maxlength="3000" id="f-msg" name="mensagem" placeholder="Onde isso trava hoje?"></textarea>
           </div>
           <input type="hidden" name="origem" value="site-produto-{slug}">
-          <button class="button button-primary mz-fale-enviar" type="submit">{cta_final} <span aria-hidden="true">→</span></button>
+          <button class="button button-primary mz-fale-enviar" type="submit">{cta_final}</button>
           <span class="form-ok" data-form-feedback role="status" aria-live="polite"></span>
           <p class="pd-fale-nota">Seus dados são usados só para responder este contato, em até 1 dia útil. <a href="../privacidade/" target="_blank" rel="noopener">Como tratamos seus dados</a>.</p>
         </form>
@@ -592,7 +592,7 @@ TEMPLATE = '''<!DOCTYPE html>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg> <a href="https://www.linkedin.com/company/breves-corp/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> <span>Rio de Janeiro &middot; RJ</span></li>
         </ul>
-        <a class="footer-cta" href="#fale">Iniciar conversa <span aria-hidden="true">→</span></a>
+        <a class="footer-cta" href="#fale">Iniciar conversa</a>
       </div>
     </div>
 
@@ -607,7 +607,7 @@ TEMPLATE = '''<!DOCTYPE html>
 
 
 <script type="module" src="../assets/js/contact-form.js?v=ga4-1"></script>
-<script defer src="../assets/js/site.js?v=nav-hints-1"></script>
+<script defer src="../assets/js/site.js?v=nav-hints-2s-1"></script>
 <script defer data-breves-chat="{chave}" src="../assets/js/chat.js?v=chat-12"></script>
 </body>
 </html>
