@@ -370,7 +370,7 @@ body.home-redesign .section-label.light {
 /* Público: seção inspirada na referência, traduzida para a identidade BREVES. */
 body.home-redesign .mz-audience {
   padding: 104px 0;
-  background: var(--ink);
+  background: var(--s1);
   color: var(--paper-bright);
 }
 
@@ -392,11 +392,12 @@ body.home-redesign .mz-audience .section-label {
   margin-bottom: 18px;
   border-color: var(--line-light);
   background: transparent;
-  color: var(--amber-bright);
+  color: var(--claro);
 }
 
 body.home-redesign .mz-audience h2 {
   max-width: 760px;
+  color: var(--paper-bright);
   font-family: var(--sans);
   font-size: clamp(30px, 3vw, 42px);
   font-weight: 550;
@@ -406,7 +407,7 @@ body.home-redesign .mz-audience h2 {
 }
 
 body.home-redesign .mz-audience h2 em {
-  color: var(--amber-bright);
+  color: var(--claro);
   font-family: inherit;
   font-style: normal;
   font-weight: 700;
@@ -415,7 +416,7 @@ body.home-redesign .mz-audience h2 em {
 body.home-redesign .mz-audience-head > p {
   max-width: 650px;
   margin-top: 18px;
-  color: var(--paper);
+  color: var(--claro);
   font-size: 16px;
   line-height: 1.65;
   text-wrap: pretty;
@@ -435,7 +436,7 @@ body.home-redesign .mz-audience-card {
   padding: 32px;
   border: 1px solid var(--line-light);
   border-radius: 24px;
-  background: var(--ink-soft);
+  background: var(--s2);
   box-shadow: none;
 }
 
@@ -447,7 +448,7 @@ body.home-redesign .mz-audience-number {
   margin-bottom: 34px;
   border: 1px solid var(--line-light);
   border-radius: 15px;
-  color: var(--amber-bright);
+  color: var(--paper-bright);
   font: 650 13px/1 var(--sans);
   letter-spacing: .05em;
 }
