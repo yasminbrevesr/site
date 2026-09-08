@@ -1125,3 +1125,164 @@ body.home-redesign .faq details p { padding: 0 74px 24px 24px; }
     padding-left: 20px;
   }
 }
+
+
+/* BREVES_HERO_CONTRAST_FIX_V4
+   Corrige o conflito entre o hero claro e as regras antigas de texto claro. */
+body.home-redesign .site-header {
+  z-index: 120;
+  min-height: 82px;
+  opacity: 1;
+  visibility: visible;
+}
+
+body.home-redesign .nav-shell,
+body.home-redesign .brand,
+body.home-redesign .nav-cta {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.home-redesign .brand b,
+body.home-redesign .brand small,
+body.home-redesign .site-header nav a,
+body.home-redesign .site-header nav a.nav-external {
+  color: #121b24 !important;
+}
+
+body.home-redesign .nav-cta {
+  border: 1px solid #121b24;
+  background: #121b24;
+  color: #ffffff !important;
+}
+
+body.home-redesign .nav-cta:hover {
+  border-color: #2d273d;
+  background: #2d273d;
+}
+
+body.home-redesign .mz-hero.is-limpo {
+  background:
+    radial-gradient(820px 540px at 92% 12%, rgba(45, 39, 61, .88), transparent 66%),
+    linear-gradient(142deg, #121b24 0%, #111111 58%, #2d273d 100%);
+  background-color: #121b24;
+  color: #ffffff;
+}
+
+body.home-redesign .mz-hero.is-limpo .mz-hero-copy {
+  color: #ffffff;
+}
+
+body.home-redesign .mz-hero.is-limpo .hero-kicker {
+  border-color: rgba(218, 218, 218, .32);
+  background: rgba(255, 255, 255, .06);
+  color: #dadada;
+}
+
+body.home-redesign .mz-hero.is-limpo .hero-kicker span {
+  background: #dadada;
+}
+
+body.home-redesign .mz-hero.is-limpo h1 {
+  color: #dadada;
+}
+
+body.home-redesign .mz-hero.is-limpo h1 em {
+  background: none;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+body.home-redesign .mz-hero.is-limpo .mz-hero-lead {
+  color: rgba(255, 255, 255, .78);
+}
+
+body.home-redesign .mz-hero.is-limpo .button-primary {
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  color: #121b24;
+}
+
+body.home-redesign .mz-hero.is-limpo .button-primary:hover {
+  border-color: #dadada;
+  background: #dadada;
+  color: #111111;
+}
+
+body.home-redesign .mz-hero.is-limpo .mz-fale {
+  border: 1px solid #dadada;
+  background: #ffffff;
+  color: #121b24;
+  box-shadow: 0 20px 56px rgba(17, 17, 17, .28);
+}
+
+body.home-redesign .mz-fale h2 {
+  color: #121b24;
+}
+
+body.home-redesign .mz-fale-sub,
+body.home-redesign .mz-fale-nota {
+  color: #2d273d;
+}
+
+body.home-redesign .mz-fale-nota a {
+  color: #121b24;
+}
+
+body.home-redesign .mz-fale-campos label {
+  color: #121b24;
+}
+
+body.home-redesign .mz-fale-campos input,
+body.home-redesign .mz-fale-campos textarea {
+  border: 1px solid #dadada;
+  background: rgba(218, 218, 218, .24);
+  color: #121b24;
+}
+
+body.home-redesign .mz-fale-campos input::placeholder,
+body.home-redesign .mz-fale-campos textarea::placeholder {
+  color: rgba(45, 39, 61, .64);
+  opacity: 1;
+}
+
+body.home-redesign .mz-fale-campos input:focus,
+body.home-redesign .mz-fale-campos textarea:focus {
+  border-color: #2d273d;
+  outline-color: rgba(45, 39, 61, .16);
+  background: #ffffff;
+}
+
+body.home-redesign .mz-fale .button-primary,
+body.home-redesign .mz-hero.is-limpo .mz-fale .button-primary {
+  border-color: #121b24;
+  background: #121b24;
+  color: #ffffff;
+}
+
+body.home-redesign .mz-fale .button-primary:hover,
+body.home-redesign .mz-hero.is-limpo .mz-fale .button-primary:hover {
+  border-color: #2d273d;
+  background: #2d273d;
+  color: #ffffff;
+}
+
+@media (min-width: 901px) {
+  body.home-redesign .site-header #main-nav {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 620px) {
+  body.home-redesign .site-header {
+    min-height: 66px;
+  }
+
+  body.home-redesign .mz-hero.is-limpo {
+    background:
+      radial-gradient(620px 420px at 100% 8%, rgba(45, 39, 61, .82), transparent 68%),
+      #121b24;
+  }
+}
