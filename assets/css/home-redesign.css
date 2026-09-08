@@ -1034,3 +1034,94 @@ body.home-redesign .site-footer.footer-rich {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* BREVES_HOME_ALIGNMENT_V3 — ritmo, contraste e alinhamento final da home. */
+body.home-redesign .section-frame {
+  width: var(--frame);
+  margin-inline: auto;
+}
+
+body.home-redesign .mz-hero.is-limpo {
+  background:
+    radial-gradient(780px 460px at 92% 8%, rgba(45, 39, 61, .08), transparent 66%),
+    #ffffff;
+}
+
+body.home-redesign .mz-fale,
+body.home-redesign .mz-hero.is-limpo .mz-fale {
+  border-color: #dadada;
+  background: #ffffff;
+  box-shadow: 0 16px 44px rgba(18, 27, 36, .07);
+}
+
+body.home-redesign .mz-audience { background: #121b24; }
+
+body.home-redesign .mz-audience-card {
+  min-height: 238px;
+  padding: 30px;
+  border-color: rgba(218, 218, 218, .22);
+  background: #2d273d;
+}
+
+body.home-redesign .mz-audience-card p { color: #dadada; }
+
+body.home-redesign .mz-products { background: #ffffff; }
+
+body.home-redesign .mz-products-list li {
+  border-color: #dadada;
+  background: #ffffff;
+}
+
+body.home-redesign .mz-products-list li:hover { border-color: #2d273d; }
+
+body.home-redesign .mz-products-custom {
+  border: 1px solid #dadada;
+  background: rgba(218, 218, 218, .24);
+}
+
+body.home-redesign .mz-metodo { background: rgba(218, 218, 218, .24); }
+
+body.home-redesign .mz-metodo-lista { border-color: #dadada; }
+
+body.home-redesign .mz-metodo-lista li {
+  min-height: 236px;
+  padding-top: 30px;
+  border-color: #dadada;
+}
+
+body.home-redesign .faq { background: #ffffff; }
+
+body.home-redesign .faq summary {
+  grid-template-columns: minmax(0, 1fr) 34px;
+  gap: 18px;
+}
+
+body.home-redesign .faq details p { padding: 0 74px 24px 24px; }
+
+@media (min-width: 901px) {
+  body.home-redesign .nav-drop-menu {
+    left: 0;
+    right: auto;
+    transform: translateY(-6px);
+  }
+
+  body.home-redesign .nav-drop:hover .nav-drop-menu,
+  body.home-redesign .nav-drop:focus-within .nav-drop-menu {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 620px) {
+  body.home-redesign .mz-audience-card {
+    min-height: 0;
+    padding: 26px 24px;
+  }
+
+  body.home-redesign .mz-metodo-lista li { min-height: 0; }
+
+  body.home-redesign .faq details p {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}

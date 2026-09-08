@@ -983,7 +983,6 @@
   var hints = {
     'Início': 'Visão geral da página e das principais soluções.',
     'Visão geral': 'Resumo da solução, benefícios e aplicações.',
-    'Produtos': 'Automações, integrações, inteligência artificial, atendimento, vendas e dados.',
     'Como funciona': 'Etapas do trabalho, do diagnóstico à implantação.',
     'Recursos': 'Capacidades e entregas incluídas nesta solução.',
     'Exemplos': 'Casos de uso e possibilidades práticas.',
@@ -1002,13 +1001,4 @@
     item.setAttribute('data-nav-hint', hints[label]);
     item.classList.add('has-nav-hint');
   });
-
-  var productTrigger = nav.querySelector('.nav-drop-trigger');
-  var productMenu = nav.querySelector('.nav-drop-menu');
-  if (productTrigger && productMenu && !productMenu.querySelector('.nav-drop-intro')) {
-    var intro = document.createElement('p');
-    intro.className = 'nav-drop-intro';
-    intro.textContent = hints.Produtos;
-    productMenu.insertBefore(intro, productMenu.firstChild);
-  }
 })();

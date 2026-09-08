@@ -413,9 +413,9 @@ TEMPLATE = '''<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/css/nucleo.css?v=nucleo-2">
 <link rel="stylesheet" href="../assets/css/base.css?v=base-2">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-9">
-<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-31">
+<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-32">
 <link rel="stylesheet" href="../assets/css/produto.css?v=produto-37">
-<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-14">
+<link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-15">
 <script>
   /* ?paleta=<nome> liga uma paleta de teste em qualquer página. Inline e no
      head de propósito: em <script defer> a página pisca na paleta antiga
@@ -607,7 +607,7 @@ TEMPLATE = '''<!DOCTYPE html>
 
 
 <script type="module" src="../assets/js/contact-form.js?v=ga4-1"></script>
-<script defer src="../assets/js/site.js?v=nav-hints-2s-1"></script>
+<script defer src="../assets/js/site.js?v=nav-hints-3s-1"></script>
 <script defer data-breves-chat="{chave}" src="../assets/js/chat.js?v=chat-12"></script>
 </body>
 </html>
