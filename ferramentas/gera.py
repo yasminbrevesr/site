@@ -413,7 +413,7 @@ TEMPLATE = '''<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/css/nucleo.css?v=nucleo-2">
 <link rel="stylesheet" href="../assets/css/base.css?v=base-2">
 <link rel="stylesheet" href="../assets/css/chat.css?v=chat-9">
-<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-29">
+<link rel="stylesheet" href="../assets/css/identidade.css?v=identidade-30">
 <link rel="stylesheet" href="../assets/css/produto.css?v=produto-37">
 <link rel="stylesheet" href="../assets/css/paleta.css?v=paleta-13">
 <script>
@@ -447,10 +447,10 @@ TEMPLATE = '''<!DOCTYPE html>
         </div>
       </div>
 {nav_secoes}
-      <a href="../juridico/" class="nav-external">Jurídico <span aria-hidden="true">↗︎</span></a>
+      <a href="../juridico/" class="nav-external">Jurídico</a>
     </nav>
 
-    <a class="nav-cta" href="#fale" data-magnetic>Iniciar conversa <span aria-hidden="true">↗︎</span></a>
+    <a class="nav-cta" href="#fale" data-magnetic>Iniciar conversa</a>
     <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
       <span></span><span></span>
     </button>
@@ -578,7 +578,7 @@ TEMPLATE = '''<!DOCTYPE html>
 
       <nav class="footer-col" aria-label="Links">
         <h3>Links</h3>
-        <a href="../juridico/">BREVES Jurídico <span aria-hidden="true">↗︎</span></a>
+        <a href="../juridico/">BREVES Jurídico</a>
         <a href="../">Início</a>
 {rodape_secoes}
         <a href="#fale">Contato</a>
@@ -607,7 +607,7 @@ TEMPLATE = '''<!DOCTYPE html>
 
 
 <script type="module" src="../assets/js/contact-form.js?v=ga4-1"></script>
-<script defer src="../assets/js/site.js?v=ga4-1"></script>
+<script defer src="../assets/js/site.js?v=nav-hints-1"></script>
 <script defer data-breves-chat="{chave}" src="../assets/js/chat.js?v=chat-12"></script>
 </body>
 </html>
