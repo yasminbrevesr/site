@@ -1825,3 +1825,14 @@ h1 em, h2 em, .mz-products-custom-copy strong em, .svc-highlight b em {
     display: none;
   }
 }
+
+
+/* BREVES_NO_ARROWS_V2 — segurança visual para páginas ainda em cache. */
+.nav-drop-trigger > i[aria-hidden="true"],
+.nav-cta > span[aria-hidden="true"],
+.nav-external > span[aria-hidden="true"],
+.button > span[aria-hidden="true"],
+.mz-product-link > span[aria-hidden="true"],
+.footer-col a > span[aria-hidden="true"] {
+  display: none !important;
+}
