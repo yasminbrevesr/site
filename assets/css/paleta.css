@@ -17,7 +17,7 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ── padrão: dois escuros frios, um preto neutro, cinza claro e branco ──
-   #151b26  #2c2739  #131313  #d9d9d9  #ffffff
+   #121b24  #2d273d  #111111  #dadada  #ffffff
 
    (Os valores acima foram lidos da imagem a olho; se tiver os hex exatos, é
    só trocar aqui — todo o resto sai destes cinco.)
@@ -29,7 +29,7 @@
    fundo, não como grito.
 
    Combina com o site por um motivo concreto: o marinho da logo já é um azul
-   escuro dessaturado, e #151b26 é ele com menos saturação ainda. */
+   escuro dessaturado, e #121b24 é ele com menos saturação ainda. */
 
 body {
   /* ── as superfícies ──────────────────────────────────────────────────────
@@ -38,11 +38,23 @@ body {
      paleta nova é, quase sempre, só uma escada de escuros nova. Com eles
      declarados aqui, testar outra é escrever cinco linhas — é o que fazem os
      blocos ?paleta= no fim do arquivo. */
-  --s0: #131313;   /* o mais fundo: base de todas as seções escuras */
-  --s1: #151b26;   /* o escuro frio, primeiro degrau */
-  --s2: #2c2739;   /* o escuro roxo, segundo degrau */
-  --s3: #3d3750;   /* o mais claro dos escuros: entra como luz, não como fundo */
-  --claro: #d9d9d9;
+  --s0: #111111;   /* o mais fundo: base de todas as seções escuras */
+  --s1: #121b24;   /* o escuro frio, primeiro degrau */
+  --s2: #2d273d;   /* o escuro roxo, segundo degrau */
+  --s3: #2d273d;   /* o mais claro dos escuros: entra como luz, não como fundo */
+  --claro: #dadada;
+
+  /* BREVES_PALETTE_EXACT_V1 — tokens globais da referência aprovada. */
+  --ink: var(--s0);
+  --ink-soft: var(--s1);
+  --ink-muted: var(--s2);
+  --paper: var(--claro);
+  --paper-bright: #ffffff;
+  --paper-deep: var(--claro);
+  --black: var(--s0);
+  --white: #ffffff;
+  --grey: var(--claro);
+  --grey-dim: var(--s2);
 
   --blue: var(--s1);
   --blue-bright: var(--s2);
@@ -70,11 +82,11 @@ body {
      Aqui elas apontam para as superfícies da própria paleta, então o brilho
      de um botão passa a ser o mesmo escuro do fundo — o que numa paleta tonal
      significa profundidade, e não cor. */
-  --tinta:   44, 39, 57;    /* era o violeta  #6738ff */
-  --tinta-2: 61, 55, 80;    /* era o lilás    #9146ff */
-  --tinta-3: 21, 27, 38;    /* era o azul     #065bff */
-  --tinta-4: 44, 39, 57;    /* era o ciano    #169bff */
-  --tinta-5: 61, 55, 80;    /* era o magenta  #f725c7 */
+  --tinta:   45, 39, 61;    /* era o violeta  #6738ff */
+  --tinta-2: 45, 39, 61;    /* era o lilás    #9146ff */
+  --tinta-3: 18, 27, 36;    /* era o azul     #065bff */
+  --tinta-4: 18, 27, 36;    /* era o ciano    #169bff */
+  --tinta-5: 45, 39, 61;    /* era o magenta  #f725c7 */
 }
 
 /* Sobre fundo escuro o acento inverte: sem cor viva na paleta, quem destaca
@@ -84,12 +96,12 @@ body {
 .mz-hero,
 #contato,
 .calculator {
-  --violet: #d9d9d9;
-  --violet-soft: #d9d9d9;
-  --amber: #d9d9d9;
+  --violet: #dadada;
+  --violet-soft: #dadada;
+  --amber: #dadada;
   --amber-bright: #fff;
-  --amber-dark: #d9d9d9;
-  --magenta-bright: #d9d9d9;
+  --amber-dark: #dadada;
+  --magenta-bright: #dadada;
 }
 
 /* ── o fundo do hero da home ─────────────────────────────────────────────
@@ -226,10 +238,10 @@ body {
    Os neutros abaixo são os mesmos da paleta puxados para o claro — mantêm o
    toque de violeta de --s2/--s3 em vez do azul do marinho. */
 .mz-products {
-  --ink: #1d1b26;         /* era #02182c, o marinho */
-  --ink-muted: #5d5a6b;   /* era #55657a, cinza-azul */
+  --ink: #111111;         /* era #02182c, o marinho */
+  --ink-muted: #2d273d;   /* era #55657a, cinza-azul */
   --hairline: #e4e2ea;    /* era #d9e2f0, fio azulado */
-  --paper: #f6f5f9;
+  --paper: #dadada;
   --sombra-card: 0 1px 2px rgba(19, 19, 19, .04), 0 8px 24px rgba(var(--tinta), .07);
   --sombra-alta: 0 2px 6px rgba(19, 19, 19, .06), 0 18px 44px rgba(var(--tinta), .14);
 
@@ -259,7 +271,7 @@ body {
 }
 
 /* Sobre a faixa escura o acento inverte, como em toda seção escura do site.
-   Sem isto o rótulo "SOB MEDIDA" fica em --s3 (#3d3750) sobre um fundo quase
+   Sem isto o rótulo "SOB MEDIDA" fica em --s3 (#2d273d) sobre um fundo quase
    preto — ilegível. */
 .mz-products-custom {
   --magenta-bright: var(--claro);
@@ -308,34 +320,34 @@ body {
 
 .pd-hero h1 em,
 .pd-section.is-escuro .pd-flow-head h2 em {
-  background: linear-gradient(100deg, #d9d9d9, #fff 60%, #d9d9d9);
+  background: linear-gradient(100deg, #dadada, #fff 60%, #dadada);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
 .pd-section.is-escuro .section-label,
-.pd-crumbs b { color: #d9d9d9; }
+.pd-crumbs b { color: #dadada; }
 
-.pd-linha-trilho i { background: linear-gradient(180deg, #151b26, #2c2739 60%, #3d3750); }
-.pd-passo-n { color: rgba(44, 39, 57, .12); }
-.pd-passo.is-on::before { box-shadow: 0 0 0 5px rgba(44, 39, 57, .16); }
+.pd-linha-trilho i { background: linear-gradient(180deg, #121b24, #2d273d 60%, #2d273d); }
+.pd-passo-n { color: rgba(45, 39, 61, .12); }
+.pd-passo.is-on::before { box-shadow: 0 0 0 5px rgba(45, 39, 61, .16); }
 
 /* No painel, a escala vem só da opacidade de um tom — que é o que uma paleta
    sem acento permite fazer, e continua legível. */
-.pd-pn-kpi { border-left-color: #151b26; }
-.pd-pn-kpi:nth-child(2) { border-left-color: #2c2739; }
-.pd-pn-kpi:nth-child(3) { border-left-color: #3d3750; }
-.pd-pn-meta u::before { background: #151b26; }
-.pd-pn-barras u { background: #2c2739; }
-.pd-pn-barras li:nth-child(2) u { background: #3d3750; }
+.pd-pn-kpi { border-left-color: #121b24; }
+.pd-pn-kpi:nth-child(2) { border-left-color: #2d273d; }
+.pd-pn-kpi:nth-child(3) { border-left-color: #2d273d; }
+.pd-pn-meta u::before { background: #121b24; }
+.pd-pn-barras u { background: #2d273d; }
+.pd-pn-barras li:nth-child(2) u { background: #2d273d; }
 .pd-pn-barras li:nth-child(3) u { background: #524c68; }
 .pd-pn-barras li:nth-child(4) u { background: #6b657f; }
 .pd-pn-barras li:nth-child(5) u { background: #8b8799; }
 .pd-pn-barras li:nth-child(6) u { background: #adaab6; }
 .pd-pn-serie i { background: #c9c7d0; }
-.pd-pn-serie i:last-child { background: #2c2739; }
-.pd-pn-tag { background: rgba(44, 39, 57, .1); color: #2c2739; }
+.pd-pn-serie i:last-child { background: #2d273d; }
+.pd-pn-tag { background: rgba(45, 39, 61, .1); color: #2d273d; }
 
 /* O cinza da paleta nas seções claras alternadas. */
 .pd-section.is-alt,
@@ -361,7 +373,7 @@ body {
     var(--claro) 38%,
     var(--paper-bright) 94%);
 }
-.pd-cartao { background: #d9d9d9; }
+.pd-cartao { background: #dadada; }
 
 /* ── o botao primario sobre fundo escuro ─────────────────────────────────
    O gradiente da marca era claro o bastante para aparecer sobre marinho. O
@@ -376,8 +388,8 @@ body {
 .pd-final-card .button-primary,
 #contato .button-primary,
 .calculator .button-primary {
-  background: linear-gradient(100deg, #fff, #d9d9d9);
-  color: #131313;
+  background: linear-gradient(100deg, #fff, #dadada);
+  color: #111111;
   box-shadow: 0 10px 40px rgba(217, 217, 217, .16);
 }
 .pd-hero .button-primary:hover,
@@ -392,7 +404,7 @@ body {
 .pd-section.is-escuro .button-primary span,
 .pd-final-card .button-primary span,
 #contato .button-primary span,
-.calculator .button-primary span { color: #131313; }
+.calculator .button-primary span { color: #111111; }
 
 /* ── os fundos com hex escrito à mão ─────────────────────────────────────
    Trocar token não alcança gradiente com a cor digitada dentro. Estes três
@@ -571,8 +583,8 @@ html[data-paleta="pale"] .mz-hero.is-limpo .button-primary:hover { box-shadow: 0
 
 .button-primary { box-shadow: 0 8px 22px rgba(19, 19, 19, .35); }
 .button-primary:hover { box-shadow: 0 12px 30px rgba(19, 19, 19, .48); }
-.mz-hero.is-limpo .button-primary { box-shadow: 0 10px 40px rgba(44, 39, 57, .8); }
-.mz-hero.is-limpo .button-primary:hover { box-shadow: 0 14px 52px rgba(44, 39, 57, .95); }
+.mz-hero.is-limpo .button-primary { box-shadow: 0 10px 40px rgba(45, 39, 61, .8); }
+.mz-hero.is-limpo .button-primary:hover { box-shadow: 0 14px 52px rgba(45, 39, 61, .95); }
 
 /* ══════════════════════════════════════════════════════════════════════════
    OUTRAS ESCADAS DE ESCURO PARA COMPARAR
