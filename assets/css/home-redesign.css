@@ -2500,3 +2500,51 @@ body.home-redesign .mz-products-custom .button-primary:hover {
     padding: 24px 22px;
   }
 }
+
+
+/* BREVES_CUSTOM_CTA_SIMPLIFIED_V12 — apenas chamada e ação, alinhadas. */
+body.home-redesign .mz-products-custom {
+  min-height: 112px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  padding: 26px 30px;
+}
+
+body.home-redesign .mz-products-custom-copy {
+  display: flex;
+  max-width: none;
+  align-items: center;
+  gap: 0;
+}
+
+body.home-redesign .mz-products-custom-copy strong {
+  width: 100%;
+  margin: 0;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.25;
+}
+
+body.home-redesign .mz-products-custom .button-primary {
+  margin: 0;
+  align-self: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  body.home-redesign .mz-products-custom {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    text-align: center;
+  }
+
+  body.home-redesign .mz-products-custom-copy {
+    justify-content: center;
+  }
+
+  body.home-redesign .mz-products-custom .button-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
