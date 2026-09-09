@@ -1166,3 +1166,48 @@ body.sobrio .site-footer.footer-rich {
   background: var(--color-accent);
 }
 
+/* BREVES_BRAND_IDENTITY_V4_1
+   A variação jurídica tinha seletores mais específicos; estes estados mantêm
+   a mesma hierarquia de ação e foco do restante da marca. */
+body.sobrio .nav-cta,
+body.sobrio .button-primary,
+body.sobrio .lex-form .button-primary,
+body.sobrio .bv-chat-launcher,
+body.sobrio .bv-chat-cabeca,
+body.sobrio .bv-lead-enviar,
+body.sobrio .bv-op:hover {
+  border-color: var(--color-accent) !important;
+  background: var(--color-accent) !important;
+  color: var(--color-white) !important;
+  box-shadow: 0 8px 20px rgba(var(--color-accent-rgb), .18) !important;
+}
+
+body.sobrio .nav-cta:hover,
+body.sobrio .button-primary:hover,
+body.sobrio .lex-form .button-primary:hover,
+body.sobrio .bv-chat-launcher:hover {
+  border-color: var(--color-accent-hover) !important;
+  background: var(--color-accent-hover) !important;
+}
+
+body.sobrio .site-header nav a::after {
+  background: var(--color-accent) !important;
+}
+
+body.sobrio .site-header .nav-external {
+  color: var(--color-primary) !important;
+}
+
+body.sobrio .site-header .nav-external:hover {
+  color: var(--color-accent) !important;
+}
+
+body.sobrio .lex-form-campos input:focus,
+body.sobrio .lex-form-campos textarea:focus,
+body.sobrio .lex-form-campos select:focus,
+body.sobrio .bv-lead-campo input:focus {
+  border-color: var(--color-accent) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), .16) !important;
+}
+
