@@ -91,7 +91,7 @@
 <link rel="stylesheet" href="assets/css/chat.css?v=chat-9">
 <link rel="stylesheet" href="assets/css/identidade.css?v=identidade-32">
 <link rel="stylesheet" href="assets/css/paleta.css?v=paleta-15">
-<link rel="stylesheet" href="assets/css/home-redesign.css?v=home-minimal-14">
+<link rel="stylesheet" href="assets/css/home-redesign.css?v=home-minimal-15">
 <script>
   /* ?paleta=<nome> liga uma paleta de teste em qualquer página. Inline e no
      head de propósito: em <script defer> a página pisca na paleta antiga
@@ -218,12 +218,12 @@
       </header>
 
       <ul class="mz-products-list reveal" aria-label="Produtos BREVES">
-        <li class="has-page"><small>Rotinas</small><b>Automação de processos</b><p>Sua equipe livre do repetitivo. Cada hora gasta copiando dado e refazendo a mesma tarefa é margem que evapora — as rotinas passam a rodar sozinhas e sobra tempo para o trabalho que só gente faz.</p><a class="mz-product-link" href="automacao-de-processos/">Ver a página de automação</a></li>
-        <li class="has-page"><small>APIs</small><b>Integração entre sistemas</b><p>Um dado digitado uma vez só. Informação redigitada em dois lugares vira divergência, e divergência vira prejuízo no fechamento do mês — aqui seus sistemas conversam entre si e a informação circula sozinha.</p><a class="mz-product-link" href="integracao-de-sistemas/">Ver a página de integração</a></li>
-        <li class="has-page"><small>Inteligência artificial</small><b>Agentes de IA</b><p>Um funcionário que nunca dorme. Demanda não espera o expediente abrir: um agente treinado na sua operação atende, organiza e executa 24 horas por dia — sem férias, sem rotatividade e sem treinar de novo.</p><a class="mz-product-link" href="agentes-de-ia/">Ver a página dos agentes de IA</a></li>
-        <li class="has-page"><small>Atendimento</small><b>Chatbot com IA</b><p>Resposta na hora, a qualquer hora. Quem espera acaba comprando de quem respondeu antes — as perguntas de sempre são resolvidas na hora e a sua equipe só entra quando a conversa exige gente.</p><a class="mz-product-link" href="chatbot/">Ver a página do chatbot</a></li>
-        <li class="has-page"><small>Vendas</small><b>Gestão de marketplace</b><p>Sua loja vendendo mais. Loja mal cuidada entrega venda de graça ao concorrente — cuidamos de anúncio, publicidade e estratégia até o faturamento subir, e o número mostra.</p><a class="mz-product-link" href="gestao-de-marketplace/">Ver a página de marketplace</a></li>
-        <li class="has-page"><small>Dados</small><b>Painéis em Power BI</b><p>Decisão com número, não com achismo. Decidir no escuro sai caro e você só descobre quando o mês já fechou — o número certo passa a aparecer na sua frente, atualizado sozinho, na hora de decidir.</p><a class="mz-product-link" href="dashboards-power-bi/">Ver a página de Power BI</a></li>
+        <li class="has-page"><small>Rotinas</small><b>Automação de processos</b><p>Sua equipe perde horas copiando informações, conferindo planilhas e repetindo tarefas que não geram valor. Organizamos esse fluxo para reduzir retrabalho, atrasos e custos operacionais, liberando o time para atividades que realmente fazem o negócio crescer.</p><a class="mz-product-link" href="automacao-de-processos/">Ver a página de automação</a></li>
+        <li class="has-page"><small>APIs</small><b>Integração entre sistemas</b><p>Quando cada sistema guarda uma versão diferente da informação, surgem erros, retrabalho e decisões atrasadas. Conectamos o fluxo dos dados para que pedidos, cadastros e resultados permaneçam consistentes em toda a operação.</p><a class="mz-product-link" href="integracao-de-sistemas/">Ver a página de integração</a></li>
+        <li class="has-page"><small>Inteligência artificial</small><b>Agentes de IA</b><p>Demandas acumuladas, respostas lentas e tarefas que dependem sempre de alguém travam o crescimento. Criamos uma operação capaz de atender, organizar e executar rotinas continuamente, sem aumentar a sobrecarga da equipe.</p><a class="mz-product-link" href="agentes-de-ia/">Ver a página dos agentes de IA</a></li>
+        <li class="has-page"><small>Atendimento</small><b>Chatbot com IA</b><p>Cada minuto sem resposta aumenta a chance de perder um cliente. Estruturamos um atendimento rápido e consistente para resolver dúvidas recorrentes e direcionar à equipe apenas as conversas que realmente precisam de atenção humana.</p><a class="mz-product-link" href="chatbot/">Ver a página do chatbot</a></li>
+        <li class="has-page"><small>Vendas</small><b>Gestão de marketplace</b><p>Anúncios desorganizados, estoque sem controle e campanhas sem direção fazem vendas escaparem para a concorrência. Organizamos a operação para melhorar visibilidade, conversão e rentabilidade em cada canal.</p><a class="mz-product-link" href="gestao-de-marketplace/">Ver a página de marketplace</a></li>
+        <li class="has-page"><small>Dados</small><b>Painéis em Power BI</b><p>Decidir com dados atrasados transforma pequenos problemas em prejuízos grandes. Reunimos os indicadores essenciais em uma visão clara e atualizada para que a gestão identifique riscos e aja antes do fechamento do mês.</p><a class="mz-product-link" href="dashboards-power-bi/">Ver a página de Power BI</a></li>
       </ul>
       <div class="mz-products-custom reveal">
         <div class="mz-products-custom-copy">
@@ -268,29 +268,64 @@
 
   <section class="faq" id="duvidas">
     <div class="section-frame faq-grid">
-      <div class="faq-intro reveal">
+      <header class="faq-intro reveal">
         <h2 data-editorial>Antes de iniciar, <em>é importante saber.</em></h2>
-      </div>
+      </header>
+
       <div class="faq-list reveal">
-        <details>
-          <summary>Vocês atendem só o que está na lista de produtos?<i></i></summary>
-          <p>Não. Os produtos listados são exemplos do que já entregamos — não um cardápio fechado. Se o problema pode ser resolvido com software, integração, dados ou automação, a gente encara. Traga o gargalo real da operação, mesmo que ele não se pareça com nada aqui; é justamente esse tipo de desafio que buscamos.</p>
+        <details open>
+          <summary>
+            <span class="faq-summary-main">
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h.01"/></svg></span>
+              <span>Vocês atendem só o que está na lista de produtos?</span>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <p>Não. Os produtos apresentados são exemplos do que já entregamos, não um cardápio fechado. Primeiro entendemos o gargalo real da operação e avaliamos a melhor forma de resolvê-lo.</p>
         </details>
+
         <details>
-          <summary>É necessário trocar os sistemas que já usamos?<i></i></summary>
-          <p>Não necessariamente. Primeiro avaliamos o que já funciona, os limites das ferramentas atuais e as possibilidades de integração por API. Uma substituição só faz sentido quando o sistema é, de fato, o gargalo — na maioria dos casos o ganho está em conectar o que já existe.</p>
+          <summary>
+            <span class="faq-summary-main">
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="8" height="8" rx="2"/><rect x="13" y="11" width="8" height="8" rx="2"/><path d="M9 15h4M15 9v2"/></svg></span>
+              <span>É necessário trocar os sistemas que já usamos?</span>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <p>Não necessariamente. Primeiro avaliamos o que já funciona e onde estão os bloqueios. Na maioria dos casos, o ganho vem de conectar melhor os sistemas existentes, sem uma troca completa.</p>
         </details>
+
         <details>
-          <summary>Como acontece a implantação?<i></i></summary>
-          <p>Por etapas, com prioridades definidas em conjunto. Cada entrega passa por validação antes de entrar na rotina, reduzindo impacto sobre o trabalho da equipe. Dá para começar por uma frente só, a mais crítica, em vez de tudo de uma vez.</p>
+          <summary>
+            <span class="faq-summary-main">
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>
+              <span>Como acontece a implantação?</span>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <p>A implantação acontece por etapas, começando pela frente mais crítica. Cada entrega é validada antes de entrar na rotina para reduzir impactos no trabalho da equipe.</p>
         </details>
+
         <details>
-          <summary>A inteligência artificial substitui a minha equipe?<i></i></summary>
-          <p>Não. A automação tira do caminho a tarefa repetitiva — copiar dado, redigitar pedido, responder a mesma pergunta — para a equipe focar no que exige julgamento. Revisão humana continua dentro do fluxo nas etapas que pedem decisão.</p>
+          <summary>
+            <span class="faq-summary-main">
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 14a4 4 0 1 1 4-4"/><path d="M4 20c.7-3 2.7-4.5 6-4.5"/><path d="m16 8 .8 1.7L19 10l-1.6 1.4.4 2.1-1.8-1-1.8 1 .4-2.1L13 10l2.2-.3L16 8Z"/></svg></span>
+              <span>A inteligência artificial substitui a minha equipe?</span>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <p>Não. A automação assume tarefas repetitivas para que a equipe possa se concentrar no que exige análise, relacionamento e decisão. A revisão humana permanece nas etapas importantes.</p>
         </details>
+
         <details>
-          <summary>Como são tratados dados e acessos?<i></i></summary>
-          <p>O desenho considera níveis de acesso, rastreabilidade e o mínimo de informação necessário para cada fluxo. Requisitos específicos são levantados no diagnóstico e incorporados à arquitetura desde o início.</p>
+          <summary>
+            <span class="faq-summary-main">
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 2.8 7.8 7 10 4.2-2.2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span>Como são tratados dados e acessos?</span>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <p>O projeto considera níveis de acesso, rastreabilidade e o mínimo de informação necessário em cada fluxo. Requisitos específicos são definidos desde o diagnóstico.</p>
         </details>
       </div>
     </div>

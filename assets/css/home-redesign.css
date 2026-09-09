@@ -2548,3 +2548,221 @@ body.home-redesign .mz-products-custom .button-primary {
     justify-content: center;
   }
 }
+
+
+/* BREVES_FAQ_CARDS_V13 — FAQ inspirado na referência, com identidade azul BREVES. */
+body.home-redesign .faq {
+  padding: 92px 0 100px;
+  background:
+    radial-gradient(680px 420px at 50% 0%, rgba(255, 255, 255, .9), transparent 72%),
+    linear-gradient(180deg, #eef1f4 0%, #e4e9ee 100%);
+}
+
+body.home-redesign .faq-grid {
+  display: grid;
+  width: min(940px, calc(100% - 48px));
+  max-width: 940px;
+  margin-inline: auto;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 42px;
+}
+
+body.home-redesign .faq-intro {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+body.home-redesign .faq-intro h2 {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(100deg, #061d33 5%, #0a4778 52%, #082f54 95%);
+  color: #082f54;
+  font-size: clamp(36px, 4.2vw, 54px);
+  font-weight: 550;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  text-align: center;
+  text-wrap: balance;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.home-redesign .faq-intro h2 em {
+  display: inline;
+  background: inherit;
+  color: inherit;
+  font-weight: 700;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.home-redesign .faq-list {
+  display: grid;
+  width: 100%;
+  gap: 12px;
+}
+
+body.home-redesign .faq details {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(8, 47, 84, .1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 10px 30px rgba(8, 47, 84, .05);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+body.home-redesign .faq details:hover {
+  border-color: rgba(8, 47, 84, .22);
+  transform: translateY(-1px);
+}
+
+body.home-redesign .faq details[open] {
+  border-color: rgba(10, 71, 120, .34);
+  background: #ffffff;
+  box-shadow: 0 16px 38px rgba(8, 47, 84, .08);
+}
+
+body.home-redesign .faq summary {
+  display: grid;
+  min-height: 68px;
+  padding: 14px 18px;
+  grid-template-columns: minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 18px;
+  color: var(--breves-blue-950);
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.45;
+  cursor: pointer;
+  list-style: none;
+}
+
+body.home-redesign .faq summary::-webkit-details-marker {
+  display: none;
+}
+
+body.home-redesign .faq-summary-main {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 14px;
+}
+
+body.home-redesign .faq-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border-radius: 10px;
+  background: #e5f2fc;
+  color: var(--breves-blue-700);
+  transition: background .2s ease, color .2s ease;
+}
+
+body.home-redesign .faq-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.home-redesign .faq details[open] .faq-icon {
+  background: linear-gradient(135deg, var(--breves-blue-900), var(--breves-blue-700));
+  color: #ffffff;
+}
+
+body.home-redesign .faq summary > i {
+  display: grid;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf2f6;
+}
+
+body.home-redesign .faq summary > i::before {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-right: 1.5px solid var(--breves-blue-800);
+  border-bottom: 1.5px solid var(--breves-blue-800);
+  background: transparent;
+  content: "";
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: transform .2s ease;
+}
+
+body.home-redesign .faq summary > i::after {
+  display: none;
+}
+
+body.home-redesign .faq details[open] summary > i::before {
+  top: 54%;
+  transform: translate(-50%, -50%) rotate(225deg);
+}
+
+body.home-redesign .faq details p {
+  max-width: none;
+  margin: 0 22px 24px 68px;
+  padding: 18px 0 0;
+  border-top: 1px solid rgba(8, 47, 84, .1);
+  color: #425b70;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 620px) {
+  body.home-redesign .faq {
+    padding: 68px 0 74px;
+  }
+
+  body.home-redesign .faq-grid {
+    width: calc(100% - 28px);
+    gap: 30px;
+  }
+
+  body.home-redesign .faq-intro h2 {
+    font-size: clamp(30px, 9vw, 38px);
+  }
+
+  body.home-redesign .faq summary {
+    min-height: 66px;
+    padding: 13px 14px;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  body.home-redesign .faq-summary-main {
+    gap: 11px;
+  }
+
+  body.home-redesign .faq-icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  body.home-redesign .faq details p {
+    margin: 0 16px 20px;
+    padding-top: 16px;
+    font-size: 14px;
+  }
+}
