@@ -4026,3 +4026,126 @@ body.home-redesign .mz-audience-card:nth-child(3) p {
     font-size: 18px;
   }
 }
+
+
+/* BREVES_SECTION_TRANSITION_V18 — transição contínua entre seções e paleta em ordem clara → escura. */
+body.home-redesign .mz-audience {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background:
+    radial-gradient(650px 380px at 50% 0%, rgba(220, 239, 255, .68), transparent 72%),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ffffff calc(100% - 104px),
+      #d6dde4 100%
+    ) !important;
+}
+
+body.home-redesign .mz-products {
+  border: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+  background:
+    radial-gradient(760px 340px at 84% 16%, rgba(220, 239, 255, .72), transparent 70%),
+    linear-gradient(
+      180deg,
+      #d6dde4 0,
+      #e7ecf1 92px,
+      #f5f8fa 190px,
+      #ffffff 100%
+    ) !important;
+}
+
+/* Ordem cromática: azul-claro, azul médio e azul-marinho. */
+body.home-redesign .mz-audience-card:nth-child(1) {
+  border-color: rgba(11, 95, 165, .16) !important;
+  background:
+    radial-gradient(300px 190px at 100% 0%, rgba(255, 255, 255, .88), transparent 72%),
+    linear-gradient(145deg, #dcefff, #f5faff) !important;
+  color: var(--breves-blue-950) !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(2) {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background:
+    radial-gradient(300px 190px at 100% 0%, rgba(117, 202, 255, .28), transparent 72%),
+    linear-gradient(145deg, #0b6eb8, #0a4778) !important;
+  color: #ffffff !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(3) {
+  border-color: rgba(255, 255, 255, .12) !important;
+  background:
+    radial-gradient(300px 190px at 100% 0%, rgba(45, 133, 197, .32), transparent 72%),
+    linear-gradient(145deg, #082f54, #061d33) !important;
+  color: #ffffff !important;
+}
+
+body.home-redesign .mz-audience-card > .mz-audience-icon {
+  display: grid !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(1) .mz-audience-icon {
+  border: 1px solid rgba(11, 95, 165, .14) !important;
+  background: rgba(255, 255, 255, .76) !important;
+  color: var(--breves-blue-700) !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(2) .mz-audience-icon,
+body.home-redesign .mz-audience-card:nth-child(3) .mz-audience-icon {
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  background: rgba(255, 255, 255, .12) !important;
+  color: #ffffff !important;
+}
+
+body.home-redesign .mz-audience-icon svg {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(1) h3 {
+  color: var(--breves-blue-950) !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(2) h3,
+body.home-redesign .mz-audience-card:nth-child(3) h3 {
+  color: #ffffff !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(1) p {
+  color: #425b70 !important;
+}
+
+body.home-redesign .mz-audience-card:nth-child(2) p,
+body.home-redesign .mz-audience-card:nth-child(3) p {
+  color: rgba(255, 255, 255, .8) !important;
+}
+
+@media (max-width: 620px) {
+  body.home-redesign .mz-audience {
+    background:
+      radial-gradient(520px 300px at 50% 0%, rgba(220, 239, 255, .62), transparent 72%),
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #ffffff calc(100% - 76px),
+        #d6dde4 100%
+      ) !important;
+  }
+
+  body.home-redesign .mz-products {
+    background:
+      linear-gradient(
+        180deg,
+        #d6dde4 0,
+        #e7ecf1 68px,
+        #f5f8fa 140px,
+        #ffffff 100%
+      ) !important;
+  }
+}
