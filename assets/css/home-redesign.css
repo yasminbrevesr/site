@@ -5318,9 +5318,9 @@ body.home-redesign .faq-label {
   align-items: center;
   justify-content: center;
   padding: 4px 24px;
-  border: 1px solid rgba(218, 218, 218, .34);
+  border: 1px solid rgba(11, 95, 165, .22);
   border-radius: 999px;
-  background: linear-gradient(90deg, #121b24 0%, #2d273d 100%);
+  background: linear-gradient(90deg, var(--breves-blue-800) 0%, #168bd1 100%);
   color: #ffffff;
   font: 500 10px/1 var(--sans);
   letter-spacing: .02em;
