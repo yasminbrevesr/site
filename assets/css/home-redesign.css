@@ -5202,3 +5202,102 @@ body.home-redesign .breves-system-art .breves-system-ring {
     height: 340px;
   }
 }
+
+
+/* BREVES_SYSTEM_TITLE_SPACING_V24 — linhas de título equilibradas e rótulos do diagrama mais legíveis. */
+body.home-redesign .breves-system-split {
+  width: min(1180px, 100%);
+  grid-template-columns: minmax(560px, 1.15fr) minmax(400px, .85fr);
+  gap: 58px;
+}
+
+body.home-redesign .breves-system-copy {
+  width: 100%;
+  max-width: 610px;
+}
+
+body.home-redesign .breves-system-copy h2 {
+  width: 100% !important;
+  max-width: 610px !important;
+  font-size: clamp(42px, 3.8vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  text-align: left !important;
+}
+
+body.home-redesign .breves-system-copy h2 > span {
+  display: block;
+  white-space: nowrap;
+}
+
+body.home-redesign .breves-system-copy > p {
+  margin-top: 24px;
+}
+
+body.home-redesign .breves-system-art > figcaption {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+body.home-redesign .breves-system-step > span {
+  margin-bottom: 8px;
+}
+
+body.home-redesign .breves-system-step > strong {
+  line-height: 1.12;
+  letter-spacing: -.015em;
+}
+
+body.home-redesign .breves-system-step > small {
+  margin-top: 5px;
+  line-height: 1.25;
+}
+
+body.home-redesign .breves-system-center > span {
+  line-height: 1;
+}
+
+body.home-redesign .breves-system-center > small {
+  margin-top: 8px;
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  body.home-redesign .breves-system-split {
+    grid-template-columns: minmax(430px, 1fr) 390px;
+    gap: 36px;
+  }
+
+  body.home-redesign .breves-system-copy h2 {
+    font-size: clamp(38px, 4.2vw, 48px);
+  }
+
+  body.home-redesign .breves-system-copy h2 > span {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 900px) {
+  body.home-redesign .breves-system-copy h2 {
+    max-width: 720px !important;
+    text-align: center !important;
+  }
+
+  body.home-redesign .breves-system-copy h2 > span {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 620px) {
+  body.home-redesign .breves-system-copy h2 {
+    line-height: 1.1;
+    letter-spacing: -.04em;
+  }
+}
