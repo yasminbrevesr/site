@@ -5642,9 +5642,12 @@ body.home-redesign .breves-footer-surface-effect::before {
   animation: breves-footer-light-pass 9s cubic-bezier(.45, 0, .55, 1) infinite;
 }
 
-body.home-redesign .breves-footer-cta-copy,
-body.home-redesign .breves-footer-tile {
+body.home-redesign .breves-footer-cta-copy {
   position: relative;
+  z-index: 2;
+}
+
+body.home-redesign .breves-footer-tile {
   z-index: 2;
 }
 
