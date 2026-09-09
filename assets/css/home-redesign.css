@@ -4240,3 +4240,409 @@ body.home-redesign .faq details[open] {
   border-color: rgba(11, 95, 165, .3) !important;
   box-shadow: 0 16px 38px rgba(8, 47, 84, .09) !important;
 }
+
+
+/* BREVES_CONNECTED_FLOW_V21 — mapa de automação inspirado em fluxos visuais, sem coleção de cards. */
+body.home-redesign .breves-flow-map {
+  position: relative;
+  min-height: 470px;
+  margin-top: 52px;
+  padding: 26px 34px 34px;
+  overflow: hidden;
+  border: 1px solid rgba(67, 167, 232, .22);
+  border-radius: 28px;
+  background:
+    radial-gradient(540px 300px at 50% 48%, rgba(11, 110, 184, .24), transparent 72%),
+    radial-gradient(360px 260px at 100% 0%, rgba(67, 167, 232, .12), transparent 72%),
+    radial-gradient(circle at 1px 1px, rgba(191, 229, 255, .12) 1px, transparent 1.2px),
+    linear-gradient(145deg, #061525 0%, #071d33 52%, #082f54 100%);
+  background-size: auto, auto, 22px 22px, auto;
+  box-shadow: 0 28px 70px rgba(6, 29, 51, .18);
+  isolation: isolate;
+}
+
+body.home-redesign .breves-flow-map::after {
+  position: absolute;
+  z-index: 0;
+  width: 440px;
+  height: 440px;
+  left: 50%;
+  top: 52%;
+  border-radius: 50%;
+  background: rgba(22, 139, 209, .1);
+  filter: blur(70px);
+  content: "";
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+body.home-redesign .breves-flow-topline,
+body.home-redesign .breves-flow-layout,
+body.home-redesign .breves-flow-lines {
+  position: relative;
+  z-index: 2;
+}
+
+body.home-redesign .breves-flow-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: rgba(255, 255, 255, .58);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body.home-redesign .breves-flow-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #bfe5ff;
+  letter-spacing: .03em;
+  text-transform: none;
+}
+
+body.home-redesign .breves-flow-live::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #43a7e8;
+  box-shadow: 0 0 0 5px rgba(67, 167, 232, .12);
+  content: "";
+  animation: breves-flow-pulse 2.2s ease-in-out infinite;
+}
+
+body.home-redesign .breves-flow-layout {
+  display: grid;
+  min-height: 360px;
+  margin-top: 20px;
+  grid-template-columns: 270px minmax(300px, 1fr) 270px;
+  align-items: center;
+  gap: 100px;
+}
+
+body.home-redesign .breves-flow-stage {
+  min-width: 0;
+}
+
+body.home-redesign .breves-flow-stage-label {
+  display: block;
+  margin: 0 0 12px 4px;
+  color: rgba(191, 229, 255, .68);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+body.home-redesign .breves-flow-nodes {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+  list-style: none;
+}
+
+body.home-redesign .breves-flow-node {
+  display: grid;
+  min-height: 76px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  padding: 12px 14px;
+  border: 1px solid rgba(191, 229, 255, .16);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, .07);
+  box-shadow: 0 12px 28px rgba(0, 12, 24, .15);
+  color: #ffffff;
+  transition: border-color .25s ease, background-color .25s ease, transform .25s ease;
+}
+
+body.home-redesign .breves-flow-node:hover {
+  border-color: rgba(107, 190, 242, .46);
+  background: rgba(255, 255, 255, .1);
+  transform: translateY(-2px);
+}
+
+body.home-redesign .breves-flow-node-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(107, 190, 242, .24);
+  border-radius: 12px;
+  background: rgba(11, 110, 184, .2);
+  color: #75caff;
+}
+
+body.home-redesign .breves-flow-node-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.home-redesign .breves-flow-node-copy {
+  display: block;
+  min-width: 0;
+}
+
+body.home-redesign .breves-flow-node strong,
+body.home-redesign .breves-flow-node small {
+  display: block;
+}
+
+body.home-redesign .breves-flow-node strong {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+body.home-redesign .breves-flow-node small {
+  margin-top: 3px;
+  color: rgba(255, 255, 255, .56);
+  font-size: 11px;
+  font-weight: 450;
+  line-height: 1.35;
+}
+
+body.home-redesign .breves-flow-stage-output .breves-flow-node {
+  border-color: rgba(117, 202, 255, .24);
+  background: linear-gradient(135deg, rgba(11, 110, 184, .24), rgba(255, 255, 255, .07));
+}
+
+body.home-redesign .breves-flow-stage-output .breves-flow-node-icon {
+  background: rgba(117, 202, 255, .14);
+  color: #bfe5ff;
+}
+
+body.home-redesign .breves-flow-core {
+  display: grid;
+  position: relative;
+  z-index: 3;
+  min-height: 238px;
+  place-items: center;
+  align-content: center;
+  padding: 30px;
+  border: 1px solid rgba(117, 202, 255, .48);
+  border-radius: 24px;
+  background:
+    radial-gradient(220px 150px at 50% 0%, rgba(117, 202, 255, .22), transparent 72%),
+    linear-gradient(145deg, rgba(10, 71, 120, .96), rgba(6, 29, 51, .98));
+  box-shadow:
+    0 0 0 8px rgba(67, 167, 232, .045),
+    0 24px 56px rgba(0, 11, 22, .3);
+  text-align: center;
+}
+
+body.home-redesign .breves-flow-core-mark {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 18px;
+  place-items: center;
+  border: 1px solid rgba(191, 229, 255, .28);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, .1);
+  color: #ffffff;
+}
+
+body.home-redesign .breves-flow-core-mark svg {
+  width: 29px;
+  height: 29px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.home-redesign .breves-flow-core > small {
+  color: #75caff;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body.home-redesign .breves-flow-core > strong {
+  display: block;
+  margin-top: 7px;
+  color: #ffffff;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 650;
+  line-height: 1.16;
+  letter-spacing: -.03em;
+}
+
+body.home-redesign .breves-flow-core > p {
+  max-width: 280px;
+  margin: 12px auto 0;
+  color: rgba(255, 255, 255, .68);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+body.home-redesign .breves-flow-lines {
+  position: absolute;
+  z-index: 1;
+  inset: 72px 20px 26px;
+  width: calc(100% - 40px);
+  height: calc(100% - 98px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+body.home-redesign .breves-flow-lines path {
+  fill: none;
+  stroke: url(#breves-flow-gradient);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 7 10;
+  animation: breves-flow-dash 9s linear infinite;
+}
+
+body.home-redesign .breves-flow-lines circle {
+  fill: #75caff;
+  filter: drop-shadow(0 0 6px rgba(117, 202, 255, .8));
+}
+
+@keyframes breves-flow-dash {
+  to { stroke-dashoffset: -170; }
+}
+
+@keyframes breves-flow-pulse {
+  0%, 100% { opacity: .55; transform: scale(.92); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@media (max-width: 1040px) {
+  body.home-redesign .breves-flow-map {
+    min-height: 0;
+    padding: 24px 26px 30px;
+  }
+
+  body.home-redesign .breves-flow-layout {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 42px;
+  }
+
+  body.home-redesign .breves-flow-stage {
+    width: 100%;
+  }
+
+  body.home-redesign .breves-flow-stage-label {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  body.home-redesign .breves-flow-nodes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  body.home-redesign .breves-flow-core {
+    width: min(480px, 100%);
+    min-height: 220px;
+    margin-inline: auto;
+  }
+
+  body.home-redesign .breves-flow-lines {
+    display: none;
+  }
+
+  body.home-redesign .breves-flow-core::before,
+  body.home-redesign .breves-flow-core::after {
+    position: absolute;
+    width: 2px;
+    height: 42px;
+    left: 50%;
+    background: linear-gradient(180deg, rgba(117, 202, 255, .1), #75caff);
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  body.home-redesign .breves-flow-core::before {
+    top: -42px;
+  }
+
+  body.home-redesign .breves-flow-core::after {
+    bottom: -42px;
+    background: linear-gradient(180deg, #75caff, rgba(117, 202, 255, .1));
+  }
+}
+
+@media (max-width: 620px) {
+  body.home-redesign .breves-flow-map {
+    margin-top: 36px;
+    padding: 20px 14px 22px;
+    border-radius: 22px;
+  }
+
+  body.home-redesign .breves-flow-topline {
+    padding-inline: 4px;
+    font-size: 10px;
+  }
+
+  body.home-redesign .breves-flow-layout {
+    margin-top: 24px;
+    gap: 34px;
+  }
+
+  body.home-redesign .breves-flow-nodes {
+    gap: 7px;
+  }
+
+  body.home-redesign .breves-flow-node {
+    min-height: 92px;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 8px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+
+  body.home-redesign .breves-flow-node-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  body.home-redesign .breves-flow-node-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  body.home-redesign .breves-flow-node strong {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  body.home-redesign .breves-flow-node small {
+    display: none;
+  }
+
+  body.home-redesign .breves-flow-core {
+    min-height: 208px;
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+
+  body.home-redesign .breves-flow-core > p {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-redesign .breves-flow-lines path,
+  body.home-redesign .breves-flow-live::before {
+    animation: none;
+  }
+}
