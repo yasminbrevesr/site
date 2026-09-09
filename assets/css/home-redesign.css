@@ -3153,3 +3153,506 @@ body.home-redesign .footer-rich .footer-bottom > * {
     gap: 7px;
   }
 }
+
+
+/* BREVES_VISIBILITY_REPAIR_V15 — corrige conteúdo oculto do FAQ e isola o rodapé. */
+body.home-redesign .faq-intro h2 {
+  background: linear-gradient(90deg, #061d33 0%, #0b5fa5 100%) !important;
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.home-redesign .faq summary {
+  display: grid !important;
+  min-height: 72px !important;
+  grid-template-columns: minmax(0, 1fr) 30px !important;
+  align-items: center !important;
+  gap: 18px !important;
+  padding: 16px 18px !important;
+}
+
+body.home-redesign .faq summary > .faq-summary-main {
+  display: flex !important;
+  grid-column: 1 !important;
+  min-width: 0;
+  align-items: center !important;
+  gap: 14px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: var(--breves-blue-950) !important;
+  font: 550 15px/1.45 var(--sans) !important;
+}
+
+body.home-redesign .faq summary .faq-summary-main > .faq-icon {
+  display: grid !important;
+  width: 36px !important;
+  height: 36px !important;
+  flex: 0 0 36px !important;
+  place-items: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .faq summary .faq-summary-main > span:last-child {
+  display: block !important;
+  min-width: 0;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: var(--breves-blue-950) !important;
+  font: 550 15px/1.45 var(--sans) !important;
+}
+
+body.home-redesign .faq summary > i {
+  display: grid !important;
+  grid-column: 2 !important;
+  justify-self: end !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .faq details p {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .faq details[open] summary {
+  border-bottom: 1px solid rgba(8, 47, 84, .1);
+}
+
+body.home-redesign .faq details[open] p {
+  margin: 0 22px 24px 68px !important;
+  padding: 18px 0 0 !important;
+  border-top: 0 !important;
+}
+
+/* Rodapé isolado das regras antigas. */
+body.home-redesign .site-footer.breves-footer {
+  display: block !important;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  padding: 28px 0 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: #ffffff !important;
+  color: #061d33 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-frame {
+  display: block !important;
+  width: min(1240px, calc(100% - 36px));
+  max-width: 1240px;
+  margin-inline: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-cta {
+  display: grid !important;
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  place-items: center;
+  padding: 52px 210px;
+  border: 1px solid rgba(11, 95, 165, .14);
+  border-radius: 26px;
+  background:
+    radial-gradient(430px 270px at 4% 100%, rgba(11, 95, 165, .16), transparent 70%),
+    radial-gradient(410px 280px at 97% 0%, rgba(8, 47, 84, .15), transparent 70%),
+    linear-gradient(135deg, #dbeaff 0%, #f8fbff 48%, #d7e9ff 100%) !important;
+  box-shadow: 0 16px 48px rgba(8, 47, 84, .08);
+  opacity: 1 !important;
+  visibility: visible !important;
+  isolation: isolate;
+}
+
+body.home-redesign .breves-footer-cta::before,
+body.home-redesign .breves-footer-cta::after {
+  position: absolute;
+  z-index: -1;
+  border: 52px solid rgba(10, 71, 120, .08);
+  border-radius: 46%;
+  content: "";
+  pointer-events: none;
+}
+
+body.home-redesign .breves-footer-cta::before {
+  width: 340px;
+  height: 340px;
+  left: -180px;
+  bottom: -190px;
+  transform: rotate(34deg);
+}
+
+body.home-redesign .breves-footer-cta::after {
+  width: 310px;
+  height: 310px;
+  right: -160px;
+  top: -185px;
+  transform: rotate(-28deg);
+}
+
+body.home-redesign .breves-footer-cta-copy {
+  display: flex !important;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-cta-copy h2 {
+  display: block !important;
+  max-width: 660px;
+  margin: 0;
+  color: #061d33 !important;
+  font: 550 clamp(36px, 4vw, 52px)/1.08 var(--sans) !important;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-text-fill-color: #061d33 !important;
+}
+
+body.home-redesign .breves-footer-cta-copy p {
+  display: block !important;
+  max-width: 570px;
+  margin: 16px 0 25px;
+  color: #425b70 !important;
+  font: 400 16px/1.6 var(--sans) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-button {
+  display: inline-flex !important;
+  min-height: 50px;
+  padding: 0 24px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0a4778 !important;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #082f54, #0b5fa5) !important;
+  color: #ffffff !important;
+  font: 650 14px/1 var(--sans) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.home-redesign .breves-footer-tile {
+  display: grid !important;
+  position: absolute;
+  z-index: 2;
+  width: 88px;
+  height: 88px;
+  top: 50%;
+  place-items: center;
+  border: 1px solid rgba(11, 95, 165, .16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .8) !important;
+  color: #0b5fa5 !important;
+  box-shadow: 0 14px 34px rgba(8, 47, 84, .12);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(-50%) rotate(-7deg);
+}
+
+body.home-redesign .breves-footer-tile-brand {
+  left: 54px;
+}
+
+body.home-redesign .breves-footer-tile-whatsapp {
+  right: 54px;
+  transform: translateY(-50%) rotate(6deg);
+}
+
+body.home-redesign .breves-footer-tile img,
+body.home-redesign .breves-footer-tile svg {
+  display: block !important;
+  width: 48px;
+  height: 48px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-tile img {
+  object-fit: contain;
+  filter: none !important;
+}
+
+body.home-redesign .breves-footer-tile svg {
+  fill: currentColor;
+}
+
+body.home-redesign .breves-footer-main {
+  display: grid !important;
+  width: 100%;
+  grid-template-columns: minmax(210px, 1.2fr) minmax(130px, .65fr) minmax(130px, .65fr) minmax(260px, 1fr);
+  align-items: start;
+  gap: 42px 54px;
+  padding: 60px 18px 44px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-brand {
+  display: inline-flex !important;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  color: #061d33 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-brand > img {
+  display: block !important;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-brand > span {
+  display: grid !important;
+  gap: 2px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-brand b,
+body.home-redesign .breves-footer-brand small {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-brand b {
+  color: #061d33 !important;
+  font: 700 17px/1.1 var(--sans) !important;
+  letter-spacing: .08em;
+}
+
+body.home-redesign .breves-footer-brand small {
+  color: #0b5fa5 !important;
+  font: 650 9px/1.1 var(--sans) !important;
+  letter-spacing: .12em;
+}
+
+body.home-redesign .breves-footer-group {
+  display: flex !important;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-group h3 {
+  display: block !important;
+  margin: 0 0 8px;
+  color: #0b5fa5 !important;
+  font: 650 12px/1.3 var(--sans) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-group > a,
+body.home-redesign .breves-footer-email > span {
+  display: flex !important;
+  color: #27445e !important;
+  font: 500 14px/1.5 var(--sans) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-text-fill-color: #27445e !important;
+}
+
+body.home-redesign .breves-footer-group > a:hover {
+  color: #0b5fa5 !important;
+  -webkit-text-fill-color: #0b5fa5 !important;
+}
+
+body.home-redesign .breves-footer-email {
+  display: flex !important;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+}
+
+body.home-redesign .breves-footer-email > svg {
+  display: block !important;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: #0b5fa5;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-email > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+body.home-redesign .breves-footer-social {
+  display: flex !important;
+  margin-top: 10px;
+  align-items: center;
+  gap: 9px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-social > a {
+  display: grid !important;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(11, 95, 165, .2);
+  border-radius: 11px;
+  background: #edf6ff !important;
+  color: #0b5fa5 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-social svg {
+  display: block !important;
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-bottom {
+  display: flex !important;
+  width: 100%;
+  padding: 20px 18px 24px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  border-top: 1px solid rgba(8, 47, 84, .1);
+  color: #61778a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.home-redesign .breves-footer-bottom > span {
+  display: block !important;
+  color: #61778a !important;
+  font: 500 11px/1.5 var(--sans) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-text-fill-color: #61778a !important;
+}
+
+@media (max-width: 980px) {
+  body.home-redesign .breves-footer-cta {
+    min-height: 300px;
+    padding-inline: 124px;
+  }
+
+  body.home-redesign .breves-footer-tile {
+    width: 72px;
+    height: 72px;
+  }
+
+  body.home-redesign .breves-footer-tile-brand {
+    left: 30px;
+  }
+
+  body.home-redesign .breves-footer-tile-whatsapp {
+    right: 30px;
+  }
+
+  body.home-redesign .breves-footer-tile img,
+  body.home-redesign .breves-footer-tile svg {
+    width: 39px;
+    height: 39px;
+  }
+
+  body.home-redesign .breves-footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 48px;
+  }
+
+  body.home-redesign .breves-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  body.home-redesign .site-footer.breves-footer {
+    padding-top: 18px !important;
+  }
+
+  body.home-redesign .breves-footer-frame {
+    width: calc(100% - 24px);
+  }
+
+  body.home-redesign .breves-footer-cta {
+    min-height: 0;
+    padding: 52px 22px;
+    border-radius: 22px;
+  }
+
+  body.home-redesign .breves-footer-tile {
+    display: none !important;
+  }
+
+  body.home-redesign .breves-footer-cta-copy h2 {
+    font-size: clamp(30px, 9vw, 40px) !important;
+  }
+
+  body.home-redesign .breves-footer-cta-copy p {
+    margin: 14px 0 24px;
+    font-size: 15px !important;
+  }
+
+  body.home-redesign .breves-footer-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    padding: 46px 6px 34px;
+  }
+
+  body.home-redesign .breves-footer-brand {
+    grid-column: auto;
+  }
+
+  body.home-redesign .breves-footer-bottom {
+    padding: 18px 6px 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  body.home-redesign .faq summary > .faq-summary-main,
+  body.home-redesign .faq summary .faq-summary-main > span:last-child {
+    font-size: 14px !important;
+  }
+
+  body.home-redesign .faq details[open] p {
+    margin: 0 16px 20px !important;
+    padding-top: 16px !important;
+  }
+}
