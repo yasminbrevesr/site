@@ -5478,3 +5478,128 @@ body.home-redesign .breves-system-step-decide {
     bottom: 60px;
   }
 }
+
+
+/* BREVES_FORM_REFINEMENT_V26 — formulário mais compacto, claro e consistente. */
+body.home-redesign .mz-fale,
+body.home-redesign .mz-hero.is-limpo .mz-fale {
+  max-width: 440px;
+  padding: 32px 30px 30px;
+  overflow: hidden;
+  border: 1px solid rgba(11, 95, 165, .2);
+  border-top: 4px solid #168bd1;
+  border-radius: 24px;
+  background:
+    radial-gradient(320px 180px at 100% 0%, rgba(220, 239, 255, .58), transparent 72%),
+    #ffffff;
+  box-shadow: 0 24px 68px rgba(6, 29, 51, .2);
+}
+
+body.home-redesign .mz-fale h2 {
+  max-width: 330px;
+  margin: 0 0 24px;
+  color: var(--breves-blue-950);
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+body.home-redesign .mz-fale-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px 12px;
+}
+
+body.home-redesign .mz-fale-campos .field {
+  min-width: 0;
+  gap: 7px;
+}
+
+body.home-redesign .mz-fale-campos .field:nth-child(3),
+body.home-redesign .mz-fale-campos .field:nth-child(4),
+body.home-redesign .mz-fale-campos > .mz-fale-enviar,
+body.home-redesign .mz-fale-campos > .form-ok {
+  grid-column: 1 / -1;
+}
+
+body.home-redesign .mz-fale-campos label {
+  color: var(--breves-blue-900);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+body.home-redesign .mz-fale-campos input,
+body.home-redesign .mz-fale-campos textarea {
+  width: 100%;
+  border-color: rgba(11, 95, 165, .18);
+  background: #f7fbff;
+  color: var(--breves-blue-950);
+  transition:
+    border-color .2s ease,
+    background-color .2s ease,
+    box-shadow .2s ease;
+}
+
+body.home-redesign .mz-fale-campos input::placeholder,
+body.home-redesign .mz-fale-campos textarea::placeholder {
+  color: #6a7e91;
+}
+
+body.home-redesign .mz-fale-campos input:hover,
+body.home-redesign .mz-fale-campos textarea:hover {
+  border-color: rgba(11, 95, 165, .34);
+}
+
+body.home-redesign .mz-fale-campos input:focus,
+body.home-redesign .mz-fale-campos textarea:focus {
+  border-color: #168bd1;
+  outline: 0;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(22, 139, 209, .12);
+}
+
+body.home-redesign .mz-fale-campos textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+body.home-redesign .mz-fale .mz-fale-enviar,
+body.home-redesign .mz-hero.is-limpo .mz-fale .mz-fale-enviar {
+  width: 100%;
+  min-height: 50px;
+  justify-content: center;
+  margin-top: 2px;
+  border-color: var(--breves-blue-800);
+  background: linear-gradient(110deg, var(--breves-blue-800), #168bd1);
+  color: #ffffff;
+}
+
+body.home-redesign .mz-fale .mz-fale-enviar:hover,
+body.home-redesign .mz-hero.is-limpo .mz-fale .mz-fale-enviar:hover {
+  border-color: var(--breves-blue-700);
+  background: linear-gradient(110deg, var(--breves-blue-900), var(--breves-blue-700));
+}
+
+@media (max-width: 520px) {
+  body.home-redesign .mz-fale,
+  body.home-redesign .mz-hero.is-limpo .mz-fale {
+    padding: 26px 20px 22px;
+    border-radius: 20px;
+  }
+
+  body.home-redesign .mz-fale h2 {
+    margin-bottom: 21px;
+    font-size: 20px;
+  }
+
+  body.home-redesign .mz-fale-campos {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  body.home-redesign .mz-fale-campos .field:nth-child(3),
+  body.home-redesign .mz-fale-campos .field:nth-child(4),
+  body.home-redesign .mz-fale-campos > .mz-fale-enviar,
+  body.home-redesign .mz-fale-campos > .form-ok {
+    grid-column: 1;
+  }
+}
