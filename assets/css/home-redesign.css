@@ -4201,3 +4201,42 @@ body.home-redesign .breves-footer-tile-brand img {
     height: 58px !important;
   }
 }
+
+
+/* BREVES_FAQ_WHITE_SPLIT_TITLE_V20 — fundo branco e título em dois tons, como a seção de método. */
+body.home-redesign .faq {
+  border: 0 !important;
+  background: #ffffff !important;
+}
+
+body.home-redesign .faq-intro h2 {
+  background: none !important;
+  color: var(--breves-blue-950) !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: var(--breves-blue-950) !important;
+}
+
+body.home-redesign .faq-intro h2 em {
+  display: inline !important;
+  background: linear-gradient(90deg, #0a4778 0%, #168bd1 55%, #43a7e8 100%) !important;
+  color: var(--breves-blue-700) !important;
+  font-style: normal;
+  font-weight: 700;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.home-redesign .faq details,
+body.home-redesign .faq details[open] {
+  border-color: rgba(8, 47, 84, .14) !important;
+  background: #ffffff !important;
+  box-shadow: 0 12px 32px rgba(8, 47, 84, .07) !important;
+}
+
+body.home-redesign .faq details:hover,
+body.home-redesign .faq details[open] {
+  border-color: rgba(11, 95, 165, .3) !important;
+  box-shadow: 0 16px 38px rgba(8, 47, 84, .09) !important;
+}
