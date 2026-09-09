@@ -5854,3 +5854,58 @@ body.home-redesign .breves-footer-bottom {
     padding: 14px 6px 17px;
   }
 }
+
+
+/* BREVES_DARK_FOOTER_CONTRAST_V29 — contraste completo sobre o novo fundo. */
+body.home-redesign .site-footer.breves-footer .breves-footer-brand > img {
+  filter: brightness(0) invert(1) !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-brand b {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-brand small,
+body.home-redesign .site-footer.breves-footer .breves-footer-group h3 {
+  color: #bfe5ff !important;
+  -webkit-text-fill-color: #bfe5ff !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-group > a,
+body.home-redesign .site-footer.breves-footer .breves-footer-email > span {
+  color: rgba(255, 255, 255, .82) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .82) !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-group > a:hover,
+body.home-redesign .site-footer.breves-footer .breves-footer-email:hover > span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-email > svg {
+  stroke: #bfe5ff !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-social > a {
+  border-color: rgba(255, 255, 255, .2) !important;
+  background: rgba(255, 255, 255, .09) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-social > a:hover {
+  border-color: rgba(191, 229, 255, .5) !important;
+  background: rgba(255, 255, 255, .16) !important;
+  color: #ffffff !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-social svg {
+  fill: currentColor !important;
+}
+
+body.home-redesign .site-footer.breves-footer .breves-footer-bottom > span {
+  color: rgba(255, 255, 255, .7) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .7) !important;
+}
