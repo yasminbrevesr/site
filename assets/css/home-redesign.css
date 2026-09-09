@@ -5301,3 +5301,34 @@ body.home-redesign .breves-system-center > small {
     letter-spacing: -.04em;
   }
 }
+
+
+/* BREVES_FAQ_LABEL_V1 — etiqueta compacta no lugar do título da seção. */
+body.home-redesign .faq-intro {
+  max-width: none;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+body.home-redesign .faq-label {
+  width: 144px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 24px;
+  border: 1px solid rgba(218, 218, 218, .34);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #121b24 0%, #2d273d 100%);
+  color: #ffffff;
+  font: 500 10px/1 var(--sans);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 520px) {
+  body.home-redesign .faq-label {
+    width: 128px;
+  }
+}
