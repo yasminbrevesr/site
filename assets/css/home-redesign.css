@@ -4646,3 +4646,395 @@ body.home-redesign .breves-flow-lines circle {
     animation: none;
   }
 }
+
+
+/* BREVES_CLEAN_SYSTEM_WHEEL_V22 — diagrama circular leve, inspirado na composição fornecida. */
+body.home-redesign .breves-system-map {
+  width: min(1040px, 100%);
+  margin: 54px auto 0;
+}
+
+body.home-redesign .breves-system-visual {
+  display: grid;
+  position: relative;
+  min-height: 500px;
+  grid-template-columns: 240px 400px 240px;
+  align-items: center;
+  justify-content: center;
+  gap: 58px;
+}
+
+body.home-redesign .breves-system-side {
+  display: flex;
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  min-height: 310px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.home-redesign .breves-system-callout {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  color: var(--breves-blue-950);
+}
+
+body.home-redesign .breves-system-side-right .breves-system-callout {
+  grid-template-columns: minmax(0, 1fr) 44px;
+  text-align: right;
+}
+
+body.home-redesign .breves-system-callout-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(11, 95, 165, .18);
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--breves-blue-700);
+  box-shadow: 0 8px 22px rgba(8, 47, 84, .08);
+}
+
+body.home-redesign .breves-system-callout-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.home-redesign .breves-system-callout-copy,
+body.home-redesign .breves-system-callout strong,
+body.home-redesign .breves-system-callout small {
+  display: block;
+}
+
+body.home-redesign .breves-system-callout strong {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+body.home-redesign .breves-system-callout small {
+  margin-top: 4px;
+  color: #62798d;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+body.home-redesign .breves-system-wheel {
+  display: grid;
+  position: relative;
+  z-index: 3;
+  width: 400px;
+  height: 400px;
+  place-items: center;
+}
+
+body.home-redesign .breves-system-ring {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(8, 47, 84, .1);
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from -60deg,
+      #dcefff 0 31.4%,
+      #ffffff 31.4% 33.3%,
+      #168bd1 33.3% 64.7%,
+      #ffffff 64.7% 66.6%,
+      #082f54 66.6% 98.1%,
+      #ffffff 98.1% 100%
+    );
+  box-shadow: 0 24px 60px rgba(8, 47, 84, .12);
+}
+
+body.home-redesign .breves-system-ring::before {
+  position: absolute;
+  z-index: 2;
+  inset: 103px;
+  border: 1px solid rgba(8, 47, 84, .12);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 16px 38px rgba(8, 47, 84, .1);
+  content: "";
+}
+
+body.home-redesign .breves-system-center {
+  display: grid;
+  position: absolute;
+  z-index: 4;
+  inset: 116px;
+  place-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+body.home-redesign .breves-system-center > span {
+  color: var(--breves-blue-950);
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: .08em;
+}
+
+body.home-redesign .breves-system-center > small {
+  max-width: 112px;
+  margin-top: 5px;
+  color: #62798d;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+body.home-redesign .breves-system-step {
+  display: grid;
+  position: absolute;
+  z-index: 3;
+  width: 122px;
+  justify-items: center;
+  color: #ffffff;
+  text-align: center;
+}
+
+body.home-redesign .breves-system-step > span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 6px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+body.home-redesign .breves-system-step > strong,
+body.home-redesign .breves-system-step > small {
+  display: block;
+}
+
+body.home-redesign .breves-system-step > strong {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+body.home-redesign .breves-system-step > small {
+  margin-top: 3px;
+  color: rgba(255, 255, 255, .68);
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+body.home-redesign .breves-system-step-connect {
+  left: 129px;
+  top: 24px;
+  color: var(--breves-blue-950);
+}
+
+body.home-redesign .breves-system-step-connect > span {
+  border-color: rgba(11, 95, 165, .22);
+  background: rgba(255, 255, 255, .62);
+}
+
+body.home-redesign .breves-system-step-connect > small {
+  color: #526e84;
+}
+
+body.home-redesign .breves-system-step-automate {
+  right: 21px;
+  bottom: 64px;
+}
+
+body.home-redesign .breves-system-step-decide {
+  left: 21px;
+  bottom: 64px;
+}
+
+body.home-redesign .breves-system-connectors {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+body.home-redesign .breves-system-connectors path {
+  fill: none;
+  stroke: rgba(11, 95, 165, .28);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 4 6;
+  animation: breves-system-line 12s linear infinite;
+}
+
+body.home-redesign .breves-system-connectors circle {
+  fill: #168bd1;
+  opacity: .72;
+}
+
+@keyframes breves-system-line {
+  to { stroke-dashoffset: -120; }
+}
+
+@media (max-width: 980px) {
+  body.home-redesign .breves-system-map {
+    width: min(680px, 100%);
+    margin-top: 44px;
+  }
+
+  body.home-redesign .breves-system-visual {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+
+  body.home-redesign .breves-system-wheel {
+    grid-row: 2;
+    justify-self: center;
+  }
+
+  body.home-redesign .breves-system-side {
+    display: grid;
+    min-height: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body.home-redesign .breves-system-side-left {
+    grid-row: 1;
+  }
+
+  body.home-redesign .breves-system-side-right {
+    grid-row: 3;
+  }
+
+  body.home-redesign .breves-system-side-right .breves-system-callout {
+    grid-template-columns: 44px minmax(0, 1fr);
+    text-align: left;
+  }
+
+  body.home-redesign .breves-system-side-right .breves-system-callout-icon {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  body.home-redesign .breves-system-side-right .breves-system-callout-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  body.home-redesign .breves-system-connectors {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  body.home-redesign .breves-system-map {
+    margin-top: 34px;
+  }
+
+  body.home-redesign .breves-system-visual {
+    gap: 28px;
+  }
+
+  body.home-redesign .breves-system-wheel {
+    width: 310px;
+    height: 310px;
+  }
+
+  body.home-redesign .breves-system-ring {
+    width: 294px;
+    height: 294px;
+  }
+
+  body.home-redesign .breves-system-ring::before {
+    inset: 80px;
+  }
+
+  body.home-redesign .breves-system-center {
+    inset: 90px;
+  }
+
+  body.home-redesign .breves-system-center > span {
+    font-size: 16px;
+  }
+
+  body.home-redesign .breves-system-center > small {
+    font-size: 9px;
+  }
+
+  body.home-redesign .breves-system-step {
+    width: 96px;
+  }
+
+  body.home-redesign .breves-system-step > span {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+  }
+
+  body.home-redesign .breves-system-step > strong {
+    font-size: 12px;
+  }
+
+  body.home-redesign .breves-system-step > small {
+    font-size: 8px;
+  }
+
+  body.home-redesign .breves-system-step-connect {
+    left: 99px;
+    top: 17px;
+  }
+
+  body.home-redesign .breves-system-step-automate {
+    right: 14px;
+    bottom: 48px;
+  }
+
+  body.home-redesign .breves-system-step-decide {
+    left: 14px;
+    bottom: 48px;
+  }
+
+  body.home-redesign .breves-system-side {
+    gap: 18px 12px;
+  }
+
+  body.home-redesign .breves-system-callout {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  body.home-redesign .breves-system-side-right .breves-system-callout {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  body.home-redesign .breves-system-callout-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  body.home-redesign .breves-system-callout strong {
+    font-size: 12px;
+  }
+
+  body.home-redesign .breves-system-callout small {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-redesign .breves-system-connectors path {
+    animation: none;
+  }
+}
