@@ -5332,3 +5332,64 @@ body.home-redesign .faq-label {
     width: 128px;
   }
 }
+
+
+/* BREVES_FOOTER_KINETIC_TITLE_V1 — entrada em perspectiva palavra por palavra. */
+body.home-redesign .footer-kinetic-title {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+body.home-redesign .footer-title-words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: .26em;
+  overflow: visible;
+}
+
+body.home-redesign .footer-title-word {
+  display: inline-block;
+  overflow: hidden;
+  padding: .08em .04em;
+  margin: -.08em -.04em;
+  vertical-align: bottom;
+}
+
+body.home-redesign .footer-title-word > span {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+body.home-redesign .footer-kinetic-title.is-ready .footer-title-word > span {
+  opacity: 0;
+  transform: translateY(115%) rotateX(-24deg);
+  transition:
+    transform .82s cubic-bezier(.16, 1, .3, 1),
+    opacity .5s ease;
+}
+
+body.home-redesign .footer-kinetic-title.is-ready .footer-title-word:nth-child(2) > span {
+  transition-delay: 80ms;
+}
+
+body.home-redesign .footer-kinetic-title.is-ready .footer-title-word:nth-child(3) > span {
+  transition-delay: 160ms;
+}
+
+body.home-redesign .footer-kinetic-title.is-ready .footer-title-word:nth-child(4) > span {
+  transition-delay: 240ms;
+}
+
+body.home-redesign .footer-kinetic-title.is-ready.is-animated .footer-title-word > span {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-redesign .footer-kinetic-title.is-ready .footer-title-word > span {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

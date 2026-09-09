@@ -1002,3 +1002,32 @@
     item.classList.add('has-nav-hint');
   });
 })();
+
+
+/* BREVES_FOOTER_KINETIC_TITLE_V1 — revela o título quando a chamada entra em cena. */
+(function setupFooterKineticTitle() {
+  'use strict';
+
+  var title = document.querySelector('[data-kinetic-title]');
+  if (!title) return;
+
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    title.classList.add('is-animated');
+    return;
+  }
+
+  title.classList.add('is-ready');
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      window.requestAnimationFrame(function () {
+        title.classList.add('is-animated');
+      });
+      observer.unobserve(title);
+    });
+  }, { threshold: 0.35 });
+
+  observer.observe(title);
+})();
